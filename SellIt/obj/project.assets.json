@@ -3633,6 +3633,29 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
+      },
+      "SellIt.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "SellIt.Infrastructure": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SellIt.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SellIt.Core.dll": {}
+        }
+      },
+      "SellIt.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/SellIt.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SellIt.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -10278,6 +10301,16 @@
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
       ]
+    },
+    "SellIt.Core/1.0.0": {
+      "type": "project",
+      "path": "../SellIt.Core/SellIt.Core.csproj",
+      "msbuildProject": "../SellIt.Core/SellIt.Core.csproj"
+    },
+    "SellIt.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../SellIt.Infrastructure/SellIt.Infrastructure.csproj",
+      "msbuildProject": "../SellIt.Infrastructure/SellIt.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -10287,7 +10320,8 @@
       "Microsoft.AspNetCore.Identity.UI >= 6.0.9",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.9",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.9",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.9"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 6.0.9",
+      "SellIt.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -10316,7 +10350,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\SellIt.Core.csproj": {
+              "projectPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\SellIt.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
