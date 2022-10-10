@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using SellIt.Core.Constants;
     using SellIt.Models;
     using System.Diagnostics;
 
@@ -15,6 +16,7 @@
 
         public IActionResult Index()
         {
+            ViewData[MessageConstants.SuccessMessage] = "Welcome!";
             return View();
         }
 
