@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using SellIt.Infrastructure.Data.Models;
 
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
            : base(options)

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2aMuKlPJ/lyfY9r4alE6XBdeUxJCVivoxIEguelPmz8cThX26q+Tus9uyXU1bKPrLizr+UZXcS/NTQyfgBjViA==",
+  "dgSpecHash": "pKdpjmy1LgqArdlsSi/CZe6xstYbcHR0CnWPLIGiHJ5DII7lFwqAbWG0uLepPV0DBlhdBsRtetAobIDICm4b/g==",
   "success": true,
   "projectFilePath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\SellIt.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "C:\\Users\\zzhelev\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\zzhelev\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\zzhelev\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",
+    "C:\\Users\\zzhelev\\.nuget\\packages\\microsoft.aspnetcore.authentication.facebook\\6.0.9\\microsoft.aspnetcore.authentication.facebook.6.0.9.nupkg.sha512",
     "C:\\Users\\zzhelev\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.9\\microsoft.aspnetcore.cryptography.internal.6.0.9.nupkg.sha512",
     "C:\\Users\\zzhelev\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.9\\microsoft.aspnetcore.cryptography.keyderivation.6.0.9.nupkg.sha512",
     "C:\\Users\\zzhelev\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\6.0.9\\microsoft.aspnetcore.diagnostics.entityframeworkcore.6.0.9.nupkg.sha512",
