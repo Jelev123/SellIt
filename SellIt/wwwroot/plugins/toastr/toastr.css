@@ -52,10 +52,12 @@ button.toast-close-button {
   border: 0;
   -webkit-appearance: none;
 }
+
+.toast {
+    margin-top: 100px !important;
+}
 .toast-top-center {
-  top: 0;
-  right: 0;
-  width: 100%;
+    top: 30px;
 }
 .toast-bottom-center {
   bottom: 0;
