@@ -22,6 +22,7 @@
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<ForAproved> ForAproveds { get; set; }
+        public DbSet<UserMessages> UserMessages { get; set; }
+        public DbSet<ProductMessages> ProductMessages { get; set; }
     }
 }

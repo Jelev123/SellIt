@@ -1346,6 +1346,18 @@
           }
         }
       },
+      "UploadStream/3.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/UploadStream.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/UploadStream.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "SellIt.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -4068,6 +4080,19 @@
         "version.txt"
       ]
     },
+    "UploadStream/3.1.1": {
+      "sha512": "j9EQ5VVONzqiiP2xEPgLHQVplpttdcmozTod38gtjnZz2AZaGOeOXOy2hy5zEeMRODTz7MjrQ123YCN6egeFIw==",
+      "type": "package",
+      "path": "uploadstream/3.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENCE",
+        "lib/netcoreapp3.1/UploadStream.dll",
+        "uploadstream.3.1.1.nupkg.sha512",
+        "uploadstream.nuspec"
+      ]
+    },
     "SellIt.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../SellIt.Infrastructure/SellIt.Infrastructure.csproj",
@@ -4081,7 +4106,8 @@
       "Microsoft.EntityFrameworkCore.Design >= 7.0.0-rc.1.22426.7",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0-rc.1.22426.7",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.0-rc.1.22426.7",
-      "SellIt.Infrastructure >= 1.0.0"
+      "SellIt.Infrastructure >= 1.0.0",
+      "UploadStream >= 3.1.1"
     ]
   },
   "packageFolders": {
@@ -4150,6 +4176,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[7.0.0-rc.1.22426.7, )"
+          },
+          "UploadStream": {
+            "target": "Package",
+            "version": "[3.1.1, )"
           }
         },
         "imports": [

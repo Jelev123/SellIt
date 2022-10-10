@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "W+oJmFB8XSHXBRy0sd2ZQUU0JB/p1P7r6VQR5ugP+PjwqcMEsAs8drqhDBFxb73Z6sz+51sLzVztPtxYwt1e9w==",
+  "dgSpecHash": "DuuB/tqMehVI49DFgotjoAbMrN3Ixj9U7ytneF11lHxDLr4cTalB702x6/2SkHi4GGrbHSqIa3dhWoOgy5dxPA==",
   "success": true,
   "projectFilePath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\SellIt.Core.csproj",
   "expectedPackageFiles": [
@@ -83,7 +83,8 @@
     "C:\\Users\\zzhelev\\.nuget\\packages\\system.text.json\\7.0.0-rc.1.22426.10\\system.text.json.7.0.0-rc.1.22426.10.nupkg.sha512",
     "C:\\Users\\zzhelev\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
     "C:\\Users\\zzhelev\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "C:\\Users\\zzhelev\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
+    "C:\\Users\\zzhelev\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512",
+    "C:\\Users\\zzhelev\\.nuget\\packages\\uploadstream\\3.1.1\\uploadstream.3.1.1.nupkg.sha512"
   ],
   "logs": []
 }

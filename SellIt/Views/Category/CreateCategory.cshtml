@@ -1,0 +1,11 @@
+﻿@using SellIt.Core.ViewModels.Category
+@model CreateCategoryViewModel
+
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <input class="btn text-black btn-info text-center " type="submit" value="Add" />
+</form>

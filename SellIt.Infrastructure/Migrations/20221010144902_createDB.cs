@@ -30,8 +30,8 @@ namespace SellIt.Infrastructure.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -172,6 +172,24 @@ namespace SellIt.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "UserMessages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UserMessages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_UserMessages_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -202,32 +220,6 @@ namespace SellIt.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ForAproveds",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    UserId1 = table.Column<string>(type: "nvarchar(450)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ForAproveds", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ForAproveds_AspNetUsers_UserId1",
-                        column: x => x.UserId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_ForAproveds_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Orders",
                 columns: table => new
                 {
@@ -240,6 +232,25 @@ namespace SellIt.Infrastructure.Migrations
                     table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Orders_Products_ProductId",
+                        column: x => x.ProductId,
+                        principalTable: "Products",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ProductMessages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ProductMessages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ProductMessages_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -286,18 +297,13 @@ namespace SellIt.Infrastructure.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ForAproveds_ProductId",
-                table: "ForAproveds",
+                name: "IX_Orders_ProductId",
+                table: "Orders",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ForAproveds_UserId1",
-                table: "ForAproveds",
-                column: "UserId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Orders_ProductId",
-                table: "Orders",
+                name: "IX_ProductMessages_ProductId",
+                table: "ProductMessages",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
@@ -308,6 +314,11 @@ namespace SellIt.Infrastructure.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Products_UserId",
                 table: "Products",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_UserMessages_UserId",
+                table: "UserMessages",
                 column: "UserId");
         }
 
@@ -330,10 +341,13 @@ namespace SellIt.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "ForAproveds");
+                name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "ProductMessages");
+
+            migrationBuilder.DropTable(
+                name: "UserMessages");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

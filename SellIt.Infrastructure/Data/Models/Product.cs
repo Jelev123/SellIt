@@ -16,10 +16,12 @@
 
         public Category Category { get; set; }
 
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
 
-        public User User { get; set; }
+        public User? User { get; set; }
 
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+
+        public ICollection<ProductMessages> ProductMessages { get; set; } = new HashSet<ProductMessages>();
     }
 }

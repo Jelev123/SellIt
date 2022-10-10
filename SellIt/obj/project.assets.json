@@ -3955,6 +3955,18 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "UploadStream/3.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.1/UploadStream.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/UploadStream.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "SellIt.Core/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3962,7 +3974,8 @@
           "EntityFramework": "6.4.4",
           "Microsoft.EntityFrameworkCore": "7.0.0-rc.1.22426.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0-rc.1.22426.7",
-          "SellIt.Infrastructure": "1.0.0"
+          "SellIt.Infrastructure": "1.0.0",
+          "UploadStream": "3.1.1"
         },
         "compile": {
           "bin/placeholder/SellIt.Core.dll": {}
@@ -11304,6 +11317,19 @@
         "ref/xamarinwatchos10/_._",
         "system.xml.xdocument.4.3.0.nupkg.sha512",
         "system.xml.xdocument.nuspec"
+      ]
+    },
+    "UploadStream/3.1.1": {
+      "sha512": "j9EQ5VVONzqiiP2xEPgLHQVplpttdcmozTod38gtjnZz2AZaGOeOXOy2hy5zEeMRODTz7MjrQ123YCN6egeFIw==",
+      "type": "package",
+      "path": "uploadstream/3.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENCE",
+        "lib/netcoreapp3.1/UploadStream.dll",
+        "uploadstream.3.1.1.nupkg.sha512",
+        "uploadstream.nuspec"
       ]
     },
     "SellIt.Core/1.0.0": {

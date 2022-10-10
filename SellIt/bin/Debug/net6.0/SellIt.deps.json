@@ -2593,12 +2593,21 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "UploadStream/3.1.1": {
+        "runtime": {
+          "lib/netcoreapp3.1/UploadStream.dll": {
+            "assemblyVersion": "3.1.0.0",
+            "fileVersion": "3.1.0.0"
+          }
+        }
+      },
       "SellIt.Core/1.0.0": {
         "dependencies": {
           "EntityFramework": "6.4.4",
           "Microsoft.EntityFrameworkCore": "7.0.0-rc.1.22426.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.0-rc.1.22426.7",
-          "SellIt.Infrastructure": "1.0.0"
+          "SellIt.Infrastructure": "1.0.0",
+          "UploadStream": "3.1.1"
         },
         "runtime": {
           "SellIt.Core.dll": {}
@@ -4008,6 +4017,13 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "UploadStream/3.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-j9EQ5VVONzqiiP2xEPgLHQVplpttdcmozTod38gtjnZz2AZaGOeOXOy2hy5zEeMRODTz7MjrQ123YCN6egeFIw==",
+      "path": "uploadstream/3.1.1",
+      "hashPath": "uploadstream.3.1.1.nupkg.sha512"
     },
     "SellIt.Core/1.0.0": {
       "type": "project",

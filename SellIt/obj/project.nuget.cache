@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pKdpjmy1LgqArdlsSi/CZe6xstYbcHR0CnWPLIGiHJ5DII7lFwqAbWG0uLepPV0DBlhdBsRtetAobIDICm4b/g==",
+  "dgSpecHash": "caeVS2D0bwoldcYO7ZJEShrHSUuMeF7JltVJa4mPtlemYzVIcRkhOvq1ttN3QUtHdSSkk0psIRrjMwktBn3Gqw==",
   "success": true,
   "projectFilePath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\SellIt.csproj",
   "expectedPackageFiles": [
@@ -201,7 +201,8 @@
     "C:\\Users\\zzhelev\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\zzhelev\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\zzhelev\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\zzhelev\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\zzhelev\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\zzhelev\\.nuget\\packages\\uploadstream\\3.1.1\\uploadstream.3.1.1.nupkg.sha512"
   ],
   "logs": []
 }
