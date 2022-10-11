@@ -44,5 +44,11 @@
             this.productService.AddProduct(addProduct,user, $"{this.environment.WebRootPath}/images");
             return this.Redirect("/");
         }
+
+        public IActionResult GetProductById(int id)
+        {
+            var product = this.productService.GetById(id);
+            return this.View(product);
+        }
     }
 }

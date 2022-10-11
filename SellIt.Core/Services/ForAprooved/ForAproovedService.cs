@@ -23,7 +23,7 @@
                     Name = s.Name,
                     CategoryName = s.Category.Name,
                     Description = s.Description,
-                    Image = "/images/products/" + s.Images.FirstOrDefault().Id + "." + s.Images.FirstOrDefault().Extension,
+                    Id = s.Id,
 
                 });
             return allProducts;

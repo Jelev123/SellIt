@@ -15,6 +15,7 @@
 
         public IActionResult AllProducts()
         {
+            
             var allProducts = this.aproovedService.GetAllProducts();
             return View(allProducts);
         }
