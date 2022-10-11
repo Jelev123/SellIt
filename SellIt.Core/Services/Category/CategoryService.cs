@@ -4,6 +4,7 @@
     using SellIt.Core.ViewModels.Category;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class CategoryService : ICategoryService
@@ -24,6 +25,17 @@
             data.Categories.Add(category);
             data.SaveChanges();
             return Task.CompletedTask;
+        }
+
+        public IEnumerable<AllCategoriesViewModel> GetAllCategories<T>()
+        {
+            var all = this.data.Categories
+                .Select(s => new AllCategoriesViewModel
+                {
+                    Name = s.Name
+                });
+
+            return all;
         }
     }
 }

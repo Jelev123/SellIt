@@ -1,10 +1,15 @@
-using Microsoft.AspNetCore.Identity;
+using CloudinaryDotNet;
 using Microsoft.EntityFrameworkCore;
 using SellIt.Core.Contracts.Category;
+using SellIt.Core.Contracts.Cloudinary;
 using SellIt.Core.Contracts.Product;
+using SellIt.Core.Services.Animal;
 using SellIt.Core.Services.Category;
+using SellIt.Core.Services.Cloudinary;
 using SellIt.Infrastructure.Data;
 using SellIt.Infrastructure.Data.Models;
+using System.Globalization;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,11 +22,28 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<ICloduinaryService, CloudinaryService>();
 
-
+builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 
+Account cloudinaryCredentials = new Account(
+                builder.Configuration["Cloudinary:CloudName"],
+                builder.Configuration["Cloudinary:ApiKey"],
+                builder.Configuration["Cloudinary:ApiSecret"]);
+
+Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
+builder.Services.AddSingleton(cloudinaryUtility);
+
 var app = builder.Build();
+
+
+CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
