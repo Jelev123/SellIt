@@ -3,7 +3,6 @@
     using SellIt.Core.Contracts.ForAprooved;
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
-    using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
 
     public class ForAproovedService : IForAproovedService
