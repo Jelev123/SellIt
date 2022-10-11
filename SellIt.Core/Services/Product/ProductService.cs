@@ -6,6 +6,7 @@
     using SellIt.Infrastructure.Data.Models;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Identity;
+    using SellIt.Core.ViewModels.Image;
 
     public class ProductService : IProductService
     {
@@ -56,17 +57,24 @@
             return Task.CompletedTask;
         }
 
-        //public AllProductsViewModel GetById<T>(int id)
-        //{
-        //    var product = this.data.Products
-        //        .Where(s => s.Id == id)
-        //        .Select(s => new AllProductsViewModel
-        //        {
-        //            Name = s.Name,
-        //            CategoryName = s.Category.Name,
-        //            Description = s.Description,
-        //            Image = s.Images.Select(s => s.Product.Images).ToList()
-        //        })
-        //}
+        public AllProductsViewModel GetById(int id)
+        {
+            var product = this.data.Products
+                .Where(s => s.Id == id)
+                .Select(s => new AllProductsViewModel
+                {
+                    Name = s.Name,
+                    CategoryName = s.Category.Name,
+                    Description = s.Description,
+                    Image = s.Images.Select(g => new GalleryModel
+                    {
+                        Id = g.Id,
+                        Extension = g.Extension,
+                        URL = g.RemoteImageUrl
+                    }).ToList(),
+                }).FirstOrDefault();
+
+            return product;
+        }
     }
 }

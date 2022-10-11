@@ -6,7 +6,7 @@
     @foreach (var item in Model)
     {
         <h2 style="color: orange" class="card-title">@item.CategoryName</h2>
-
+        <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id" ></a>
         <div class="col-md-4">
             <div class="col-md-10">
                 <div class="card-body">
