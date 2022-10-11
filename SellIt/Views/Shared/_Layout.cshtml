@@ -39,6 +39,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                 <button type="submit" class="nav-link btn btn-link text-dark">Log In</button>
             </form>
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                <button type="submit" class="nav-link btn btn-link text-dark">Register</button>
+            </form>
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Navbar Search -->

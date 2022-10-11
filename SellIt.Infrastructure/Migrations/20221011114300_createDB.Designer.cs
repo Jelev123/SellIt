@@ -12,8 +12,8 @@ using SellIt.Infrastructure.Data;
 namespace SellIt.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221011113346_createImageCLass222")]
-    partial class createImageCLass222
+    [Migration("20221011114300_createDB")]
+    partial class createDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -196,7 +196,6 @@ namespace SellIt.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("RemoteImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

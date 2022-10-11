@@ -4,6 +4,6 @@
 
     public interface IForAproovedService
     {
-        IEnumerable<AddProductViewModel> GetAllProducts();
+        IEnumerable<AllProductsViewModel> GetAllProducts();
     }
 }

@@ -55,5 +55,18 @@
             data.SaveChanges();
             return Task.CompletedTask;
         }
+
+        //public AllProductsViewModel GetById<T>(int id)
+        //{
+        //    var product = this.data.Products
+        //        .Where(s => s.Id == id)
+        //        .Select(s => new AllProductsViewModel
+        //        {
+        //            Name = s.Name,
+        //            CategoryName = s.Category.Name,
+        //            Description = s.Description,
+        //            Image = s.Images.Select(s => s.Product.Images).ToList()
+        //        })
+        //}
     }
 }

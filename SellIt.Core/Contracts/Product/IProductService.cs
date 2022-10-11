@@ -6,5 +6,7 @@
     {
         Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath);
 
+        //AllProductsViewModel GetById<T>(int id);
+
     }
 }

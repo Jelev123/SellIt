@@ -1,0 +1,24 @@
+﻿@using SellIt.Core.ViewModels.Product
+@model IEnumerable<AllProductsViewModel>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <h2 style="color: orange" class="card-title">@item.CategoryName</h2>
+
+        <div class="col-md-4">
+            <div class="col-md-10">
+                <div class="card-body">
+                    <img src="@item.Image" width="300" class="mr-3 img-responsive">
+                    <h2 style="color: orange" class="card-title">@item.Name</h2>
+                    <h2 style="color: orange" class="card-title">@item.Description</h2>
+                </div>
+
+            </div>
+        </div>
+    }
+       
+
+    
+</div>
