@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Controllers.Product
 {
     using Microsoft.AspNetCore.Mvc;
+    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels.Category;
