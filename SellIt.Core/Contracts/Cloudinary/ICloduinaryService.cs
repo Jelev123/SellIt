@@ -4,6 +4,6 @@
 
     public interface ICloduinaryService
     {
-        Task<string> UploadPictureAsync(IFormFile pictureFile, string fileName);
+        Task<string> UploadPictureAsync(List<IFormFile> pictureFile, string fileName);
     }
 }

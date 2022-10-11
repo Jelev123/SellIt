@@ -12,7 +12,6 @@
 
         public string? CategoryName { get; set; }
 
-        public IFormFile Image { get; set; }
-
+        public List<IFormFile> Image { get; set; }
     }
 }

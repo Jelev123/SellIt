@@ -4,7 +4,7 @@
 
     public interface IProductService
     {
-        Task AddProduct(AddProductViewModel addProduct);
+        Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath);
 
     }
 }

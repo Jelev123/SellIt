@@ -15,24 +15,25 @@
             this.cloudinaryUtility = cloudinaryUtility;
         }
 
-        public async Task<string> UploadPictureAsync(IFormFile pictureFile, string fileName)
+        public async Task<string> UploadPictureAsync(List<IFormFile> pictureFile, string fileName)
         {
-            byte[] destinationData;
+            //byte[] destinationData;
 
-            using (var ms = new MemoryStream())
-            {
-                pictureFile.CopyToAsync(ms);
-                destinationData = ms.ToArray();
-            }
+            //using (var ms = new MemoryStream())
+            //{
+            //    pictureFile.CopyToAsync(ms);
+            //    destinationData = ms.ToArray();
+            //}
 
             UploadResult uploadResult = null;
 
-            using (var ms = new MemoryStream(destinationData))
+
+            foreach (var item in pictureFile)
             {
                 ImageUploadParams uploadParams = new ImageUploadParams
                 {
                     Folder = "SellIt",
-                    File = new FileDescription(fileName, ms)
+                    File = new FileDescription(item.FileName)
                 };
 
                 uploadResult = this.cloudinaryUtility.Upload(uploadParams);

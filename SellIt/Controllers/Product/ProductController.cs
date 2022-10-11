@@ -1,21 +1,27 @@
 ﻿namespace SellIt.Controllers.Product
 {
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
+    using SellIt.Infrastructure.Data.Models;
 
     public class ProductController : Controller
     {
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
+        private readonly UserManager<User> userManager;
+        private readonly IWebHostEnvironment environment;
 
-        public ProductController(IProductService productService, ICategoryService categoryService)
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment)
         {
             this.productService = productService;
             this.categoryService = categoryService;
+            this.userManager = userManager;
+            this.environment = environment;
         }
 
         public IActionResult AddProduct()
@@ -33,7 +39,9 @@
         [HttpPost]
         public IActionResult AddProduct(AddProductViewModel addProduct)
         {
-            this.productService.AddProduct(addProduct);
+            var user = this.userManager.GetUserId(User);
+
+            this.productService.AddProduct(addProduct,user, $"{this.environment.WebRootPath}/images");
             return this.Redirect("/");
         }
     }

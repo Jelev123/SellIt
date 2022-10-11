@@ -13,15 +13,9 @@
                     <label asp-for="Description"></label>
                     <input asp-for="Description" class="form-control" />
                 </div>
-                <div class="form-group mx-auto w-45">
-                    <div class="d-flex justify-content-center">
-                        <label asp-for="Image" class="text-primary h5">Picture</label>
-                    </div>
-                    <input type="file"
-                           class="form-control text-primary text-center"
-                           id="picture"
-                           placeholder="Picture..."
-                           asp-for="Image">
+                <div class="form-group">
+                    <label asp-for="Image"></label>
+                    <input asp-for="Image" class="form-control" />
                     <span asp-validation-for="Image" class="text-danger"></span>
                 </div>
             </div>
@@ -35,7 +29,7 @@
                     }
                 </select>
         </form>
-        <div/>
+        <div />
         <div class="d-flex justify-content-center mt-3">
             <button class="btn btn-primary font-weight-bold">Create Product</button>
         </div>

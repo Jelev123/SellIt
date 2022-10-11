@@ -4,6 +4,10 @@
 
     public class User : IdentityUser
     {
+        public User()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }

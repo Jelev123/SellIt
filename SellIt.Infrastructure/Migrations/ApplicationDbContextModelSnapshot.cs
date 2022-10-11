@@ -176,6 +176,34 @@ namespace SellIt.Infrastructure.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Image", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("AddedByUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Extension")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RemoteImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AddedByUserId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -206,10 +234,6 @@ namespace SellIt.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -390,6 +414,25 @@ namespace SellIt.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Image", b =>
+                {
+                    b.HasOne("SellIt.Infrastructure.Data.Models.User", "AddedByUser")
+                        .WithMany()
+                        .HasForeignKey("AddedByUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SellIt.Infrastructure.Data.Models.Product", "Product")
+                        .WithMany("Images")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AddedByUser");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Order", b =>
                 {
                     b.HasOne("SellIt.Infrastructure.Data.Models.Product", "Product")
@@ -445,6 +488,8 @@ namespace SellIt.Infrastructure.Migrations
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Product", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("Orders");
 
                     b.Navigation("ProductMessages");

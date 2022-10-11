@@ -8,8 +8,6 @@
 
         public string Description { get; set; }
 
-        public string Image { get; set; }
-
         public bool IsAproved { get; set; }
 
         public int CategoryId { get; set; }
@@ -21,6 +19,8 @@
         public User? User { get; set; }
 
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+
+        public ICollection<Image> Images { get; set; } = new HashSet<Image>();
 
         public ICollection<ProductMessages> ProductMessages { get; set; } = new HashSet<ProductMessages>();
     }
