@@ -37,12 +37,10 @@
                 Category = category,
                 Image = imageUrl,
                 UserId = userId,
-
             };
-
+            
             data.Add(product);
             data.SaveChanges();
-
         }
     }
 }

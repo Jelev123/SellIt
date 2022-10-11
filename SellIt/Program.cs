@@ -2,10 +2,12 @@ using CloudinaryDotNet;
 using Microsoft.EntityFrameworkCore;
 using SellIt.Core.Contracts.Category;
 using SellIt.Core.Contracts.Cloudinary;
+using SellIt.Core.Contracts.ForAprooved;
 using SellIt.Core.Contracts.Product;
 using SellIt.Core.Services.Animal;
 using SellIt.Core.Services.Category;
 using SellIt.Core.Services.Cloudinary;
+using SellIt.Core.Services.ForAprooved;
 using SellIt.Infrastructure.Data;
 using SellIt.Infrastructure.Data.Models;
 using System.Globalization;
@@ -22,10 +24,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<ICloduinaryService, CloudinaryService>();
 
+builder.Services.AddTransient<ICloduinaryService, CloudinaryService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<IForAproovedService, ForAproovedService>();
 
 Account cloudinaryCredentials = new Account(
                 builder.Configuration["Cloudinary:CloudName"],

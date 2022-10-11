@@ -5,5 +5,6 @@
     public interface IProductService
     {
         Task AddProduct(AddProductViewModel addProduct);
+
     }
 }
