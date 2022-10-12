@@ -106,6 +106,7 @@
             var productToLike = this.data.Products.FirstOrDefault(s => s.Id == id);
 
             productToLike.Liked++;
+            productToLike.ClickCounter++;
             data.SaveChanges();
             var product = this.data.Products.
                Select(s => new AllProductsViewModel
@@ -118,6 +119,7 @@
                    Liked = s.Liked,
                    UserId = s.UserId,
                    Id = s.Id,
+                   ClickCounter = s.ClickCounter
                })
                .FirstOrDefault(s => s.Id == id);
 
