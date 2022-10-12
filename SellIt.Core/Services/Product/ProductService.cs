@@ -32,7 +32,6 @@
                 UserId = userId,
             };
 
-
             Directory.CreateDirectory($"{imagePath}/products/");
             foreach (var image in addProduct.Image)
             {
@@ -68,6 +67,7 @@
                     Name = s.Name,
                     CategoryName = s.Category.Name,
                     Description = s.Description,
+                    IsAprooved = s.IsAproved,
                 }).FirstOrDefault();
 
             return product;
@@ -83,6 +83,7 @@
                     CategoryName = x.Category.Name,
                     Description = x.Description,
                     UserId = userId,
+                    IsAprooved= x.IsAproved,
                 });
 
             return myProducts;

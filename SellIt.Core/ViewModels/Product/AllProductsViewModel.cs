@@ -13,5 +13,7 @@
         public string Image { get; set; }
 
         public string UserId { get; set; }
+
+        public bool IsAprooved { get; set; }
     }
 }

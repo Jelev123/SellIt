@@ -13,11 +13,17 @@
             this.aproovedService = aproovedService;
         }
 
-        public IActionResult AllProducts()
+        public IActionResult GetAllProductsForAproove()
         {
             
-            var allProducts = this.aproovedService.GetAllProducts();
+            var allProducts = this.aproovedService.GetAllProductsForAproove();
             return View(allProducts);
+        }
+
+        public IActionResult SetAproove(int id)
+        {
+            this.aproovedService.SetAproove(id);
+            return this.Redirect("/");
         }
 
 

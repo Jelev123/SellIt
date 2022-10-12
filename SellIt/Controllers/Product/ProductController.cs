@@ -53,7 +53,6 @@
         public IActionResult MyProducts()
         {
             var userId = this.userManager.GetUserId(User);
-
             var products = this.productService.MyProducts(userId);
             return this.View(products);
         }

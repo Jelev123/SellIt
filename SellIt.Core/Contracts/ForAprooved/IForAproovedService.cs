@@ -4,6 +4,8 @@
 
     public interface IForAproovedService
     {
-        IEnumerable<AllProductsViewModel> GetAllProducts();
+        IEnumerable<AllProductsViewModel> GetAllProductsForAproove();
+
+        Task SetAproove(int id);
     }
 }
