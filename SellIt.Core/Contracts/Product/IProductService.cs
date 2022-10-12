@@ -8,5 +8,7 @@
 
         AllProductsViewModel GetById(int id);
 
+        IEnumerable<AllProductsViewModel> MyProducts(string id);
+
     }
 }

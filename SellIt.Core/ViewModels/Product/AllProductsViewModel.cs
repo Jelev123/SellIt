@@ -1,8 +1,5 @@
 ﻿namespace SellIt.Core.ViewModels.Product
 {
-    using Microsoft.AspNetCore.Http;
-    using SellIt.Core.ViewModels.Image;
-
     public class AllProductsViewModel
     {
         public int Id { get; set; }
@@ -13,6 +10,8 @@
 
         public string? CategoryName { get; set; }
 
-        public List<GalleryModel> Image { get; set; }
+        public string Image { get; set; }
+
+        public string UserId { get; set; }
     }
 }

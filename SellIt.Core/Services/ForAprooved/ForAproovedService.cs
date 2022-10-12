@@ -24,6 +24,7 @@
                     CategoryName = s.Category.Name,
                     Description = s.Description,
                     Id = s.Id,
+                    Image = "/images/products/" + s.Images.FirstOrDefault().Id + s.Images.FirstOrDefault().Extension
 
                 });
             return allProducts;

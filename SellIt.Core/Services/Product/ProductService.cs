@@ -6,16 +6,18 @@
     using SellIt.Infrastructure.Data.Models;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Identity;
-    using SellIt.Core.ViewModels.Image;
+    using System.Collections.Generic;
 
     public class ProductService : IProductService
     {
         private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
         private readonly ApplicationDbContext data;
+        private readonly UserManager<User> userManager;
 
         public ProductService(ApplicationDbContext data, UserManager<User> userManager)
         {
             this.data = data;
+            this.userManager = userManager;
         }
 
         public Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath)
@@ -66,15 +68,24 @@
                     Name = s.Name,
                     CategoryName = s.Category.Name,
                     Description = s.Description,
-                    Image = s.Images.Select(g => new GalleryModel
-                    {
-                        Id = g.Id,
-                        Extension = g.Extension,
-                        URL = g.RemoteImageUrl
-                    }).ToList(),
                 }).FirstOrDefault();
 
             return product;
+        }
+
+        public IEnumerable<AllProductsViewModel> MyProducts(string userId)
+        {
+            var myProducts = this.data.Products
+                .Where(s => s.UserId == userId)
+                .Select(x => new AllProductsViewModel
+                {
+                    Name = x.Name,
+                    CategoryName = x.Category.Name,
+                    Description = x.Description,
+                    UserId = userId,
+                });
+
+            return myProducts;
         }
     }
 }

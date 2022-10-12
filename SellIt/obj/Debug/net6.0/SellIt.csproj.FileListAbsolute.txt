@@ -533,7 +533,6 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\SellIt.RazorAss
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\scopedcss\bundle\SellIt.styles.css
-C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\scopedcss\projectbundle\SellIt.bundle.scp.css
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\SellIt.csproj.CopyComplete
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\SellIt.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\refint\SellIt.dll
@@ -572,7 +571,6 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\runtimes\win-x6
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\runtimes\win-x86\native\sni.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
-C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutOld.cshtml.rz.scp.css
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.Facebook.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\UploadStream.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\CloudinaryDotNet.dll
@@ -612,3 +610,5 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\SellIt.Infrastructure.dll
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\SellIt.Core.pdb
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\SellIt.Infrastructure.pdb
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutOld.cshtml.rz.scp.css
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\scopedcss\Views\Shared\_LayoutOld.cshtml.rz.scp.css
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\scopedcss\projectbundle\SellIt.bundle.scp.css
