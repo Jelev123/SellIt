@@ -12,6 +12,8 @@
 
         public int Liked { get; set; }
 
+        public int ClickCounter { get; set; }
+
         public string? CategoryName { get; set; }
 
         public string Image { get; set; }

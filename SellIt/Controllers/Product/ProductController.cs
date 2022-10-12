@@ -57,5 +57,18 @@
             var products = this.productService.MyProducts(userId);
             return this.View(products);
         }
+
+        public IActionResult AllProducts()
+        {        
+            var allProducts = this.productService.GetAllProducts();
+            return this.View(allProducts);
+        }
+
+        public IActionResult Like(int id)
+        {
+            var userId = this.userManager.GetUserId(User);
+            var productToLike = this.productService.Like(id);
+            return this.View(productToLike);
+        }
     }
 }

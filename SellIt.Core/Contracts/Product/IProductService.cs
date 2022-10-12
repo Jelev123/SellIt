@@ -8,6 +8,10 @@
 
         AllProductsViewModel GetById(int id, string userId);
 
+        IEnumerable<AllProductsViewModel> GetAllProducts();
+
+        AllProductsViewModel Like(int id);
+
         IEnumerable<AllProductsViewModel> MyProducts(string id);
 
     }

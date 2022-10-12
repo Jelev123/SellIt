@@ -56,6 +56,25 @@
             return Task.CompletedTask;
         }
 
+        public IEnumerable<AllProductsViewModel> GetAllProducts()
+        {
+            var allProducts = this.data.Products
+                .Select(s => new AllProductsViewModel
+                {
+                    Name = s.Name,
+                    CategoryName = s.Category.Name,
+                    Description = s.Description,
+                    IsAprooved = s.IsAproved,
+                    Liked = s.Liked,
+                    Viewed = s.Viewed,
+                    UserId = s.UserId,
+                    Id = s.Id,
+                    Image = s.Images.ToString(),
+                });
+
+            return allProducts;
+        }
+
         public AllProductsViewModel GetById(int id, string userId)
         {
             var product = this.data.Products
@@ -68,7 +87,8 @@
                     IsAprooved = s.IsAproved,
                     Viewed = s.Viewed,
                     Liked = s.Liked,
-                    UserId = s.UserId
+                    UserId = s.UserId,
+                    Id = s.Id,
                 }).FirstOrDefault();
 
             if (product.UserId != userId)
@@ -77,6 +97,29 @@
                 viewdProduct.Viewed++;
                 data.SaveChanges();
             }
+
+            return product;
+        }
+
+        public AllProductsViewModel Like(int id)
+        {
+            var productToLike = this.data.Products.FirstOrDefault(s => s.Id == id);
+
+            productToLike.Liked++;
+            data.SaveChanges();
+            var product = this.data.Products.
+               Select(s => new AllProductsViewModel
+               {
+                   Name = s.Name,
+                   CategoryName = s.Category.Name,
+                   Description = s.Description,
+                   IsAprooved = s.IsAproved,
+                   Viewed = s.Viewed,
+                   Liked = s.Liked,
+                   UserId = s.UserId,
+                   Id = s.Id,
+               })
+               .FirstOrDefault(s => s.Id == id);
 
             return product;
         }
@@ -91,7 +134,7 @@
                     CategoryName = x.Category.Name,
                     Description = x.Description,
                     UserId = userId,
-                    IsAprooved= x.IsAproved,
+                    IsAprooved = x.IsAproved,
                 });
 
             return myProducts;
