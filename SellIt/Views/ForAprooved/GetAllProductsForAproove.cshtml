@@ -7,11 +7,12 @@
     {
         <div>
         <h2 class="card-title">Category: @item.CategoryName</h2>
-        <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id" ></a>
+        <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id" >
+                <img src="@item.Image" width="300" class="mr-3 img-responsive">
+        </a>
         <div class="col-md-4">
             <div class="col-md-10">
-                <div class="card-body">
-                    <img src="@item.Image" width="300" class="mr-3 img-responsive">
+                <div class="card-body">             
                     <h2 class="card-title">Title: @item.Name</h2>
                 </div>
                 <div>

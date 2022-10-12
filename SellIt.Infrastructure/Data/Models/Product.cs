@@ -8,6 +8,10 @@
 
         public string Description { get; set; }
 
+        public int Viewed { get; set; }
+
+        public int Liked { get; set; }
+
         public bool IsAproved { get; set; }
 
         public int CategoryId { get; set; }

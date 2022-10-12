@@ -12,8 +12,8 @@ using SellIt.Infrastructure.Data;
 namespace SellIt.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221012101438_asdsd")]
-    partial class asdsd
+    [Migration("20221012134349_sdsd")]
+    partial class sdsd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -243,12 +243,18 @@ namespace SellIt.Infrastructure.Migrations
                     b.Property<bool>("IsAproved")
                         .HasColumnType("bit");
 
+                    b.Property<int>("Liked")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Viewed")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

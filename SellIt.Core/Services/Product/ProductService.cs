@@ -5,19 +5,17 @@
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Identity;
     using System.Collections.Generic;
+    using Microsoft.AspNetCore.Identity;
 
     public class ProductService : IProductService
     {
         private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
         private readonly ApplicationDbContext data;
-        private readonly UserManager<User> userManager;
 
-        public ProductService(ApplicationDbContext data, UserManager<User> userManager)
+        public ProductService(ApplicationDbContext data)
         {
             this.data = data;
-            this.userManager = userManager;
         }
 
         public Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath)
@@ -68,7 +66,12 @@
                     CategoryName = s.Category.Name,
                     Description = s.Description,
                     IsAprooved = s.IsAproved,
+                    Viewed = s.Viewed,
+                    Liked = s.Liked,
                 }).FirstOrDefault();
+
+            
+
 
             return product;
         }

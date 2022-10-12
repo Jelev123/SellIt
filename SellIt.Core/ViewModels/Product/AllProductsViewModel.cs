@@ -8,6 +8,10 @@
 
         public string Description { get; set; }
 
+        public int Viewed { get; set; }
+
+        public int Liked { get; set; }
+
         public string? CategoryName { get; set; }
 
         public string Image { get; set; }
