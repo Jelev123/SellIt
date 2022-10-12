@@ -47,7 +47,8 @@
 
         public IActionResult GetProductById(int id)
         {
-            var product = this.productService.GetById(id);
+            var userId = this.userManager.GetUserId(User);
+            var product = this.productService.GetById(id, userId);
             return this.View(product);
         }
         public IActionResult MyProducts()

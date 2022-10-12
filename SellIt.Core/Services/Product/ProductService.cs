@@ -56,7 +56,7 @@
             return Task.CompletedTask;
         }
 
-        public AllProductsViewModel GetById(int id)
+        public AllProductsViewModel GetById(int id, string userId)
         {
             var product = this.data.Products
                 .Where(s => s.Id == id)
@@ -68,10 +68,15 @@
                     IsAprooved = s.IsAproved,
                     Viewed = s.Viewed,
                     Liked = s.Liked,
+                    UserId = s.UserId
                 }).FirstOrDefault();
 
-            
-
+            if (product.UserId != userId)
+            {
+                var viewdProduct = this.data.Products.FirstOrDefault(s => s.Id == id);
+                viewdProduct.Viewed++;
+                data.SaveChanges();
+            }
 
             return product;
         }
