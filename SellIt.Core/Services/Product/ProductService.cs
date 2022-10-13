@@ -104,10 +104,7 @@
         public AllProductsViewModel Like(int id)
         {
             var productToLike = this.data.Products.FirstOrDefault(s => s.Id == id);
-
-            productToLike.Liked++;
-            productToLike.ClickCounter++;
-            data.SaveChanges();
+         
             var product = this.data.Products.
                Select(s => new AllProductsViewModel
                {
@@ -119,10 +116,21 @@
                    Liked = s.Liked,
                    UserId = s.UserId,
                    Id = s.Id,
-                   ClickCounter = s.ClickCounter
+                   IsLiked = s.IsLiked,
                })
                .FirstOrDefault(s => s.Id == id);
 
+            if (productToLike.UserId == product.UserId && productToLike.IsLiked == true)
+            {
+                productToLike.Liked--;
+                productToLike.IsLiked = false;
+                data.SaveChanges();
+                return product;
+            }
+
+            productToLike.Liked++;
+            productToLike.IsLiked = true;
+            data.SaveChanges();
             return product;
         }
 

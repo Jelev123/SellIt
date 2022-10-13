@@ -12,8 +12,9 @@
 
         public int Liked { get; set; }
 
-        public int ClickCounter { get; set; }
+        public bool IsLiked { get; set; }
 
+        public decimal Price { get; set; }
         public bool IsAproved { get; set; }
 
         public int CategoryId { get; set; }
