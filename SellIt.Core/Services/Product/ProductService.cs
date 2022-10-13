@@ -91,9 +91,10 @@
                     Liked = s.Liked,
                     UserId = s.UserId,
                     Id = s.Id,
+                    ButtonOne = s.ButtonOne,
+                    ButtonTwo = s.ButtonTwo,
                 }).FirstOrDefault();
 
-            Like(id);
             if (product.UserId != userId)
             {
                 var viewdProduct = this.data.Products.FirstOrDefault(s => s.Id == id);
@@ -107,6 +108,9 @@
         public AllProductsViewModel Like(int id)
         {
             var productToLike = this.data.Products.FirstOrDefault(s => s.Id == id);
+
+            productToLike.ButtonOne = false;
+            productToLike.ButtonTwo = false;
          
             var product = this.data.Products.
                Select(s => new AllProductsViewModel
@@ -120,6 +124,8 @@
                    UserId = s.UserId,
                    Id = s.Id,
                    IsLiked = s.IsLiked,
+                   ButtonOne = s.ButtonOne,
+                   ButtonTwo = s.ButtonTwo,
                })
                .FirstOrDefault(s => s.Id == id);
 
@@ -127,14 +133,15 @@
             {
                 productToLike.Liked--;
                 productToLike.IsLiked = false;
+                productToLike.ButtonTwo = true;
                 data.SaveChanges();
                 return product;
             }
 
             productToLike.Liked++;
             productToLike.IsLiked = true;
+            productToLike.ButtonOne = true;
             data.SaveChanges();
-
             return product;
         }
 

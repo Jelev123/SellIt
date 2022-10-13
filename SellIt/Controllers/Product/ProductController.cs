@@ -67,7 +67,6 @@
         {
             var productToLike = this.productService.Like(id);
             return this.View(productToLike);
-
         }
     }
 }

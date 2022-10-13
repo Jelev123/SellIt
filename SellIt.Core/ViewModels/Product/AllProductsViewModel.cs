@@ -14,6 +14,10 @@
 
         public bool IsLiked { get; set; }
 
+        public bool ButtonOne { get; set; }
+
+        public bool ButtonTwo { get; set; }
+
         public string? CategoryName { get; set; }
 
         public string Image { get; set; }
