@@ -1,0 +1,37 @@
+﻿@using SellIt.Core.ViewModels.Product
+@model AllProductsViewModel
+
+
+<a class="btn btn-check">
+    <span class="badge bg-purple">@Model.Viewed</span>
+    <i class="fas fa-users"></i> Viewed
+</a>
+<div class="row">
+    <div>
+        <h2 class="card-title">Category: @Model.CategoryName</h2>
+        <div class="col-md-4">
+            <div class="col-md-10">
+                <div class="card-body">
+                    <img src="@Model.Image" width="300" class="mr-3 img-responsive">
+                    <h2 class="card-title">Title: @Model.Name</h2>
+                </div>
+                <div>
+                    <h2 orange" class="card-title">Description: @Model.Description</h2>
+                </div>
+                @if (Model.IsAprooved == false)
+                {
+                    <h5 style="color:red">The item is checking </h5>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<a>
+    <a asp-action="Like" asp-controller="Product" class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
+        <i class="fas fa-heart">
+            <span class="badge bg-danger">@Model.Liked</span>
+        </i> Likes
+    </a>
+
+

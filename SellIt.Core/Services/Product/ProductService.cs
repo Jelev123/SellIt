@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using Microsoft.AspNetCore.Identity;
+    using SellIt.Core.Constants;
 
     public class ProductService : IProductService
     {
@@ -91,6 +92,7 @@
                     Id = s.Id,
                 }).FirstOrDefault();
 
+            Like(id);
             if (product.UserId != userId)
             {
                 var viewdProduct = this.data.Products.FirstOrDefault(s => s.Id == id);
@@ -131,6 +133,7 @@
             productToLike.Liked++;
             productToLike.IsLiked = true;
             data.SaveChanges();
+
             return product;
         }
 
