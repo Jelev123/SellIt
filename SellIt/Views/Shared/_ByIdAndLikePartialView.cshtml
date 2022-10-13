@@ -2,10 +2,22 @@
 @model AllProductsViewModel
 
 
-<a class="btn btn-check">
-    <span class="badge bg-purple">@Model.Viewed</span>
-    <i class="fas fa-users"></i> Viewed
-</a>
+@if (Model.IsAprooved == true)
+{
+    <a class="btn btn-app bg-success">
+        <span class="badge bg-purple">@Model.Viewed</span>
+        <i class="fas fa-users"></i> Viewed
+    </a>
+
+    <a>
+        <a asp-action="Like" asp-controller="Product" class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
+            <i class="fas fa-heart">
+                <span class="badge bg-danger">@Model.Liked</span>
+            </i> Likes
+        </a>
+    </a>
+}
+
 <div class="row">
     <div>
         <h2 class="card-title">Category: @Model.CategoryName</h2>
@@ -27,11 +39,11 @@
     </div>
 </div>
 
-<a>
-    <a asp-action="Like" asp-controller="Product" class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
-        <i class="fas fa-heart">
-            <span class="badge bg-danger">@Model.Liked</span>
-        </i> Likes
-    </a>
 
+@if (Model.IsAprooved == false)
+{
+    <button type="button" class="btn btn-block bg-gradient-warning btn-sm">
+        <a class="navbar-brand" asp-action="SetAproove" asp-controller="ForAprooved" asp-route-id="@Model.Id" class="btn btn-outline-success">Aproove item</a>
+    </button>
 
+}

@@ -40,8 +40,7 @@
         public IActionResult AddProduct(AddProductViewModel addProduct)
         {
             var user = this.userManager.GetUserId(User);
-
-            this.productService.AddProduct(addProduct,user, $"{this.environment.WebRootPath}/images");
+            this.productService.AddProduct(addProduct, user, $"{this.environment.WebRootPath}/images");
             return this.Redirect("/");
         }
 
@@ -59,16 +58,16 @@
         }
 
         public IActionResult AllProducts()
-        {        
+        {
             var allProducts = this.productService.GetAllProducts();
             return this.View(allProducts);
         }
 
         public IActionResult Like(int id)
         {
-            var userId = this.userManager.GetUserId(User);
             var productToLike = this.productService.Like(id);
             return this.View(productToLike);
+
         }
     }
 }
