@@ -21,5 +21,8 @@
         public string UserId { get; set; }
 
         public bool IsAprooved { get; set; }
+
+        public int Count { get; set; }
+
     }
 }

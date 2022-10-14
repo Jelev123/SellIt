@@ -1,5 +1,6 @@
 ﻿namespace SellIt.Core.Services.ForAprooved
 {
+    using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.ForAprooved;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels.Product;
@@ -10,10 +11,11 @@
     public class ForAproovedService : IForAproovedService
     {
         private readonly ApplicationDbContext data;
-
-        public ForAproovedService(ApplicationDbContext data)
+        private readonly ICountService countService;
+        public ForAproovedService(ApplicationDbContext data, ICountService countService)
         {
             this.data = data;
+            this.countService = countService;
         }
 
         public IEnumerable<AllProductsViewModel> GetAllProductsForAproove()
@@ -27,6 +29,7 @@
                     Description = s.Description,
                     Id = s.Id,
                     IsAprooved = s.IsAproved,
+                    Count = countService.GetCount().ProductsToAprooveCount,
                     Image = "/images/products/" + s.Images.FirstOrDefault().Id + s.Images.FirstOrDefault().Extension
 
                 });

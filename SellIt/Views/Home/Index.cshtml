@@ -1,17 +1,22 @@
-﻿@if (User.IsInRole("Administrator"))
+﻿@using SellIt.Core.ViewModels.Home
+@model HomeViewModel
+
+
+
+@if (User.IsInRole("Administrator"))
 {
     <div>
         <div>
-            <a class="navbar-brand" asp-action="CreateCategory" asp-controller="Category" class="btn btn-outline-success">Create Category</a>
+            <a class="navbar-brand" asp-action="CreateCategory" asp-controller="Category">Create Category</a>
         </div>
         <div>
-            <a class="navbar-brand" asp-action="AddProduct" asp-controller="Product" class="btn btn-outline-success">Create Product</a>
+            <a class="navbar-brand" asp-action="AddProduct" asp-controller="Product" >Create Product</a>
         </div>
         <div>
-            <a class="btn btn-danger" asp-action="GetAllProductsForAproove" asp-controller="ForAprooved" class="btn btn-outline-success">All Products For Aproove</a>
+            <a class="btn btn-danger" asp-action="GetAllProductsForAproove" asp-controller="ForAprooved"> Products For Aproove: @Model.ProductForAprooveCount</a>
         </div>
         <div>
-            <a class="navbar-brand" asp-action="AllProducts" asp-controller="Product" class="btn btn-outline-success">All Products</a>
+            <a class="navbar-brand" asp-action="AllProducts" asp-controller="Product">All Products: @Model.AllProducts</a>
 
         </div>
     </div>
@@ -20,10 +25,10 @@
 {
     
     <div>
-        <a class="navbar-brand" asp-action="MyProducts" asp-controller="Product" class="btn btn-outline-success">My Products</a>
+        <a class="navbar-brand" asp-action="MyProducts" asp-controller="Product" >My Products</a>
     </div>
 }
 
 <div>
-    <a class="navbar-brand" asp-action="AddProduct" asp-controller="Product" class="btn btn-outline-success">Create Product</a>
+    <a class="navbar-brand" asp-action="AddProduct" asp-controller="Product">Create Product</a>
 </div>

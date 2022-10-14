@@ -3,11 +3,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SellIt.Core.Contracts.Category;
 using SellIt.Core.Contracts.Cloudinary;
+using SellIt.Core.Contracts.Count;
 using SellIt.Core.Contracts.ForAprooved;
 using SellIt.Core.Contracts.Product;
 using SellIt.Core.Services.Animal;
 using SellIt.Core.Services.Category;
 using SellIt.Core.Services.Cloudinary;
+using SellIt.Core.Services.Count;
 using SellIt.Core.Services.ForAprooved;
 using SellIt.Infrastructure.Data;
 using SellIt.Infrastructure.Data.Models;
@@ -32,6 +34,7 @@ builder.Services.AddTransient<ICloduinaryService, CloudinaryService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IForAproovedService, ForAproovedService>();
+builder.Services.AddTransient<ICountService, CountService>();
 
 Account cloudinaryCredentials = new Account(
                 builder.Configuration["Cloudinary:CloudName"],
