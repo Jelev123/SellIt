@@ -67,12 +67,6 @@
             var allProducts = this.productService.GetAllProducts();
             return this.View(allProducts);
         }
-
-        public void Click(object sender, EventArgs e)
-        {
-            Console.WriteLine("asd");
-        }
-
         public IActionResult Like(int id)
         {
             var productToLike = this.productService.Like(id);

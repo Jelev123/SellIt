@@ -10,10 +10,6 @@
         <i class="fas fa-users"></i> Viewed
     </a>
 
-       <a class="btn" id="button1" runat="server" Text="Submit" onclick="Click">Submit</a>
-
-       
-
          @if (Model.IsLiked == true)
     {
             <a asp-action="Like" asp-controller="Product"  asp-action="Like" class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
@@ -57,17 +53,4 @@
 @if (Model.IsAprooved == false)
 {
     <a asp-action="SetAproove" asp-controller="ForAprooved" asp-route-id="@Model.Id" class="btn btn-success">Aproove item</a>
-}
-
-@section Scripts{
-    <script>
-
-        $(function () {
-
-            $('#clickme').click(function () {
-
-                console.log('asd');
-            })
-        });
-    </script>
 }

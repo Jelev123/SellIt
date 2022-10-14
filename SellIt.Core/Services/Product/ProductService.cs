@@ -150,14 +150,6 @@
             return product;
         }
 
-        public Task Click(int id)
-        {
-            var product = this.data.Products.FirstOrDefault(s => s.Id == id);
-            product.IsLiked = !product.IsLiked;
-
-            return Task.CompletedTask;
-        }
-
         public IEnumerable<AllProductsViewModel> MyProducts(string userId)
         {
             var myProducts = this.data.Products
