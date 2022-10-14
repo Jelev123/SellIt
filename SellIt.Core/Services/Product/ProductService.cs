@@ -6,9 +6,6 @@
     using SellIt.Infrastructure.Data.Models;
     using System.Threading.Tasks;
     using System.Collections.Generic;
-    using Microsoft.AspNetCore.Identity;
-    using SellIt.Core.Constants;
-    using Microsoft.AspNetCore.Mvc;
 
     public class ProductService : IProductService
     {
@@ -22,7 +19,6 @@
 
         public Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath)
         {
-
             var category = this.data.Categories.FirstOrDefault(s => s.Name == addProduct.CategoryName);
             var product = new Product
             {
@@ -67,7 +63,7 @@
                     CategoryName = s.Category.Name,
                     Description = s.Description,
                     IsAprooved = s.IsAproved,
-                    Liked = s.Liked,
+                    LikedCount = s.LikedCount,
                     Viewed = s.Viewed,
                     UserId = s.UserId,
                     Id = s.Id,
@@ -88,11 +84,10 @@
                     Description = s.Description,
                     IsAprooved = s.IsAproved,
                     Viewed = s.Viewed,
-                    Liked = s.Liked,
+                    LikedCount = s.LikedCount,
                     UserId = s.UserId,
                     Id = s.Id,
-                    ButtonOne = s.ButtonOne,
-                    ButtonTwo = s.ButtonTwo,
+                    
                 }).FirstOrDefault();
 
             if (product.UserId != userId)
@@ -105,13 +100,11 @@
             return product;
         }
 
+        
         public AllProductsViewModel Like(int id)
         {
             var productToLike = this.data.Products.FirstOrDefault(s => s.Id == id);
-
-            productToLike.ButtonOne = false;
-            productToLike.ButtonTwo = false;
-         
+             
             var product = this.data.Products.
                Select(s => new AllProductsViewModel
                {
@@ -120,29 +113,49 @@
                    Description = s.Description,
                    IsAprooved = s.IsAproved,
                    Viewed = s.Viewed,
-                   Liked = s.Liked,
+                   LikedCount = s.LikedCount,
                    UserId = s.UserId,
                    Id = s.Id,
-                   IsLiked = s.IsLiked,
-                   ButtonOne = s.ButtonOne,
-                   ButtonTwo = s.ButtonTwo,
+                   IsLiked = s.IsLiked,  
                })
                .FirstOrDefault(s => s.Id == id);
 
             if (productToLike.UserId == product.UserId && productToLike.IsLiked == true)
             {
-                productToLike.Liked--;
-                productToLike.IsLiked = false;
-                productToLike.ButtonTwo = true;
+                product.LikedCount--;
+                product.IsLiked = false;
+                productToLike.LikedCount--;
+                productToLike.IsLiked = false;             
                 data.SaveChanges();
                 return product;
+
+            }
+            else if (productToLike.UserId == product.UserId && productToLike.IsLiked == false)
+            {
+                product.LikedCount++;
+                product.IsLiked = true;
+                productToLike.LikedCount++;
+                productToLike.IsLiked = true;
+                data.SaveChanges();
+                return product;
+
             }
 
-            productToLike.Liked++;
-            productToLike.IsLiked = true;
-            productToLike.ButtonOne = true;
+            product.LikedCount++;
+            product.IsLiked = true;
+            productToLike.LikedCount++;
+            productToLike.IsLiked = true;          
             data.SaveChanges();
+
             return product;
+        }
+
+        public Task Click(int id)
+        {
+            var product = this.data.Products.FirstOrDefault(s => s.Id == id);
+            product.IsLiked = !product.IsLiked;
+
+            return Task.CompletedTask;
         }
 
         public IEnumerable<AllProductsViewModel> MyProducts(string userId)

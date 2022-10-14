@@ -11,6 +11,7 @@
         IEnumerable<AllProductsViewModel> GetAllProducts();
 
         AllProductsViewModel Like(int id);
+        Task Click(int id);
 
         IEnumerable<AllProductsViewModel> MyProducts(string id);
 

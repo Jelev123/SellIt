@@ -10,14 +10,12 @@
 
         public int Viewed { get; set; }
 
-        public int Liked { get; set; }
+        public int LikedCount { get; set; }
 
         public bool IsLiked { get; set; }
 
         public decimal Price { get; set; }
 
-        public bool ButtonOne { get; set; }
-        public bool ButtonTwo { get; set; }
         public bool IsAproved { get; set; }
 
         public int CategoryId { get; set; }

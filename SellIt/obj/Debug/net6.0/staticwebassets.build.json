@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oH61aEVNyggqv+6Dbcfxhi73QFKXi2kEVMJR7qjhegA=",
+  "Hash": "2lWz7/F3yiyKO5GgnrOkBxeE4nRnXs7NX8BJ598up1A=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1632,6 +1632,23 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\71e63dd9-542c-4d11-b49d-0bd71a733b1c.png"
     },
     {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\products\\86e5f625-fb0e-4f39-a587-8e894437ecab.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/products/86e5f625-fb0e-4f39-a587-8e894437ecab.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\86e5f625-fb0e-4f39-a587-8e894437ecab.jpg"
+    },
+    {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\products\\985ab063-5802-46d2-80e0-c4af7bfc2b4a.jpg",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -1715,6 +1732,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\dbca701d-706c-4421-a475-f3893b326178.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\products\\dc9d50bd-fbca-41d9-a1b7-5b7c76c8e0b1.png",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/products/dc9d50bd-fbca-41d9-a1b7-5b7c76c8e0b1.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\dc9d50bd-fbca-41d9-a1b7-5b7c76c8e0b1.png"
     },
     {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\img\\AdminLTELogo.png",

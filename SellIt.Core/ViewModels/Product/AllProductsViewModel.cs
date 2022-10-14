@@ -10,13 +10,9 @@
 
         public int Viewed { get; set; }
 
-        public int Liked { get; set; }
+        public int LikedCount { get; set; }
 
         public bool IsLiked { get; set; }
-
-        public bool ButtonOne { get; set; }
-
-        public bool ButtonTwo { get; set; }
 
         public string? CategoryName { get; set; }
 

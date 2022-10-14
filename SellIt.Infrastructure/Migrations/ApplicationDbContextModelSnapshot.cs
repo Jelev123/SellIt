@@ -230,12 +230,6 @@ namespace SellIt.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<bool>("ButtonOne")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("ButtonTwo")
-                        .HasColumnType("bit");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -249,7 +243,7 @@ namespace SellIt.Infrastructure.Migrations
                     b.Property<bool>("IsLiked")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Liked")
+                    b.Property<int>("LikedCount")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")

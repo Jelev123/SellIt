@@ -7,6 +7,7 @@
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
+    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
     public class ProductController : Controller
@@ -15,14 +16,18 @@
         private readonly ICategoryService categoryService;
         private readonly UserManager<User> userManager;
         private readonly IWebHostEnvironment environment;
+        private readonly ApplicationDbContext data;
 
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment)
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ApplicationDbContext data)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.userManager = userManager;
             this.environment = environment;
+            this.data = data;
         }
+
+
 
         public IActionResult AddProduct()
         {
@@ -63,10 +68,16 @@
             return this.View(allProducts);
         }
 
+        public void Click(object sender, EventArgs e)
+        {
+            Console.WriteLine("asd");
+        }
+
         public IActionResult Like(int id)
         {
             var productToLike = this.productService.Like(id);
             return this.View(productToLike);
         }
+
     }
 }
