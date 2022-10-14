@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2lWz7/F3yiyKO5GgnrOkBxeE4nRnXs7NX8BJ598up1A=",
+  "Hash": "oA9a+mXXMEaHIkyW8Uy+VY8WVQYggR9jnAGHEj94HB4=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1664,6 +1664,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\985ab063-5802-46d2-80e0-c4af7bfc2b4a.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\products\\9e1f8118-d04a-43c7-8742-bf1f6eff8927.png",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/products/9e1f8118-d04a-43c7-8742-bf1f6eff8927.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\9e1f8118-d04a-43c7-8742-bf1f6eff8927.png"
     },
     {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\products\\a2a67e76-5d08-4eef-80c3-8492f4a93f34.jpg",

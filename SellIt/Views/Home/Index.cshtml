@@ -1,5 +1,4 @@
-﻿
-@if (User.IsInRole("Administrator"))
+﻿@if (User.IsInRole("Administrator"))
 {
     <div>
         <div>
@@ -9,11 +8,7 @@
             <a class="navbar-brand" asp-action="AddProduct" asp-controller="Product" class="btn btn-outline-success">Create Product</a>
         </div>
         <div>
-            <a class="navbar-brand" asp-action="MyProducts" asp-controller="Product" class="btn btn-outline-success">My Products</a>
-        </div>
-
-        <div>
-            <a class="navbar-brand" asp-action="GetAllProductsForAproove" asp-controller="ForAprooved" class="btn btn-outline-success">All Products For Aproove</a>
+            <a class="btn btn-danger" asp-action="GetAllProductsForAproove" asp-controller="ForAprooved" class="btn btn-outline-success">All Products For Aproove</a>
         </div>
         <div>
             <a class="navbar-brand" asp-action="AllProducts" asp-controller="Product" class="btn btn-outline-success">All Products</a>
@@ -21,3 +16,14 @@
         </div>
     </div>
 }
+@if (User.Identity.IsAuthenticated)
+{
+    
+    <div>
+        <a class="navbar-brand" asp-action="MyProducts" asp-controller="Product" class="btn btn-outline-success">My Products</a>
+    </div>
+}
+
+<div>
+    <a class="navbar-brand" asp-action="AddProduct" asp-controller="Product" class="btn btn-outline-success">Create Product</a>
+</div>

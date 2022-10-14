@@ -180,9 +180,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="image">
                         <img src="~/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <div class="info">
+                            <h4 style="color:white">Admin</h4>
+                        </div>
+                    }
+                    @if (!User.IsInRole("Administrator"))
+                    {
                     <div class="info">
                         <a href="#" class="d-block">@User.Identity.Name</a>
                     </div>
+                    }
+                   
+                    
                 </div>
 
                 <!-- Sidebar Menu -->

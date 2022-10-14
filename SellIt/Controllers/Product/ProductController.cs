@@ -1,5 +1,6 @@
 ﻿namespace SellIt.Controllers.Product
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Constants;
@@ -28,7 +29,7 @@
         }
 
 
-
+        [Authorize]
         public IActionResult AddProduct()
         {
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
