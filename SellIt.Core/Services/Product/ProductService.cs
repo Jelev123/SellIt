@@ -146,6 +146,27 @@
               })
               .FirstOrDefault(s => s.Id == id);
 
+            if (productToLike.UserId != product.UserId && productToLike.IsLiked == true)
+            {
+                product.LikedCount--;
+                product.IsLiked = false;
+                productToLike.LikedCount--;
+                productToLike.IsLiked = false;
+                data.SaveChanges();
+                return product;
+
+            }
+            else if (productToLike.UserId != product.UserId && productToLike.IsLiked == false)
+            {
+                product.LikedCount++;
+                product.IsLiked = true;
+                productToLike.LikedCount++;
+                productToLike.IsLiked = true;
+                data.SaveChanges();
+                return product;
+
+            }
+
             if (productToLike.UserId == product.UserId && productToLike.IsLiked == true)
             {
                 product.LikedCount--;
@@ -167,11 +188,7 @@
 
             }
 
-            product.LikedCount++;
-            product.IsLiked = true;
-            productToLike.LikedCount++;
-            productToLike.IsLiked = true;
-            data.SaveChanges();
+          
 
             return product;
         }
