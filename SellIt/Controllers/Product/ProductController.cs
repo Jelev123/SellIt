@@ -70,7 +70,8 @@
         }
         public IActionResult Like(int id)
         {
-            var productToLike = this.productService.Like(id);
+            var currentUserId = this.userManager.GetUserId(User);
+            var productToLike = this.productService.Like(id, currentUserId);
             return this.View(productToLike);
         }
 

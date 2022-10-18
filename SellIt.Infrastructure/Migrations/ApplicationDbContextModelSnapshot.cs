@@ -204,6 +204,36 @@ namespace SellIt.Infrastructure.Migrations
                     b.ToTable("Images");
                 });
 
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.LikedProduct", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("IsLiked")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("LikedCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("LikedProducts");
+                });
+
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -443,6 +473,25 @@ namespace SellIt.Infrastructure.Migrations
                     b.Navigation("AddedByUser");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.LikedProduct", b =>
+                {
+                    b.HasOne("SellIt.Infrastructure.Data.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SellIt.Infrastructure.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Order", b =>

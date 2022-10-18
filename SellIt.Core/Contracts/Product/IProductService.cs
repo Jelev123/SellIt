@@ -10,7 +10,7 @@
 
         IEnumerable<AllProductsViewModel> GetAllProducts();
 
-        AllProductsViewModel Like(int id);
+        AllProductsViewModel Like(int id, string currentUserId);
 
         IEnumerable<AllProductsViewModel> MyProducts(string id);
 

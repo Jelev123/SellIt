@@ -87,7 +87,7 @@
                     LikedCount = s.LikedCount,
                     UserId = s.UserId,
                     Id = s.Id,
-                    
+
                 }).FirstOrDefault();
 
             if (product.UserId != userId)
@@ -100,32 +100,58 @@
             return product;
         }
 
-        
-        public AllProductsViewModel Like(int id)
+
+        public AllProductsViewModel Like(int id, string currentUserId)
         {
             var productToLike = this.data.Products.FirstOrDefault(s => s.Id == id);
-             
+
+
+            //var liked = new LikedProduct
+            //{
+            //    ProductId = productToLike.Id,
+            //    UserId = currentUserId,
+            //};
+
+            //var currentLikedProduct = this.data.LikedProducts.FirstOrDefault(s => s.ProductId == liked.ProductId);
+
+
+
+
+            //if (currentLikedProduct.UserId != currentUserId)
+            //{
+            //    liked.LikedCount++;
+            //    liked.IsLiked = true;
+            //    data.LikedProducts.Add(liked);
+            //    data.SaveChanges();
+            //}
+            //else
+            //{
+            //    liked.IsLiked = false;
+            //    liked.LikedCount--;
+            //    data.SaveChanges();
+            //}
+
             var product = this.data.Products.
-               Select(s => new AllProductsViewModel
-               {
-                   Name = s.Name,
-                   CategoryName = s.Category.Name,
-                   Description = s.Description,
-                   IsAprooved = s.IsAproved,
-                   Viewed = s.Viewed,
-                   LikedCount = s.LikedCount,
-                   UserId = s.UserId,
-                   Id = s.Id,
-                   IsLiked = s.IsLiked,  
-               })
-               .FirstOrDefault(s => s.Id == id);
+              Select(s => new AllProductsViewModel
+              {
+                  Name = s.Name,
+                  CategoryName = s.Category.Name,
+                  Description = s.Description,
+                  IsAprooved = s.IsAproved,
+                  Viewed = s.Viewed,
+                  LikedCount = s.LikedCount,
+                  UserId = s.UserId,
+                  Id = s.Id,
+                  IsLiked = s.IsLiked,
+              })
+              .FirstOrDefault(s => s.Id == id);
 
             if (productToLike.UserId == product.UserId && productToLike.IsLiked == true)
             {
                 product.LikedCount--;
                 product.IsLiked = false;
                 productToLike.LikedCount--;
-                productToLike.IsLiked = false;             
+                productToLike.IsLiked = false;
                 data.SaveChanges();
                 return product;
 
@@ -144,7 +170,7 @@
             product.LikedCount++;
             product.IsLiked = true;
             productToLike.LikedCount++;
-            productToLike.IsLiked = true;          
+            productToLike.IsLiked = true;
             data.SaveChanges();
 
             return product;
