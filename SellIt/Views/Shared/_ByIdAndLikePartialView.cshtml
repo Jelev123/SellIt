@@ -11,14 +11,14 @@
     </a>
     @if (User.Identity.IsAuthenticated)
     {
-        @if (Model.LikedCount > 0)
+        @if (Model.IsLiked == true)
         {
             <a asp-action="Like" asp-controller="Product" asp-action="Like" class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
                 <span class="badge bg-danger">@Model.LikedCount</span>
                 <i class="fas fa-heart"></i> Likes
             </a>
         }
-        @if (Model.LikedCount == 0)
+        @if (Model.IsLiked == false)
         {
             <a asp-action="Like" asp-controller="Product" asp-action="Like" class="btn btn-app" asp-route-id="@Model.Id">
                 <span class="badge bg-danger">@Model.LikedCount</span>
