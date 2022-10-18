@@ -105,32 +105,6 @@
         {
             var productToLike = this.data.Products.FirstOrDefault(s => s.Id == id);
 
-
-            //var liked = new LikedProduct
-            //{
-            //    ProductId = productToLike.Id,
-            //    UserId = currentUserId,
-            //};
-
-            //var currentLikedProduct = this.data.LikedProducts.FirstOrDefault(s => s.ProductId == liked.ProductId);
-
-
-
-
-            //if (currentLikedProduct.UserId != currentUserId)
-            //{
-            //    liked.LikedCount++;
-            //    liked.IsLiked = true;
-            //    data.LikedProducts.Add(liked);
-            //    data.SaveChanges();
-            //}
-            //else
-            //{
-            //    liked.IsLiked = false;
-            //    liked.LikedCount--;
-            //    data.SaveChanges();
-            //}
-
             var product = this.data.Products.
               Select(s => new AllProductsViewModel
               {

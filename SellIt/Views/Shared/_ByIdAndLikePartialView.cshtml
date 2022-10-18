@@ -1,15 +1,16 @@
 ﻿@using SellIt.Core.ViewModels.Product
 @model AllProductsViewModel
 
-<div id="loadingBody">
 
-    @if (Model.IsAprooved == true)
+
+@if (Model.IsAprooved == true)
+{
+    <a class="btn btn-app bg-success">
+        <span class="badge bg-purple">@Model.Viewed</span>
+        <i class="fas fa-users"></i> Viewed
+    </a>
+    @if (User.Identity.IsAuthenticated)
     {
-        <a class="btn btn-app bg-success">
-            <span class="badge bg-purple">@Model.Viewed</span>
-            <i class="fas fa-users"></i> Viewed
-        </a>
-
         @if (Model.LikedCount > 0)
         {
             <a asp-action="Like" asp-controller="Product" asp-action="Like" class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
@@ -24,30 +25,28 @@
                 <i class="fas fa-heart"></i> Likes
             </a>
         }
-
     }
+}
 
-    <div class="row">
-        <div>
-            <h2 class="card-title">Category: @Model.CategoryName</h2>
-            <div class="col-md-4">
-                <div class="col-md-10">
-                    <div class="card-body">
-                        <img src="@Model.Image" width="300" class="mr-3 img-responsive">
-                        <h2 class="card-title">Title: @Model.Name</h2>
-                    </div>
-                    <div>
-                        <h2 orange" class="card-title">Description: @Model.Description</h2>
-                    </div>
-                    @if (Model.IsAprooved == false)
-                    {
-                        <h5 style="color:red">The item is checking </h5>
-                    }
+<div class="row">
+    <div>
+        <h2 class="card-title">Category: @Model.CategoryName</h2>
+        <div class="col-md-4">
+            <div class="col-md-10">
+                <div class="card-body">
+                    <img src="@Model.Image" width="300" class="mr-3 img-responsive">
+                    <h2 class="card-title">Title: @Model.Name</h2>
                 </div>
+                <div>
+                    <h2 orange" class="card-title">Description: @Model.Description</h2>
+                </div>
+                @if (Model.IsAprooved == false)
+                {
+                    <h5 style="color:red">The item is checking </h5>
+                }
             </div>
         </div>
     </div>
-
 </div>
 
 @if (Model.IsAprooved == false)
