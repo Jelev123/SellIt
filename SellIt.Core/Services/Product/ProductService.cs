@@ -1,4 +1,4 @@
-﻿namespace SellIt.Core.Services.Animal
+﻿namespace SellIt.Core.Services.Product
 {
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels.Product;

@@ -6,7 +6,7 @@ using SellIt.Core.Contracts.Cloudinary;
 using SellIt.Core.Contracts.Count;
 using SellIt.Core.Contracts.ForAprooved;
 using SellIt.Core.Contracts.Product;
-using SellIt.Core.Services.Animal;
+using SellIt.Core.Services.Product;
 using SellIt.Core.Services.Category;
 using SellIt.Core.Services.Cloudinary;
 using SellIt.Core.Services.Count;

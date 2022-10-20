@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Qp/mlIOP5qdf8q6mfhJibcs7ItwEkpzvHci4evUuZ6Y=",
+  "Source": "SellIt.Api",
+  "BasePath": "_content/SellIt.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
