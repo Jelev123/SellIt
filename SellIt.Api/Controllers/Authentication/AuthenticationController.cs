@@ -2,8 +2,8 @@
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using SellIt.Api.Contracts.Auth;
     using SellIt.Api.Models;
-    using SellIt.Api.Services.Auth;
 
     [Route("api/auth")]
     [ApiController]

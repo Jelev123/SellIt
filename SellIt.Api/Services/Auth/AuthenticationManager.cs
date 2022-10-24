@@ -1,9 +1,9 @@
-﻿namespace SellIt.Api.Contracts.Auth
+﻿namespace SellIt.Api.Services.Auth
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.IdentityModel.Tokens;
+    using SellIt.Api.Contracts.Auth;
     using SellIt.Api.Models;
-    using SellIt.Api.Services.Auth;
     using SellIt.Infrastructure.Data.Models;
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
@@ -24,7 +24,7 @@
         }
         public async Task<bool> ValidateCredentials(AuthCredentials credentials)
         {
-             _user = await usermanager.FindByNameAsync(credentials.Username);
+            _user = await usermanager.FindByNameAsync(credentials.Username);
             return _user != null && await usermanager.CheckPasswordAsync(_user, credentials.Password);
         }
 
@@ -45,7 +45,7 @@
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
 
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(
                 _configuration.GetSection("AppSettings:Token").Value));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
@@ -58,6 +58,6 @@
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
             return jwt;
-        }   
+        }
     }
 }

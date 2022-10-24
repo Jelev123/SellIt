@@ -1,4 +1,4 @@
-﻿namespace SellIt.Api.Services.Auth
+﻿namespace SellIt.Api.Contracts.Auth
 {
     using SellIt.Api.Models;
 

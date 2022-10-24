@@ -196,3 +196,7 @@ D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\SellIt.Api.staticwebassets.runtim
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\SellIt.Api.staticwebassets.runtime.json
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
