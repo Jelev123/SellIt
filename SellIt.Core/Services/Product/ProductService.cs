@@ -67,7 +67,7 @@
                     Viewed = s.Viewed,
                     UserId = s.UserId,
                     Id = s.Id,
-                    Image = s.Images.ToString(),
+                    Image = "/images/products/" + s.Images.FirstOrDefault().Id + "." + s.Images.FirstOrDefault().Extension,
                 });
 
             return allProducts;
@@ -75,6 +75,7 @@
 
         public AllProductsViewModel GetById(int id, string userId)
         {
+           
             var product = this.data.Products
                 .Where(s => s.Id == id)
                 .Select(s => new AllProductsViewModel
@@ -173,11 +174,13 @@
                 .Where(s => s.UserId == userId)
                 .Select(x => new AllProductsViewModel
                 {
+                    Id = x.Id,
                     Name = x.Name,
                     CategoryName = x.Category.Name,
                     Description = x.Description,
                     UserId = userId,
                     IsAprooved = x.IsAproved,
+                    Image = "/images/products/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension,
                 });
 
             return myProducts;

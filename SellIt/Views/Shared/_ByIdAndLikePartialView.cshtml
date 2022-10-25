@@ -28,6 +28,7 @@
     }
 }
 
+
 <div class="row">
     <div>
         <h2 class="card-title">Category: @Model.CategoryName</h2>
@@ -49,7 +50,11 @@
     </div>
 </div>
 
-@if (Model.IsAprooved == false)
+@if (User.IsInRole("Administrator"))
 {
-    <a asp-action="SetAproove" asp-controller="ForAprooved" asp-route-id="@Model.Id" class="btn btn-success">Aproove item</a>
+    @if (Model.IsAprooved == false)
+    {
+        <a asp-action="SetAproove" asp-controller="ForAprooved" asp-route-id="@Model.Id" class="btn btn-success">Aproove item</a>
+    }
 }
+
