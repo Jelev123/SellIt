@@ -14,7 +14,8 @@ using SellIt.Core.Services.ForAprooved;
 using SellIt.Infrastructure.Data;
 using SellIt.Infrastructure.Data.Models;
 using System.Globalization;
-
+using SellIt.Core.Contracts.Search;
+using SellIt.Core.Services.Search;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +36,7 @@ builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IForAproovedService, ForAproovedService>();
 builder.Services.AddTransient<ICountService, CountService>();
+builder.Services.AddTransient<ISearchService, SearchService>();
 
 Account cloudinaryCredentials = new Account(
                 builder.Configuration["Cloudinary:CloudName"],

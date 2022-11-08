@@ -2,6 +2,11 @@
 @model HomeViewModel
 
 
+<form method="get" asp-action="Search" asp-controller="Product">
+    <input type="search" value="@ViewData["searchProduct"]" name="searchName" placeholder="Search" style="width:300px"  />
+    <a asp-action="Search"></a>
+</form>
+
 
 @if (User.IsInRole("Administrator"))
 {

@@ -6,6 +6,7 @@
     using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Product;
+    using SellIt.Core.Contracts.Search;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
@@ -15,17 +16,19 @@
     {
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
+        private readonly ISearchService searchService;
         private readonly UserManager<User> userManager;
         private readonly IWebHostEnvironment environment;
         private readonly ApplicationDbContext data;
 
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ApplicationDbContext data)
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ApplicationDbContext data, ISearchService searchService)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.userManager = userManager;
             this.environment = environment;
             this.data = data;
+            this.searchService = searchService;
         }
 
 
@@ -73,6 +76,22 @@
             var currentUserId = this.userManager.GetUserId(User);
             var productToLike = this.productService.Like(id, currentUserId);
             return this.View(productToLike);
+        }
+
+        public IActionResult Search(string searchName)
+        {
+            //if (string.IsNullOrWhiteSpace(searchName))
+            //{
+            //    return this.View(searchName);
+            //}
+            this.ViewData["searchProduct"] = searchName;
+            var searchedProduct = this.searchService.SearchProduct(searchName);
+
+            if (searchedProduct == null)
+            {
+                return this.View(searchName);
+            }
+            return this.View(searchedProduct);
         }
 
     }
