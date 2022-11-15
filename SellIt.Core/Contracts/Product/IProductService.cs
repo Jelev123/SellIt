@@ -4,14 +4,14 @@
 
     public interface IProductService
     {
-        Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath);
+        Task AddProduct(ProductViewModel addProduct, string userId, string imagePath);
 
-        AllProductsViewModel GetById(int id, string userId);
+        ProductViewModel GetById(int id, string userId);
 
-        IEnumerable<AllProductsViewModel> GetAllProducts();
+        IEnumerable<ProductViewModel> GetAllProducts();
 
-        AllProductsViewModel Like(int id, string currentUserId);
+        ProductViewModel Like(int id, string currentUserId);
 
-        IEnumerable<AllProductsViewModel> MyProducts(string id);
+        IEnumerable<ProductViewModel> MyProducts(string id);
     }
 }

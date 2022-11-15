@@ -45,7 +45,7 @@
         [HttpPost]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
-        public async Task<IActionResult> AddProducts(AddProductViewModel addProduct)
+        public async Task<IActionResult> AddProducts(ProductViewModel addProduct)
         {
 
             try

@@ -1,6 +1,5 @@
 ﻿@using SellIt.Core.ViewModels.Product
-@model AllProductsViewModel
-
+@model ProductViewModel
 
 
 @if (Model.IsAprooved == true)
@@ -27,28 +26,51 @@
         }
     }
 }
+<div class="col-md-6">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
 
+            @for (int i = 0; i < Model.Gallery.Count(); i++)
+            {
+                <li data-target="#carouselExampleIndicators" data-slide-to="@i" class="@(i==0 ? "active" : "") "></li>
+            }
+        </ol>
+        <div class="carousel-inner">
+            @for (int i = 0; i < Model.Gallery.Count(); i++)
+            {
+                <div class="@(i==0 ? "carousel-item active" : "carousel-item") ">
+                    <img class="d-block w-100" src="@Model.Gallery[i].URL" alt="@Model.Gallery[i].Name">
+                </div>
+            }
 
-<div class="row">
-    <div>
-        <h2 class="card-title">Category: @Model.CategoryName</h2>
-        <div class="col-md-4">
-            <div class="col-md-10">
-                <div class="card-body">
-                    <img src="@Model.Image" width="300" class="mr-3 img-responsive">
-                    <h2 class="card-title">Title: @Model.Name</h2>
-                </div>
-                <div>
-                    <h2 orange" class="card-title">Description: @Model.Description</h2>
-                </div>
-                @if (Model.IsAprooved == false)
-                {
-                    <h5 style="color:red">The item is checking </h5>
-                }
-            </div>
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
+
+    <ul class="list-group">
+        <li class="list-group-item">Category: @Model.CategoryName</li>
+        <li class="list-group-item">Title: @Model.Name</li>
+        <li class="list-group-item">Description: @Model.Description</li>
+        <li class="list-group-item">Price: @Model.Price $</li>
+    </ul>
 </div>
+
+
+
+
+
+@if (Model.IsAprooved == false)
+{
+    <h5 style="color:red">The item is checking </h5>
+}
+
 
 @if (User.IsInRole("Administrator"))
 {

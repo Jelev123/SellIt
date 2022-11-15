@@ -27,7 +27,8 @@
                      Viewed = s.Viewed,
                      UserId = s.UserId,
                      Id = s.Id,
-                     Image = "/images/products/" + s.Images.FirstOrDefault().Id + "." + s.Images.FirstOrDefault().Extension,
+                     Price = s.Price,
+                     CoverPhoto =  s.Images.FirstOrDefault().URL
                  })
                  .Where(s => s.Name.Contains(searchName));
 

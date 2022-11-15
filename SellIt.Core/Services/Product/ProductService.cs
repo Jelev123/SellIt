@@ -6,6 +6,7 @@
     using SellIt.Infrastructure.Data.Models;
     using System.Threading.Tasks;
     using System.Collections.Generic;
+    using SellIt.Core.ViewModels;
 
     public class ProductService : IProductService
     {
@@ -17,7 +18,7 @@
             this.data = data;
         }
 
-        public Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath)
+        public Task AddProduct(ProductViewModel addProduct, string userId, string imagePath)
         {
             var category = this.data.Categories.FirstOrDefault(s => s.Name == addProduct.CategoryName);
             var product = new Product
@@ -26,27 +27,19 @@
                 Description = addProduct.Description,
                 Category = category,
                 UserId = userId,
+                Price = addProduct.Price,
             };
 
-            Directory.CreateDirectory($"{imagePath}/products/");
-            foreach (var image in addProduct.Image)
+            product.Images = new List<Image>();
+
+            foreach (var file in addProduct.Gallery)
             {
-                var extension = Path.GetExtension(image.FileName).TrimStart('.');
-                if (!this.allowedExtensions.Any(x => extension.EndsWith(x)))
+                product.Images.Add(new Image()
                 {
-                    throw new Exception($"Invalid image extension {extension}");
-                }
-
-                var dbImage = new Image
-                {
-                    AddedByUserId = userId,
-                    Extension = extension,
-                };
-                product.Images.Add(dbImage);
-
-                var physicalPath = $"{imagePath}/products/{dbImage.Id}.{extension}";
-                using Stream fileStream = new FileStream(physicalPath, FileMode.Create);
-                image.CopyToAsync(fileStream);
+                    Name = file.Name,
+                    URL = file.URL,
+                    AddedByUserId = userId
+                });
             }
 
             data.Add(product);
@@ -54,10 +47,10 @@
             return Task.CompletedTask;
         }
 
-        public IEnumerable<AllProductsViewModel> GetAllProducts()
+        public IEnumerable<ProductViewModel> GetAllProducts()
         {
             var allProducts = this.data.Products
-                .Select(s => new AllProductsViewModel
+                .Select(s => new ProductViewModel
                 {
                     Name = s.Name,
                     CategoryName = s.Category.Name,
@@ -67,18 +60,18 @@
                     Viewed = s.Viewed,
                     UserId = s.UserId,
                     Id = s.Id,
-                    Image = "/images/products/" + s.Images.FirstOrDefault().Id + "." + s.Images.FirstOrDefault().Extension,
+                    Price = s.Price,
+                    CoverPhoto = s.Images.FirstOrDefault().URL
                 });
 
             return allProducts;
         }
 
-        public AllProductsViewModel GetById(int id, string userId)
-        {
-           
+        public ProductViewModel GetById(int id, string userId)
+        {           
             var product = this.data.Products
                 .Where(s => s.Id == id)
-                .Select(s => new AllProductsViewModel
+                .Select(s => new ProductViewModel
                 {
                     Name = s.Name,
                     CategoryName = s.Category.Name,
@@ -87,8 +80,13 @@
                     Viewed = s.Viewed,
                     LikedCount = s.LikedCount,
                     UserId = s.UserId,
+                    Price = s.Price,
                     Id = s.Id,
-
+                    Gallery = s.Images.Select(s => new GalleryModel()
+                    {
+                        Name = s.Name,
+                        URL = s.URL,
+                    }).ToList(),
                 }).FirstOrDefault();
 
             if (product.UserId != userId)
@@ -102,12 +100,12 @@
         }
 
 
-        public AllProductsViewModel Like(int id, string currentUserId)
+        public ProductViewModel Like(int id, string currentUserId)
         {
             var productToLike = this.data.Products.FirstOrDefault(s => s.Id == id);
 
             var product = this.data.Products.
-              Select(s => new AllProductsViewModel
+              Select(s => new ProductViewModel
               {
                   Name = s.Name,
                   CategoryName = s.Category.Name,
@@ -168,11 +166,11 @@
             return product;
         }
 
-        public IEnumerable<AllProductsViewModel> MyProducts(string userId)
+        public IEnumerable<ProductViewModel> MyProducts(string userId)
         {
             var myProducts = this.data.Products
                 .Where(s => s.UserId == userId)
-                .Select(x => new AllProductsViewModel
+                .Select(x => new ProductViewModel
                 {
                     Id = x.Id,
                     Name = x.Name,
@@ -180,7 +178,8 @@
                     Description = x.Description,
                     UserId = userId,
                     IsAprooved = x.IsAproved,
-                    Image = "/images/products/" + x.Images.FirstOrDefault().Id + "." + x.Images.FirstOrDefault().Extension,
+                    Price = x.Price,
+                    CoverPhoto = x.Images.FirstOrDefault().URL
                 });
 
             return myProducts;

@@ -28,5 +28,10 @@
 
         public int Count { get; set; }
 
+        public string CoverPhoto { get; set; }
+
+        public decimal Price { get; set; }
+
+
     }
 }

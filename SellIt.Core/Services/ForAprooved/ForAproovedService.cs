@@ -30,7 +30,7 @@
                     Id = s.Id,
                     IsAprooved = s.IsAproved,
                     Count = countService.GetCount().ProductsToAprooveCount,
-                    Image = "/images/products/" + s.Images.FirstOrDefault().Id + s.Images.FirstOrDefault().Extension
+                    CoverPhoto =  s.Images.FirstOrDefault().URL
 
                 });
             return allProducts;

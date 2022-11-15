@@ -3,37 +3,32 @@
 
 
 
-<form method="get" asp-action="Search" asp-controller="Product">
-    <input type="search" value="@ViewData["searchProduct"]" name="searchName" placeholder="Search" style="width:300px" />
-    <a asp-action="Search"></a>
-</form>
+
 
 <div class="row">
     @if (Model.Count() == 0)
-    { 
-        <h6 style="color:red">No Results</h6>
+    {
+        <h2 style="color:red">No Results</h2>
     }
     else
     {
         @foreach (var item in Model)
         {
+            <h2 class="card-title">Category: @item.CategoryName</h2>
             <div>
-                <h2 class="card-title">Category: @item.CategoryName</h2>
                 <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
-                    <img src="@item.Image" width="300" class="mr-3 img-responsive">
+                    <figure class="figure">
+                        <img src="@item.CoverPhoto" class="rounded float-start" alt="...">
+                        <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
+                    </figure>
                 </a>
-                <div class="col-md-4">
-                    <div class="col-md-10">
-                        <div class="card-body">
-                            <h2 class="card-title">Title: @item.Name</h2>
-                        </div>
-                        <div>
-                            <h2 orange" class="card-title">Description: @item.Description</h2>
-                        </div>
-                    </div>
-                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">Category: @item.CategoryName</li>
+                    <li class="list-group-item">Title: @item.Name</li>
+                    <li class="list-group-item">Price: @item.Price $</li>
+                </ul>
             </div>
         }
     }
-   
+
 </div>

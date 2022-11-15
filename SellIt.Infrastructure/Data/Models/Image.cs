@@ -14,11 +14,9 @@
 
         public  Product Product { get; set; }
 
-        public string Extension { get; set; }
+        public string Name { get; set; }
 
-        //// The contents of the image is in the file system
-
-        public string? RemoteImageUrl { get; set; }
+        public string? URL { get; set; }
 
         public string AddedByUserId { get; set; }
 

@@ -1,12 +1,14 @@
 ﻿namespace SellIt.Controllers.Product
 {
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
+    using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
@@ -37,7 +39,7 @@
         {
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
 
-            this.ViewData["categories"] = categories.Select(s => new AddProductViewModel
+            this.ViewData["categories"] = categories.Select(s => new ProductViewModel
             {
                 CategoryName = s.Name,
             }).ToList();
@@ -46,9 +48,26 @@
         }
 
         [HttpPost]
-        public IActionResult AddProduct(AddProductViewModel addProduct)
+        public async Task<IActionResult> AddProduct(ProductViewModel addProduct)
         {
             var user = this.userManager.GetUserId(User);
+
+            if (addProduct.GalleryFiles != null)
+            {
+                string folder = "images/gallery/";
+
+                addProduct.Gallery = new List<GalleryModel>();
+
+                foreach (var file in addProduct.GalleryFiles)
+                {
+                    var gallery = new GalleryModel()
+                    {
+                        Name = file.FileName,
+                        URL = await UploadImage(folder, file)
+                    };
+                    addProduct.Gallery.Add(gallery);
+                }
+            }
             this.productService.AddProduct(addProduct, user, $"{this.environment.WebRootPath}/images");
             return this.Redirect("/");
         }
@@ -80,10 +99,7 @@
 
         public IActionResult Search(string searchName)
         {
-            //if (string.IsNullOrWhiteSpace(searchName))
-            //{
-            //    return this.View(searchName);
-            //}
+            
             this.ViewData["searchProduct"] = searchName;
             var searchedProduct = this.searchService.SearchProduct(searchName);
 
@@ -94,5 +110,16 @@
             return this.View(searchedProduct);
         }
 
+        private async Task<string> UploadImage(string folderPath, IFormFile file)
+        {
+
+            folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;
+
+            string serverFolder = Path.Combine(environment.WebRootPath, folderPath);
+
+            await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+
+            return "/" + folderPath;
+        }
     }
 }
