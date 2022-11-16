@@ -4,7 +4,7 @@
 
     public interface ISearchService
     {
-        IEnumerable<AllProductsViewModel> SearchProduct(string name);
+        IEnumerable<SearchViewModel> SearchProduct(string name);
 
     }
 }

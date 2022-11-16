@@ -1,5 +1,5 @@
 ﻿@using SellIt.Core.ViewModels.Product
-@model ProductViewModel
+@model AddProductViewModel
 
 <div class="col-10">
     <div>
@@ -8,10 +8,13 @@
                 <div class="form-group">
                     <label asp-for="Name"></label>
                     <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+
                 </div>
                 <div class="form-group">
                     <label asp-for="Description"></label>
                     <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="GalleryFiles"></label>
@@ -23,11 +26,12 @@
                 <label asp-for="CategoryName"></label>
                 <select class="form-control text-primary" id="categories" asp-for="CategoryName">
                     <option selected disabled><------></></option>
-                    @foreach (var category in (IEnumerable<ProductViewModel>)this.ViewData["categories"])
+                    @foreach (var category in (IEnumerable<AddProductViewModel>)this.ViewData["categories"])
                     {
                         <option value="@category.CategoryName">@category.CategoryName</option>
                     }
                 </select>
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
                 <div class="form-group">
                     <label asp-for="Price"></label>
                     <input asp-for="Price" class="form-control" />

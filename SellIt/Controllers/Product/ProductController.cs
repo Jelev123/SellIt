@@ -4,14 +4,12 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
-    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
     public class ProductController : Controller
@@ -21,15 +19,13 @@
         private readonly ISearchService searchService;
         private readonly UserManager<User> userManager;
         private readonly IWebHostEnvironment environment;
-        private readonly ApplicationDbContext data;
 
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ApplicationDbContext data, ISearchService searchService)
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.userManager = userManager;
             this.environment = environment;
-            this.data = data;
             this.searchService = searchService;
         }
 
@@ -39,7 +35,7 @@
         {
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
 
-            this.ViewData["categories"] = categories.Select(s => new ProductViewModel
+            this.ViewData["categories"] = categories.Select(s => new AddProductViewModel
             {
                 CategoryName = s.Name,
             }).ToList();
@@ -48,9 +44,20 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct(ProductViewModel addProduct)
+        public async Task<IActionResult> AddProduct(AddProductViewModel addProduct)
         {
             var user = this.userManager.GetUserId(User);
+
+            //if (!ModelState.IsValid)
+            //{
+            //    var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
+
+            //    this.ViewData["categories"] = categories.Select(s => new AddProductViewModel
+            //    {
+            //        CategoryName = s.Name,
+            //    }).ToList();
+            //    return this.View(addProduct);
+            //}
 
             if (addProduct.GalleryFiles != null)
             {

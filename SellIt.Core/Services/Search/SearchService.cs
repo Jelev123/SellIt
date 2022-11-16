@@ -14,17 +14,14 @@
             this.data = data;
         }
 
-        public IEnumerable<AllProductsViewModel> SearchProduct(string searchName)
+        public IEnumerable<SearchViewModel> SearchProduct(string searchName)
         {
             var searchedProducts = this.data.Products
-                 .Select(s => new AllProductsViewModel
+                 .Select(s => new SearchViewModel
                  {
                      Name = s.Name,
                      CategoryName = s.Category.Name,
                      Description = s.Description,
-                     IsAprooved = s.IsAproved,
-                     LikedCount = s.LikedCount,
-                     Viewed = s.Viewed,
                      UserId = s.UserId,
                      Id = s.Id,
                      Price = s.Price,

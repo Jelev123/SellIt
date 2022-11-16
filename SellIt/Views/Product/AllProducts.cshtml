@@ -1,23 +1,29 @@
 ﻿@using SellIt.Core.ViewModels.Product
-@model IEnumerable<ProductViewModel>
+@model IEnumerable<AllProductViewModel>
 
-@foreach (var item in Model)
-{
-    <div class="row">
-        <section class="p-0">
-            <div class="container">
-                <div class="row">
-                    <ul class="list-group">
-                    <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
-                        <img width="400px" src="@item.CoverPhoto" alt="@item.Name">
-                    </a>
-                        <li class="list-group-item">Category: @item.CategoryName</li>
-                        <li class="list-group-item">Title: @item.Name</li>
-                        <li class="list-group-item">Price: @item.Price $</li>
-                    </ul>
-                </div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+
+        <div class="cold-md-4">
+            <div class="card-body">
+                <section class="p-0">
+                    <div class="container">
+                        <div class="row">
+                            <ul class="list-group">
+                                <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
+                                    <img width="400px" src="@item.CoverPhoto" alt="@item.Name">
+                                </a>
+                                <li class="list-group-item">Category: @item.CategoryName</li>
+                                <li class="list-group-item">Title: @item.Name</li>
+                                <li class="list-group-item">Price: @item.Price $</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
-    </div>
-}
+        </div>
+    }
+</div>
 

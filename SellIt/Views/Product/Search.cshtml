@@ -1,5 +1,5 @@
 ﻿@using SellIt.Core.ViewModels.Product
-@model IEnumerable<AllProductsViewModel>
+@model IEnumerable<SearchViewModel>
 
 
 
@@ -14,7 +14,6 @@
     {
         @foreach (var item in Model)
         {
-            <h2 class="card-title">Category: @item.CategoryName</h2>
             <div>
                 <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
                     <figure class="figure">

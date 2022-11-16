@@ -10,7 +10,6 @@
 
     public class ProductService : IProductService
     {
-        private readonly string[] allowedExtensions = new[] { "jpg", "png", "gif" };
         private readonly ApplicationDbContext data;
 
         public ProductService(ApplicationDbContext data)
@@ -18,7 +17,7 @@
             this.data = data;
         }
 
-        public Task AddProduct(ProductViewModel addProduct, string userId, string imagePath)
+        public Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath)
         {
             var category = this.data.Categories.FirstOrDefault(s => s.Name == addProduct.CategoryName);
             var product = new Product
@@ -47,17 +46,14 @@
             return Task.CompletedTask;
         }
 
-        public IEnumerable<ProductViewModel> GetAllProducts()
+        public IEnumerable<AllProductViewModel> GetAllProducts()
         {
             var allProducts = this.data.Products
-                .Select(s => new ProductViewModel
+                .Select(s => new AllProductViewModel
                 {
                     Name = s.Name,
                     CategoryName = s.Category.Name,
                     Description = s.Description,
-                    IsAprooved = s.IsAproved,
-                    LikedCount = s.LikedCount,
-                    Viewed = s.Viewed,
                     UserId = s.UserId,
                     Id = s.Id,
                     Price = s.Price,
@@ -67,11 +63,11 @@
             return allProducts;
         }
 
-        public ProductViewModel GetById(int id, string userId)
+        public GetByIdAndLikeViewModel GetById(int id, string userId)
         {           
             var product = this.data.Products
                 .Where(s => s.Id == id)
-                .Select(s => new ProductViewModel
+                .Select(s => new GetByIdAndLikeViewModel
                 {
                     Name = s.Name,
                     CategoryName = s.Category.Name,
@@ -100,12 +96,12 @@
         }
 
 
-        public ProductViewModel Like(int id, string currentUserId)
+        public GetByIdAndLikeViewModel Like(int id, string currentUserId)
         {
             var productToLike = this.data.Products.FirstOrDefault(s => s.Id == id);
 
             var product = this.data.Products.
-              Select(s => new ProductViewModel
+              Select(s => new GetByIdAndLikeViewModel
               {
                   Name = s.Name,
                   CategoryName = s.Category.Name,
@@ -116,6 +112,11 @@
                   UserId = s.UserId,
                   Id = s.Id,
                   IsLiked = s.IsLiked,
+                  Gallery = s.Images.Select(s => new GalleryModel()
+                  {
+                      Name = s.Name,
+                      URL = s.URL,
+                  }).ToList(),
               })
               .FirstOrDefault(s => s.Id == id);
 
@@ -166,11 +167,11 @@
             return product;
         }
 
-        public IEnumerable<ProductViewModel> MyProducts(string userId)
+        public IEnumerable<MyProductsViewModel> MyProducts(string userId)
         {
             var myProducts = this.data.Products
                 .Where(s => s.UserId == userId)
-                .Select(x => new ProductViewModel
+                .Select(x => new MyProductsViewModel
                 {
                     Id = x.Id,
                     Name = x.Name,
@@ -183,6 +184,22 @@
                 });
 
             return myProducts;
+        }
+
+        public IEnumerable<IndexRandomViewModel> RandomProducts(int count)
+        {
+            return this.data.Products.OrderBy(s => Guid.NewGuid())
+                .Take(count)
+                .Select(s => new IndexRandomViewModel()
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    CategoryName = s.Category.Name,
+                    CoverPhoto = s.Images.FirstOrDefault().URL,
+                    IsLiked = s.IsLiked,
+                    Price = s.Price,
+                });
+                
         }
     }
 }

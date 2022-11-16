@@ -3,20 +3,22 @@
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Count;
+    using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels.Home;
+    using SellIt.Core.ViewModels.Product;
     using SellIt.Models;
     using System.Diagnostics;
 
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly ICountService countService;
+        private readonly IProductService productService;
 
 
-        public HomeController(ILogger<HomeController> logger, ICountService countService)
+        public HomeController(ICountService countService, IProductService productService)
         {
-            _logger = logger;
             this.countService = countService;
+            this.productService = productService;
         }
 
         public IActionResult Index()
@@ -27,6 +29,7 @@
             {
                 ProductForAprooveCount = count.ProductsToAprooveCount,
                 AllProducts = count.AllProducts,
+                RandomProducts = this.productService.RandomProducts(6),
             };
 
             ViewData["HomeViewModel"] = counts;
@@ -37,6 +40,8 @@
 
 
         }
+
+
 
         public IActionResult Privacy()
         {

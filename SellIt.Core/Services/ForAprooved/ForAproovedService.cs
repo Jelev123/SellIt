@@ -18,20 +18,16 @@
             this.countService = countService;
         }
 
-        public IEnumerable<AllProductsViewModel> GetAllProductsForAproove()
+        public IEnumerable<AllProductsForAprooved> GetAllProductsForAproove()
         {
             var allProducts = this.data.Products
                 .Where(s => s.IsAproved == false)
-                .Select(s => new AllProductsViewModel
+                .Select(s => new AllProductsForAprooved
                 {
                     Name = s.Name,
                     CategoryName = s.Category.Name,
-                    Description = s.Description,
                     Id = s.Id,
-                    IsAprooved = s.IsAproved,
-                    Count = countService.GetCount().ProductsToAprooveCount,
                     CoverPhoto =  s.Images.FirstOrDefault().URL
-
                 });
             return allProducts;
         }

@@ -1,5 +1,5 @@
 ﻿@using SellIt.Core.ViewModels.Product
-@model ProductViewModel
+@model GetByIdAndLikeViewModel
 
 
 @if (Model.IsAprooved == true)
@@ -39,7 +39,9 @@
             @for (int i = 0; i < Model.Gallery.Count(); i++)
             {
                 <div class="@(i==0 ? "carousel-item active" : "carousel-item") ">
+                    <a href="@Model.Gallery[i].URL">
                     <img class="d-block w-100" src="@Model.Gallery[i].URL" alt="@Model.Gallery[i].Name">
+                    </a>
                 </div>
             }
 
