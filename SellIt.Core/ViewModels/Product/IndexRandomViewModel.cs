@@ -13,5 +13,7 @@
         public bool IsLiked { get; set; }
 
         public decimal Price { get; set; }
+
+        public bool IsAproved { get; set; }
     }
 }

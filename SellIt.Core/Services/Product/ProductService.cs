@@ -189,7 +189,7 @@
         public IEnumerable<IndexRandomViewModel> RandomProducts(int count)
         {
             return this.data.Products.OrderBy(s => Guid.NewGuid())
-                .Take(count)
+                .Where(s => s.IsAproved == true)
                 .Select(s => new IndexRandomViewModel()
                 {
                     Id = s.Id,
@@ -198,7 +198,9 @@
                     CoverPhoto = s.Images.FirstOrDefault().URL,
                     IsLiked = s.IsLiked,
                     Price = s.Price,
-                });
+                    IsAproved = s.IsAproved
+                })      
+                .Take(count);
                 
         }
     }

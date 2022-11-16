@@ -26,7 +26,11 @@
         }
     }
 }
+
 <div class="col-md-6">
+    <ul class="list-group">
+    <li class="list-group-item">@Model.Name</li>
+</ul>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
 
@@ -40,7 +44,7 @@
             {
                 <div class="@(i==0 ? "carousel-item active" : "carousel-item") ">
                     <a href="@Model.Gallery[i].URL">
-                    <img class="d-block w-100" src="@Model.Gallery[i].URL" alt="@Model.Gallery[i].Name">
+                        <img class="d-block w-100" src="@Model.Gallery[i].URL" alt="@Model.Gallery[i].Name">
                     </a>
                 </div>
             }
@@ -54,14 +58,14 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+        <ul class="list-group">     
+        <li class="list-group-item">Category: @Model.CategoryName</li>
+        <li class="list-group-item">@Model.Description</li>
+        <li class="list-group-item">@Model.Price $</li>
+    </ul>
     </div>
 
-    <ul class="list-group">
-        <li class="list-group-item">Category: @Model.CategoryName</li>
-        <li class="list-group-item">Title: @Model.Name</li>
-        <li class="list-group-item">Description: @Model.Description</li>
-        <li class="list-group-item">Price: @Model.Price $</li>
-    </ul>
+    
 </div>
 
 
