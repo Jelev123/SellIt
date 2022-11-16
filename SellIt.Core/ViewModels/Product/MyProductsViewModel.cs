@@ -1,7 +1,5 @@
 ﻿namespace SellIt.Core.ViewModels.Product
 {
-    using Microsoft.AspNetCore.Http;
-
     public class MyProductsViewModel
     {
         public int Id { get; set; }

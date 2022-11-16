@@ -117,6 +117,19 @@
             return this.View(searchedProduct);
         }
 
+        public IActionResult SearchCategory(string searchName)
+        {
+
+            this.ViewData["searchCategory"] = searchName;
+            var searchedCategory = this.searchService.SearchProduct(searchName);
+
+            if (searchedCategory == null)
+            {
+                return this.View(searchName);
+            }
+            return this.View(searchedCategory);
+        }
+
         private async Task<string> UploadImage(string folderPath, IFormFile file)
         {
 

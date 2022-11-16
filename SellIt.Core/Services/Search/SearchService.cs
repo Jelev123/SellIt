@@ -27,7 +27,7 @@
                      Price = s.Price,
                      CoverPhoto =  s.Images.FirstOrDefault().URL
                  })
-                 .Where(s => s.Name.Contains(searchName));
+                 .Where(s => (s.Name.Contains(searchName)) || (s.CategoryName.Contains(searchName)));
 
             return searchedProducts;
         }
