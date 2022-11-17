@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\SellIt\\SellIt\\SellIt.csproj": {}
+    "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\SellIt.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\SellIt\\SellIt.Core\\SellIt.Core.csproj": {
+    "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\SellIt.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\SellIt\\SellIt.Core\\SellIt.Core.csproj",
+        "projectUniqueName": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\SellIt.Core.csproj",
         "projectName": "SellIt.Core",
-        "projectPath": "D:\\Projects\\SellIt\\SellIt.Core\\SellIt.Core.csproj",
-        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\SellIt\\SellIt.Core\\obj\\",
+        "projectPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\SellIt.Core.csproj",
+        "packagesPath": "C:\\Users\\zzhelev\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\zzhelev\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -32,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Projects\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj": {
-                "projectPath": "D:\\Projects\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj"
+              "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj"
               }
             }
           }
@@ -87,7 +83,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -96,25 +93,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Projects\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj": {
+    "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj",
         "projectName": "SellIt.Infrastructure",
-        "projectPath": "D:\\Projects\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\SellIt\\SellIt.Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\zzhelev\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\zzhelev\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -175,7 +168,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -184,25 +178,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Projects\\SellIt\\SellIt\\SellIt.csproj": {
+    "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\SellIt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\SellIt\\SellIt\\SellIt.csproj",
+        "projectUniqueName": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\SellIt.csproj",
         "projectName": "SellIt",
-        "projectPath": "D:\\Projects\\SellIt\\SellIt\\SellIt.csproj",
-        "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\SellIt\\SellIt\\obj\\",
+        "projectPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\SellIt.csproj",
+        "packagesPath": "C:\\Users\\zzhelev\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Owner\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\zzhelev\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -216,8 +206,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Projects\\SellIt\\SellIt.Core\\SellIt.Core.csproj": {
-                "projectPath": "D:\\Projects\\SellIt\\SellIt.Core\\SellIt.Core.csproj"
+              "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\SellIt.Core.csproj": {
+                "projectPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\SellIt.Core.csproj"
               }
             }
           }
@@ -283,7 +273,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -295,7 +286,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

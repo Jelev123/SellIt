@@ -29,5 +29,7 @@
         public int Count { get; set; }
 
         public decimal Price { get; set; }
+
+        public List<SendMessageViewModel> SendMesasge { get; set; }
     }
 }

@@ -15,5 +15,9 @@
         IEnumerable<MyProductsViewModel> MyProducts(string id);
 
         IEnumerable<IndexRandomViewModel> RandomProducts(int count);
+
+        Task SendMessage(SendMessageViewModel sendMessage, string userId, int id);
+
+        IEnumerable<SendMessageViewModel> AllMessages(int id);
     }
 }

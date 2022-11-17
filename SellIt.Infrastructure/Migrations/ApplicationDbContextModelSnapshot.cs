@@ -306,12 +306,25 @@ namespace SellIt.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("ProductMessages");
                 });
@@ -530,7 +543,15 @@ namespace SellIt.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SellIt.Infrastructure.Data.Models.User", "User")
+                        .WithMany("ProductMessages")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Product");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.UserMessages", b =>
@@ -559,6 +580,8 @@ namespace SellIt.Infrastructure.Migrations
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.User", b =>
                 {
                     b.Navigation("Messages");
+
+                    b.Navigation("ProductMessages");
 
                     b.Navigation("Products");
                 });

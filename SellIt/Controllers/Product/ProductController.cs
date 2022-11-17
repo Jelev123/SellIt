@@ -141,5 +141,27 @@
 
             return "/" + folderPath;
         }
+
+        public IActionResult SendMessage()
+        {
+
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult SendMessage(SendMessageViewModel sendMessage,int id)
+        {
+            var userId = this.userManager.GetUserId(User);
+
+            var messages = this.productService.SendMessage(sendMessage, userId,id);
+
+            return this.Redirect("/");
+        }
+
+        public IActionResult AllMessages(int id)
+        {
+           var allMessages =this.productService.AllMessages(id); 
+            return this.View(allMessages);
+        }
     }
 }
