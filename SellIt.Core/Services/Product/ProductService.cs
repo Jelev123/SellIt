@@ -7,6 +7,7 @@
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using SellIt.Core.ViewModels;
+    using SellIt.Core.ViewModels.ProductMessage;
 
     public class ProductService : IProductService
     {

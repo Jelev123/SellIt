@@ -1,0 +1,21 @@
+﻿@using SellIt.Core.ViewModels.ProductMessage
+@model IEnumerable<SendMessageViewModel>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">UserName</th>
+            <th scope="col">Text</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.Text</td> 
+            </tr>
+        </tbody>
+    }
+</table>

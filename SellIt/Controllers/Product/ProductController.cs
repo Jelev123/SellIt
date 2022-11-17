@@ -10,6 +10,7 @@
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
+    using SellIt.Core.ViewModels.ProductMessage;
     using SellIt.Infrastructure.Data.Models;
 
     public class ProductController : Controller
@@ -140,28 +141,6 @@
             await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
 
             return "/" + folderPath;
-        }
-
-        public IActionResult SendMessage()
-        {
-
-            return this.View();
-        }
-
-        [HttpPost]
-        public IActionResult SendMessage(SendMessageViewModel sendMessage,int id)
-        {
-            var userId = this.userManager.GetUserId(User);
-
-            var messages = this.productService.SendMessage(sendMessage, userId,id);
-
-            return this.Redirect("/");
-        }
-
-        public IActionResult AllMessages(int id)
-        {
-           var allMessages =this.productService.AllMessages(id); 
-            return this.View(allMessages);
         }
     }
 }

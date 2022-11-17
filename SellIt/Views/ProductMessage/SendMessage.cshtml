@@ -1,0 +1,19 @@
+﻿@using SellIt.Core.ViewModels.ProductMessage
+@model SendMessageViewModel
+
+
+<div class="col-10">
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label asp-for="Text"></label>
+                    <input asp-for="Text" class="form-control" />
+                </div>
+        </form>
+        <div />
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-primary font-weight-bold">Send</button>
+        </div>
+    </div>
+</div>

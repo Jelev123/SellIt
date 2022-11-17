@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Core.ViewModels.Product
 {
     using Microsoft.AspNetCore.Http;
+    using SellIt.Core.ViewModels.ProductMessage;
 
     public class GetByIdAndLikeViewModel
     {
