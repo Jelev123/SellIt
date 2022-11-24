@@ -4,9 +4,13 @@
 
     public class HomeViewModel
     {
+        public int Id { get; set; }
+
         public int ProductForAprooveCount { get; set; }
 
         public int AllProducts { get; set; }
+
+        public int ProductMessages { get; set; }
 
         public IEnumerable<IndexRandomViewModel> RandomProducts { get; set; }
     }

@@ -1,6 +1,7 @@
 ﻿@using SellIt.Core.ViewModels.Home
 @model HomeViewModel
 
+
 @if (User.IsInRole("Administrator"))
 {
     <div>
@@ -18,7 +19,6 @@
 }
 @if (User.Identity.IsAuthenticated)
 {
-
     <div>
         <a class="navbar-brand" asp-action="MyProducts" asp-controller="Product">My Products</a>
     </div>

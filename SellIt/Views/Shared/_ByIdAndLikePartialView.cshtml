@@ -2,6 +2,8 @@
 @model GetByIdAndLikeViewModel
 
 
+
+
 @if (Model.IsAprooved == true)
 {
     <a class="btn btn-app bg-success">
@@ -65,16 +67,9 @@
         </ul>
     </div>
 
-
 </div>
 
-
-
-    <a asp-action="SendMessage" asp-controller="ProductMessage" asp-route-id="@Model.Id" class="btn btn-success">Send Message</a>
-    <a asp-action="AllMessages" asp-controller="ProductMessage" asp-route-id="@Model.Id" class="btn btn-success">All Messages</a>
-
-
-
+<a asp-action="SendMessage" asp-controller="ProductMessage" asp-route-id="@Model.Id" class="btn btn-success">Send Message</a>
 
 @if (Model.IsAprooved == false)
 {

@@ -14,8 +14,6 @@
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
-
         }
 
         public DbSet<Product> Products { get; set; }
@@ -26,5 +24,6 @@
         public DbSet<User> Users { get; set; }
         public DbSet<UserMessages> UserMessages { get; set; }
         public DbSet<ProductMessages> ProductMessages { get; set; }
+        public DbSet<ReplyProductMessage> ReplyProductMessages { get; set; }
     }
 }

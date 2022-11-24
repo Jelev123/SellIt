@@ -31,5 +31,6 @@
         public ICollection<Image> Images { get; set; } = new HashSet<Image>();
 
         public ICollection<ProductMessages> ProductMessages { get; set; } = new HashSet<ProductMessages>();
+        public ICollection<ReplyProductMessage> ReplyProductMessages { get; set; } = new HashSet<ReplyProductMessage>();
     }
 }

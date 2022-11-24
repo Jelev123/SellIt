@@ -23,5 +23,7 @@
         public bool IsAprooved { get; set; }
 
         public decimal Price { get; set; }
+
+        public int MessagesCount { get; set; }
     }
 }
