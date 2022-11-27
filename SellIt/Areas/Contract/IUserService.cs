@@ -5,6 +5,6 @@
 
     public interface IUserService
     {
-        IEnumerable<SendMessageViewModel> AllProductMessages(string userId);
+        IEnumerable<SendMessageViewModel> AllProductUserMessages(string userId);
     }
 }

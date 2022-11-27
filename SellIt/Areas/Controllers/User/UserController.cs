@@ -30,10 +30,10 @@
             return Ok();
         }
 
-        public IActionResult AllUserMessages()
+        public IActionResult AllProductUserMessages()
         {
             var userId = this.userManager.GetUserId(User);
-            var all = this.userService.AllProductMessages(userId);
+            var all = this.userService.AllProductUserMessages(userId);
 
             return this.View(all);
         }

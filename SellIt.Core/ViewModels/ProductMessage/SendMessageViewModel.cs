@@ -23,6 +23,8 @@
 
         public int ReplyedProductMessagesCount { get; set; }
 
+        public int ProductMessageId { get; set; }
+
         public List<ReplyProductMessagesViewModel> ReplyProductMessages { get; set; }
     }
 }
