@@ -12,8 +12,8 @@ using SellIt.Infrastructure.Data;
 namespace SellIt.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221128143304_a")]
-    partial class a
+    [Migration("20221128194235_asd")]
+    partial class asd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -536,7 +536,7 @@ namespace SellIt.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("SellIt.Infrastructure.Data.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Messages")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -590,6 +590,8 @@ namespace SellIt.Infrastructure.Migrations
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.User", b =>
                 {
+                    b.Navigation("Messages");
+
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618

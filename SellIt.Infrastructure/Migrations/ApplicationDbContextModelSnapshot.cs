@@ -533,7 +533,7 @@ namespace SellIt.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("SellIt.Infrastructure.Data.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Messages")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -587,6 +587,8 @@ namespace SellIt.Infrastructure.Migrations
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.User", b =>
                 {
+                    b.Navigation("Messages");
+
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618
