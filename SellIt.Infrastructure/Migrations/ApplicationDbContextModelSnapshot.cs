@@ -159,32 +159,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.AllMessages", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("MessageId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserReplyerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserSenderId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MessageId");
-
-                    b.ToTable("AllMessages");
-                });
-
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -475,17 +449,6 @@ namespace SellIt.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.AllMessages", b =>
-                {
-                    b.HasOne("SellIt.Infrastructure.Data.Models.Message", "Message")
-                        .WithMany()
-                        .HasForeignKey("MessageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Message");
-                });
-
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Image", b =>
                 {
                     b.HasOne("SellIt.Infrastructure.Data.Models.User", "AddedByUser")
@@ -533,7 +496,7 @@ namespace SellIt.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("SellIt.Infrastructure.Data.Models.User", "User")
-                        .WithMany()
+                        .WithMany("Messages")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -587,6 +550,8 @@ namespace SellIt.Infrastructure.Migrations
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.User", b =>
                 {
+                    b.Navigation("Messages");
+
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618

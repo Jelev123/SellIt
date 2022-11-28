@@ -22,7 +22,6 @@
         public DbSet<LikedProduct> LikedProducts { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Message> Messages { get; set; }
-        public DbSet<AllMessages> AllMessages { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }
