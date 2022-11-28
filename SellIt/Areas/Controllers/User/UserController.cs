@@ -2,7 +2,8 @@
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using SellIt.Areas.Contract;
+    using SellIt.Areas.User.Contracts;
+    using SellIt.Areas.User.ViewModels;
     using SellIt.Infrastructure.Data.Models;
 
 
@@ -12,11 +13,11 @@
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IUserService userService;
 
-        public UserController(RoleManager<IdentityRole> roleManager, IUserService userService, UserManager<User> userManager)
+        public UserController(RoleManager<IdentityRole> roleManager, UserManager<User> userManager, IUserService userService)
         {
             this.roleManager = roleManager;
-            this.userService = userService;
             this.userManager = userManager;
+            this.userService = userService;
         }
 
         public async Task<IActionResult> CreateRole()
@@ -30,12 +31,24 @@
             return Ok();
         }
 
-        public IActionResult AllProductUserMessages()
+        public IActionResult SendMessage()
+        {
+            return this.View();
+        }
+
+        [HttpPost]
+        public IActionResult SendMessage(SendMessageViewModel send)
         {
             var userId = this.userManager.GetUserId(User);
-            var all = this.userService.AllProductUserMessages(userId);
+            var userName = this.userManager.GetUserName(User);
 
-            return this.View(all);
+            var sendMessage = this.userService.SendMessage(send, userId,userName);
+            return this.Redirect("/");
+        }
+        public IActionResult GetAllProductMessages(int id)
+        {
+            var allMessages = this.userService.GetAllProductMessages(id);
+            return this.View(allMessages);
         }
     }
 }

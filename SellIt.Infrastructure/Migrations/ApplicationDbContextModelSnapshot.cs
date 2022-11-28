@@ -159,6 +159,32 @@ namespace SellIt.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.AllMessages", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("MessageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserReplyerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserSenderId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageId");
+
+                    b.ToTable("AllMessages");
+                });
+
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -234,6 +260,41 @@ namespace SellIt.Infrastructure.Migrations
                     b.ToTable("LikedProducts");
                 });
 
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Text")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Order", b =>
                 {
                     b.Property<int>("Id")
@@ -296,69 +357,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.ProductMessages", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ProductMessages");
-                });
-
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.ReplyProductMessage", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductMessagesId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.HasIndex("ProductMessagesId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("ReplyProductMessages");
                 });
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.User", b =>
@@ -426,24 +424,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.UserMessages", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserMessages");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -495,6 +475,17 @@ namespace SellIt.Infrastructure.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.AllMessages", b =>
+                {
+                    b.HasOne("SellIt.Infrastructure.Data.Models.Message", "Message")
+                        .WithMany()
+                        .HasForeignKey("MessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Message");
+                });
+
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Image", b =>
                 {
                     b.HasOne("SellIt.Infrastructure.Data.Models.User", "AddedByUser")
@@ -518,6 +509,25 @@ namespace SellIt.Infrastructure.Migrations
                 {
                     b.HasOne("SellIt.Infrastructure.Data.Models.Product", "Product")
                         .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SellIt.Infrastructure.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Message", b =>
+                {
+                    b.HasOne("SellIt.Infrastructure.Data.Models.Product", "Product")
+                        .WithMany("Messages")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -561,55 +571,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.ProductMessages", b =>
-                {
-                    b.HasOne("SellIt.Infrastructure.Data.Models.Product", "Product")
-                        .WithMany("ProductMessages")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SellIt.Infrastructure.Data.Models.User", "User")
-                        .WithMany("ProductMessages")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.ReplyProductMessage", b =>
-                {
-                    b.HasOne("SellIt.Infrastructure.Data.Models.Product", null)
-                        .WithMany("ReplyProductMessages")
-                        .HasForeignKey("ProductId");
-
-                    b.HasOne("SellIt.Infrastructure.Data.Models.ProductMessages", "ProductMessages")
-                        .WithMany("ReplyProductMessages")
-                        .HasForeignKey("ProductMessagesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("SellIt.Infrastructure.Data.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("ProductMessages");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.UserMessages", b =>
-                {
-                    b.HasOne("SellIt.Infrastructure.Data.Models.User", "User")
-                        .WithMany("Messages")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -619,24 +580,13 @@ namespace SellIt.Infrastructure.Migrations
                 {
                     b.Navigation("Images");
 
+                    b.Navigation("Messages");
+
                     b.Navigation("Orders");
-
-                    b.Navigation("ProductMessages");
-
-                    b.Navigation("ReplyProductMessages");
-                });
-
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.ProductMessages", b =>
-                {
-                    b.Navigation("ReplyProductMessages");
                 });
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.User", b =>
                 {
-                    b.Navigation("Messages");
-
-                    b.Navigation("ProductMessages");
-
                     b.Navigation("Products");
                 });
 #pragma warning restore 612, 618

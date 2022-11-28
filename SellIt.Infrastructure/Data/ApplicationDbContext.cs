@@ -21,9 +21,8 @@
         public DbSet<Order> Orders { get; set; }
         public DbSet<LikedProduct> LikedProducts { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<AllMessages> AllMessages { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<UserMessages> UserMessages { get; set; }
-        public DbSet<ProductMessages> ProductMessages { get; set; }
-        public DbSet<ReplyProductMessage> ReplyProductMessages { get; set; }
     }
 }

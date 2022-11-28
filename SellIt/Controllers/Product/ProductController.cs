@@ -10,7 +10,6 @@
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
-    using SellIt.Core.ViewModels.ProductMessage;
     using SellIt.Infrastructure.Data.Models;
 
     public class ProductController : Controller

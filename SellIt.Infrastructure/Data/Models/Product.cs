@@ -29,8 +29,6 @@
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
 
         public ICollection<Image> Images { get; set; } = new HashSet<Image>();
-
-        public ICollection<ProductMessages> ProductMessages { get; set; } = new HashSet<ProductMessages>();
-        public ICollection<ReplyProductMessage> ReplyProductMessages { get; set; } = new HashSet<ReplyProductMessage>();
+        public ICollection<Message> Messages { get; set; } = new HashSet<Message>();
     }
 }
