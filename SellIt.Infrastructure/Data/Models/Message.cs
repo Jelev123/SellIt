@@ -19,5 +19,7 @@
         public User User { get; set; }
 
         public Product Product { get; set; }
+
+        public ICollection<ReplyMessage> ReplyMessages { get; set; } = new HashSet<ReplyMessage>();
     }
 }

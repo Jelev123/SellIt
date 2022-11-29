@@ -333,6 +333,37 @@ namespace SellIt.Infrastructure.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.ReplyMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MessageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ReplyText")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReplyerUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MessageId");
+
+                    b.HasIndex("ReplyerUserId");
+
+                    b.ToTable("ReplyMessages");
+                });
+
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -534,9 +565,33 @@ namespace SellIt.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.ReplyMessage", b =>
+                {
+                    b.HasOne("SellIt.Infrastructure.Data.Models.Message", "Message")
+                        .WithMany("ReplyMessages")
+                        .HasForeignKey("MessageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SellIt.Infrastructure.Data.Models.User", "ReplyerUser")
+                        .WithMany()
+                        .HasForeignKey("ReplyerUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Message");
+
+                    b.Navigation("ReplyerUser");
+                });
+
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Category", b =>
                 {
                     b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Message", b =>
+                {
+                    b.Navigation("ReplyMessages");
                 });
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Product", b =>

@@ -16,6 +16,10 @@ using SellIt.Infrastructure.Data.Models;
 using System.Globalization;
 using SellIt.Core.Contracts.Search;
 using SellIt.Core.Services.Search;
+using SellIt.Areas.User.Contracts;
+using SellIt.Areas.User.Services;
+using SellIt.Core.Contracts.Messages;
+using SellIt.Core.Services.Message;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +41,8 @@ builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IForAproovedService, ForAproovedService>();
 builder.Services.AddTransient<ICountService, CountService>();
 builder.Services.AddTransient<ISearchService, SearchService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IMessagesService, MessageService>();
 
 Account cloudinaryCredentials = new Account(
                 builder.Configuration["Cloudinary:CloudName"],

@@ -1,0 +1,33 @@
+﻿@using SellIt.Core.ViewModels.Messages
+@model IEnumerable<AllProductMessagesViewModel>
+
+@foreach (var item in Model)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User</th>
+                <th scope="col">Message</th>
+                <th scope="col">Product</th>
+                <th scope="col">Date</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.Text</td>
+                <td>@item.ProductName</td>
+                <td>@item.Date</td>
+            </tr>
+            @foreach (var replyMessage in item.ReplyMessages)
+            {
+            <td>@replyMessage.ReplyerName</td>
+            <td>@replyMessage.ReplyText</td>
+            }
+
+
+        </tbody>
+            <a asp-action="ReplyMessage" asp-controller="User" asp-route-id="@item.Id" class="btn btn-success">Reply</a>
+    </table>
+}
