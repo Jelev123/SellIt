@@ -26,8 +26,8 @@
                 ReplyText = sendMessage.Replytext,
                 Date = DateTime.UtcNow,
                 ReplyerUserId = userId,
+                ReplayerUserName = userName,
             };
-
             data.ReplyMessages.Add(reply);
             data.SaveChanges();
             return Task.CompletedTask;
@@ -43,7 +43,6 @@
                 UserName = userName,
                 Date = DateTime.UtcNow,
             };
-
             data.Messages.Add(send);
             data.SaveChanges();
             return Task.CompletedTask;
@@ -66,9 +65,11 @@
                     {
                         ReplyerName = s.ReplyerUser.UserName,
                         ReplyText = s.ReplyText,
+                        ProductName = s.Message.Product.Name,
+                        Date = s.Date,
                     }).ToList()
-                });
-
+                })
+                .OrderByDescending(s => s.Text);
             return all;
         }
 
@@ -87,9 +88,32 @@
                                   {
                                       ReplyerName = s.ReplyerUser.UserName,
                                       ReplyText = s.ReplyText,
+                                      Date = s.Date,
+                                      ProductName = s.Message.Product.Name,
                                   }).ToList()
                               });
+            return allMessages;
+        }
 
+        public SendMessageViewModel GetProductMessageById(int id)
+        {
+            var allMessages = this.data.Messages
+                 .Where(s => s.Id == id)
+                               .Select(s => new SendMessageViewModel
+                               {
+                                   Id = s.Id,
+                                   Text = s.Text,
+                                   ProductName = s.Product.Name,
+                                   ProductId = s.ProductId,
+                                   UserName = s.UserName,
+                                   ReplyMessages = s.ReplyMessages.Select(s => new AllReplyProductMessagesViewModel
+                                   {
+                                       ReplyerName = s.ReplyerUser.UserName,
+                                       ReplyText = s.ReplyText,
+                                       Date = s.Date,
+                                       ProductName = s.Message.Product.Name,
+                                   }).ToList()
+                               }).FirstOrDefault();
             return allMessages;
         }
     }

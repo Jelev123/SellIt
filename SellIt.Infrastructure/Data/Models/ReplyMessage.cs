@@ -6,6 +6,8 @@
 
         public string ReplyerUserId { get; set; }
 
+        public string ReplayerUserName { get; set; }
+
         public int MessageId { get; set; }
 
         public string ReplyText { get; set; }

@@ -7,5 +7,8 @@
         public string ReplyerName { get; set; }
 
         public string ReplyText { get; set; }
+
+        public string ProductName { get; set; }
+        public DateTime Date { get; set; }
     }
 }

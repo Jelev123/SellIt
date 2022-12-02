@@ -20,12 +20,18 @@
                 <td>@item.ProductName</td>
                 <td>@item.Date</td>
             </tr>
+
             @foreach (var replyMessage in item.ReplyMessages)
             {
-            <td>@replyMessage.ReplyerName</td>
-            <td>@replyMessage.ReplyText</td>
+                <tr>
+                    <td>@replyMessage.ReplyerName</td>
+                    <td>@replyMessage.ReplyText</td>
+                    <td>@replyMessage.ProductName</td>
+                    <td>@replyMessage.Date</td>
+                    <td></td>
+                </tr>
             }
+            <a asp-action="ReplyMessage" asp-controller="Message" asp-route-id="@item.Id" class="btn btn-success">Reply</a>
         </tbody>
-        <a asp-action="ReplyMessage" asp-controller="User" asp-route-id="@item.Id" class="btn btn-success">Reply</a>
     </table>
 }

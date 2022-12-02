@@ -347,6 +347,10 @@ namespace SellIt.Infrastructure.Migrations
                     b.Property<int>("MessageId")
                         .HasColumnType("int");
 
+                    b.Property<string>("ReplayerUserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ReplyText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
