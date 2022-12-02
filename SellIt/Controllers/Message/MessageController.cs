@@ -51,5 +51,12 @@
             var reply = this.messagesService.ReplyMessage(sendMessage, userId, userName, id);
             return this.Redirect("/");
         }
+
+        public IActionResult AllMessages()
+        {
+            var userId = this.userManager.GetUserId(User);
+            var allMessages = this.messagesService.AllMessages(userId);
+            return this.View(allMessages);
+        }
     }
 }

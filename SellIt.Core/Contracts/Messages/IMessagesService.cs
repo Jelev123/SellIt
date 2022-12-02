@@ -8,5 +8,7 @@
         Task SendMessage(SendMessageViewModel sendMessage, string userId, string userName, int id);
         Task ReplyMessage(SendMessageViewModel sendMessage, string userId, string userName, int id);
         IEnumerable<AllProductMessagesViewModel> AllProductMessages(int id);
+
+        IEnumerable<SendMessageViewModel> AllMessages(string userId);
     }
 }

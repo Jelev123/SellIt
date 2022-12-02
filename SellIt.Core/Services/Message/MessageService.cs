@@ -72,5 +72,28 @@
             return all;
         }
 
+        public IEnumerable<SendMessageViewModel> AllMessages(string userId)
+        {
+            var allMessages = from M in data.Messages
+                              join RM in data.ReplyMessages
+                              on M.Id equals RM.MessageId
+                              where M.UserId == userId || RM.ReplyerUserId == userId
+                              select new SendMessageViewModel
+                              {
+                                  Text = M.Text,
+                                  Replytext = RM.ReplyText,
+                                  ProductName = M.Product.Name,
+                                  ProductId = M.ProductId,
+                                  UserName = M.UserName,
+                                  ReplayerUserName = RM.ReplyerUser.UserName,
+                                  ReplyMessages = M.ReplyMessages.Select(s => new AllReplyProductMessagesViewModel
+                                  {
+                                      ReplyerName = RM.ReplyerUser.UserName,
+                                      ReplyText = RM.ReplyText,
+                                  }).ToList()
+                              };
+
+            return allMessages;
+        }
     }
 }
