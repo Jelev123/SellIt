@@ -80,6 +80,7 @@
                               where M.UserId == userId || RM.ReplyerUserId == userId
                               select new SendMessageViewModel
                               {
+                                  Id = M.Id,
                                   Text = M.Text,
                                   Replytext = RM.ReplyText,
                                   ProductName = M.Product.Name,
