@@ -74,25 +74,21 @@
 
         public IEnumerable<SendMessageViewModel> AllMessages(string userId)
         {
-            var allMessages = from M in data.Messages
-                              join RM in data.ReplyMessages
-                              on M.Id equals RM.MessageId
-                              where M.UserId == userId || RM.ReplyerUserId == userId
-                              select new SendMessageViewModel
+            var allMessages = this.data.Messages
+                .Where(s => s.UserId == userId)
+                              .Select(s => new SendMessageViewModel
                               {
-                                  Id = M.Id,
-                                  Text = M.Text,
-                                  Replytext = RM.ReplyText,
-                                  ProductName = M.Product.Name,
-                                  ProductId = M.ProductId,
-                                  UserName = M.UserName,
-                                  ReplayerUserName = RM.ReplyerUser.UserName,
-                                  ReplyMessages = M.ReplyMessages.Select(s => new AllReplyProductMessagesViewModel
+                                  Id = s.Id,
+                                  Text = s.Text,
+                                  ProductName = s.Product.Name,
+                                  ProductId = s.ProductId,
+                                  UserName = s.UserName,
+                                  ReplyMessages = s.ReplyMessages.Select(s => new AllReplyProductMessagesViewModel
                                   {
-                                      ReplyerName = RM.ReplyerUser.UserName,
-                                      ReplyText = RM.ReplyText,
+                                      ReplyerName = s.ReplyerUser.UserName,
+                                      ReplyText = s.ReplyText,
                                   }).ToList()
-                              };
+                              });
 
             return allMessages;
         }
