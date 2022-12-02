@@ -37,4 +37,8 @@
     <ProjectReference Include="..\SellIt.Core\SellIt.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+
 </Project>
