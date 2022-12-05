@@ -16,6 +16,8 @@
 
         public string ProductName { get; set; }
 
+        public int ProductId { get; set; }
+
         public DateTime Date { get; set; }
 
         public string Image { get; set; }

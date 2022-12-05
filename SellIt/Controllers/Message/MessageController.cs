@@ -29,13 +29,13 @@
         }
         public IActionResult SendMessage(int id)
         {
-            var userId = this.userManager.GetUserId(User);
-            var message = this.data.Messages.Where(s => s.UserId == userId).FirstOrDefault();
+            //var userId = this.userManager.GetUserId(User);
+            //var message = this.data.Messages.Where(s => s.UserId == userId).FirstOrDefault();
 
-            if (message.UserId == userId)
-            {
-                return RedirectToAction("ReplyMessage", new { id = message.Id });
-            }
+            //if (message != null && message.UserId == userId)
+            //{
+            //    return RedirectToAction("ReplyMessage", new { id = message.Id });
+            //}
             return this.View();
         }
 
@@ -44,7 +44,7 @@
         {
             var userId = this.userManager.GetUserId(User);
             var userName = this.userManager.GetUserName(User);
-            var send = this.messagesService.SendMessage(sendMessage, userId, userName, id);
+            this.messagesService.SendMessage(sendMessage, userId, userName, id);
             return this.Redirect("/");
         }
 
@@ -72,6 +72,12 @@
         public IActionResult GetProductMessageById(int id)
         {
             var message = this.messagesService.GetProductMessageById(id);
+            return this.View(message);
+        }
+        public IActionResult GetMessageByUserId(int id)
+        {
+            var userId = this.userManager.GetUserId(User);
+            var message = this.messagesService.GetMessageByUserId(userId, id);
             return this.View(message);
         }
     }

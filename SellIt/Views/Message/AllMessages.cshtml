@@ -7,7 +7,6 @@
         <thead>
             <tr>
                 <th scope="col">User</th>
-                <th scope="col">Message</th>
                 <th scope="col">Product</th>
                 <th scope="col">Date</th>
                 <th></th>
@@ -15,23 +14,11 @@
         </thead>
         <tbody>
             <tr>
-                <td>@item.UserName</td>
-                <td>@item.Text</td>
+                <td>@item.UserName</td>            
                 <td>@item.ProductName</td>
                 <td>@item.Date</td>
             </tr>
-
-            @foreach (var replyMessage in item.ReplyMessages)
-            {
-                <tr>
-                    <td>@replyMessage.ReplyerName</td>
-                    <td>@replyMessage.ReplyText</td>
-                    <td>@replyMessage.ProductName</td>
-                    <td>@replyMessage.Date</td>
-                    <td></td>
-                </tr>
-            }
-            <a asp-action="ReplyMessage" asp-controller="Message" asp-route-id="@item.Id" class="btn btn-success">Reply</a>
+            <a asp-action="GetMessageByUserId" asp-controller="Message" asp-route-id="@item.Id" class="btn btn-success">View</a>
         </tbody>
     </table>
 }

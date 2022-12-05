@@ -199,6 +199,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVxBbGxQcm9kdWN0TWVzc2FnZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/zzhelev/Documents/GitHub/SellIt/SellIt/Views/Message/GetMessageByUserId.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVxHZXRNZXNzYWdlQnlVc2VySWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/zzhelev/Documents/GitHub/SellIt/SellIt/Views/Message/GetProductMessageById.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVzc2FnZVxHZXRQcm9kdWN0TWVzc2FnZUJ5SWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
