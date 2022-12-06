@@ -81,6 +81,7 @@
                     UserId = s.UserId,
                     Price = s.Price,
                     Id = s.Id,
+                    UserName = s.User.UserName,
                     Gallery = s.Images.Select(s => new GalleryModel()
                     {
                         Name = s.Name,

@@ -29,7 +29,7 @@
     }
 }
 
-<div class="col-md-6">
+<div class="col-md-4">
     <ul class="list-group">
         <li class="list-group-item">@Model.Name</li>
     </ul>
@@ -66,10 +66,14 @@
             <li class="list-group-item">@Model.Price $</li>
         </ul>
     </div>
+    <hr />
 
+    @if (User.Identity.Name != Model.UserName)
+    {
+        <a asp-action="SendMessage" asp-controller="Message" asp-route-id="@Model.Id" class="btn btn-success">Send Message</a>
+    }
 </div>
 
-<a asp-action="SendMessage" asp-controller="Message" asp-route-id="@Model.Id" class="btn btn-success">Send Message</a>
 
 @if (Model.IsAprooved == false)
 {

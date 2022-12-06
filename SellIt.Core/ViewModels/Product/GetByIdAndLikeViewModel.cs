@@ -24,6 +24,8 @@
 
         public string UserId { get; set; }
 
+        public string UserName { get; set; }
+
         public bool IsAprooved { get; set; }
 
         public decimal Price { get; set; }
