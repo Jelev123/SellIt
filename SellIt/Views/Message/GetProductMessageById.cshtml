@@ -1,5 +1,5 @@
-﻿@using SellIt.Areas.ViewModels
-@model SendMessageViewModel
+﻿@using SellIt.Core.ViewModels.Messages
+@model ProductMessagesById
 
 <p>@Model.ProductName</p>
 <table class="table">
@@ -19,7 +19,7 @@
         @foreach (var replyMessage in Model.ReplyMessages)
         {
             <tr>
-                <td>@replyMessage.ReplyerName</td>
+                <td>@replyMessage.ReplyerUserName</td>
                 <td>@replyMessage.ReplyText</td>
                 <td>@replyMessage.Date</td>
             </tr>

@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Areas.ViewModels;
     using SellIt.Core.Contracts.Messages;
+    using SellIt.Core.ViewModels.Messages;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
@@ -54,11 +55,11 @@
         }
 
         [HttpPost]
-        public IActionResult ReplyMessage(SendMessageViewModel sendMessage, int id)
+        public IActionResult ReplyMessage(ReplyMessageViewModel replyMessage, int id)
         {
             var userId = this.userManager.GetUserId(User);
             var userName = this.userManager.GetUserName(User);
-            var reply = this.messagesService.ReplyMessage(sendMessage, userId, userName, id);
+            this.messagesService.ReplyMessage(replyMessage, userId, userName, id);
             return this.Redirect("/");
         }
 

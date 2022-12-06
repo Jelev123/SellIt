@@ -1,12 +1,12 @@
-﻿@using SellIt.Areas.ViewModels
-@model SendMessageViewModel
+﻿@using SellIt.Core.ViewModels.Messages
+@model ReplyMessageViewModel
 
 
 <form method="post" enctype="multipart/form-data">
     <div class="col-md-3">
         <div class="form-group">
-            <label asp-for="Replytext"></label>
-            <input asp-for="Replytext" class="form-control" />
+            <label asp-for="ReplyText"></label>
+            <input asp-for="ReplyText" class="form-control" />
         </div>
 </form>
 <div class="d-flex justify-content-center mt-3">
