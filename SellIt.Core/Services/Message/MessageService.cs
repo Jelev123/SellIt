@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Core.Services.Message
 {
     using SellIt.Areas.ViewModels;
+    using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.Messages;
     using SellIt.Core.ViewModels.Messages;
     using SellIt.Core.ViewModels.ReplyMessages;
@@ -13,10 +14,12 @@
     public class MessageService : IMessagesService
     {
         private readonly ApplicationDbContext data;
+        private readonly ICountService countService;
 
-        public MessageService(ApplicationDbContext data)
+        public MessageService(ApplicationDbContext data, ICountService countService)
         {
             this.data = data;
+            this.countService = countService;
         }
 
         public Task SendMessage(SendMessageViewModel sendMessage, string userId, string userName, int id)
@@ -61,6 +64,7 @@
                     UserName = s.UserName,
                     Date = s.Date,
                     ProductName = s.Product.Name,
+                    MessagesCount = countService.GetCount().ProductMessages,
                     Image = s.Product.Images.Select(s => s.URL).FirstOrDefault(),
                     ReplyMessages = s.ReplyMessages.Select(s => new AllReplyMessagesViewModel
                     {

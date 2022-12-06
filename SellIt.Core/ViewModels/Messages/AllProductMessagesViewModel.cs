@@ -18,6 +18,8 @@
 
         public string Image { get; set; }
 
+        public int MessagesCount { get; set; }
+
         public List<AllReplyMessagesViewModel> ReplyMessages { get; set; }
     }
 }

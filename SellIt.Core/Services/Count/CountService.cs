@@ -20,7 +20,7 @@
             {
                 ProductsToAprooveCount = this.data.Products.Where(s => s.IsAproved == false).Count(),
                 AllProducts = this.data.Products.Count(),
-
+                ProductMessages = this.data.Products.Count(),
             };
 
             return count;
