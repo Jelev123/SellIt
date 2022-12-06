@@ -8,6 +8,7 @@
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
     using System.Data.Entity;
+    using System.Linq;
 
     public class MessageService : IMessagesService
     {
@@ -75,28 +76,47 @@
 
         public IEnumerable<AllMessagesViewModel> AllMessages(string userId)
         {
-            var allMessages = from M in data.Messages
-                              join RM in data.ReplyMessages
-                              on M.Id equals RM.MessageId into joined
-                              from j in joined.DefaultIfEmpty()
-                              where M.UserId == userId || j.ReplyerUserId == userId
-                              select new AllMessagesViewModel
-                              {
-                                  Id = M.Id,
-                                  Text = M.Text,
-                                  ProductName = M.Product.Name,
-                                  UserName = M.UserName,
-                                  Date = M.Date,
-                                  ReplyMessages = M.ReplyMessages
-                                  .Select(s => new AllReplyMessagesViewModel
-                                  {
-                                      Id = j.Id,
-                                      MessageId = j.MessageId,
-                                      ReplyText = j.ReplyText,
-                                      ReplyerUserName = j.ReplayerUserName,
-                                      Date = j.Date,
-                                  }).ToList(),
-                              };
+            //var allMessages = from M in data.Messages
+            //                  join RM in data.ReplyMessages
+            //                  on M.Id equals RM.MessageId into joined
+            //                  from j in joined.DefaultIfEmpty()
+            //                  where j.ReplyerUserId == userId || M.UserId == userId
+            //                  select new AllMessagesViewModel
+            //                  {
+            //                      Id = M.Id,
+            //                      Text = M.Text,
+            //                      ProductName = M.Product.Name,
+            //                      UserName = M.UserName,
+            //                      Date = M.Date,
+            //                      ReplyMessages = M.ReplyMessages
+            //                      .Select(s => new AllReplyMessagesViewModel
+            //                      {
+            //                          Id = j.Id,
+            //                          MessageId = j.MessageId,
+            //                          ReplyText = j.ReplyText,
+            //                          ReplyerUserName = j.ReplayerUserName,
+            //                          Date = j.Date,
+            //                      }).ToList(),
+            //                  };
+
+
+            var allMessages = this.data.Messages
+                .Where(s => s.UserId == userId)
+                .Select(s => new AllMessagesViewModel
+                {
+                    Id = s.Id,
+                    Text = s.Text,
+                    UserName = s.UserName,
+                    Date = s.Date,
+                    ProductName = s.Product.Name,
+                    ReplyMessages = s.ReplyMessages.Select(s => new AllReplyMessagesViewModel
+                    {
+                        Date = s.Date,
+                        ReplyText = s.ReplyText,
+                        ReplyerUserName = s.ReplayerUserName,
+
+                    }).ToList()
+                }).ToList();
             return allMessages;
         }
 
@@ -111,6 +131,7 @@
                                    ProductName = s.Product.Name,
                                    ProductId = s.ProductId,
                                    UserName = s.UserName,
+                                   Image = s.Product.Images.Select(s => s.URL).FirstOrDefault(),
                                    ReplyMessages = s.ReplyMessages.Select(s => new AllReplyMessagesViewModel
                                    {
                                        ReplyerUserName = s.ReplyerUser.UserName,

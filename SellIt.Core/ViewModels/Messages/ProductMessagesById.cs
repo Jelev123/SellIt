@@ -16,6 +16,8 @@
 
         public DateTime Date { get; set; } = DateTime.UtcNow;
 
+        public string Image { get; set; }
+
         public List<AllReplyMessagesViewModel> ReplyMessages { get; set; }
     }
 }
