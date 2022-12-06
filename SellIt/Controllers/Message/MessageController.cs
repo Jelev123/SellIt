@@ -74,11 +74,5 @@
             var message = this.messagesService.GetProductMessageById(id);
             return this.View(message);
         }
-        public IActionResult GetMessageByUserId(int id)
-        {
-            var userId = this.userManager.GetUserId(User);
-            var message = this.messagesService.GetMessageByUserId(userId, id);
-            return this.View(message);
-        }
     }
 }

@@ -10,6 +10,5 @@
         IEnumerable<AllProductMessagesViewModel> AllProductMessages(int id);
         IEnumerable<SendMessageViewModel> AllMessages(string userId);
         SendMessageViewModel GetProductMessageById(int id);
-        SendMessageViewModel GetMessageByUserId(string userId, int id);
     }
 }
