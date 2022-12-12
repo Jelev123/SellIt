@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "eJ+xlgbh8zTykHX5QhAcZXczD65cy8Zx7edXCYqFI7U=",
+  "Hash": "QJo7nyOIaMdZeMa6F2BrEDSHIn2cZAihDzGVTXpWAsM=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1545,6 +1545,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\0497a8da-ae69-48e0-a117-e48c052b3f59_2578068.webp"
+    },
+    {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\04dc02e1-8c35-4562-a827-d58eb29c48d7_1610635327_12_5965.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/04dc02e1-8c35-4562-a827-d58eb29c48d7_1610635327_12_5965.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\04dc02e1-8c35-4562-a827-d58eb29c48d7_1610635327_12_5965.jpg"
     },
     {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\05407bed-4d31-409f-9d5a-60d8d72611cf_bmw-zseries-z4-firstedition-modellfinder.png",

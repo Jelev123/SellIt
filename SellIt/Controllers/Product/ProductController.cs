@@ -79,6 +79,12 @@
             return this.Redirect("/");
         }
 
+        public IActionResult DeleteProduct(int id)
+        {
+            this.productService.DeleteProduct(id);
+            return this.Redirect("/");
+        }
+
         public IActionResult GetProductById(int id)
         {
             var userId = this.userManager.GetUserId(User);

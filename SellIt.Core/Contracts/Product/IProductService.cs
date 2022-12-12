@@ -6,6 +6,8 @@
     {
         Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath);
 
+        void DeleteProduct(int id);
+
         GetByIdAndLikeViewModel GetById(int id, string userId);
 
         IEnumerable<AllProductViewModel> GetAllProducts();

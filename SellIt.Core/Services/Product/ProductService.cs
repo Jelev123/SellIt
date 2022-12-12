@@ -50,7 +50,12 @@
             return Task.CompletedTask;
         }
 
-       
+        public void DeleteProduct(int id)
+        {
+            var product = this.data.Products.FirstOrDefault(s => s.Id == id);
+            data.Remove(product);
+            data.SaveChanges();
+        }
 
         public IEnumerable<AllProductViewModel> GetAllProducts()
         {
