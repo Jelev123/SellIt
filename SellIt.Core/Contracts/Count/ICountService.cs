@@ -4,6 +4,6 @@
 
     public interface ICountService
     {
-        CountViewModel GetCount();
+        CountViewModel GetCount(int productId);
     }
 }

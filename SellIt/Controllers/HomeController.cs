@@ -24,10 +24,10 @@
             this.userManager = userManager;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
             var userId = this.userManager.GetUserId(User);
-            var count = this.countService.GetCount();
+            var count = this.countService.GetCount(id);
             var counts = new HomeViewModel
             {
                 ProductForAprooveCount = count.ProductsToAprooveCount,

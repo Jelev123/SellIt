@@ -7,15 +7,18 @@
     using System.Threading.Tasks;
     using System.Collections.Generic;
     using SellIt.Core.ViewModels;
+    using SellIt.Core.Contracts.Count;
 
     public class ProductService : IProductService
     {
         private readonly ApplicationDbContext data;
+        private readonly ICountService countService;
 
 
-        public ProductService(ApplicationDbContext data)
+        public ProductService(ApplicationDbContext data, ICountService countService)
         {
             this.data = data;
+            this.countService = countService;
         }
 
         public Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath)

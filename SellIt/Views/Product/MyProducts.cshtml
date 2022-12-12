@@ -25,7 +25,7 @@
                 </section>
             </div>
             <a asp-action="AllProductMessages" asp-controller="Message" asp-route-id="@item.Id" class="btn btn-success">
-                 <span class="badge bg-danger"></span>
+                 <span class="badge bg-danger">@item.MessagesCount</span>
             <i class="fas fa-envelope"></i>
                 All Messages
             </a>

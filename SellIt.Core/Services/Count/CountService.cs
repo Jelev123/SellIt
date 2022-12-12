@@ -14,13 +14,14 @@
             this.data = data;
         }
 
-        public CountViewModel GetCount()
+        public CountViewModel GetCount(int productId)
         {
             var count = new CountViewModel
             {
                 ProductsToAprooveCount = this.data.Products.Where(s => s.IsAproved == false).Count(),
                 AllProducts = this.data.Products.Count(),
-                ProductMessages = this.data.Products.Count(),
+                ProductMessages = this.data.Messages.Where(s => s.ProductId == productId).Count()
+                + this.data.ReplyMessages.Where(s => s.Message.ProductId == productId).Count(),
             };
 
             return count;

@@ -64,7 +64,6 @@
                     UserName = s.UserName,
                     Date = s.Date,
                     ProductName = s.Product.Name,
-                    MessagesCount = countService.GetCount().ProductMessages,
                     Image = s.Product.Images.Select(s => s.URL).FirstOrDefault(),
                     ReplyMessages = s.ReplyMessages.Select(s => new AllReplyMessagesViewModel
                     {
