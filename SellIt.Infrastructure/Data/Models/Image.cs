@@ -8,7 +8,7 @@
 
     public class Image
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string ImageId { get; set; } = Guid.NewGuid().ToString();
 
         public int ProductId { get; set; }
 

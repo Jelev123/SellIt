@@ -8,6 +8,8 @@
 
         void DeleteProduct(int id);
 
+        void EditProduct(EditProductViewModel editProduct, int id, string userId);
+
         GetByIdAndLikeViewModel GetById(int id, string userId);
 
         IEnumerable<AllProductViewModel> GetAllProducts();

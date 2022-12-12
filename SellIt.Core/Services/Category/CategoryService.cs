@@ -32,6 +32,7 @@
             var all = this.data.Categories
                 .Select(s => new AllCategoriesViewModel
                 {
+                    Id=s.Id,
                     Name = s.Name
                 });
 

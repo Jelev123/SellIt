@@ -52,8 +52,32 @@
 
         public void DeleteProduct(int id)
         {
-            var product = this.data.Products.FirstOrDefault(s => s.Id == id);
+            var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
             data.Remove(product);
+            data.SaveChanges();
+        }
+
+        public void EditProduct(EditProductViewModel editProduct, int id, string userId)
+        {
+            var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
+
+            product.Name = editProduct.Name;
+            product.Description = editProduct.Description;
+            product.Price = editProduct.Price;
+
+            if (editProduct.GalleryFiles != null)
+            {
+                foreach (var file in editProduct.Gallery)
+                {
+                    product.Images.Add(new Image()
+                    {
+                        Name = file.Name,
+                        URL = file.URL,
+                        AddedByUserId = userId
+                    });
+                }
+            }       
+            data.Update(product);
             data.SaveChanges();
         }
 
@@ -66,7 +90,7 @@
                     CategoryName = s.Category.Name,
                     Description = s.Description,
                     UserId = s.UserId,
-                    Id = s.Id,
+                    Id = s.ProductId,
                     Price = s.Price,
                     CoverPhoto = s.Images.FirstOrDefault().URL
                 });
@@ -77,7 +101,7 @@
         public GetByIdAndLikeViewModel GetById(int id, string userId)
         {           
             var product = this.data.Products
-                .Where(s => s.Id == id)
+                .Where(s => s.ProductId == id)
                 .Select(s => new GetByIdAndLikeViewModel
                 {
                     Name = s.Name,
@@ -88,18 +112,21 @@
                     LikedCount = s.LikedCount,
                     UserId = s.UserId,
                     Price = s.Price,
-                    Id = s.Id,
+                    Id = s.ProductId,
                     UserName = s.User.UserName,
                     Gallery = s.Images.Select(s => new GalleryModel()
                     {
+                        Id = s.ImageId,
+                        ImageId = s.ImageId,
                         Name = s.Name,
                         URL = s.URL,
+                        ProductId = s.ProductId
                     }).ToList(),
                 }).FirstOrDefault();
 
             if (product.UserId != userId)
             {
-                var viewdProduct = this.data.Products.FirstOrDefault(s => s.Id == id);
+                var viewdProduct = this.data.Products.FirstOrDefault(s => s.ProductId == id);
                 viewdProduct.Viewed++;
                 data.SaveChanges();
             }
@@ -110,7 +137,7 @@
 
         public GetByIdAndLikeViewModel Like(int id, string currentUserId)
         {
-            var productToLike = this.data.Products.FirstOrDefault(s => s.Id == id);
+            var productToLike = this.data.Products.FirstOrDefault(s => s.ProductId == id);
 
             var product = this.data.Products.
               Select(s => new GetByIdAndLikeViewModel
@@ -122,7 +149,7 @@
                   Viewed = s.Viewed,
                   LikedCount = s.LikedCount,
                   UserId = s.UserId,
-                  Id = s.Id,
+                  Id = s.ProductId,
                   IsLiked = s.IsLiked,
                   Gallery = s.Images.Select(s => new GalleryModel()
                   {
@@ -186,7 +213,7 @@
                 .Where(s => s.UserId == userId)
                 .Select(x => new MyProductsViewModel
                 {
-                    Id = x.Id,
+                    Id = x.ProductId,
                     Name = x.Name,
                     CategoryName = x.Category.Name,
                     Description = x.Description,
@@ -205,7 +232,7 @@
                 .Where(s => s.IsAproved == true)
                 .Select(s => new IndexRandomViewModel()
                 {
-                    Id = s.Id,
+                    Id = s.ProductId,
                     Name = s.Name,
                     CategoryName = s.Category.Name,
                     CoverPhoto = s.Images.FirstOrDefault().URL,

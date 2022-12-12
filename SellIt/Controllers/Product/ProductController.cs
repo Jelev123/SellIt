@@ -85,6 +85,49 @@
             return this.Redirect("/");
         }
 
+        public IActionResult EditProduct(int id)
+        {
+            var userId = this.userManager.GetUserId(User);
+
+            var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
+
+            this.ViewData["categories"] = categories.Select(s => new AddProductViewModel
+            {
+                CategoryName = s.Name,
+                CategoryId = s.Id,
+                
+            }).ToList();
+
+            var product = this.productService.GetById(id, userId);
+            return this.View(product);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditProduct(EditProductViewModel editProduct, int id)
+        {
+            var userId = this.userManager.GetUserId(User);
+
+            if (editProduct.GalleryFiles != null)
+            {
+                string folder = "images/gallery/";
+
+                editProduct.Gallery = new List<GalleryModel>();
+
+                foreach (var file in editProduct.GalleryFiles)
+                {
+                    var gallery = new GalleryModel()
+                    {
+                        Name = file.FileName,
+                        URL = await UploadImage(folder, file)
+                    };
+                    editProduct.Gallery.Add(gallery);
+                }
+            }
+
+            this.productService.EditProduct(editProduct, id, userId);
+            return this.RedirectToAction("MyProducts");
+        }
+
         public IActionResult GetProductById(int id)
         {
             var userId = this.userManager.GetUserId(User);

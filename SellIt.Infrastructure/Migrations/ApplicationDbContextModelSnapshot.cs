@@ -178,7 +178,7 @@ namespace SellIt.Infrastructure.Migrations
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Image", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<string>("ImageId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AddedByUserId")
@@ -195,7 +195,7 @@ namespace SellIt.Infrastructure.Migrations
                     b.Property<string>("URL")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ImageId");
 
                     b.HasIndex("AddedByUserId");
 
@@ -289,11 +289,11 @@ namespace SellIt.Infrastructure.Migrations
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -324,7 +324,7 @@ namespace SellIt.Infrastructure.Migrations
                     b.Property<int>("Viewed")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ProductId");
 
                     b.HasIndex("CategoryId");
 

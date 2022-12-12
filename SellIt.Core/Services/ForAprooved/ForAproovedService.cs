@@ -26,7 +26,7 @@
                 {
                     Name = s.Name,
                     CategoryName = s.Category.Name,
-                    Id = s.Id,
+                    Id = s.ProductId,
                     CoverPhoto =  s.Images.FirstOrDefault().URL
                 });
             return allProducts;
@@ -34,7 +34,7 @@
 
         public async Task SetAproove(int id)
         {       
-            var product = this.data.Products.FirstOrDefault(s => s.Id == id);
+            var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
             product.IsAproved = true;
             data.SaveChangesAsync();
         }
