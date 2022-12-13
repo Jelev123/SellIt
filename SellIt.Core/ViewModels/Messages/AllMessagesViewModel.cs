@@ -14,6 +14,8 @@
 
         public string ReplyText { get; set; }
 
+        public string Photo { get; set; }
+
         public List<AllReplyMessagesViewModel> ReplyMessages { get; set; }
     }
 }

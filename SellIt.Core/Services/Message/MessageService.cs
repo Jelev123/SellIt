@@ -79,29 +79,6 @@
 
         public IEnumerable<AllMessagesViewModel> AllMessages(string userId)
         {
-            //var allMessages = from M in data.Messages
-            //                  join RM in data.ReplyMessages
-            //                  on M.Id equals RM.MessageId into joined
-            //                  from j in joined.DefaultIfEmpty()
-            //                  where j.ReplyerUserId == userId || M.UserId == userId
-            //                  select new AllMessagesViewModel
-            //                  {
-            //                      Id = M.Id,
-            //                      Text = M.Text,
-            //                      ProductName = M.Product.Name,
-            //                      UserName = M.UserName,
-            //                      Date = M.Date,
-            //                      ReplyMessages = M.ReplyMessages
-            //                      .Select(s => new AllReplyMessagesViewModel
-            //                      {
-            //                          Id = j.Id,
-            //                          MessageId = j.MessageId,
-            //                          ReplyText = j.ReplyText,
-            //                          ReplyerUserName = j.ReplayerUserName,
-            //                          Date = j.Date,
-            //                      }).ToList(),
-            //                  };
-
 
             var allMessages = this.data.Messages
                 .Where(s => s.UserId == userId)
@@ -112,6 +89,7 @@
                     UserName = s.UserName,
                     Date = s.Date,
                     ProductName = s.Product.Name,
+                    Photo = s.Product.Images.FirstOrDefault().URL, 
                     ReplyMessages = s.ReplyMessages.Select(s => new AllReplyMessagesViewModel
                     {
                         Date = s.Date,

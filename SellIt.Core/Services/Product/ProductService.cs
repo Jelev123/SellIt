@@ -33,6 +33,7 @@
                 Name = addProduct.Name,
                 Description = addProduct.Description,
                 Category = category,
+                CategoryId = category.Id,
                 UserId = userId,
                 Price = addProduct.Price,
             };
@@ -66,9 +67,11 @@
         {
             imageService.CheckGallery(editProduct);
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
+            var category = this.data.Categories.FirstOrDefault(s => s.Name == editProduct.CategoryName);
             product.Name = editProduct.Name;
             product.Description = editProduct.Description;
             product.Price = editProduct.Price;
+            product.CategoryId = category.Id;
 
             if (editProduct.GalleryFiles != null)
             {
@@ -111,6 +114,7 @@
                 {
                     Name = s.Name,
                     CategoryName = s.Category.Name,
+                    CategoryId = s.CategoryId,
                     Description = s.Description,
                     IsAprooved = s.IsAproved,
                     Viewed = s.Viewed,
