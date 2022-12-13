@@ -4,11 +4,11 @@
 
     public interface IProductService
     {
-        Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath);
+        Task AddProduct(AddEditProductViewModel addProduct, string userId, string imagePath);
 
         void DeleteProduct(int id);
 
-        void EditProduct(EditProductViewModel editProduct, int id, string userId);
+        void EditProduct(AddEditProductViewModel editProduct, int id, string userId);
 
         GetByIdAndLikeViewModel GetById(int id, string userId);
 

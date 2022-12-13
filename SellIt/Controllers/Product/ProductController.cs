@@ -5,6 +5,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Contracts.Category;
+    using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
     using SellIt.Core.ViewModels;
@@ -19,14 +20,16 @@
         private readonly ISearchService searchService;
         private readonly UserManager<User> userManager;
         private readonly IWebHostEnvironment environment;
+        private readonly IImageService imageService;
 
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService)
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService, IImageService imageService)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.userManager = userManager;
             this.environment = environment;
             this.searchService = searchService;
+            this.imageService = imageService;
         }
 
 
@@ -35,7 +38,7 @@
         {
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
 
-            this.ViewData["categories"] = categories.Select(s => new AddProductViewModel
+            this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {
                 CategoryName = s.Name,
             }).ToList();
@@ -44,38 +47,10 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct(AddProductViewModel addProduct)
+        public async Task<IActionResult> AddProduct(AddEditProductViewModel addProduct)
         {
             var user = this.userManager.GetUserId(User);
-
-            //if (!ModelState.IsValid)
-            //{
-            //    var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
-
-            //    this.ViewData["categories"] = categories.Select(s => new AddProductViewModel
-            //    {
-            //        CategoryName = s.Name,
-            //    }).ToList();
-            //    return this.View(addProduct);
-            //}
-
-            if (addProduct.GalleryFiles != null)
-            {
-                string folder = "images/gallery/";
-
-                addProduct.Gallery = new List<GalleryModel>();
-
-                foreach (var file in addProduct.GalleryFiles)
-                {
-                    var gallery = new GalleryModel()
-                    {
-                        Name = file.FileName,
-                        URL = await UploadImage(folder, file)
-                    };
-                    addProduct.Gallery.Add(gallery);
-                }
-            }
-            this.productService.AddProduct(addProduct, user, $"{this.environment.WebRootPath}/images");
+            await this.productService.AddProduct(addProduct, user, $"{this.environment.WebRootPath}/images");
             return this.Redirect("/");
         }
 
@@ -91,11 +66,11 @@
 
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
 
-            this.ViewData["categories"] = categories.Select(s => new AddProductViewModel
+            this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {
                 CategoryName = s.Name,
                 CategoryId = s.Id,
-                
+
             }).ToList();
 
             var product = this.productService.GetById(id, userId);
@@ -103,27 +78,9 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditProduct(EditProductViewModel editProduct, int id)
+        public async Task<IActionResult> EditProduct(AddEditProductViewModel editProduct, int id)
         {
             var userId = this.userManager.GetUserId(User);
-
-            if (editProduct.GalleryFiles != null)
-            {
-                string folder = "images/gallery/";
-
-                editProduct.Gallery = new List<GalleryModel>();
-
-                foreach (var file in editProduct.GalleryFiles)
-                {
-                    var gallery = new GalleryModel()
-                    {
-                        Name = file.FileName,
-                        URL = await UploadImage(folder, file)
-                    };
-                    editProduct.Gallery.Add(gallery);
-                }
-            }
-
             this.productService.EditProduct(editProduct, id, userId);
             return this.RedirectToAction("MyProducts");
         }
@@ -155,7 +112,7 @@
 
         public IActionResult Search(string searchName)
         {
-            
+
             this.ViewData["searchProduct"] = searchName;
             var searchedProduct = this.searchService.SearchProduct(searchName);
 

@@ -8,21 +8,25 @@
     using System.Collections.Generic;
     using SellIt.Core.ViewModels;
     using SellIt.Core.Contracts.Count;
+    using SellIt.Core.Contracts.Image;
 
     public class ProductService : IProductService
     {
         private readonly ApplicationDbContext data;
         private readonly ICountService countService;
+        private readonly IImageService imageService;
 
 
-        public ProductService(ApplicationDbContext data, ICountService countService)
+        public ProductService(ApplicationDbContext data, ICountService countService, IImageService imageService)
         {
             this.data = data;
             this.countService = countService;
+            this.imageService = imageService;
         }
 
-        public Task AddProduct(AddProductViewModel addProduct, string userId, string imagePath)
+        public Task AddProduct(AddEditProductViewModel addProduct, string userId, string imagePath)
         {
+            imageService.CheckGallery(addProduct);
             var category = this.data.Categories.FirstOrDefault(s => s.Name == addProduct.CategoryName);
             var product = new Product
             {
@@ -32,6 +36,7 @@
                 UserId = userId,
                 Price = addProduct.Price,
             };
+
 
             product.Images = new List<Image>();
 
@@ -57,10 +62,10 @@
             data.SaveChanges();
         }
 
-        public void EditProduct(EditProductViewModel editProduct, int id, string userId)
+        public void EditProduct(AddEditProductViewModel editProduct, int id, string userId)
         {
+            imageService.CheckGallery(editProduct);
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
-
             product.Name = editProduct.Name;
             product.Description = editProduct.Description;
             product.Price = editProduct.Price;
@@ -220,7 +225,7 @@
                     UserId = userId,
                     IsAprooved = x.IsAproved,
                     Price = x.Price,
-                    CoverPhoto = x.Images.FirstOrDefault().URL,
+                    CoverPhoto = x.Images.FirstOrDefault().URL
                 });
 
             return myProducts;

@@ -37,7 +37,7 @@
             <label asp-for="CategoryName"></label>
             <select class="form-control text-primary" id="categories" asp-for="CategoryName">
                 <option selected disabled><------></></option>
-                @foreach (var category in (IEnumerable<AddProductViewModel>)this.ViewData["categories"])
+                @foreach (var category in (IEnumerable<AddEditProductViewModel>)this.ViewData["categories"])
                 {
                     <option value="@category.CategoryName">@category.CategoryName</option>
                 }
