@@ -25,8 +25,7 @@
 
         public User? User { get; set; }
 
-        public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
-
+        public ICollection<LikedProduct> LikedProducts { get; set; } = new HashSet<LikedProduct>();
         public ICollection<Image> Images { get; set; } = new HashSet<Image>();
         public ICollection<Message> Messages { get; set; } = new HashSet<Message>();
     }

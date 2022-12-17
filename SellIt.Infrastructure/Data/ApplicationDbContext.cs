@@ -18,7 +18,6 @@
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Order> Orders { get; set; }
         public DbSet<LikedProduct> LikedProducts { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Message> Messages { get; set; }

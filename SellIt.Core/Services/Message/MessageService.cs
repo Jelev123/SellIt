@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Core.Services.Message
 {
     using SellIt.Areas.ViewModels;
+    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.Messages;
     using SellIt.Core.ViewModels.Messages;
@@ -32,6 +33,7 @@
                 UserName = userName,
                 Date = DateTime.UtcNow,
             };
+
             data.Messages.Add(send);
             data.SaveChanges();
             return Task.CompletedTask;

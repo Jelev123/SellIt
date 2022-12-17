@@ -9,6 +9,7 @@
     using SellIt.Core.ViewModels;
     using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.Image;
+    using SellIt.Core.Constants;
 
     public class ProductService : IProductService
     {
@@ -38,6 +39,7 @@
                 Price = addProduct.Price,
             };
 
+            ProductConstants.IsCreated = true;
 
             product.Images = new List<Image>();
 
@@ -61,6 +63,7 @@
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
             data.Remove(product);
             data.SaveChanges();
+            ProductConstants.IsDeleted = true;
         }
 
         public void EditProduct(AddEditProductViewModel editProduct, int id, string userId)

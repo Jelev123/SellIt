@@ -269,24 +269,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Order", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Orders");
-                });
-
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Product", b =>
                 {
                     b.Property<int>("ProductId")
@@ -506,7 +488,7 @@ namespace SellIt.Infrastructure.Migrations
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.LikedProduct", b =>
                 {
                     b.HasOne("SellIt.Infrastructure.Data.Models.Product", "Product")
-                        .WithMany()
+                        .WithMany("LikedProducts")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -539,17 +521,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Order", b =>
-                {
-                    b.HasOne("SellIt.Infrastructure.Data.Models.Product", "Product")
-                        .WithMany("Orders")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Product", b =>
@@ -602,9 +573,9 @@ namespace SellIt.Infrastructure.Migrations
                 {
                     b.Navigation("Images");
 
-                    b.Navigation("Messages");
+                    b.Navigation("LikedProducts");
 
-                    b.Navigation("Orders");
+                    b.Navigation("Messages");
                 });
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.User", b =>

@@ -38,8 +38,19 @@
 
             ViewData["HomeViewModel"] = counts;
 
+            if (ProductConstants.IsCreated == true)
+            {
+                ProductConstants.IsCreated = false;
+                ViewData[MessageConstants.SuccessMessage] = "Created!";
+                return this.View(counts);
+            }
+            if (ProductConstants.IsDeleted == true)
+            {
+                ProductConstants.IsDeleted = false;
+                ViewData[MessageConstants.ErrorMessage] = "Deleted!";
+                return this.View(counts);
+            }
             ViewData[MessageConstants.SuccessMessage] = "Welcome!";
-
             return this.View(counts);
         }
 

@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
