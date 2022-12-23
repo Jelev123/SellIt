@@ -53,6 +53,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <form class="form-inline" asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                     <button type="submit" class="nav-link btn btn-link text-dark">Register</button>
                 </form>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form>
+                     <a class="navbar-brand" asp-action="CreateRole" asp-controller="User" style="text-align:center">
+                        CreateRole
+                    </a>
+                    </form>
+                }
+                 <form>
+                     <a class="navbar-brand" asp-action="AllUsers" asp-controller="User" style="text-align:center">
+                        AllUsers
+                    </a>
+                    </form>
+
                 @* <form method="get" asp-action="Search" asp-controller="Product">
                 <input type="search" value="@ViewData["searchProduct"]" name="searchName" placeholder="Search" style="width:200px" />
                 <a asp-action="Search"></a>
@@ -200,9 +214,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </aside>
         <!-- /.control-sidebar -->
         <!-- Main Footer -->
-       @* <footer class="main-footer">
-            <!-- To the right -->
-            <!-- Default to the left -->
+        @* <footer class="main-footer">
+        <!-- To the right -->
+        <!-- Default to the left -->
         </footer>*@
     </div>
     <!-- ./wrapper -->
@@ -214,7 +228,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
     <script src="~/js/adminlte.min.js"></script>
     <script src="~/plugins/toastr/toastr.min.js"></script>
-    <partial name="_UserMessage" />
+    <partial name="_Message" />
     @await RenderSectionAsync("Scripts", false)
 
 </body>

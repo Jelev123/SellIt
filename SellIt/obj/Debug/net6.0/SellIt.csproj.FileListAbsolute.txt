@@ -612,3 +612,5 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\refint\SellIt.d
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\SellIt.pdb
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\SellIt.genruntimeconfig.cache
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\ref\SellIt.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\Microsoft.AspNet.Identity.EntityFramework.dll

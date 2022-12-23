@@ -1,0 +1,22 @@
+﻿@using SellIt.Areas.ViewModel
+@model IEnumerable<AllUsersViewModel>
+
+@foreach (var item in Model)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User</th>
+                <th scope="col">Role</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.RoleName</td>
+            <td><a asp-action="SetRole" asp-controller="User" class="btn btn-dark" asp-route-UserId="@item.UserId">Set Role</a></td>
+            </tr>
+        </tbody>
+    </table>
+}

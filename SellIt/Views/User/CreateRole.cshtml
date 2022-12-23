@@ -1,0 +1,16 @@
+﻿@using SellIt.Areas.ViewModel
+@model RoleViewModel
+
+
+<form method="post" enctype="multipart/form-data">
+    <div class="col-md-3">
+        <div class="form-group">
+            <label asp-for="@Model.Name"></label>
+            <input asp-for="@Model.Name" class="form-control" />
+        </div>
+</form>
+<div class="d-flex justify-content-center mt-3">
+    <button class="btn btn-primary font-weight-bold">Create</button>
+</div>
+
+

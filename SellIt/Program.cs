@@ -20,6 +20,7 @@ using SellIt.Core.Contracts.Messages;
 using SellIt.Core.Services.Message;
 using SellIt.Core.Contracts.Image;
 using SellIt.Core.Services.Image;
+using SellIt.Areas.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -43,6 +44,7 @@ builder.Services.AddTransient<ICountService, CountService>();
 builder.Services.AddTransient<ISearchService, SearchService>();
 builder.Services.AddTransient<IMessagesService, MessageService>();
 builder.Services.AddTransient<IImageService, ImageService>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 Account cloudinaryCredentials = new Account(
                 builder.Configuration["Cloudinary:CloudName"],
