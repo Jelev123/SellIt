@@ -20,6 +20,8 @@ namespace SellIt.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.AspNetCore.WebUtilities;
     using Microsoft.Extensions.Logging;
+    using SellIt.Core.Constants;
+    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
     public class RegisterModel : PageModel
@@ -30,13 +32,18 @@ namespace SellIt.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<User> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ApplicationDbContext data;
+        private readonly RoleManager<IdentityRole> roleManager;
+
 
         public RegisterModel(
             UserManager<User> userManager,
             IUserStore<User> userStore,
             SignInManager<User> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext data,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +51,8 @@ namespace SellIt.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            this.data = data;
+            this.roleManager = roleManager;
         }
 
         /// <summary>
@@ -145,7 +154,28 @@ namespace SellIt.Areas.Identity.Pages.Account
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        if (data.Users.Count() == 1)
+                        {
+                            await roleManager.CreateAsync(new IdentityRole
+                            {
+                                Name = UserConstants.Role.RoleName,
+                            });
+
+                            var role = data.Roles.FirstOrDefault();
+                            data.UserRoles.Add(new IdentityUserRole<string>
+                            {
+                                RoleId = role.Id,
+                                UserId = user.Id
+                            });
+
+                            data.SaveChanges();
+                            return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+
+                        }
+                        else
+                        {
+                            return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        }
                     }
                     else
                     {
