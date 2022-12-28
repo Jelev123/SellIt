@@ -392,6 +392,9 @@ namespace SellIt.Infrastructure.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RoleId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -411,6 +414,8 @@ namespace SellIt.Infrastructure.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -557,6 +562,15 @@ namespace SellIt.Infrastructure.Migrations
                     b.Navigation("Message");
 
                     b.Navigation("ReplyerUser");
+                });
+
+            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.User", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Category", b =>

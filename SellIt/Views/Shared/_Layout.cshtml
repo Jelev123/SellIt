@@ -42,29 +42,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
             </ul>
             <div class="row">
-                <a class="navbar-brand" asp-action="Index" asp-controller="Home" style="text-align:center">
+                <a asp-action="Index" asp-controller="Home" style="text-align:center">
                     <img src="~/img/Dollar-PNG-HD.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" width="35px">
                 </a>
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                    <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
-                </form>
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                    <button type="submit" class="nav-link btn btn-link text-dark">Log In</button>
-                </form>
-                <form class="form-inline" asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                    <button type="submit" class="nav-link btn btn-link text-dark">Register</button>
-                </form>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                    </form>
+                }
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Login" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Log In</button>
+                    </form>
+                    <form class="form-inline" asp-area="Identity" asp-page="/Account/Register" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                        <button type="submit" class="nav-link btn btn-link text-dark">Register</button>
+                    </form>
+                }
+
                 @if (User.IsInRole(UserConstants.Role.RoleName))
                 {
- 
+
                     <form class="form-inline">
-                        <a asp-action="CreateRole" asp-controller="User"  class="nav-link btn btn-link text-dark" style="text-align:center">
+                        <a asp-action="CreateRole" asp-controller="User" class="nav-link btn btn-link text-dark" style="text-align:center">
                             Create Role
                         </a>
                     </form>
 
-                   <form class="form-inline">
-                        <a asp-action="AllUsers" asp-controller="User"  class="nav-link btn btn-link text-dark" style="text-align:center">
+                    <form class="form-inline">
+                        <a asp-action="AllUsers" asp-controller="User" class="nav-link btn btn-link text-dark" style="text-align:center">
                             All Users
                         </a>
                     </form>

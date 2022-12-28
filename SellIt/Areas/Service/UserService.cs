@@ -20,7 +20,7 @@
         }
 
         public IEnumerable<AllUsersViewModel> AllUsers()
-        {
+        { 
             var allUsers = data.Users
                 .Select(s => new AllUsersViewModel
                 {
@@ -35,9 +35,19 @@
         {
            await roleManager.CreateAsync(new IdentityRole
             {
-                Name = role.Name
+                Name = role.Name,
+                Id = role.Id,
             });
             data.SaveChanges();
+        }
+
+        public  Task DeleteUser(string userId)
+        {
+            var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
+            data.Remove(user);
+            data.SaveChanges();
+
+            return Task.CompletedTask;
         }
 
         public async Task SetRole(string userId, AllUsersViewModel all)
@@ -48,7 +58,7 @@
             data.UserRoles.Add(new IdentityUserRole<string>
             {
                 RoleId = role.Id,
-                UserId = user.Id
+                UserId = user.Id,
             });
             data.SaveChanges();
         }

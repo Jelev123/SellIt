@@ -16,6 +16,7 @@
                 <td>@item.UserName</td>
                 <td>@item.RoleName</td>
             <td><a asp-action="SetRole" asp-controller="User" class="btn btn-dark" asp-route-UserId="@item.UserId">Set Role</a></td>
+            <td><a asp-action="DeleteUser" asp-controller="User" class="btn btn-danger" asp-route-UserId="@item.UserId">Delete</a></td>
             </tr>
         </tbody>
     </table>

@@ -13,12 +13,15 @@
     {
         private readonly ApplicationDbContext data;
         private readonly IUserService userService;
+        private readonly UserManager<User> userManager;
 
 
-        public UserController(ApplicationDbContext data, IUserService userService)
+
+        public UserController(ApplicationDbContext data, IUserService userService, UserManager<User> userManager)
         {
             this.data = data;
             this.userService = userService;
+            this.userManager = userManager;
         }
 
 
@@ -56,6 +59,13 @@
         {
             this.userService.SetRole(userId, all);
             return this.Redirect("/");
+        }
+
+        public IActionResult DeleteUser(string userId)
+        {
+            
+            this.userService.DeleteUser(userId);
+            return this.RedirectToAction("AllUsers");
         }
     }
 }
