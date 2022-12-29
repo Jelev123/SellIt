@@ -61,22 +61,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </form>
                 }
 
-                @if (User.IsInRole(UserConstants.Role.RoleName))
-                {
-
-                    <form class="form-inline">
-                        <a asp-action="CreateRole" asp-controller="User" class="nav-link btn btn-link text-dark" style="text-align:center">
-                            Create Role
-                        </a>
-                    </form>
-
-                    <form class="form-inline">
-                        <a asp-action="AllUsers" asp-controller="User" class="nav-link btn btn-link text-dark" style="text-align:center">
-                            All Users
-                        </a>
-                    </form>
-                }
-
                 @* <form method="get" asp-action="Search" asp-controller="Product">
                 <input type="search" value="@ViewData["searchProduct"]" name="searchName" placeholder="Search" style="width:200px" />
                 <a asp-action="Search"></a>
