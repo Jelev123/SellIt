@@ -7,15 +7,12 @@
         <thead>
             <tr>
                 <th scope="col">User</th>
-                <th scope="col">Role</th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>@item.UserName</td>
-                <td>@item.RoleName</td>
-            <td><a asp-action="SetRole" asp-controller="User" class="btn btn-dark" asp-route-UserId="@item.UserId">Set Role</a></td>
+            <td><a asp-action="UserById" asp-controller="User" class="btn btn-dark" asp-route-UserId="@item.UserId">View</a></td>
             <td><a asp-action="DeleteUser" asp-controller="User" class="btn btn-danger" asp-route-UserId="@item.UserId">Delete</a></td>
             </tr>
         </tbody>

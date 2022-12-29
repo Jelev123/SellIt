@@ -7,6 +7,7 @@ namespace SellIt.Areas.Identity.Pages.Account
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
     using System.Linq;
     using System.Text;
     using System.Text.Encodings.Web;
@@ -132,6 +133,7 @@ namespace SellIt.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
+                user.DateCreated = DateTime.UtcNow;
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -167,11 +169,8 @@ namespace SellIt.Areas.Identity.Pages.Account
                                 RoleId = role.Id,
                                 UserId = user.Id
                             });
-
-
                             data.SaveChanges();
                             return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-
                         }
                         else
                         {

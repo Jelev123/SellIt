@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Identity;
     using SellIt.Areas.ViewModel;
     using SellIt.Infrastructure.Data;
-    using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -20,47 +19,97 @@
         }
 
         public IEnumerable<AllUsersViewModel> AllUsers()
-        { 
+        {
             var allUsers = data.Users
                 .Select(s => new AllUsersViewModel
                 {
                     UserId = s.Id,
                     UserName = s.UserName,
-                });
-
+                    DateCreated = s.DateCreated
+                }).OrderBy(s => s.DateCreated);
             return allUsers;
         }
 
         public async Task CreateRole(RoleViewModel role)
         {
-           await roleManager.CreateAsync(new IdentityRole
+            await roleManager.CreateAsync(new IdentityRole
             {
                 Name = role.Name,
-                Id = role.Id,
+
             });
             data.SaveChanges();
         }
 
-        public  Task DeleteUser(string userId)
+        public async Task DeleteUser(string userId)
         {
             var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
             data.Remove(user);
             data.SaveChanges();
-
-            return Task.CompletedTask;
         }
 
         public async Task SetRole(string userId, AllUsersViewModel all)
         {
             var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
             var role = this.data.Roles.FirstOrDefault(s => s.Name == all.RoleName);
+            var userRoles = this.data.UserRoles.FirstOrDefault(s => s.UserId == user.Id);
 
-            data.UserRoles.Add(new IdentityUserRole<string>
+            if (userRoles != null && userRoles.UserId.Contains(userId))
             {
-                RoleId = role.Id,
-                UserId = user.Id,
-            });
+                data.UserRoles.Remove(userRoles);
+                data.SaveChanges();
+                data.UserRoles.Add(new IdentityUserRole<string>
+                {
+                    RoleId = role.Id,
+                    UserId = user.Id,
+                });
+            }
+            else
+            {
+                data.UserRoles.Add(new IdentityUserRole<string>
+                {
+                    RoleId = role.Id,
+                    UserId = user.Id,
+                });
+            }
             data.SaveChanges();
+        }
+
+        public UserByIdViewModel UserById(string userId)
+        {
+            var user = (from users in data.Users
+                        from userRoles in data.UserRoles.Where(co => co.UserId == users.Id).DefaultIfEmpty()
+                        from roles in data.Roles.Where(prod => prod.Id == userRoles.RoleId).DefaultIfEmpty()
+                        from products in data.Products.Where(s => s.UserId == users.Id).DefaultIfEmpty()
+                        select new UserByIdViewModel
+                        {
+                            UserId = users.Id,
+                            UserName = users.UserName,
+                            RoleName = roles.Name,
+                            DateCreated = users.DateCreated,
+                            Email = users.Email,
+                            ProductName = products.Name,
+                        })
+                       .Where(s => s.UserId == userId)
+                       .FirstOrDefault();
+            return user;
+        }
+
+        public IEnumerable<UserProductsViewModel> UserProducts(string userId)
+        {
+            var userProducts = data.Products
+                .Where(s => s.UserId == userId)
+                .Select(s => new UserProductsViewModel
+                {
+                    Id = s.ProductId,
+                    Name = s.Name,
+                    CategoryName = s.Category.Name,
+                    Description = s.Description,
+                    Viewed = s.Viewed,
+                    Price = s.Price,
+                    CoverPhoto = s.Images.FirstOrDefault().URL,
+                    IsAprooved = s.IsAproved,
+                });
+            return userProducts;
         }
     }
 }

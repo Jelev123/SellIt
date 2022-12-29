@@ -8,5 +8,7 @@
         public string RoleName { get; set; }
 
         public string RoleId { get; set; }
+
+        public DateTime DateCreated { get; set; }
     }
 }

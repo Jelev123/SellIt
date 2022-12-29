@@ -11,5 +11,9 @@
         Task SetRole(string userId, AllUsersViewModel all);
 
         Task DeleteUser(string userId);
+
+        UserByIdViewModel UserById(string userId);
+
+        IEnumerable<UserProductsViewModel> UserProducts(string userId);
     }
 }

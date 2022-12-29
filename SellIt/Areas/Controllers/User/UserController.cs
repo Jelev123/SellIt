@@ -1,27 +1,22 @@
 ﻿namespace SellIt.Areas.Controllers.User
 {
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Rendering;
     using SellIt.Areas.Service;
     using SellIt.Areas.ViewModel;
     using SellIt.Infrastructure.Data;
-    using SellIt.Infrastructure.Data.Models;
 
 
     public class UserController : Controller
     {
         private readonly ApplicationDbContext data;
         private readonly IUserService userService;
-        private readonly UserManager<User> userManager;
 
 
 
-        public UserController(ApplicationDbContext data, IUserService userService, UserManager<User> userManager)
+        public UserController(ApplicationDbContext data, IUserService userService)
         {
             this.data = data;
             this.userService = userService;
-            this.userManager = userManager;
         }
 
 
@@ -37,12 +32,12 @@
             return this.Redirect("/");
         }
 
-        public IActionResult AllUsers(AllUsersViewModel all)
+        public IActionResult AllUsers()
         {
             return this.View(this.userService.AllUsers());
         }
 
-        public IActionResult SetRole(string userId)
+        public IActionResult SetRole()
         {
             var roles = this.data.Roles.ToList();
 
@@ -58,14 +53,25 @@
         public IActionResult SetRole(string userId, AllUsersViewModel all)
         {
             this.userService.SetRole(userId, all);
-            return this.Redirect("/");
+            return this.RedirectToAction("UserById", new  { userId = all.UserId});
         }
 
         public IActionResult DeleteUser(string userId)
-        {
-            
+        {   
             this.userService.DeleteUser(userId);
             return this.RedirectToAction("AllUsers");
+        }
+
+        public IActionResult UserById(string userId)
+        {
+           var user =  this.userService.UserById(userId);
+            return this.View(user);
+        }
+
+        public IActionResult UserProducts(string userId)
+        {
+            var userProducts = this.userService.UserProducts(userId);
+            return this.View(userProducts);
         }
     }
 }
