@@ -1,21 +1,6 @@
 ﻿@using SellIt.Core.ViewModels.Home
 @model HomeViewModel
 
-
-@if (User.IsInRole("Administrator"))
-{
-    <div>
-        <div>
-            <a class="btn btn-danger" asp-action="GetAllProductsForAproove" asp-controller="ForAprooved"> Products For Aproove: @Model.ProductForAprooveCount</a>
-        </div>
-
-    </div>
-}
-<div>
-    <a class="navbar-brand" asp-action="AllProducts" asp-controller="Product">All Products: @Model.AllProducts</a>
-
-</div>
-
 <div class="row">
     @foreach (var item in Model.RandomProducts)
     {

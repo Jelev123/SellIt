@@ -32,9 +32,9 @@
 
                 <a class="navbar-brand" asp-action="MyProducts" asp-controller="Product"><i class="nav-icon fas fa-th"> My Products</i></a>
             </li>
-            <a class="navbar-brand" asp-action="AddProduct" asp-controller="Product">Create Product</a>
+            <a class="navbar-brand" asp-action="AddProduct" asp-controller="Product">Add Product</a>
         }
-        @if (User.IsInRole(UserConstants.Role.RoleName))
+        @if (User.IsInRole(UserConstants.Role.Administrator))
         {
             <a class="navbar-brand" asp-action="CreateCategory" asp-controller="Category">Create Category</a>
             <a class="navbar-brand" asp-action="CreateRole" asp-controller="User">Create Role</a>

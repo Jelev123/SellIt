@@ -160,7 +160,7 @@ namespace SellIt.Areas.Identity.Pages.Account
                         {
                             await roleManager.CreateAsync(new IdentityRole
                             {
-                                Name = UserConstants.Role.RoleName,
+                                Name = UserConstants.Role.Administrator,
                             });
 
                             var role = data.Roles.FirstOrDefault();

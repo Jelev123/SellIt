@@ -25,7 +25,8 @@
                 {
                     UserId = s.Id,
                     UserName = s.UserName,
-                    DateCreated = s.DateCreated
+                    DateCreated = s.DateCreated,
+                    Email = s.Email,
                 }).OrderBy(s => s.DateCreated);
             return allUsers;
         }

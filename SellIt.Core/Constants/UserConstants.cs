@@ -10,7 +10,7 @@
     {
         public static class Role
         {
-            public const string RoleName = "Administrator";
+            public const string Administrator = "Administrator";
         }
     }
 }
