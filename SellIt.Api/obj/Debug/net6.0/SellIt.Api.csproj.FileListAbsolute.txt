@@ -200,3 +200,14 @@ D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.xml
 D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.pdb
 D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.genruntimeconfig.cache
 D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\ref\SellIt.Api.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

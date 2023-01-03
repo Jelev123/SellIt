@@ -10,6 +10,8 @@
     using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Constants;
+    using Microsoft.AspNetCore.Mvc;
+    using System.Web.Mvc;
 
     public class ProductService : IProductService
     {
@@ -27,6 +29,7 @@
 
         public Task AddProduct(AddEditProductViewModel addProduct, string userId, string imagePath)
         {
+            var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
             imageService.CheckGallery(addProduct);
             var category = this.data.Categories.FirstOrDefault(s => s.Name == addProduct.CategoryName);
             var product = new Product
@@ -38,8 +41,9 @@
                 UserId = userId,
                 Price = addProduct.Price,
                 PhoneNumber = addProduct.PhoneNumber,
-                Region = addProduct.Region,
+                ProductAdressId = user.AdressId,
             };
+           
 
             ProductConstants.IsCreated = true;
 

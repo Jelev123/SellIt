@@ -21,6 +21,9 @@ using SellIt.Core.Services.Message;
 using SellIt.Core.Contracts.Image;
 using SellIt.Core.Services.Image;
 using SellIt.Areas.Service;
+using SellIt.Controllers.Adress;
+using SellIt.Core.Contracts.Adress;
+using SellIt.Core.Services.Adress;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +48,8 @@ builder.Services.AddTransient<ISearchService, SearchService>();
 builder.Services.AddTransient<IMessagesService, MessageService>();
 builder.Services.AddTransient<IImageService, ImageService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IAdressService, AdressService>();
+builder.Services.AddHttpClient<AdressController>();
 
 Account cloudinaryCredentials = new Account(
                 builder.Configuration["Cloudinary:CloudName"],

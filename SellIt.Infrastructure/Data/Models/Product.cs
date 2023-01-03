@@ -3,6 +3,7 @@
     public class Product
     {
         public int ProductId { get; set; }
+
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -17,8 +18,6 @@
 
         public int PhoneNumber { get; set; }
 
-        public string Region { get; set; }
-
         public bool IsAproved { get; set; }
 
         public int CategoryId { get; set; }
@@ -29,8 +28,14 @@
 
         public User? User { get; set; }
 
+        public string ProductAdressId { get; set; }
+
+        public Adress ProductAdress { get; set; }
+
         public ICollection<LikedProduct> LikedProducts { get; set; } = new HashSet<LikedProduct>();
+
         public ICollection<Image> Images { get; set; } = new HashSet<Image>();
+
         public ICollection<Message> Messages { get; set; } = new HashSet<Message>();
     }
 }

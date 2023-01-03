@@ -23,5 +23,6 @@
         public DbSet<Message> Messages { get; set; }
         public DbSet<ReplyMessage> ReplyMessages { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Adress> Adresses { get; set; }
     }
 }

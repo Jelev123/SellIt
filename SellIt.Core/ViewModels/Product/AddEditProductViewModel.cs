@@ -33,7 +33,5 @@
         public decimal Price { get; set; }
 
         public int PhoneNumber { get; set; }
-
-        public string Region { get; set; }
     }
 }

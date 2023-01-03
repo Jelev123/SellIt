@@ -9,6 +9,7 @@ namespace SellIt.Areas.Identity.Pages.Account
     using System.ComponentModel.DataAnnotations;
     using System.Globalization;
     using System.Linq;
+    using System.Net.Http;
     using System.Text;
     using System.Text.Encodings.Web;
     using System.Threading;
@@ -21,7 +22,9 @@ namespace SellIt.Areas.Identity.Pages.Account
     using Microsoft.AspNetCore.Mvc.RazorPages;
     using Microsoft.AspNetCore.WebUtilities;
     using Microsoft.Extensions.Logging;
+    using Newtonsoft.Json;
     using SellIt.Core.Constants;
+    using SellIt.Core.ViewModels.Adress;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
@@ -35,6 +38,8 @@ namespace SellIt.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
         private readonly ApplicationDbContext data;
         private readonly RoleManager<IdentityRole> roleManager;
+        private readonly HttpClient _httpClient;
+
 
 
         public RegisterModel(
@@ -44,7 +49,8 @@ namespace SellIt.Areas.Identity.Pages.Account
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
             ApplicationDbContext data,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            HttpClient httpClient)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -54,6 +60,7 @@ namespace SellIt.Areas.Identity.Pages.Account
             _emailSender = emailSender;
             this.data = data;
             this.roleManager = roleManager;
+            _httpClient = httpClient;
         }
 
         /// <summary>
@@ -132,6 +139,29 @@ namespace SellIt.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+                var ipAddress = await GetIPAddress();
+                var response = await _httpClient.GetAsync($"http://api.ipstack.com/" + ipAddress + "?access_key=942bef5ae748409e6c20a78166afae23");
+                if (response.IsSuccessStatusCode)
+                {
+                    var json = await response.Content.ReadAsStringAsync();
+                    var model = new GeoInfoViewModel();
+                    model = JsonConvert.DeserializeObject<GeoInfoViewModel>(json);
+
+
+                    var adress = new Adress
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        City = model.City,
+                        Country = model.CountryName,
+                        CountryCode = model.CountryCode,
+                    };
+                    data.Add(adress);
+                    data.SaveChanges();
+
+                    user.AdressId = adress.Id;
+
+                }
+
 
                 user.DateCreated = DateTime.UtcNow;
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
@@ -214,6 +244,42 @@ namespace SellIt.Areas.Identity.Pages.Account
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
             return (IUserEmailStore<User>)_userStore;
+        }
+
+        private async Task<string> GetIPAddress()
+        {
+            var ipAddress = await _httpClient.GetAsync($"http://ipinfo.io/ip");
+            if (ipAddress.IsSuccessStatusCode)
+            {
+                var json = await ipAddress.Content.ReadAsStringAsync();
+                return json.ToString();
+            }
+            return "";
+        }
+
+        public async Task<string> GetGeoInfo()
+        {
+            var ipAddress = await GetIPAddress();
+            var response = await _httpClient.GetAsync($"http://api.ipstack.com/" + ipAddress + "?access_key=942bef5ae748409e6c20a78166afae23");
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var model = new GeoInfoViewModel();
+                model = JsonConvert.DeserializeObject<GeoInfoViewModel>(json);
+
+
+                var adress = new Adress
+                {
+                    Id = model.Id,
+                    City = model.City,
+                    Country = model.CountryName,
+                    CountryCode = model.CountryCode,
+                };
+                data.Add(adress);
+                data.SaveChanges();
+
+            }
+            return response.ToString();
         }
     }
 }

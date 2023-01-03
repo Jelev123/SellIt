@@ -616,3 +616,12 @@ D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.genruntimeconfig.cache
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\ref\SellIt.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
