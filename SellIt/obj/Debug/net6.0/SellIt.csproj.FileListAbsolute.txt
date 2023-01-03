@@ -625,3 +625,12 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebP
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.Mvc.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.Razor.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.Helpers.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebPages.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

@@ -43,5 +43,7 @@
         public List<GalleryModel> Gallery { get; set; }
 
         public decimal Price { get; set; }
+
+        public string AddressId { get; set; }
     }
 }

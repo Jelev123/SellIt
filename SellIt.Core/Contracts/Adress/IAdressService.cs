@@ -1,9 +1,9 @@
 ﻿namespace SellIt.Core.Contracts.Adress
 {
+    using SellIt.Core.ViewModels.Adress;
+
     public interface IAdressService
     {
-        Task<string> GetIPAddress();
-
-        Task GetGeoInfo();
+        AddressByUserId AddressByUserId(string userId);
     }
 }
