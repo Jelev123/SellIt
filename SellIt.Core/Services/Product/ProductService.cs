@@ -37,6 +37,8 @@
                 CategoryId = category.Id,
                 UserId = userId,
                 Price = addProduct.Price,
+                PhoneNumber = addProduct.PhoneNumber,
+                Region = addProduct.Region,
             };
 
             ProductConstants.IsCreated = true;

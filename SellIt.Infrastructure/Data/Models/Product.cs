@@ -15,6 +15,10 @@
 
         public decimal Price { get; set; }
 
+        public int PhoneNumber { get; set; }
+
+        public string Region { get; set; }
+
         public bool IsAproved { get; set; }
 
         public int CategoryId { get; set; }
