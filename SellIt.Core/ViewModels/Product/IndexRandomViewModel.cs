@@ -15,5 +15,6 @@
         public decimal Price { get; set; }
 
         public bool IsAproved { get; set; }
+
     }
 }

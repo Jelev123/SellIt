@@ -5,11 +5,13 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Constants;
+    using SellIt.Core.Contracts.Adress;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
     using SellIt.Core.ViewModels;
+    using SellIt.Core.ViewModels.Adress;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data.Models;
@@ -22,8 +24,8 @@
         private readonly UserManager<User> userManager;
         private readonly IWebHostEnvironment environment;
         private readonly IImageService imageService;
-
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService, IImageService imageService)
+        private readonly IAdressService adressService;
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService, IImageService imageService, IAdressService adressService)
         {
             this.productService = productService;
             this.categoryService = categoryService;
@@ -31,14 +33,21 @@
             this.environment = environment;
             this.searchService = searchService;
             this.imageService = imageService;
+            this.adressService = adressService;
         }
 
 
         [Authorize]
         public IActionResult AddProduct()
         {
-            var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
+            var userId = this.userManager.GetUserId(User);
 
+            var address = this.adressService.AddressByUserId(userId);
+
+            this.ViewData["address"] = address.City;
+
+            var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
+            
             this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {
                 CategoryName = s.Name,
@@ -89,6 +98,11 @@
         public IActionResult GetProductById(int id)
         {
             var userId = this.userManager.GetUserId(User);
+           
+            var address = this.adressService.AddressByUserId(userId);
+
+            this.ViewData["address"] = address.City;
+
             var product = this.productService.GetById(id, userId);
             return this.View(product);
         }

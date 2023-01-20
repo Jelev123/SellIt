@@ -624,6 +624,7 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebP
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+<<<<<<< HEAD
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\SellIt.d-bfalse.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Areas\Identity\Pages\Account\AccessDenied.cshtml
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Areas\Identity\Pages\Account\ConfirmEmail.cshtml
@@ -927,3 +928,14 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Uno.UI.Toolkit.
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Uno.UI.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Uno.Xaml.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\Uno.dll
+=======
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.Mvc.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.Razor.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.Helpers.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\System.Web.WebPages.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+>>>>>>> 88ea55cfa58073bb0c0c90d06c4d69a608efe7fc
