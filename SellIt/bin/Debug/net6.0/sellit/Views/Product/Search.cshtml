@@ -1,0 +1,30 @@
+﻿@using SellIt.Core.ViewModels.Product
+@model IEnumerable<SearchViewModel>
+
+
+<div class="row">
+    @if (Model.Count() == 0)
+    {
+        <h2 style="color:red">No Results</h2>
+    }
+    else
+    {
+        @foreach (var item in Model)
+        {
+            <div>
+                <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
+                    <figure class="figure">
+                        <img src="@item.CoverPhoto" width="400px">
+                        <figcaption class="figure-caption text-end">A caption for the above image.</figcaption>
+                    </figure>
+                </a>
+                <ul class="list-group">
+                    <li class="list-group-item">Category: @item.CategoryName</li>
+                    <li class="list-group-item">Title: @item.Name</li>
+                    <li class="list-group-item">Price: @item.Price $</li>
+                </ul>
+            </div>
+        }
+    }
+
+</div>

@@ -163,6 +163,10 @@
               "target": "Package",
               "version": "[7.0.0-rc.1.22426.7, )"
             },
+            "Uno.UI": {
+              "target": "Package",
+              "version": "[4.6.41, )"
+            },
             "UploadStream": {
               "target": "Package",
               "version": "[3.1.1, )"

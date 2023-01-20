@@ -1,0 +1,30 @@
+﻿@using SellIt.Core.ViewModels.Messages
+@model ProductMessagesById
+
+<p>@Model.ProductName</p>
+<p><img width="400px" src="@Model.Image"></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">User</th>
+            <th scope="col">Text</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.UserName</td>
+            <td>@Model.Text</td>
+            <td>@Model.Date</td>
+        </tr>
+        @foreach (var replyMessage in Model.ReplyMessages)
+        {
+            <tr>
+                <td>@replyMessage.ReplyerUserName</td>
+                <td>@replyMessage.ReplyText</td>
+                <td>@replyMessage.Date</td>
+            </tr>
+        }
+        <a asp-action="ReplyMessage" asp-controller="Message" asp-route-id="@Model.Id" class="btn btn-success">Reply</a>
+    </tbody>
+</table>

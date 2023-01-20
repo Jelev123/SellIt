@@ -1,10 +1,12 @@
 ﻿namespace SellIt.Core.Services.Adress
 {
+    using Azure.Core.GeoJson;
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
     using SellIt.Core.Contracts.Adress;
     using SellIt.Core.ViewModels.Adress;
     using System.Threading.Tasks;
+    using Windows.Devices.Geolocation;
 
     public class AdressService : IAdressService
     {
@@ -36,6 +38,11 @@
                 var json =  ipAddress.Content.ReadAsStringAsync();
                 return json.ToString();
             }
+
+            Geolocator geolocator = new Geolocator();
+            Geoposition pos = await geolocator.GetGeopositionAsync();
+            double lat = pos.Coordinate.Latitude;
+            double lon = pos.Coordinate.Longitude;
 
             return null;
            

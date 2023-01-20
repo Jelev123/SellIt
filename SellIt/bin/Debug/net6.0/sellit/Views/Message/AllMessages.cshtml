@@ -1,0 +1,32 @@
+﻿@using SellIt.Core.ViewModels.Messages
+@model IEnumerable<AllMessagesViewModel> 
+
+
+@foreach (var item in Model)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">User</th>
+                <th scope="col">Product</th>
+                <th scope="col">Date</th>
+                <th></th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@item.UserName</td>            
+                <td>@item.ProductName</td>
+                <td>@item.Date</td>
+                <td>
+                    <a asp-action="GetProductMessageById" asp-controller="Message" asp-route-id="@item.Id">
+                        <img src="@item.Photo" width="100px" />
+                    </a>
+                </td>
+            </tr>
+            
+        </tbody>
+    </table>
+}

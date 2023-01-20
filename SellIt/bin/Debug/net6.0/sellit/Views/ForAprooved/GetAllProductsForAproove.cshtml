@@ -1,0 +1,23 @@
+﻿@using SellIt.Core.ViewModels.Product
+@model IEnumerable<AllProductsForAprooved>
+
+
+    
+@foreach (var item in Model)
+{
+    <div class="row">
+        <section class="p-0">
+            <div class="container">
+                <div class="row">
+                    <ul class="list-group">
+                        <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
+                            <img width="400px" src="@item.CoverPhoto" alt="@item.Name">
+                        </a>
+                        <li class="list-group-item">Category: @item.CategoryName</li>
+                        <li class="list-group-item">Title: @item.Name</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+}
