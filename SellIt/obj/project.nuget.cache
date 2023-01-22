@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "h88joYRuLJomQmlpGudQpHbccfhdw/25seufHNAugnTR3aIZGlWYlf9cQrg9lmxYJZ5pLopapZ3Pu0e6zbXfAA==",
+  "dgSpecHash": "RQhlDHWmIJrHPuogNO370z7bCRSbRb4GAQMeL0O/F+Odq7Vwf1w6GloVV/Lefj+8WfE4zu/SnMkelqlL9c1CcA==",
   "success": true,
   "projectFilePath": "D:\\Projects\\SellIt\\SellIt\\SellIt.csproj",
   "expectedPackageFiles": [
@@ -214,6 +214,7 @@
     "C:\\Users\\Owner\\.nuget\\packages\\system.runtime.handles\\4.3.0\\system.runtime.handles.4.3.0.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\system.runtime.interopservices\\4.3.0\\system.runtime.interopservices.4.3.0.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\system.runtime.interopservices.runtimeinformation\\4.3.0\\system.runtime.interopservices.runtimeinformation.4.3.0.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\system.runtime.interopservices.windowsruntime\\4.3.0\\system.runtime.interopservices.windowsruntime.4.3.0.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\system.runtime.numerics\\4.3.0\\system.runtime.numerics.4.3.0.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\system.security.accesscontrol\\6.0.0\\system.security.accesscontrol.6.0.0.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\system.security.cryptography.algorithms\\4.3.0\\system.security.cryptography.algorithms.4.3.0.nupkg.sha512",
@@ -242,6 +243,10 @@
     "C:\\Users\\Owner\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\uno.diagnostics.eventing\\2.0.1\\uno.diagnostics.eventing.2.0.1.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\uno.foundation.logging\\4.6.41\\uno.foundation.logging.4.6.41.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\uno.sourcegenerationtasks\\4.2.0\\uno.sourcegenerationtasks.4.2.0.nupkg.sha512",
+    "C:\\Users\\Owner\\.nuget\\packages\\uno.ui\\4.6.41\\uno.ui.4.6.41.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\uploadstream\\3.1.1\\uploadstream.3.1.1.nupkg.sha512"
   ],
   "logs": [

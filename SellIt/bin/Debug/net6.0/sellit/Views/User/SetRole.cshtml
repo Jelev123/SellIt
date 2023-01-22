@@ -1,0 +1,18 @@
+﻿@using SellIt.Areas.ViewModel
+@model AllUsersViewModel
+
+<form method="post" enctype="multipart/form-data">
+    <div class="col-md-3">
+        <label asp-for="RoleName"></label>
+                <select class="form-control text-primary" id="roles" asp-for="RoleName">
+                    <option selected disabled><------></></option>
+                    @foreach (var role in (IEnumerable<RoleViewModel>)this.ViewData["roles"])
+                    {
+                        <option value="@role.Name">@role.Name</option>
+                    }
+                </select>
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+</form>
+<div class="d-flex justify-content-center mt-3">
+    <button class="btn btn-primary font-weight-bold">Set</button>
+</div>

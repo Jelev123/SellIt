@@ -1,0 +1,91 @@
+﻿@using SellIt.Core.ViewModels.Product
+@model GetByIdAndLikeViewModel
+
+
+
+
+@if (Model.IsAprooved == true)
+{
+    <a class="btn btn-app bg-success">
+        <span class="badge bg-purple">@Model.Viewed</span>
+        <i class="fas fa-users"></i> Viewed
+    </a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (Model.IsLiked == true)
+        {
+            <a asp-action="Like" asp-controller="Product" asp-action="Like" class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
+                <span class="badge bg-danger">@Model.LikedCount</span>
+                <i class="fas fa-heart"></i> Likes
+            </a>
+        }
+        @if (Model.IsLiked == false)
+        {
+            <a asp-action="Like" asp-controller="Product" asp-action="Like" class="btn btn-app" asp-route-id="@Model.Id">
+                <span class="badge bg-danger">@Model.LikedCount</span>
+                <i class="fas fa-heart"></i> Likes
+            </a>
+        }
+    }
+}
+
+<div class="col-md-4">
+    <ul class="list-group">
+        <li class="list-group-item">@Model.Name</li>
+    </ul>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+
+            @for (int i = 0; i < Model.Gallery.Count(); i++)
+            {
+                <li data-target="#carouselExampleIndicators" data-slide-to="@i" class="@(i==0 ? "active" : "") "></li>
+            }
+        </ol>
+        <div class="carousel-inner">
+            @for (int i = 0; i < Model.Gallery.Count(); i++)
+            {
+                <div class="@(i==0 ? "carousel-item active" : "carousel-item") ">
+                    <a href="@Model.Gallery[i].URL">
+                        <img class="d-block w-100" src="@Model.Gallery[i].URL" alt="@Model.Gallery[i].Name">
+                    </a>
+                </div>
+            }
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <ul class="list-group">
+            <li class="list-group-item">Category: @Model.CategoryName</li>
+            <li class="list-group-item">@Model.Description</li>
+            <li class="list-group-item">@Model.Price $</li>
+            <li class="list-group-item">@Model.ProducAddresstId</li>
+        </ul>
+    </div>
+    <hr />
+
+    @if (User.Identity.Name != Model.UserName)
+    {
+        <a asp-action="SendMessage" asp-controller="Message" asp-route-id="@Model.Id" class="btn btn-success">Send Message</a>
+    }
+</div>
+
+
+@if (Model.IsAprooved == false)
+{
+    <h5 style="color:red">The item is checking </h5>
+}
+
+
+@if (User.IsInRole("Administrator"))
+{
+    @if (Model.IsAprooved == false)
+    {
+        <a asp-action="SetAproove" asp-controller="ForAprooved" asp-route-id="@Model.Id" class="btn btn-success">Aproove item</a>
+    }
+}

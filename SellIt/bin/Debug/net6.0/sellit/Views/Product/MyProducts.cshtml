@@ -1,0 +1,40 @@
+﻿@using SellIt.Core.ViewModels.Product
+@model IEnumerable<MyProductsViewModel>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="cold-md-4">
+            <div class="card-body">
+                <section class="p-0">
+                    <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
+                        <img width="400px" src="@item.CoverPhoto" alt="@item.Name">
+                    </a>
+                    <div>
+                    <ul class="list-group">
+                        <li class="list-group-item">Category: @item.CategoryName</li>
+                        <li class="list-group-item">@item.Name</li>
+                        <li class="list-group-item">@item.Description</li>
+                        <li class="list-group-item">@item.Price $</li>
+                    </ul>
+                    </div>
+                    @if (item.IsAprooved == false)
+                    {
+                        <h5 style="color:red">The item is checking </h5>
+                    }
+                </section>
+            </div>
+            <a asp-action="AllProductMessages" asp-controller="Message" asp-route-id="@item.Id" class="btn btn-success">
+                 <span class="badge bg-danger">@item.MessagesCount</span>
+            <i class="fas fa-envelope"></i>
+                All Messages
+            </a>
+            <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            <a asp-action="EditProduct" asp-controller="Product" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+        <div>
+        </div>
+        </div>
+  
+    }
+</div>
+

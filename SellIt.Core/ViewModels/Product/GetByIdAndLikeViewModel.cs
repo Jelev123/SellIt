@@ -44,6 +44,11 @@
 
         public decimal Price { get; set; }
 
+<<<<<<< HEAD
+
+        public string ProducAddresstId { get; set; }
+=======
         public string AddressId { get; set; }
+>>>>>>> 88ea55cfa58073bb0c0c90d06c4d69a608efe7fc
     }
 }

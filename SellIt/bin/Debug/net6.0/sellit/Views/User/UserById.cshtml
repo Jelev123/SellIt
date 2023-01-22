@@ -1,0 +1,13 @@
+﻿@using SellIt.Areas.ViewModel
+@model UserByIdViewModel
+
+<h4>Username: @Model.UserName</h4>
+<h4>Role: @Model.RoleName</h4>
+<h4>Email: @Model.Email</h4>
+<h4>Date: @Model.DateCreated</h4>
+<h4>
+    Products:
+    <a class="btn btn-outline-info"  asp-action="UserProducts" asp-controller="User" asp-route-UserId="@Model.UserId">View</a>
+</h4>
+
+<td><a asp-action="SetRole" asp-controller="User" class="btn btn-outline-warning" asp-route-UserId="@Model.UserId">Set Role</a></td>
