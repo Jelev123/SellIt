@@ -14,6 +14,7 @@
         [MinLength(3, ErrorMessage = "The title must be min {1} characters long.")]
         public string Name { get; set; }
 
+
         [DisplayName("Description")]
         [MaxLength(300)]
         [MinLength(5, ErrorMessage = "The description must be min {1} characters long.")]
