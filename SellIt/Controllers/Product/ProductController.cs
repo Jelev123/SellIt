@@ -98,7 +98,6 @@
         public IActionResult GetProductById(int id)
         {
             var userId = this.userManager.GetUserId(User);
-           
             var address = this.adressService.AddressByUserId(userId);
 
             this.ViewData["address"] = address.City;

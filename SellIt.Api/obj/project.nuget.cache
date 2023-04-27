@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A/cNxppjKS8QCqZjHvZOYPrfcpPnTDUiEBtUO2jsg4Uo6dc6EO+ECGidyCGGh5zsiV5pjjNTuwrkDg3/PPVAPw==",
+  "dgSpecHash": "iykpQDj1KOoPLIiJWJ8rYmwt1E9ux3k9kCFAlKe0QffsyZHm9G4TU5UOBv6np8V8E9ya27IvdFPVw71kTZ/1mA==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\SellIt\\SellIt.Api\\SellIt.Api.csproj",
+  "projectFilePath": "D:\\Projects\\SellIt\\SellIt\\SellIt.Api\\SellIt.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Owner\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

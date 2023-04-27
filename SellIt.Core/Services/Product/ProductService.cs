@@ -132,11 +132,8 @@
                     Price = s.Price,
                     Id = s.ProductId,
                     UserName = s.User.UserName,
-<<<<<<< HEAD
                     ProducAddresstId = s.ProductAdressId,
-=======
                     AddressId = s.ProductAdressId,
->>>>>>> 88ea55cfa58073bb0c0c90d06c4d69a608efe7fc
                     Gallery = s.Images.Select(s => new GalleryModel()
                     {
                         Id = s.ImageId,

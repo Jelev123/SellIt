@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rlX0zF2kZbQf60hCucsiwOHN4V4ozwWcJDeDJ7IJnz9a4xMMdjBOA5SxrKB2c7bT0xnzEcfxplzNN5FKErgk1Q==",
+  "dgSpecHash": "K5ft3XNfYFf1EBUPSxHteiVgTjWNnkZ+aAdztW5COIRDr7B/HGgRHbdys/ZAGvERiy9wmN5pUZH/OedUYM+60g==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj",
+  "projectFilePath": "D:\\Projects\\SellIt\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Owner\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Owner\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

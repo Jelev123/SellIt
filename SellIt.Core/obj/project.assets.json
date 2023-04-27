@@ -10089,11 +10089,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\SellIt\\SellIt.Core\\SellIt.Core.csproj",
+      "projectUniqueName": "D:\\Projects\\SellIt\\SellIt\\SellIt.Core\\SellIt.Core.csproj",
       "projectName": "SellIt.Core",
-      "projectPath": "D:\\Projects\\SellIt\\SellIt.Core\\SellIt.Core.csproj",
+      "projectPath": "D:\\Projects\\SellIt\\SellIt\\SellIt.Core\\SellIt.Core.csproj",
       "packagesPath": "C:\\Users\\Owner\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\SellIt\\SellIt.Core\\obj\\",
+      "outputPath": "D:\\Projects\\SellIt\\SellIt\\SellIt.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -10114,8 +10114,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Projects\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj": {
-              "projectPath": "D:\\Projects\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj"
+            "D:\\Projects\\SellIt\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj": {
+              "projectPath": "D:\\Projects\\SellIt\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj"
             }
           }
         }
@@ -10190,7 +10190,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.308\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.310\\RuntimeIdentifierGraph.json"
       }
     }
   },
