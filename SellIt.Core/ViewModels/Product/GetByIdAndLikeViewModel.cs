@@ -44,8 +44,6 @@
 
         public decimal Price { get; set; }
 
-
-
         public string ProducAddresstId { get; set; }
 
         public string AddressId { get; set; }

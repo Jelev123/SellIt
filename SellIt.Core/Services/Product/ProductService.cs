@@ -1,30 +1,26 @@
 ﻿namespace SellIt.Core.Services.Product
 {
+    using SellIt.Core.Constants;
+    using SellIt.Core.Contracts.Count;
+    using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
+    using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
-    using System.Threading.Tasks;
     using System.Collections.Generic;
-    using SellIt.Core.ViewModels;
-    using SellIt.Core.Contracts.Count;
-    using SellIt.Core.Contracts.Image;
-    using SellIt.Core.Constants;
-    using Microsoft.AspNetCore.Mvc;
-    using System.Web.Mvc;
+    using System.Threading.Tasks;
 
     public class ProductService : IProductService
     {
         private readonly ApplicationDbContext data;
-        private readonly ICountService countService;
         private readonly IImageService imageService;
 
 
-        public ProductService(ApplicationDbContext data, ICountService countService, IImageService imageService)
+        public ProductService(ApplicationDbContext data, ICountService countService)
         {
             this.data = data;
             this.countService = countService;
-            this.imageService = imageService;
         }
 
         public Task AddProduct(AddEditProductViewModel addProduct, string userId, string imagePath)
@@ -150,7 +146,6 @@
                 viewdProduct.Viewed++;
                 data.SaveChanges();
             }
-
             return product;
         }
 
@@ -221,10 +216,11 @@
 
             }
 
-          
+
 
             return product;
         }
+
 
         public IEnumerable<MyProductsViewModel> MyProducts(string userId)
         {

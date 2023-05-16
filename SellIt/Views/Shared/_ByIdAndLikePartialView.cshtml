@@ -12,20 +12,11 @@
     </a>
     @if (User.Identity.IsAuthenticated)
     {
-        @if (Model.IsLiked == true)
-        {
-            <a asp-action="Like" asp-controller="Product" asp-action="Like" class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
-                <span class="badge bg-danger">@Model.LikedCount</span>
-                <i class="fas fa-heart"></i> Likes
-            </a>
-        }
-        @if (Model.IsLiked == false)
-        {
-            <a asp-action="Like" asp-controller="Product" asp-action="Like" class="btn btn-app" asp-route-id="@Model.Id">
-                <span class="badge bg-danger">@Model.LikedCount</span>
-                <i class="fas fa-heart"></i> Likes
-            </a>
-        }
+        <btn class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
+            <span id="liked" class="badge bg-danger">@Model.LikedCount</span>
+            <i id="random" class="fas fa-heart"></i> Likes
+        </btn>
+
     }
 }
 
@@ -90,3 +81,35 @@
         <a asp-action="SetAproove" asp-controller="ForAprooved" asp-route-id="@Model.Id" class="btn btn-success">Aproove item</a>
     }
 }
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let likedElement = $("#liked");
+    let randomButton = $("#random");
+    let modelId = @Model.Id;
+    let modelCount = @Model.LikedCount;
+
+    randomButton.on("click", function(event) {
+        event.preventDefault();
+        console.log('test');
+        let currentLikedCount = parseInt(likedElement.text());
+        let newLikedCount = currentLikedCount + 1;
+
+        // Send an AJAX request to the server
+        $.ajax({
+            url: `/Product/Like?id=${modelId}`, // Replace "/UpdateLikes" with your server endpoint
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ likedCount: newLikedCount }),
+            success: function(response) {
+                // Update the likes count in the UI
+
+                likedElement.text(modelCount.toString());
+            },
+            error: function(xhr, status, error) {
+                console.log("An error occurred:", error);
+            }
+        });
+    });
+</script>
