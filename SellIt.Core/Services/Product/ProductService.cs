@@ -17,10 +17,10 @@
         private readonly IImageService imageService;
 
 
-        public ProductService(ApplicationDbContext data, ICountService countService)
+        public ProductService(ApplicationDbContext data, IImageService imageService)
         {
             this.data = data;
-            this.countService = countService;
+            this.imageService = imageService;
         }
 
         public Task AddProduct(AddEditProductViewModel addProduct, string userId, string imagePath)
@@ -216,8 +216,6 @@
 
             }
 
-
-
             return product;
         }
 
@@ -256,8 +254,7 @@
                     Price = s.Price,
                     IsAproved = s.IsAproved
                 })      
-                .Take(count);
-                
+                .Take(count);     
         }
     }
 }
