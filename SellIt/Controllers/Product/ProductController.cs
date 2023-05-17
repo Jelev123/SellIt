@@ -119,9 +119,6 @@
         [HttpPost]
         public IActionResult Like(int id)
         {
-            var content = Request.Query;
-           
-
             var currentUserId = this.userManager.GetUserId(User);
             var productToLike = this.productService.Like(id, currentUserId);
             return this.View(productToLike);
