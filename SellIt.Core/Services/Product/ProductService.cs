@@ -128,10 +128,7 @@
                     Price = s.Price,
                     Id = s.ProductId,
                     UserName = s.User.UserName,
-<<<<<<< Updated upstream
                     ProducAddresstId = s.ProductAdressId,
-=======
->>>>>>> Stashed changes
                     AddressId = s.ProductAdressId,
                     Gallery = s.Images.Select(s => new GalleryModel()
                     {

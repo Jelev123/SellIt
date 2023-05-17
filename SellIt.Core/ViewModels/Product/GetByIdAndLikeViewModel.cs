@@ -44,11 +44,6 @@
 
         public decimal Price { get; set; }
 
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
         public string ProducAddresstId { get; set; }
 
         public string AddressId { get; set; }

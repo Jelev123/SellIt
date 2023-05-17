@@ -1,22 +1,8 @@
 ﻿namespace SellIt.Core.Services.Adress
 {
-
-    using Azure.Core.GeoJson;
-    using Microsoft.AspNetCore.Mvc;
-    using Newtonsoft.Json;
-    using SellIt.Core.Contracts.Adress;
-    using SellIt.Core.ViewModels.Adress;
-    using System.Threading.Tasks;
-    using Windows.Devices.Geolocation;
-
     using SellIt.Core.Contracts.Adress;
     using SellIt.Core.ViewModels.Adress;
     using SellIt.Infrastructure.Data;
-    using System.Collections.Generic;
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 
     public class AdressService : IAdressService
     {

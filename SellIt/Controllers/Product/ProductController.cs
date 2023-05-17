@@ -112,8 +112,8 @@
 
         public IActionResult AllProducts()
         {
-            var allProducts = this.productService.GetAllProducts();
-            return this.View(allProducts);
+                var allProducts = this.productService.GetAllProducts();
+                return this.View(allProducts);
         }
 
         [HttpPost]

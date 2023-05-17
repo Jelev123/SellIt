@@ -1,34 +1,3 @@
-<<<<<<< Updated upstream
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.deps.json
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.runtimeconfig.json
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.dll
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.pdb
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.csproj.AssemblyReference.cache
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.AssemblyInfoInputs.cache
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.AssemblyInfo.cs
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.csproj.CoreCompileInputs.cache
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.dll
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\refint\SellIt.Infrastructure.dll
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.pdb
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.genruntimeconfig.cache
-D:\Projects\SellIt\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\ref\SellIt.Infrastructure.dll
-=======
-D:\Projects\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.deps.json
-D:\Projects\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.runtimeconfig.json
-D:\Projects\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.dll
-D:\Projects\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.pdb
-D:\Projects\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.csproj.AssemblyReference.cache
-D:\Projects\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-D:\Projects\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.AssemblyInfoInputs.cache
-D:\Projects\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.AssemblyInfo.cs
-D:\Projects\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.csproj.CoreCompileInputs.cache
-D:\Projects\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.dll
-D:\Projects\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\refint\SellIt.Infrastructure.dll
-D:\Projects\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.pdb
-D:\Projects\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\SellIt.Infrastructure.genruntimeconfig.cache
-D:\Projects\SellIt\SellIt.Infrastructure\obj\Debug\net6.0\ref\SellIt.Infrastructure.dll
->>>>>>> Stashed changes
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.deps.json
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.runtimeconfig.json
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Infrastructure\bin\Debug\net6.0\SellIt.Infrastructure.dll

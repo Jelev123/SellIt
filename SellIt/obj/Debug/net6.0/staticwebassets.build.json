@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IDEbRQee9prOYu87VS/aeyF7XbBx2s+J02keh9JIxLw=",
+  "Hash": "CD3525BFqHJO0+lHH3LXR+PUpsKiuzhl/U/mA6vXZaM=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1547,6 +1547,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\04dc9f17-f378-49bb-b3a0-7410e392b5b9_1610635278_12_8576.jpg"
     },
     {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\0679fe35-beaf-4059-a92d-23201444f839_Screenshot (55).png",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/0679fe35-beaf-4059-a92d-23201444f839_Screenshot (55).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\0679fe35-beaf-4059-a92d-23201444f839_Screenshot (55).png"
+    },
+    {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\078c8c5b-f105-43c0-9729-33db4b408630_download (4).jfif",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -1836,6 +1853,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\531183dc-0f63-4590-ac97-8e4e22a096d1_1610635294_12_6247.jpg"
     },
     {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\532244e6-1e58-4c30-932c-e96e668f6a24_Screenshot (56).png",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/532244e6-1e58-4c30-932c-e96e668f6a24_Screenshot (56).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\532244e6-1e58-4c30-932c-e96e668f6a24_Screenshot (56).png"
+    },
+    {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\58ea818a-0a98-4a5d-b630-9d134646b3df_download (1) - Copy.jfif",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -2108,6 +2142,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\a7791cf5-098f-4bff-8158-6d490e029ebe_1610635278_12_8576.jpg"
     },
     {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\a976e41a-a995-459b-ad12-8a84da1e7b1d_Screenshot (55).png",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/a976e41a-a995-459b-ad12-8a84da1e7b1d_Screenshot (55).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\a976e41a-a995-459b-ad12-8a84da1e7b1d_Screenshot (55).png"
+    },
+    {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\aa23dfd9-b35b-4510-914e-f9ea6e924bfc_1610635327_12_5965.jpg",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -2310,6 +2361,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\d99a677e-7320-448b-9c04-7fec73ee01c6_GARDEN 270223 MAIN.webp"
+    },
+    {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\e0332e03-c0ff-4a29-ba52-a48f440dacc3_Screenshot (56).png",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/e0332e03-c0ff-4a29-ba52-a48f440dacc3_Screenshot (56).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\e0332e03-c0ff-4a29-ba52-a48f440dacc3_Screenshot (56).png"
     },
     {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\ee403b2a-33d4-4db8-9d74-f0dc93d28214_download (2).jfif",
