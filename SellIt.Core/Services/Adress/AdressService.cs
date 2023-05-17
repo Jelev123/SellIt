@@ -13,6 +13,10 @@
     using SellIt.Core.ViewModels.Adress;
     using SellIt.Infrastructure.Data;
     using System.Collections.Generic;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
     public class AdressService : IAdressService
     {
