@@ -18,6 +18,9 @@
 
         IEnumerable<MyProductsViewModel> MyProducts(string id);
 
+        IEnumerable<MyProductsViewModel> MyLikedProducts(string id);
+
+
         IEnumerable<IndexRandomViewModel> RandomProducts(int count);
 
     }

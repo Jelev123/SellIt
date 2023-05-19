@@ -12,8 +12,6 @@
 
         public int LikedCount { get; set; }
 
-        public bool IsLiked { get; set; }
-
         public decimal Price { get; set; }
 
         public int PhoneNumber { get; set; }
@@ -24,7 +22,7 @@
 
         public Category Category { get; set; }
 
-        public string? UserId { get; set; }
+        public string? CreatedUserId { get; set; }
 
         public User? User { get; set; }
 

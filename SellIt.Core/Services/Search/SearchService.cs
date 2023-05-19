@@ -22,7 +22,7 @@
                      Name = s.Name,
                      CategoryName = s.Category.Name,
                      Description = s.Description,
-                     UserId = s.UserId,
+                     UserId = s.CreatedUserId,
                      Id = s.ProductId,
                      Price = s.Price,
                      CoverPhoto =  s.Images.FirstOrDefault().URL

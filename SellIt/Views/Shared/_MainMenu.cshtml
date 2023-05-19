@@ -29,9 +29,9 @@
         @if (User.Identity.IsAuthenticated)
         {
             <li class="nav-item">
-
                 <a class="navbar-brand" asp-action="MyProducts" asp-controller="Product"><i class="nav-icon fas fa-th"> My Products</i></a>
             </li>
+                <a class="navbar-brand" asp-action="MyLikedProducts" asp-controller="Product"><i class="nav-icon fas fa-th"> My Liked Products</i></a>
             <a class="navbar-brand" asp-action="AddProduct" asp-controller="Product">Add Product</a>
         }
         @if (User.IsInRole(UserConstants.Role.Administrator))

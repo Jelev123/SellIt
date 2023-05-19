@@ -80,7 +80,7 @@
             var user = (from users in data.Users
                         from userRoles in data.UserRoles.Where(co => co.UserId == users.Id).DefaultIfEmpty()
                         from roles in data.Roles.Where(prod => prod.Id == userRoles.RoleId).DefaultIfEmpty()
-                        from products in data.Products.Where(s => s.UserId == users.Id).DefaultIfEmpty()
+                        from products in data.Products.Where(s => s.CreatedUserId == users.Id).DefaultIfEmpty()
                         select new UserByIdViewModel
                         {
                             UserId = users.Id,
@@ -98,7 +98,7 @@
         public IEnumerable<UserProductsViewModel> UserProducts(string userId)
         {
             var userProducts = data.Products
-                .Where(s => s.UserId == userId)
+                .Where(s => s.CreatedUserId == userId)
                 .Select(s => new UserProductsViewModel
                 {
                     Id = s.ProductId,

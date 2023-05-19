@@ -44,7 +44,7 @@
             this.ViewData["address"] = address.City;
 
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
-            
+
             this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {
                 CategoryName = s.Name,
@@ -95,7 +95,7 @@
         public IActionResult GetProductById(int id)
         {
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
-            var userId = product.UserId;
+            var userId = product.CreatedUserId;
             var address = this.adressService.AddressByUserId(userId);
 
             this.ViewData["address"] = address.City;
@@ -110,10 +110,17 @@
             return this.View(products);
         }
 
+        public IActionResult MyLikedProducts()
+        {
+            var userId = this.userManager.GetUserId(User);
+            var myLikedProducts = this.productService.MyLikedProducts(userId);
+            return this.View(myLikedProducts);
+        }
+
         public IActionResult AllProducts()
         {
-                var allProducts = this.productService.GetAllProducts();
-                return this.View(allProducts);
+            var allProducts = this.productService.GetAllProducts();
+            return this.View(allProducts);
         }
 
         [HttpPost]
