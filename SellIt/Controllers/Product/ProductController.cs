@@ -110,10 +110,10 @@
             return this.View(products);
         }
 
-        public IActionResult MyLikedProducts()
+        public IActionResult Favorites()
         {
             var userId = this.userManager.GetUserId(User);
-            var myLikedProducts = this.productService.MyLikedProducts(userId);
+            var myLikedProducts = this.productService.Favorites(userId);
             return this.View(myLikedProducts);
         }
 

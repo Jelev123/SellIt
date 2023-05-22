@@ -1,7 +1,6 @@
 ﻿namespace SellIt.Core.Services.Product
 {
     using SellIt.Core.Constants;
-    using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels;
@@ -201,7 +200,7 @@
             return product;
         }
 
-        public IEnumerable<MyProductsViewModel> MyLikedProducts(string userId)
+        public IEnumerable<MyProductsViewModel> Favorites(string userId)
         {
             var myLikedProduct = this.data.LikedProducts.FirstOrDefault(x => x.UserId == userId);
             if (myLikedProduct != null)

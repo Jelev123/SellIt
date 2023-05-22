@@ -1285,9 +1285,14 @@ D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ae757b4e-a05d-4aaa-b5a3-939265a2d1c8_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\c847e56f-cbf8-4855-91fd-382e9b46e2d4_300068.jpg
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\d71cc565-5f63-4458-97a1-ac14c352266a_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
-D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Product\MyLikedProducts.cshtml
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\2f2e2ad0-62e0-48be-a300-77a95b0072e5_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\8fade96a-3e05-48d3-ae67-b9c8e839a78b_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a99f0b32-54c0-47b1-b15d-6c60daeb4483_811658.jpg
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ce77d07f-0443-4603-8cba-43e5398275a9_House-of-the-Dragon-CGI-Culture.webp
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\e83d6c02-cecd-4cf9-9762-44f1fb96f551_300068.jpg
+D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\2ab0cb06-6eaa-40d5-b2ab-144f7a9c617e_811658.jpg
+D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\36fcae1d-c063-4c7c-944a-0b0e0c25dd98_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
+D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\55a026fc-998f-4352-9632-4ebca112354d_House-of-the-Dragon-CGI-Culture.webp
+D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\7d906823-3962-4e13-84e9-41f57bab0183_300068.jpg
+D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\9fbdeeee-1c2e-43b6-9df8-7712fbd84d10_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
+D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Product\Favorites.cshtml

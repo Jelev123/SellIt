@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8lrprchcsUtROS8v/PgEOPgQkIoLYngniC/HOlEPWiU=",
+  "Hash": "ZV4UcTLDEBkSymkMbj4a6UDfPHAmmD6GSDz49FKE+ZI=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1751,6 +1751,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\26cf14f9-df64-4c81-a572-5ccb1e7307e0_download.jfif"
     },
     {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\2ab0cb06-6eaa-40d5-b2ab-144f7a9c617e_811658.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/2ab0cb06-6eaa-40d5-b2ab-144f7a9c617e_811658.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\2ab0cb06-6eaa-40d5-b2ab-144f7a9c617e_811658.jpg"
+    },
+    {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\2b83d707-5dab-4f69-8298-a29212c3ad60_811658.jpg",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -1817,6 +1834,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\32ecc275-abb9-4f7b-9bce-51116d046f98_download (3).jfif"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\36fcae1d-c063-4c7c-944a-0b0e0c25dd98_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/36fcae1d-c063-4c7c-944a-0b0e0c25dd98_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\36fcae1d-c063-4c7c-944a-0b0e0c25dd98_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\382337c4-c9c6-4517-91da-ce7d934e8d4d_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
@@ -1936,6 +1970,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\532244e6-1e58-4c30-932c-e96e668f6a24_Screenshot (56).png"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\55a026fc-998f-4352-9632-4ebca112354d_House-of-the-Dragon-CGI-Culture.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/55a026fc-998f-4352-9632-4ebca112354d_House-of-the-Dragon-CGI-Culture.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\55a026fc-998f-4352-9632-4ebca112354d_House-of-the-Dragon-CGI-Culture.webp"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\58ea818a-0a98-4a5d-b630-9d134646b3df_download (1) - Copy.jfif",
@@ -2074,6 +2125,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\74ab9e71-ad9b-4ed5-b574-0e977ea42cf9_download (2).jfif"
     },
     {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\7d906823-3962-4e13-84e9-41f57bab0183_300068.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/7d906823-3962-4e13-84e9-41f57bab0183_300068.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\7d906823-3962-4e13-84e9-41f57bab0183_300068.jpg"
+    },
+    {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\7f3a76e1-22b1-4295-a5d5-d375a1050bb8_download (2).jfif",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -2191,6 +2259,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\994c7e4f-2a4f-488a-9b7c-bba1c78ad2e1_download (2).jfif"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\9fbdeeee-1c2e-43b6-9df8-7712fbd84d10_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/9fbdeeee-1c2e-43b6-9df8-7712fbd84d10_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\9fbdeeee-1c2e-43b6-9df8-7712fbd84d10_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\a0e4e125-cf0b-4abe-83f6-dc2b8f4ec008_download (1).jfif",
