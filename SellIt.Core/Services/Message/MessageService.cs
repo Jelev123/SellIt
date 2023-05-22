@@ -1,15 +1,11 @@
 ﻿namespace SellIt.Core.Services.Message
 {
-    using SellIt.Areas.ViewModels;
-    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.Messages;
     using SellIt.Core.ViewModels.Messages;
-    using SellIt.Core.ViewModels.ReplyMessages;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Linq;
 
     public class MessageService : IMessagesService
@@ -23,11 +19,11 @@
             this.countService = countService;
         }
 
-        public Task SendMessage(SendMessageViewModel sendMessage, string userId, string userName, int id)
+        public Task SendMessage(string userId, string userName, int id, string message)
         {
             var send = new Message
             {
-                Text = sendMessage.Text,
+                Text = message,
                 ProductId = id,
                 UserId = userId,
                 UserName = userName,
@@ -39,12 +35,12 @@
             return Task.CompletedTask;
         }
 
-        public Task ReplyMessage(ReplyMessageViewModel replyMessage, string userId, string userName, int id)
+        public Task ReplyMessage(string replyMessage, string userId, string userName, int id)
         {
             var reply = new ReplyMessage
             {
                 MessageId = id,
-                ReplyText = replyMessage.ReplyText,
+                ReplyText = replyMessage,
                 Date = DateTime.UtcNow,
                 ReplyerUserId = userId,
                 ReplayerUserName = userName,

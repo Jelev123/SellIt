@@ -5,8 +5,8 @@
 
     public interface IMessagesService
     {
-        Task SendMessage(SendMessageViewModel sendMessage, string userId, string userName, int id);
-        Task ReplyMessage(ReplyMessageViewModel replyMessage, string userId, string userName, int id);
+        Task SendMessage(string userId, string userName, int id, string message);
+        Task ReplyMessage(string replyMessage, string userId, string userName, int id);
         IEnumerable<AllProductMessagesViewModel> AllProductMessages(int id);
         IEnumerable<AllMessagesViewModel> AllMessages(string userId);
         ProductMessagesById GetProductMessageById(int id);

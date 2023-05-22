@@ -38,7 +38,6 @@ else
     <h1>No products</h1>
 }
 
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <div id="contentContainer">
     <!-- The content will be dynamically updated here -->
@@ -46,37 +45,30 @@ else
 
 <script>
     let randomButton = $("#random");
-
     randomButton.on("click", function(event) {
         event.preventDefault();
-
-        // Create the text input element
         let inputElement = $('<input type="text" id="textInput">');
-
-        // Create a button to send the value to the server
         let sendButton = $('<button id="sendButton">Send</button>');
-
-        // Append the input element and send button to the content container
         $('#contentContainer').empty().append(inputElement).append(sendButton);
-
-        // Handle the send button click event
         sendButton.on("click", function () {
             let inputValue = $('#textInput').val();
-
-            // Send an AJAX request to the server
-            $.ajax({
-                url: `/Message/SendMessage`,
-                type: "POST",
-                data: { message: inputValue },
-                success: function (response) {
-                    // Handle the success response if needed
-                    // Update the content container with the received result
-                    $('#contentContainer').html(response);
-                },
-                error: function (xhr, status, error) {
-                    console.log("An error occurred:", error);
-                }
-            });
+            // Iterate over the view model collection
+            @foreach (var item in Model)
+            {
+                // Access the ID property of each item
+                var itemId = item.Id;
+                @:$.ajax({
+                @:    url: `/Message/SendMessage`,
+                @:    type: "POST",
+                @:    data: { id: @itemId, message: inputValue },
+                @:    success: function (response) {
+                @:        $('#contentContainer').html(response);
+                @:    },
+                @:    error: function (xhr, status, error) {
+                @:        console.log("An error occurred:", error);
+                @:    }
+                @:});
+            }
         });
     });
 </script>

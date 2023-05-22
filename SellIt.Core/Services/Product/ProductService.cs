@@ -238,6 +238,7 @@
                     Id = x.ProductId,
                     Name = x.Name,
                     CategoryName = x.Category.Name,
+                    MessagesCount = x.Messages.Count,
                     Description = x.Description,
                     UserId = userId,
                     IsAprooved = x.IsAproved,

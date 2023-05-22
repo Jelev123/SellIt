@@ -25,6 +25,39 @@
                 <td>@replyMessage.Date</td>
             </tr>
         }
-        <a asp-action="ReplyMessage" asp-controller="Message" asp-route-id="@Model.Id" class="btn btn-success">Reply</a>
+        <a id="random" asp-route-id="@Model.Id" class="btn btn-success">Reply</a>
     </tbody>
 </table>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<div id="contentContainer">
+    <!-- The content will be dynamically updated here -->
+</div>
+
+<script>
+    let randomButton = $("#random");
+    randomButton.on("click", function(event) {
+        event.preventDefault();
+        let inputElement = $('<input type="text" id="textInput">');
+        let sendButton = $('<button id="sendButton">Send</button>');
+        $('#contentContainer').empty().append(inputElement).append(sendButton);
+        sendButton.on("click", function () {
+            let inputValue = $('#textInput').val();
+           
+            var itemId = @Model.Id;
+            $.ajax({
+                url: `/Message/ReplyMessage`,
+                type: "POST",
+                data: { id: itemId, replyMessage: inputValue },
+                success: function (response) {
+                    // Redirect to the desired page with ID appended to the URL
+                    window.location.href = `/Message/GetProductMessageById?id=${itemId}`;
+                },
+                error: function (xhr, status, error) {
+                    console.log("An error occurred:", error);
+                }
+            });      
+        });
+    });
+</script>
+

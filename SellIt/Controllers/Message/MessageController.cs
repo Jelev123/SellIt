@@ -28,39 +28,23 @@
             return View(all);
 
         }
-        public IActionResult SendMessage(int id)
-        {
-            var userId = this.userManager.GetUserId(User);
-            var message = this.data.Messages.Where(s => s.UserId == userId).FirstOrDefault();
-
-            if (message != null)
-            {
-                return RedirectToAction("ReplyMessage", new { id = message.Id });
-            }
-            return this.View();
-        }
 
         [HttpPost]
-        public IActionResult SendMessage(SendMessageViewModel sendMessage, int id)
+        public IActionResult SendMessage(int id, string message)
         {
             var userId = this.userManager.GetUserId(User);
             var userName = this.userManager.GetUserName(User);
-            this.messagesService.SendMessage(sendMessage, userId, userName, id);
+            this.messagesService.SendMessage(userId, userName, id, message);
             return this.Redirect("/");
         }
 
-        public IActionResult ReplyMessage()
-        {
-            return this.View();
-        }
-
         [HttpPost]
-        public IActionResult ReplyMessage(ReplyMessageViewModel replyMessage, int id)
+        public IActionResult ReplyMessage(string replyMessage, int id)
         {
             var userId = this.userManager.GetUserId(User);
             var userName = this.userManager.GetUserName(User);
             this.messagesService.ReplyMessage(replyMessage, userId, userName, id);
-            return this.RedirectToAction("GetProductMessageById", new {id = id} );
+            return Json(new { success = true });
         }
 
         public IActionResult AllMessages()
