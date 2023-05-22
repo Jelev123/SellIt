@@ -50,7 +50,6 @@
                 type: "POST",
                 data: { id: itemId, replyMessage: inputValue },
                 success: function (response) {
-                    // Redirect to the desired page with ID appended to the URL
                     window.location.href = `/Message/GetProductMessageById?id=${itemId}`;
                 },
                 error: function (xhr, status, error) {

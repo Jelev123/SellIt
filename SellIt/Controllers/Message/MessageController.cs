@@ -35,7 +35,8 @@
             var userId = this.userManager.GetUserId(User);
             var userName = this.userManager.GetUserName(User);
             this.messagesService.SendMessage(userId, userName, id, message);
-            return this.Redirect("/");
+            return Json(new { success = true });
+
         }
 
         [HttpPost]

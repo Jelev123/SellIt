@@ -13,7 +13,7 @@
 
     @if (User.Identity.IsAuthenticated)
     {
-        <btn id="random" class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
+        <btn id="likeButton" class="btn btn-app bg-cyan" asp-route-id="@Model.Id">
             <span id="liked" class="badge bg-danger">@Model.LikedCount</span>
             <i class="fas fa-heart"></i> Likes
         </btn>
@@ -63,7 +63,7 @@
 
     @if (User.Identity.Name != Model.UserName)
     {
-        <a asp-action="SendMessage" asp-controller="Message" asp-route-id="@Model.Id" class="btn btn-success">Send Message</a>
+        <a id="sendMessageButton" asp-route-id="@Model.Id" class="btn btn-success">Send Message</a>
     }
 </div>
 
@@ -82,29 +82,27 @@
     }
 }
 
-
+<div id="contentContainer"></div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    let likedElement = $("#liked");
-    let randomButton = $("#random");
+      let likedElement = $("#liked");
+    let likeButton = $("#likeButton");
     let modelId = @Model.Id;
     let modelCount = @Model.LikedCount;
 
-    randomButton.on("click", function(event) {
+    likeButton.on("click", function(event) {
         event.preventDefault();
 
         let currentLikedCount = parseInt(likedElement.text());
         let newLikedCount = currentLikedCount + 1;
 
-        // Send an AJAX request to the server
         $.ajax({
             url: `/Product/Like?id=${modelId}`,
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ likedCount: newLikedCount }),
             success: function(response) {
-                // Refresh the page
                 location.reload();
             },
             error: function(xhr, status, error) {
@@ -113,3 +111,36 @@
         });
     });
 </script>
+
+
+<script>
+    let sendMessageButton = $("#sendMessageButton");
+    sendMessageButton.on("click", function(event) {
+        event.preventDefault();
+        let inputElement = $('<input type="text" id="textInput">');
+        let sendButton = $('<button id="sendButton">Send</button>');
+        $('#contentContainer').empty().append(inputElement).append(sendButton);
+        sendButton.on("click", function () {
+            let inputValue = $('#textInput').val();
+           
+                $.ajax({
+                    url: `/Message/SendMessage`,
+                    type: "POST",
+                    data: { id: modelId, message: inputValue },
+                    success: function (response) {
+                        window.location.href = '/';
+                    },
+                    error: function (xhr, status, error) {
+                        console.log("An error occurred:", error);
+                    }
+                });        
+        });
+    });
+</script>
+    
+  
+
+  
+
+
+
