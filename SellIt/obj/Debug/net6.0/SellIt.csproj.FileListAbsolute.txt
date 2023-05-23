@@ -1259,7 +1259,6 @@ D:\Projects\SellIt\SellIt\SellIt\obj\Debug\net6.0\SellIt.d-bfalse.GeneratedMSBui
 D:\Projects\SellIt\SellIt\SellIt\obj\Debug\net6.0\SellIt.AssemblyInfoInputs.cache
 D:\Projects\SellIt\SellIt\SellIt\obj\Debug\net6.0\SellIt.AssemblyInfo.cs
 D:\Projects\SellIt\SellIt\SellIt\obj\Debug\net6.0\SellIt.csproj.CoreCompileInputs.cache
-D:\Projects\SellIt\SellIt\SellIt\obj\Debug\net6.0\SellIt.MvcApplicationPartsAssemblyInfo.cs
 D:\Projects\SellIt\SellIt\SellIt\obj\Debug\net6.0\SellIt.MvcApplicationPartsAssemblyInfo.cache
 D:\Projects\SellIt\SellIt\SellIt\obj\Debug\net6.0\SellIt.RazorAssemblyInfo.cache
 D:\Projects\SellIt\SellIt\SellIt\obj\Debug\net6.0\SellIt.RazorAssemblyInfo.cs

@@ -1,32 +1,72 @@
-﻿@using SellIt.Core.ViewModels.Messages
-@model IEnumerable<AllMessagesViewModel> 
+﻿@using Microsoft.IdentityModel.Tokens
+@using SellIt.Core.ViewModels.Messages
+@model IEnumerable<AllMessagesViewModel>
 
+<style>
+    .email-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+    }
 
-@foreach (var item in Model)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">User</th>
-                <th scope="col">Product</th>
-                <th scope="col">Date</th>
-                <th></th>
-                
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>@item.UserName</td>            
-                <td>@item.ProductName</td>
-                <td>@item.Date</td>
-                <td>
-                    <a asp-action="GetProductMessageById" asp-controller="Message" asp-route-id="@item.Id">
-                        <img src="@item.Photo" width="100px" />
-                    </a>
-                </td>
-            </tr>
+    .email {
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+    .message-header {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .message-details {
+        padding-left: 20px;
+        margin-bottom: 10px;
+    }
+
+    .reply-message {
+        padding-left: 20px;
+        border-left: 2px solid #ddd;
+        margin-bottom: 10px;
+    }
+
+    .reply-sender {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    .reply-content {
+        margin-left: 10px;
+    }
+</style>
+
+<div class="email-container">
+    @foreach (var thread in Model)
+    {
+        <div class="email">
+            <div class="message-header">
+                Conversation with @thread.UserName
+            </div>
+            <div class="message-details">
+                <strong>Product:</strong> @thread.ProductName<br>
+                <strong>Date:</strong> @thread.Date
+            </div>
             
-        </tbody>
-    </table>
-}
+            @foreach (var message in thread.ReplyMessages)
+            {
+                <div class="reply-message">
+                    <div class="reply-sender">
+                        Reply from @message.ReplyerUserName
+                    </div>
+                    <div class="reply-content">
+                        @message.ReplyText
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

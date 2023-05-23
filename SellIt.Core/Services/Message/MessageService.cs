@@ -77,25 +77,27 @@
 
         public IEnumerable<AllMessagesViewModel> AllMessages(string userId)
         {
-
             var allMessages = this.data.Messages
-                .Where(s => s.UserId == userId)
-                .Select(s => new AllMessagesViewModel
-                {
-                    Id = s.Id,
-                    Text = s.Text,
-                    UserName = s.UserName,
-                    Date = s.Date,
-                    ProductName = s.Product.Name,
-                    Photo = s.Product.Images.FirstOrDefault().URL, 
-                    ReplyMessages = s.ReplyMessages.Select(s => new AllReplyMessagesViewModel
-                    {
-                        Date = s.Date,
-                        ReplyText = s.ReplyText,
-                        ReplyerUserName = s.ReplayerUserName,
+    .Where(m => m.UserId == userId || this.data.ReplyMessages.Any(r => r.ReplyerUserId == userId && r.MessageId == m.Id))
+    .Select(m => new AllMessagesViewModel
+    {
+        Id = m.Id,
+        Text = m.Text,
+        UserName = m.UserName,
+        Date = m.Date,
+        ProductName = m.Product.Name,
+        ReplyMessages = this.data.ReplyMessages
+            .Where(r => r.MessageId == m.Id && (r.ReplyerUserId == userId || r.Message.UserId == userId))
+            .Select(r => new ReplyMessageViewModel
+            {
+                ReplyText = r.ReplyText,
+                ReplyerUserName = r.ReplayerUserName,
+                ReplyerDate = r.Date
+            })
+            .ToList()
+    })
+    .ToList();
 
-                    }).ToList()
-                }).ToList();
             return allMessages;
         }
 
