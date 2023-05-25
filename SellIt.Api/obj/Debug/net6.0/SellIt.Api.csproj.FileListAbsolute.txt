@@ -242,7 +242,6 @@ D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.d-bfalse.Genera
 D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.AssemblyInfoInputs.cache
 D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.AssemblyInfo.cs
 D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.csproj.CoreCompileInputs.cache
-D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.MvcApplicationPartsAssemblyInfo.cs
 D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.MvcApplicationPartsAssemblyInfo.cache
 D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\staticwebassets.build.json
 D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\staticwebassets.development.json

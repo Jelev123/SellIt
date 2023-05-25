@@ -2,71 +2,130 @@
 @using SellIt.Core.ViewModels.Messages
 @model IEnumerable<AllMessagesViewModel>
 
-<style>
-    .email-container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #f5f5f5;
-    }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conversation View</title>
+    <style>
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
 
-    .email {
-        background-color: #fff;
-        border-radius: 4px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin-bottom: 20px;
-    }
+        .product-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
 
-    .message-header {
-        font-weight: bold;
-        margin-bottom: 10px;
-    }
+        .product-photo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
 
-    .message-details {
-        padding-left: 20px;
-        margin-bottom: 10px;
-    }
+        .message {
+            background-color: #f2f2f2;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
 
-    .reply-message {
-        padding-left: 20px;
-        border-left: 2px solid #ddd;
-        margin-bottom: 10px;
-    }
+        .message .user {
+            font-weight: bold;
+        }
 
-    .reply-sender {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
+        .message .date {
+            color: #888;
+            font-size: 12px;
+        }
 
-    .reply-content {
-        margin-left: 10px;
-    }
-</style>
+        .message .message-body p {
+            margin: 0;
+        }
 
-<div class="email-container">
-    @foreach (var thread in Model)
-    {
-        <div class="email">
-            <div class="message-header">
-                Conversation with @thread.UserName
-            </div>
-            <div class="message-details">
-                <strong>Product:</strong> @thread.ProductName<br>
-                <strong>Date:</strong> @thread.Date
-            </div>
-            
-            @foreach (var message in thread.ReplyMessages)
+        .reply {
+            background-color: #e6e6e6;
+            padding: 10px;
+            margin-top: 10px;
+        }
+
+        .reply .user {
+            font-weight: bold;
+        }
+
+        .reply .date {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .reply .reply-body p {
+            margin: 0;
+        }
+
+        .message-separator {
+            border-top: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+        .product-separator {
+            border-top: 2px solid #333;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        @{
+            var prevProductName = "";
+            var counter = 0;
+        }
+
+        @foreach (var message in Model)
+        {
+            if (message.ProductName != prevProductName && counter > 0)
             {
-                <div class="reply-message">
-                    <div class="reply-sender">
-                        Reply from @message.ReplyerUserName
-                    </div>
-                    <div class="reply-content">
-                        @message.ReplyText
-                    </div>
-                </div>
+                <div class="product-separator"></div>
             }
-        </div>
-    }
-</div>
+
+            <h2 class="product-name">Product: @message.ProductName</h2>
+
+            <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@message.ProductId">
+                        <img class="product-photo" src="@message.Photo">
+                    </a>
+
+            @*<img class="product-photo" src="@message.Photo" alt="Product Photo">*@
+
+            <div class="message">
+                <div class="message-header">
+                    <span class="user">@message.UserName</span>
+                    <span class="date">@message.Date.ToString("yyyy-MM-dd")</span>
+                </div>
+                <div class="message-body">
+                    <p>@message.Text</p>
+                </div>
+            </div>
+
+            <div class="reply-messages">
+                @foreach (var reply in message.ReplyMessages)
+                {
+                    <div class="reply">
+                        <div class="reply-header">
+                            <span class="user">@reply.ReplyerUserName</span>
+                            <span class="date">@reply.ReplyerDate.ToString("yyyy-MM-dd")</span>
+                        </div>
+                        <div class="reply-body">
+                            <p>@reply.ReplyText</p>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            prevProductName = message.ProductName;
+            counter++;
+        }
+    </div>
+</body>
+</html>
+
+

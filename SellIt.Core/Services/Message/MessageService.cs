@@ -77,28 +77,61 @@
 
         public IEnumerable<AllMessagesViewModel> AllMessages(string userId)
         {
-            var allMessages = this.data.Messages
-    .Where(m => m.UserId == userId || this.data.ReplyMessages.Any(r => r.ReplyerUserId == userId && r.MessageId == m.Id))
-    .Select(m => new AllMessagesViewModel
-    {
-        Id = m.Id,
-        Text = m.Text,
-        UserName = m.UserName,
-        Date = m.Date,
-        ProductName = m.Product.Name,
-        ReplyMessages = this.data.ReplyMessages
-            .Where(r => r.MessageId == m.Id && (r.ReplyerUserId == userId || r.Message.UserId == userId))
-            .Select(r => new ReplyMessageViewModel
-            {
-                ReplyText = r.ReplyText,
-                ReplyerUserName = r.ReplayerUserName,
-                ReplyerDate = r.Date
-            })
-            .ToList()
-    })
-    .ToList();
+
+            var allMessages = this.data.Products
+     .Where(p => p.CreatedUserId == userId) // Filter products owned by the current user
+     .SelectMany(p => p.Messages) // Retrieve messages for the user's products
+     .Where(m => m.UserId == userId || m.Product.CreatedUserId == userId || m.Product.User.Id == userId) // Include messages sent by the current user, related to their product, or sent to other users' products
+     .Select(m => new AllMessagesViewModel
+     {
+         Id = m.Id,
+         Text = m.Text,
+         UserName = m.UserName,
+         Date = m.Date,
+         ProductId = m.ProductId,
+         ProductName = m.Product.Name,
+         Photo = m.Product.Images.FirstOrDefault().URL,
+         ReplyMessages = m.ReplyMessages
+             .Where(r => r.ReplyerUserId == userId || r.Message.UserId == userId)
+             .Select(r => new ReplyMessageViewModel
+             {
+                 ReplyText = r.ReplyText,
+                 ReplyerUserName = r.ReplayerUserName,
+                 ReplyerDate = r.Date
+             })
+             .ToList()
+     })
+     .ToList();
+
+            var currentUserMessages = this.data.Messages
+                .Where(m => m.UserId == userId /*&& !this.data.Products.Any(p => p.Messages.Contains(m))*/) // Include messages sent by the current user to other users' products
+                .Select(m => new AllMessagesViewModel
+                {
+                    Id = m.Id,
+                    Text = m.Text,
+                    UserName = m.UserName,
+                    Date = m.Date,
+                    ProductId = m.ProductId,
+                    ProductName = m.Product.Name,
+                    Photo = m.Product.Images.FirstOrDefault().URL,
+                    ReplyMessages = m.ReplyMessages
+                        .Where(r => r.ReplyerUserId == userId || r.Message.UserId == userId)
+                        .Select(r => new ReplyMessageViewModel
+                        {
+                            ReplyText = r.ReplyText,
+                            ReplyerUserName = r.ReplayerUserName,
+                            ReplyerDate = r.Date
+                        })
+                        .ToList()
+                })
+                .ToList();
+
+            allMessages.AddRange(currentUserMessages);
 
             return allMessages;
+
+
+
         }
 
         public ProductMessagesById GetProductMessageById(int id)

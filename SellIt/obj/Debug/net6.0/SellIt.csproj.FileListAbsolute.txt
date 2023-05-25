@@ -1295,3 +1295,4 @@ D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\7d906823-3962-4e13-84e9-41f57bab0183_300068.jpg
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\9fbdeeee-1c2e-43b6-9df8-7712fbd84d10_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Product\Favorites.cshtml
+D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\b91af6f8-8967-467d-9234-eb3cfcf20aaa_811658.jpg

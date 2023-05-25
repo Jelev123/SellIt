@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZV4UcTLDEBkSymkMbj4a6UDfPHAmmD6GSDz49FKE+ZI=",
+  "Hash": "iND9DjwY64MlljY993lZl+9fR5ZiQA0xOXj9Z3nitEs=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -2480,6 +2480,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\b58a64f4-9112-4b56-900b-92afeb308b66_download (2).jfif"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\b91af6f8-8967-467d-9234-eb3cfcf20aaa_811658.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/b91af6f8-8967-467d-9234-eb3cfcf20aaa_811658.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\b91af6f8-8967-467d-9234-eb3cfcf20aaa_811658.jpg"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\SellIt\\wwwroot\\images\\gallery\\bb077f7c-b493-444a-9c77-4c2b702bd7df_1609758202_12_2304.jpg",
