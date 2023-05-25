@@ -39,7 +39,6 @@ builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfi
 
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<ICloduinaryService, CloudinaryService>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IForAproovedService, ForAproovedService>();
@@ -51,13 +50,6 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IAdressService, AdressService>();
 builder.Services.AddHttpClient<AdressController>();
 
-Account cloudinaryCredentials = new Account(
-                builder.Configuration["Cloudinary:CloudName"],
-                builder.Configuration["Cloudinary:ApiKey"],
-                builder.Configuration["Cloudinary:ApiSecret"]);
-
-Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
-builder.Services.AddSingleton(cloudinaryUtility);
 
 var app = builder.Build();
 

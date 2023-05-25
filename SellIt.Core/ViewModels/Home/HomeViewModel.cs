@@ -1,5 +1,6 @@
 ﻿namespace SellIt.Core.ViewModels.Home
 {
+    using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
 
     public class HomeViewModel
@@ -12,6 +13,11 @@
 
         public int ProductMessages { get; set; }
 
+        public int LikedCount { get; set; }
+
         public IEnumerable<IndexRandomViewModel> RandomProducts { get; set; }
+
+        public IEnumerable<AllCategoriesViewModel> AllCategories { get; set; }
+
     }
 }

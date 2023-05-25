@@ -3,8 +3,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Constants;
+    using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.Product;
+    using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Home;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
@@ -15,18 +17,19 @@
     {
         private readonly ICountService countService;
         private readonly IProductService productService;
+        private readonly ICategoryService categoryService;
         private readonly UserManager<User> userManager;
 
-        public HomeController(ICountService countService, IProductService productService, UserManager<User> userManager)
+        public HomeController(ICountService countService, IProductService productService, UserManager<User> userManager, ICategoryService categoryService)
         {
             this.countService = countService;
             this.productService = productService;
             this.userManager = userManager;
+            this.categoryService = categoryService;
         }
 
         public IActionResult Index(int id)
         {
-            var userId = this.userManager.GetUserId(User);
             var count = this.countService.GetCount(id);
             var counts = new HomeViewModel
             {
@@ -34,22 +37,11 @@
                 AllProducts = count.AllProducts,
                 RandomProducts = this.productService.RandomProducts(6),
                 ProductMessages = count.ProductMessages,
+                AllCategories = this.categoryService.GetAllCategories<AllCategoriesViewModel>(),
             };
 
             ViewData["HomeViewModel"] = counts;
 
-            if (ProductConstants.IsCreated == true)
-            {
-                ProductConstants.IsCreated = false;
-                ViewData[MessageConstants.SuccessMessage] = "Created!";
-                return this.View(counts);
-            }
-            if (ProductConstants.IsDeleted == true)
-            {
-                ProductConstants.IsDeleted = false;
-                ViewData[MessageConstants.ErrorMessage] = "Deleted!";
-                return this.View(counts);
-            }
             ViewData[MessageConstants.SuccessMessage] = "Welcome!";
             return this.View(counts);
         }

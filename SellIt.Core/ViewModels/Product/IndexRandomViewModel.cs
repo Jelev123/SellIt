@@ -16,5 +16,7 @@
 
         public bool IsAproved { get; set; }
 
+        public int LikedCount { get; set; }
+
     }
 }

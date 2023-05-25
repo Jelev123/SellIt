@@ -39,9 +39,6 @@
                 ProductAdressId = user.AdressId,
             };
 
-
-            ProductConstants.IsCreated = true;
-
             product.Images = new List<Image>();
 
             foreach (var file in addProduct.Gallery)
@@ -66,7 +63,6 @@
             data.Remove(productImage);
             data.Remove(product);
             data.SaveChanges();
-            ProductConstants.IsDeleted = true;
         }
 
         public void EditProduct(AddEditProductViewModel editProduct, int id, string userId)
@@ -259,7 +255,8 @@
                     CategoryName = s.Category.Name,
                     CoverPhoto = s.Images.FirstOrDefault().URL,
                     Price = s.Price,
-                    IsAproved = s.IsAproved
+                    IsAproved = s.IsAproved,
+                    LikedCount = s.LikedCount,
                 })
                 .Take(count);
         }

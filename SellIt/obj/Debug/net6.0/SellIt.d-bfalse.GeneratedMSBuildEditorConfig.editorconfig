@@ -448,6 +448,15 @@ build_metadata.AdditionalFiles.XamlRuntime =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/SellIt/SellIt/SellIt/Views/Home/Index2.cshtml]
+build_metadata.AdditionalFiles.SourceItemGroup = 
+build_metadata.AdditionalFiles.Link = 
+build_metadata.AdditionalFiles.FullPath = D:\Projects\SellIt\SellIt\SellIt\Views\Home\Index2.cshtml
+build_metadata.AdditionalFiles.Identity = Views\Home\Index2.cshtml
+build_metadata.AdditionalFiles.XamlRuntime = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleDIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/SellIt/SellIt/SellIt/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.SourceItemGroup = 
 build_metadata.AdditionalFiles.Link = 
@@ -556,6 +565,15 @@ build_metadata.AdditionalFiles.XamlRuntime =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXRQcm9kdWN0QnlJZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/SellIt/SellIt/SellIt/Views/Product/GetProductById2.cshtml]
+build_metadata.AdditionalFiles.SourceItemGroup = 
+build_metadata.AdditionalFiles.Link = 
+build_metadata.AdditionalFiles.FullPath = D:\Projects\SellIt\SellIt\SellIt\Views\Product\GetProductById2.cshtml
+build_metadata.AdditionalFiles.Identity = Views\Product\GetProductById2.cshtml
+build_metadata.AdditionalFiles.XamlRuntime = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXRQcm9kdWN0QnlJZDIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/SellIt/SellIt/SellIt/Views/Product/Like.cshtml]
 build_metadata.AdditionalFiles.SourceItemGroup = 
 build_metadata.AdditionalFiles.Link = 
@@ -583,6 +601,15 @@ build_metadata.AdditionalFiles.XamlRuntime =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxTZWFyY2guY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Projects/SellIt/SellIt/SellIt/Views/Shared/ByIdSharedOld.cshtml]
+build_metadata.AdditionalFiles.SourceItemGroup = 
+build_metadata.AdditionalFiles.Link = 
+build_metadata.AdditionalFiles.FullPath = D:\Projects\SellIt\SellIt\SellIt\Views\Shared\ByIdSharedOld.cshtml
+build_metadata.AdditionalFiles.Identity = Views\Shared\ByIdSharedOld.cshtml
+build_metadata.AdditionalFiles.XamlRuntime = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEJ5SWRTaGFyZWRPbGQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Projects/SellIt/SellIt/SellIt/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.SourceItemGroup = 
 build_metadata.AdditionalFiles.Link = 
@@ -599,15 +626,6 @@ build_metadata.AdditionalFiles.FullPath = D:\Projects\SellIt\SellIt\SellIt\Views
 build_metadata.AdditionalFiles.Identity = Views\Shared\_ByIdAndLikePartialView.cshtml
 build_metadata.AdditionalFiles.XamlRuntime = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CeUlkQW5kTGlrZVBhcnRpYWxWaWV3LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Projects/SellIt/SellIt/SellIt/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.SourceItemGroup = 
-build_metadata.AdditionalFiles.Link = 
-build_metadata.AdditionalFiles.FullPath = D:\Projects\SellIt\SellIt\SellIt\Views\Shared\_Layout.cshtml
-build_metadata.AdditionalFiles.Identity = Views\Shared\_Layout.cshtml
-build_metadata.AdditionalFiles.XamlRuntime = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Projects/SellIt/SellIt/SellIt/Views/Shared/_LoginPartial.cshtml]
@@ -709,11 +727,11 @@ build_metadata.AdditionalFiles.XamlRuntime =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/Projects/SellIt/SellIt/SellIt/Views/Shared/_LayoutOld.cshtml]
+[D:/Projects/SellIt/SellIt/SellIt/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.SourceItemGroup = 
 build_metadata.AdditionalFiles.Link = 
-build_metadata.AdditionalFiles.FullPath = D:\Projects\SellIt\SellIt\SellIt\Views\Shared\_LayoutOld.cshtml
-build_metadata.AdditionalFiles.Identity = Views\Shared\_LayoutOld.cshtml
+build_metadata.AdditionalFiles.FullPath = D:\Projects\SellIt\SellIt\SellIt\Views\Shared\_Layout.cshtml
+build_metadata.AdditionalFiles.Identity = Views\Shared\_Layout.cshtml
 build_metadata.AdditionalFiles.XamlRuntime = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRPbGQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-o3d0pyl5l2
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ledhitsjym
