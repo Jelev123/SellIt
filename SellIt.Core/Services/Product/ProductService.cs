@@ -25,7 +25,7 @@
         public Task AddProduct(AddEditProductViewModel addProduct, string userId, string imagePath)
         {
             var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
-            imageService.CheckGallery(addProduct);
+            this.imageService.CheckGallery(addProduct);
             var category = this.data.Categories.FirstOrDefault(s => s.Name == addProduct.CategoryName);
             var product = new Product
             {

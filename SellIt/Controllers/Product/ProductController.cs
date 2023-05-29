@@ -54,10 +54,10 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct(AddEditProductViewModel addProduct)
+        public IActionResult AddProduct(AddEditProductViewModel addProduct)
         {
             var user = this.userManager.GetUserId(User);
-            await this.productService.AddProduct(addProduct, user, $"{this.environment.WebRootPath}/images");
+            this.productService.AddProduct(addProduct, user, $"{this.environment.WebRootPath}/images");
             return this.Redirect("/");
         }
 
@@ -133,7 +133,6 @@
 
         public IActionResult Search(string searchName)
         {
-
             this.ViewData["searchProduct"] = searchName;
             var searchedProduct = this.searchService.SearchProduct(searchName);
 
@@ -146,7 +145,6 @@
 
         public IActionResult SearchCategory(string searchName)
         {
-
             this.ViewData["searchCategory"] = searchName;
             var searchedCategory = this.searchService.SearchProduct(searchName);
 

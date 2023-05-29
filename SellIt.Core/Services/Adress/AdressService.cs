@@ -15,7 +15,6 @@
 
         public  AddressByUserId AddressByUserId(string userId)
         {
-
             var user = this.data.Users.
                 Where(s => s.Id == userId).
                 Select(s => new AddressByUserId
@@ -25,8 +24,7 @@
                 }).
                 FirstOrDefault();
 
-            return user;
-              
+            return user;      
         }
     }
 }

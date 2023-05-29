@@ -1545,3 +1545,4 @@ D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\vendor\swiper\v
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\vendor\swiper\vue\virtual.js
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Product\GetProductById2.cshtml
 D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Shared\ByIdSharedOld.cshtml
+D:\Projects\SellIt\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Product\AllProducts2.cshtml
