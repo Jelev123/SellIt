@@ -16,8 +16,6 @@
 
         public int LikedCount { get; set; }
 
-        public bool IsLiked { get; set; }
-
         public string UserId { get; set; }
 
         public bool IsAprooved { get; set; }

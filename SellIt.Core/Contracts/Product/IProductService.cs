@@ -14,6 +14,8 @@
 
         IEnumerable<AllProductViewModel> GetAllProducts();
 
+        IEnumerable<AllProductViewModel> GetAllProductsByCategoryId(int id);
+
         GetByIdAndLikeViewModel Like(int id, string currentUserId);
 
         IEnumerable<MyProductsViewModel> MyProducts(string id);

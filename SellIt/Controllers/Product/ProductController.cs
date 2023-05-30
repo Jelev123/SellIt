@@ -123,6 +123,12 @@
             return this.View(allProducts);
         }
 
+        public IActionResult AllProductsByCategoryId(int id)
+        {
+            var allProductsByCategoryId = this.productService.GetAllProductsByCategoryId(id);
+            return this.View(allProductsByCategoryId);
+        }
+
         [HttpPost]
         public IActionResult Like(int id)
         {

@@ -15,6 +15,8 @@
 
         public int LikedCount { get; set; }
 
+        public string CategoryName { get; set; }
+
         public IEnumerable<IndexRandomViewModel> RandomProducts { get; set; }
 
         public IEnumerable<AllCategoriesViewModel> AllCategories { get; set; }

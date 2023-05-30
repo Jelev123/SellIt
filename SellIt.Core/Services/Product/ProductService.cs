@@ -151,23 +151,27 @@
         {
             var currentProduct = data.Products.FirstOrDefault(s => s.ProductId == id);
 
-            var likedProduct = new LikedProduct
-            {
-                ProductId = currentProduct.ProductId,
-                UserId = currentUserId,
-            };
+            var existingLikedProduct = data.LikedProducts.FirstOrDefault(lp => lp.UserId == currentUserId && lp.ProductId == currentProduct.ProductId);
 
-            if (!data.LikedProducts.Any(lp => lp.UserId == likedProduct.UserId))
+            if (existingLikedProduct == null)
             {
+                // User has not liked the current product, so add it
+                var likedProduct = new LikedProduct
+                {
+                    ProductId = currentProduct.ProductId,
+                    UserId = currentUserId,
+                };
+
                 currentProduct.LikedCount++;
                 data.LikedProducts.Add(likedProduct);
             }
             else
             {
-                var existingLikedProduct = data.LikedProducts.FirstOrDefault(lp => lp.UserId == likedProduct.UserId);
-                if (existingLikedProduct != null)
+                // User has already liked the current product, so remove it
+                data.LikedProducts.Remove(existingLikedProduct);
+
+                if (currentProduct.LikedCount > 0)
                 {
-                    data.LikedProducts.Remove(existingLikedProduct);
                     currentProduct.LikedCount--;
                 }
             }
@@ -198,22 +202,26 @@
 
         public IEnumerable<MyProductsViewModel> Favorites(string userId)
         {
-            var myLikedProduct = this.data.LikedProducts.FirstOrDefault(x => x.UserId == userId);
-            if (myLikedProduct != null)
+            var myLikedProductIds = this.data.LikedProducts
+              .Where(x => x.UserId == userId)
+              .Select(x => x.ProductId)
+              .ToList();
+
+            if (myLikedProductIds != null)
             {
-                var myProducts = this.data.Products
-                .Where(s => s.ProductId == myLikedProduct.ProductId)
-                .Select(x => new MyProductsViewModel
-                {
-                    Id = x.ProductId,
-                    Name = x.Name,
-                    CategoryName = x.Category.Name,
-                    Description = x.Description,
-                    UserId = userId,
-                    IsAprooved = x.IsAproved,
-                    Price = x.Price,
-                    CoverPhoto = x.Images.FirstOrDefault().URL
-                });
+                          var myProducts = this.data.Products
+              .Where(x => myLikedProductIds.Contains(x.ProductId))
+              .Select(x => new MyProductsViewModel
+              {
+                  Id = x.ProductId,
+                  Name = x.Name,
+                  CategoryName = x.Category.Name,
+                  Description = x.Description,
+                  UserId = userId,
+                  Price = x.Price,
+                  IsAprooved = x.IsAproved,
+                  CoverPhoto = x.Images.FirstOrDefault().URL
+              }).ToList();
 
                 return myProducts;
             }
@@ -259,6 +267,23 @@
                     LikedCount = s.LikedCount,
                 })
                 .Take(count);
+        }
+
+        public IEnumerable<AllProductViewModel> GetAllProductsByCategoryId(int id)
+        {
+            var products =  this.data.Products
+                .Select(p => new AllProductViewModel
+                {
+                    Name = p.Name,
+                    Description = p.Description,
+                    CategoryName = p.Category.Name,
+                    CategoryId = p.CategoryId,
+                    Price = p.Price,
+                    CoverPhoto = p.Images.FirstOrDefault().URL,
+                })
+                .Where(p => p.CategoryId == id);
+
+            return products;
         }
     }
 }

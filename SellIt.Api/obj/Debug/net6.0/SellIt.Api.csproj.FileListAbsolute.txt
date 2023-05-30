@@ -114,7 +114,6 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.AssemblyInfoInputs.cache
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.AssemblyInfo.cs
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.csproj.CoreCompileInputs.cache
-C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\obj\Debug\net6.0\staticwebassets.development.json

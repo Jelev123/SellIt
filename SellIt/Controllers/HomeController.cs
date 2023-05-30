@@ -8,6 +8,7 @@
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Home;
+    using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using SellIt.Models;
@@ -35,14 +36,21 @@
             {
                 ProductForAprooveCount = count.ProductsToAprooveCount,
                 AllProducts = count.AllProducts,
-                RandomProducts = this.productService.RandomProducts(6),
+                RandomProducts = this.productService.RandomProducts(6).ToList(),
                 ProductMessages = count.ProductMessages,
                 AllCategories = this.categoryService.GetAllCategories<AllCategoriesViewModel>(),
             };
 
             ViewData["HomeViewModel"] = counts;
 
-            ViewData[MessageConstants.SuccessMessage] = "Welcome!";
+            var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
+
+            this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
+            {
+                CategoryName = s.Name,
+                CategoryId = s.Id,
+            }).ToList();
+
             return this.View(counts);
         }
 

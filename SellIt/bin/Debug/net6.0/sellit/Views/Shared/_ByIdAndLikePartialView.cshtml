@@ -49,7 +49,11 @@
                             }
                         </ul>
                         <ul class="navbar-nav ms-auto">
-                            <li class="nav-item"><a class="nav-link" href="cart.html"> <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Add to favorite<small class="text-gray fw-normal">(2)</small></a></li>
+                            <li class="nav-item">
+                                <button id="likeButton" class="like-button">
+                                    <span class="icon-heart">&hearts;</span>
+                                </button>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -81,6 +85,7 @@
                 </div>
             </div>
         </div>
+        <small id="liked" class="text-black fw-big">Likes: @Model.LikedCount</small>
         <section class="py-5">
             <div class="container">
                 <div class="row mb-5">
@@ -129,9 +134,7 @@
                                         <a class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">Category:@Model.CategoryName</a></a>
                                     </div>
                                 </div>
-
-                                    <a class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">City:@this.ViewData["address"]</a>
-
+                                <a class="px-3 py-2 mb-1 bg-white text-muted"><strong class="text-uppercase text-dark">City:@this.ViewData["address"]</a>
                             </div>
                         </div><a class="text-dark p-0 mb-4 d-inline-block" href="#!"><i class="far fa-heart me-2"></i></a><br>
                         <ul class="list-unstyled small d-inline-block">
@@ -186,6 +189,13 @@
                     </div>
                 </div>
         </section>
+        @if (User.IsInRole("Administrator"))
+        {
+            @if (Model.IsAprooved == false)
+            {
+                <a asp-action="SetAproove" asp-controller="ForAprooved" asp-route-id="@Model.Id" class="btn btn-success">Aproove item</a>
+            }
+        }
         <!-- JavaScript files-->
         <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/vendor/glightbox/js/glightbox.min.js"></script>
@@ -204,7 +214,7 @@
                 var ajax = new XMLHttpRequest();
                 ajax.open("GET", path, true);
                 ajax.send();
-                ajax.onload = function(e) {
+                ajax.onload = function (e) {
                     var div = document.createElement("div");
                     div.className = 'd-none';
                     div.innerHTML = ajax.responseText;
@@ -223,6 +233,59 @@
     </div>
 </body>
 </html>
+
+
+<div id="contentContainer"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    let likedElement = $("#liked");
+    let likeButton = $("#likeButton");
+    let modelId = @Model.Id;
+    let modelCount = @Model.LikedCount;
+
+    likeButton.on("click", function (event) {
+        event.preventDefault();
+        console.log("click")
+        let currentLikedCount = parseInt(likedElement.text());
+        let newLikedCount = currentLikedCount + 1;
+
+        $.ajax({
+            url: `/Product/Like?id=${modelId}`,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ likedCount: newLikedCount }),
+            success: function (response) {
+                location.reload();
+            },
+            error: function (xhr, status, error) {
+                console.log("An error occurred:", error);
+            }
+        });
+    });
+</script>
+
+<style>
+    .like-button {
+        display: inline-flex;
+        align-items: center;
+        background-color: transparent;
+        border: none;
+        color: #000;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+        .like-button:hover {
+            color: gold /* Change to your desired hover color */
+        }
+
+        .like-button .icon-heart {
+            font-size: 50px; /* Adjust the font size as needed */
+            /* Add other styles for the heart icon */
+        }
+</style>
+
+
 
 
 
