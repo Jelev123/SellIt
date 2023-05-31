@@ -252,3 +252,4 @@ D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.xml
 D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.pdb
 D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.genruntimeconfig.cache
 D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\ref\SellIt.Api.dll
+D:\Projects\SellIt\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.MvcApplicationPartsAssemblyInfo.cs

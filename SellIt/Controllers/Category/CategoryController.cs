@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Contracts.Category;
+    using SellIt.Core.Contracts.Image;
     using SellIt.Core.ViewModels.Category;
 
     public class CategoryController : Controller

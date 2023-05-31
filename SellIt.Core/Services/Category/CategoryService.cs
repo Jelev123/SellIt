@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Core.Services.Category
 {
     using SellIt.Core.Contracts.Category;
+    using SellIt.Core.Contracts.Image;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
@@ -10,10 +11,12 @@
     public class CategoryService : ICategoryService
     {
         private readonly ApplicationDbContext data;
+        private readonly IImageService imageService;
 
-        public CategoryService(ApplicationDbContext data)
+        public CategoryService(ApplicationDbContext data, IImageService imageService)
         {
             this.data = data;
+            this.imageService = imageService;
         }
 
         public Task CreateCategory(CreateCategoryViewModel createCategory)

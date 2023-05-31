@@ -167,28 +167,12 @@
                                                 <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
                                                     <img class="img-fluid w-100" src="@item.CoverPhoto" alt="@item.Name">
                                                 </a>
-                                                @* <div class="product-overlay">
-                                            <ul class="mb-0 list-inline">
-                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>
-                                            <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-dark" href="cart.html">Add to cart</a></li>
-                                            <li class="list-inline-item mr-0"><a class="btn btn-sm btn-outline-dark" href="#productView" data-bs-toggle="modal"><i class="fas fa-expand"></i></a></li>
-                                            </ul>
-                                            </div>*@
                                             </div>
                                             <h6> <a class="reset-anchor" href="detail.html">@item.Name</a></h6>
                                             <p class="small text-muted">$@item.Price</p>
                                         </div>
                                     </div>
                                 }
-                                <!-- PAGINATION-->
-                                <div class="row" id="productContainer"></div>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination justify-content-center justify-content-lg-end">
-                                        <li class="page-item" id="previousPage"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active" id="currentPage"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item" id="nextPage"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
                             </div>
                         </div>
                     </div>
