@@ -121,19 +121,6 @@
             <section class="py-5">
                 <div class="container p-0">
                     <div class="row">
-                        <!-- SHOP SIDEBAR-->
-                        <div class="col-lg-3 order-2 order-lg-1">
-                            <h5 class="text-uppercase mb-4">Categories</h5>
-                            <div class="py-2 px-8 bg-dark text-white"><strong class="small text-uppercase fw-bold">
-                            @foreach (var category in (IEnumerable<AddEditProductViewModel>)this.ViewData["categories"])
-                            {
-                                <a class="py-2 px-4 bg-dark text-white mb-3" asp-action="AllProductsByCategoryId" asp-controller="Product" asp-route-id=@category.CategoryId>
-                                    <option value="@category.CategoryName">@category.CategoryName</option>
-                                </a>
-                            }
-                                </strong>
-                            </div>
-                        </div>
                         <!-- SHOP LISTING-->
                         <div class="col-lg-9 order-1 order-lg-2 mb-5 mb-lg-0">
                             <div class="row mb-3 align-items-center">
@@ -156,6 +143,33 @@
                                     </ul>
                                 </div>
                             </div>
+                            <section class="pt-5">
+                                <header class="text-center">
+                                    <p class="small text-muted small text-uppercase mb-1">Carefully created collections</p>
+                                    <h2 class="h5 text-uppercase mb-4">Browse our categories</h2>
+                                </header>
+                                <div class="row"  method="post" enctype="multipart/form-data">
+                                     @foreach (var category in (IEnumerable<AddEditProductViewModel>)this.ViewData["categories"])
+                            {
+                                <a class="col-md-4" asp-action="AllProductsByCategoryId" asp-controller="Product" asp-route-id=@category.CategoryId>
+                                    <option value="@category.CategoryName">@category.CategoryName</option>
+                                </a>
+                                    @foreach (var item in Model.RandomProducts)
+                                    {
+                                        <img src="@item.CategoryImage" />
+                                    }
+                            }
+                                    @*<div class="col-md-4">
+                                        <a class="category-item" href="shop.html"><img class="img-fluid" src="img/cat-img-1.jpg" alt="" /><strong class="category-item-title">Clothes</strong></a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a class="category-item mb-4" href="shop.html"><img class="img-fluid" src="img/cat-img-2.jpg" alt="" /><strong class="category-item-title">Shoes</strong></a><a class="category-item" href="shop.html"><img class="img-fluid" src="img/cat-img-3.jpg" alt="" /><strong class="category-item-title">Watches</strong></a>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a class="category-item" href="shop.html"><img class="img-fluid" src="img/cat-img-4.jpg" alt="" /><strong class="category-item-title">Electronics</strong></a>
+                                    </div>*@
+                                </div>
+                            </section>
                             <div class="row">
                                 <!-- PRODUCT-->
                                 @foreach (var item in Model.RandomProducts)
@@ -246,10 +260,10 @@
                 behaviour: 'tap-drag',
                 tooltips: true,
                 format: {
-                    to: function (value) {
+                    to: function(value) {
                         return '$' + value;
                     },
-                    from: function (value) {
+                    from: function(value) {
                         return value.replace('', '');
                     }
                 }
@@ -267,7 +281,7 @@
                 var ajax = new XMLHttpRequest();
                 ajax.open("GET", path, true);
                 ajax.send();
-                ajax.onload = function (e) {
+                ajax.onload = function(e) {
                     var div = document.createElement("div");
                     div.className = 'd-none';
                     div.innerHTML = ajax.responseText;
@@ -296,7 +310,7 @@
     let modelId = @Model.Id;
     let modelCount = @Model.LikedCount;
 
-    likeButton.on("click", function (event) {
+    likeButton.on("click", function(event) {
         event.preventDefault();
 
         let currentLikedCount = parseInt(likedElement.text());
@@ -307,10 +321,10 @@
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ likedCount: newLikedCount }),
-            success: function (response) {
+            success: function(response) {
                 location.reload();
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
                 console.log("An error occurred:", error);
             }
         });
@@ -318,7 +332,7 @@
 </script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         var products = @Html.Raw(Json.Serialize(Model.RandomProducts));
         var totalPages = Math.ceil(products.length / 1); // Set the number of items per page here
 
@@ -334,19 +348,19 @@
                 if (i < products.length) {
                     var product = products[i];
                     var productHtml = `
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product text-center">
-                                    <div class="mb-3 position-relative">
-                                        <div class="badge text-white bg-"></div>
-                                        <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="${product.Id}">
-                                            <img class="img-fluid w-100" src="${product.CoverPhoto}" alt="${product.Name}">
-                                        </a>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="product text-center">
+                                        <div class="mb-3 position-relative">
+                                            <div class="badge text-white bg-"></div>
+                                            <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="${product.Id}">
+                                                <img class="img-fluid w-100" src="${product.CoverPhoto}" alt="${product.Name}">
+                                            </a>
+                                        </div>
+                                        <h6><a class="reset-anchor" href="detail.html">${product.Name}</a></h6>
+                                        <p class="small text-muted">$${product.Price}</p>
                                     </div>
-                                    <h6><a class="reset-anchor" href="detail.html">${product.Name}</a></h6>
-                                    <p class="small text-muted">$${product.Price}</p>
                                 </div>
-                            </div>
-                        `;
+                            `;
 
                     $("#productContainer").append(productHtml);
                 }
@@ -357,7 +371,7 @@
         displayProducts(1);
 
         // Handle previous page click
-        $("#previousPage").click(function (event) {
+        $("#previousPage").click(function(event) {
             event.preventDefault();
 
             var currentPage = parseInt($("#currentPage").text());
@@ -368,7 +382,7 @@
         });
 
         // Handle next page click
-        $("#nextPage").click(function (event) {
+        $("#nextPage").click(function(event) {
             event.preventDefault();
 
             var currentPage = parseInt($("#currentPage").text());

@@ -49,6 +49,8 @@
             {
                 CategoryName = s.Name,
                 CategoryId = s.Id,
+                CategoryImage = s.Photo
+                
             }).ToList();
 
             return this.View(counts);

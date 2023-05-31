@@ -49,4 +49,9 @@
     <ProjectReference Include="..\SellIt.Core\SellIt.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\gallery\" />
+    <Folder Include="wwwroot\images\categories\" />
+  </ItemGroup>
+
 </Project>

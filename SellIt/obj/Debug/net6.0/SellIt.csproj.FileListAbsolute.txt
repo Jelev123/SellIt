@@ -1947,90 +1947,6 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\favicon.ico
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\icons\demo.html
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\icons\orion-svg-sprite.svg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\icons\styles.css
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\0151ca2e-922a-4164-9327-8a34e43832f4_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\04dc9f17-f378-49bb-b3a0-7410e392b5b9_1610635278_12_8576.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\0679fe35-beaf-4059-a92d-23201444f839_Screenshot (55).png
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\078c8c5b-f105-43c0-9729-33db4b408630_download (4).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\0bfb9eb7-1d63-4286-a49f-b233113cb89c_1609758202_12_2304.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\0e4ff9ba-6fb9-4bf8-a925-b1cb60b97f8c_1610635278_12_8576.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\0eac5d6f-fa62-494f-9bd0-da26a6be7ace_FFC3Z36PbY3f8ZwykrBraD.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\14a83f18-d2a7-42d0-9675-215273ef6e7b_1609758202_12_2304.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\16097179-5713-4fa8-a2a2-715d6fee4cea_download (1).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\16414187-7b39-4731-9ac5-0ac8ac3aabeb_download.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\17ec08e1-64a5-4b70-9a41-f52d635d2afd_Screenshot (56).png
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\181420ea-2f59-4b2f-8dab-d6203a0038dd_download (1).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\1d182454-436a-4ead-ad4e-48c696dbb6dc_download (1).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\1efbeb53-d478-4b67-9e98-ed14ab75dc9e_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\26cf14f9-df64-4c81-a572-5ccb1e7307e0_download.jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\2ab0cb06-6eaa-40d5-b2ab-144f7a9c617e_811658.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\2b83d707-5dab-4f69-8298-a29212c3ad60_811658.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\2bb5e98c-c14f-4910-b129-b358a8c7783a_download (1) - Copy.jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\2f2e2ad0-62e0-48be-a300-77a95b0072e5_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\32ecc275-abb9-4f7b-9bce-51116d046f98_download (3).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\36fcae1d-c063-4c7c-944a-0b0e0c25dd98_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\382337c4-c9c6-4517-91da-ce7d934e8d4d_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\3e737b9b-0c04-4149-b9bd-537e8c3c897d_download (1).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\3fed88fb-cacc-4e9d-b5ba-83e8f34aef0e_811658.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\48cb9a6d-2efa-4d46-b66e-957e7342c68b_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\4b7b8cca-d0a8-432f-a26d-52462d905255_Screenshot (55).png
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\523411bc-4a79-49cc-822b-eac6380a3e73_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\531183dc-0f63-4590-ac97-8e4e22a096d1_1610635294_12_6247.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\532244e6-1e58-4c30-932c-e96e668f6a24_Screenshot (56).png
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\55a026fc-998f-4352-9632-4ebca112354d_House-of-the-Dragon-CGI-Culture.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\58ea818a-0a98-4a5d-b630-9d134646b3df_download (1) - Copy.jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\5ab6c158-cfc3-4081-9d02-b6a8f2f92649_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\5e5c19ff-ce94-4682-93ab-af082789a656_Julien's Resume.pdf
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\60b2c2cb-f970-46ea-b09c-9b8fcadbdf62_download.jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\6daf5abd-d717-47f3-b147-3cbad5da14cc_1610635294_12_6247.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\6df39b83-e6b1-4015-9793-e63e65253137_1610635310_12_8451.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\747965b6-2db5-43b0-b2dc-1820209277c2_House-of-the-Dragon-CGI-Culture.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\74ab9e71-ad9b-4ed5-b574-0e977ea42cf9_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\7d906823-3962-4e13-84e9-41f57bab0183_300068.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\7f3a76e1-22b1-4295-a5d5-d375a1050bb8_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\811e1bf2-a271-4afd-a17a-dcbf3bef684d_1610635294_12_6247.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\84b375fc-0571-435b-a575-66e8319f797b_download.jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\8bcaeb15-0817-47c9-8885-8753d725a85d_House-of-the-Dragon-CGI-Culture.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\8fade96a-3e05-48d3-ae67-b9c8e839a78b_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\96b67835-8d33-4c7f-a332-cb6632a064b4_download (4).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\994c7e4f-2a4f-488a-9b7c-bba1c78ad2e1_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\9fbdeeee-1c2e-43b6-9df8-7712fbd84d10_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a0e4e125-cf0b-4abe-83f6-dc2b8f4ec008_download (1).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a1bfbff9-a396-4232-8e14-aa72c72b0820_1610635310_12_8451.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a3a1d822-1f89-4160-a8b8-63dccd225172_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a450f156-1ec9-48e9-8370-4790104d619f_bridgman-rattan-garden-set-4-piece-mayfair-curved-modular-rattan-garden-furniture-set_900x.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a7791cf5-098f-4bff-8158-6d490e029ebe_1610635278_12_8576.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a976e41a-a995-459b-ad12-8a84da1e7b1d_Screenshot (55).png
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a99f0b32-54c0-47b1-b15d-6c60daeb4483_811658.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\aa23dfd9-b35b-4510-914e-f9ea6e924bfc_1610635327_12_5965.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\acb3d17c-b2a4-4d93-bcc2-d651a0b59870_1610635327_12_5965.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ae5726d5-baad-4160-accc-66249e73fe40_1609758202_12_2304.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ae757b4e-a05d-4aaa-b5a3-939265a2d1c8_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\b58a64f4-9112-4b56-900b-92afeb308b66_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\b91af6f8-8967-467d-9234-eb3cfcf20aaa_811658.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\bb077f7c-b493-444a-9c77-4c2b702bd7df_1609758202_12_2304.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\bd751503-af3e-4a93-ad09-af0b394aa8ff_bridgman-rattan-garden-set-4-piece-mayfair-curved-modular-rattan-garden-furniture-set_900x.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\c2ba2fe8-6f96-4ed7-90b7-7233ea252a43_download (1).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\c847e56f-cbf8-4855-91fd-382e9b46e2d4_300068.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\c886ac43-db36-4052-b331-abb8b928d441_1610635327_12_5965.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\cb6aeb02-03d7-4cd6-8ee9-95df005cab6a_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ce77d07f-0443-4603-8cba-43e5398275a9_House-of-the-Dragon-CGI-Culture.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\d2217181-f77b-4dc5-9fc8-4c665c1fd63b_Screenshot (56).png
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\d40b4d2b-26a1-4927-afe8-bd84288317d0_1610635278_12_8576.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\d6796ce8-4826-4823-8282-0c2cbd9fc1ce_1610635278_12_8576.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\d71cc565-5f63-4458-97a1-ac14c352266a_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\d7347d1e-38ac-4525-8dfa-520e08420bd2_download.jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\d99a677e-7320-448b-9c04-7fec73ee01c6_GARDEN 270223 MAIN.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\e0332e03-c0ff-4a29-ba52-a48f440dacc3_Screenshot (56).png
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\e83d6c02-cecd-4cf9-9762-44f1fb96f551_300068.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ee403b2a-33d4-4db8-9d74-f0dc93d28214_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\f0e3305f-d4a5-4e08-8f7f-6898d39bd9f6_300068.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\f1329a52-86a9-4be8-b176-95fef6118295_download.jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\f1f30e2d-3c0c-4af9-943b-ca489a2d47ce_download (1).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\f93f2b68-610d-455b-a5d6-713d95ede4a5_Screenshot (55).png
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\fb99ec22-895f-4832-8fb6-5a3f29931eb9_1610635310_12_8451.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\fba6afd6-1603-40ed-936d-bac0dc056cab_download (1).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\fbb64e97-4e22-4ed1-8184-d6333627d40e_download (2).jfif
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\fda22625-d653-4fea-9c4e-6a75dc394847_Screenshot (56).png
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\img\AdminLTELogo.png
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\img\avatar.png
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\img\avatar2.png
@@ -2744,3 +2660,6 @@ D:\Projects\SellIt\SellIt\obj\Debug\net6.0\scopedcss\projectbundle\SellIt.bundle
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.csproj.CopyComplete
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.genruntimeconfig.cache
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\ref\SellIt.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\9aedb7f0-d4cb-4606-8e91-c54aa48c60b3.jpge75eb1ac-bc96-4566-9a2e-38a728217010_300068.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\9f3a69f9-98aa-4a95-9bc3-8f922d995493.jpg4b0d1963-2234-41ff-afc6-e2fcfcf3c8c5_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ea1c8671-f10e-423b-b7f3-bcda809331bb_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg

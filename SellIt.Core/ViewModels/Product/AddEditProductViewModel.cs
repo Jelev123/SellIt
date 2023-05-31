@@ -26,6 +26,8 @@
 
         public int CategoryId { get; set; }
 
+        public string CategoryImage { get; set; }
+
         [DisplayName("Image")]
         public IFormFileCollection GalleryFiles { get; set; }
 

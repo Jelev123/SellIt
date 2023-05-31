@@ -265,6 +265,7 @@
                     Price = s.Price,
                     IsAproved = s.IsAproved,
                     LikedCount = s.LikedCount,
+                    CategoryImage = s.Category.Image,
                 })
                 .Take(count);
         }

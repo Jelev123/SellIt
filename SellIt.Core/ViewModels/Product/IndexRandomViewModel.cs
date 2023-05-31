@@ -8,6 +8,8 @@
 
         public string CategoryName { get; set; }
 
+        public string CategoryImage { get; set; }
+
         public string CoverPhoto { get; set; }
 
         public bool IsLiked { get; set; }

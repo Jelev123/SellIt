@@ -2,10 +2,11 @@
 @model CreateCategoryViewModel
 
 <div class="col-md-3">
-<form method="post">
+<form  method="post" enctype="multipart/form-data">
     <div class="form-group">
         <label asp-for="Name"></label>
         <input asp-for="Name" class="form-control" />
+        <input asp-for="Image" class="form-control" />
     </div>
     <input class="btn text-black btn-info text-center " type="submit" value="Add" />
 </form>
