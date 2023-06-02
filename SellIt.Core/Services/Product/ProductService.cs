@@ -276,6 +276,7 @@
                 .Select(p => new AllProductViewModel
                 {
                     Name = p.Name,
+                    Id = p.ProductId,
                     Description = p.Description,
                     CategoryName = p.Category.Name,
                     CategoryId = p.CategoryId,

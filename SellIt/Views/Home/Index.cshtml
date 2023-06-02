@@ -160,9 +160,9 @@
                                 </div>
                             </section>
                             <header>
-                                                    <p class="small text-muted small text-uppercase mb-1">Made the hard way</p>
-                                                    <h2 class="h5 text-uppercase mb-4">Top trending products</h2>
-                                              </header>
+                                <p class="small text-muted small text-uppercase mb-1">Made the hard way</p>
+                                <h2 class="h5 text-uppercase mb-4">Top trending products</h2>
+                            </header>
                             <div class="row">
                                 <!-- PRODUCT-->
                                 @foreach (var item in Model.RandomProducts)
@@ -171,8 +171,9 @@
                                         <div class="product text-center">
                                             <div class="mb-3 position-relative">
                                                 <div class="badge text-white bg-"></div>
-                                                <div class="badge text-white bg-"></div><a class="d-block" asp-action="GetProductById" asp-controller="Product" asp-route-id="@item.Id" >
-                                                    <img class="img-fluid w-100" src="@item.CoverPhoto" alt="@item.Name"></a>
+                                                <div class="badge text-white bg-"></div><a class="d-block" asp-action="GetProductById" asp-controller="Product" asp-route-id="@item.Id">
+                                                    <img class="img-fluid w-100" src="@item.CoverPhoto" alt="@item.Name">
+                                                </a>
                                             </div>
                                             <h6> <a class="reset-anchor">@item.Name</a></h6>
                                             <p class="small text-muted">$@item.Price</p>
@@ -340,19 +341,19 @@
                 if (i < products.length) {
                     var product = products[i];
                     var productHtml = `
-                                            <div class="col-lg-4 col-sm-6">
-                                                <div class="product text-center">
-                                                    <div class="mb-3 position-relative">
-                                                        <div class="badge text-white bg-"></div>
-                                                        <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="${product.Id}">
-                                                            <img class="img-fluid w-100" src="${product.CoverPhoto}" alt="${product.Name}">
-                                                        </a>
+                                                <div class="col-lg-4 col-sm-6">
+                                                    <div class="product text-center">
+                                                        <div class="mb-3 position-relative">
+                                                            <div class="badge text-white bg-"></div>
+                                                            <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="${product.Id}">
+                                                                <img class="img-fluid w-100" src="${product.CoverPhoto}" alt="${product.Name}">
+                                                            </a>
+                                                        </div>
+                                                        <h6><a class="reset-anchor" href="detail.html">${product.Name}</a></h6>
+                                                        <p class="small text-muted">$${product.Price}</p>
                                                     </div>
-                                                    <h6><a class="reset-anchor" href="detail.html">${product.Name}</a></h6>
-                                                    <p class="small text-muted">$${product.Price}</p>
                                                 </div>
-                                            </div>
-                                        `;
+                                            `;
 
                     $("#productContainer").append(productHtml);
                 }
