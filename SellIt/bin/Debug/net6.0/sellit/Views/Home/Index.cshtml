@@ -148,28 +148,21 @@
                                     <p class="small text-muted small text-uppercase mb-1">Carefully created collections</p>
                                     <h2 class="h5 text-uppercase mb-4">Browse our categories</h2>
                                 </header>
-                                <div class="row"  method="post" enctype="multipart/form-data">
-                                     @foreach (var category in (IEnumerable<AddEditProductViewModel>)this.ViewData["categories"])
-                            {
-                                <a class="col-md-4" asp-action="AllProductsByCategoryId" asp-controller="Product" asp-route-id=@category.CategoryId>
-                                    <option value="@category.CategoryName">@category.CategoryName</option>
-                                </a>
-                                    @foreach (var item in Model.RandomProducts)
+                                <div class="row" method="post" enctype="multipart/form-data">
+                                    @foreach (var category in (IEnumerable<AddEditProductViewModel>)this.ViewData["categories"])
                                     {
-                                        <img src="@item.CategoryImage" />
+                                        <div class="col-md-4">
+                                            <a class="category-item" asp-action="AllProductsByCategoryId" asp-controller="Product" asp-route-id=@category.CategoryId>
+                                                <img class="img-fluid" src="@category.CategoryImage" alt="" /><strong class="category-item-title">@category.CategoryName</strong>
+                                            </a>
+                                        </div>
                                     }
-                            }
-                                    @*<div class="col-md-4">
-                                        <a class="category-item" href="shop.html"><img class="img-fluid" src="img/cat-img-1.jpg" alt="" /><strong class="category-item-title">Clothes</strong></a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a class="category-item mb-4" href="shop.html"><img class="img-fluid" src="img/cat-img-2.jpg" alt="" /><strong class="category-item-title">Shoes</strong></a><a class="category-item" href="shop.html"><img class="img-fluid" src="img/cat-img-3.jpg" alt="" /><strong class="category-item-title">Watches</strong></a>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <a class="category-item" href="shop.html"><img class="img-fluid" src="img/cat-img-4.jpg" alt="" /><strong class="category-item-title">Electronics</strong></a>
-                                    </div>*@
                                 </div>
                             </section>
+                            <header>
+                                                    <p class="small text-muted small text-uppercase mb-1">Made the hard way</p>
+                                                    <h2 class="h5 text-uppercase mb-4">Top trending products</h2>
+                                              </header>
                             <div class="row">
                                 <!-- PRODUCT-->
                                 @foreach (var item in Model.RandomProducts)
@@ -178,11 +171,10 @@
                                         <div class="product text-center">
                                             <div class="mb-3 position-relative">
                                                 <div class="badge text-white bg-"></div>
-                                                <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
-                                                    <img class="img-fluid w-100" src="@item.CoverPhoto" alt="@item.Name">
-                                                </a>
+                                                <div class="badge text-white bg-"></div><a class="d-block" asp-action="GetProductById" asp-controller="Product" asp-route-id="@item.Id" >
+                                                    <img class="img-fluid w-100" src="@item.CoverPhoto" alt="@item.Name"></a>
                                             </div>
-                                            <h6> <a class="reset-anchor" href="detail.html">@item.Name</a></h6>
+                                            <h6> <a class="reset-anchor">@item.Name</a></h6>
                                             <p class="small text-muted">$@item.Price</p>
                                         </div>
                                     </div>
@@ -348,19 +340,19 @@
                 if (i < products.length) {
                     var product = products[i];
                     var productHtml = `
-                                <div class="col-lg-4 col-sm-6">
-                                    <div class="product text-center">
-                                        <div class="mb-3 position-relative">
-                                            <div class="badge text-white bg-"></div>
-                                            <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="${product.Id}">
-                                                <img class="img-fluid w-100" src="${product.CoverPhoto}" alt="${product.Name}">
-                                            </a>
-                                        </div>
-                                        <h6><a class="reset-anchor" href="detail.html">${product.Name}</a></h6>
-                                        <p class="small text-muted">$${product.Price}</p>
-                                    </div>
-                                </div>
-                            `;
+                                            <div class="col-lg-4 col-sm-6">
+                                                <div class="product text-center">
+                                                    <div class="mb-3 position-relative">
+                                                        <div class="badge text-white bg-"></div>
+                                                        <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="${product.Id}">
+                                                            <img class="img-fluid w-100" src="${product.CoverPhoto}" alt="${product.Name}">
+                                                        </a>
+                                                    </div>
+                                                    <h6><a class="reset-anchor" href="detail.html">${product.Name}</a></h6>
+                                                    <p class="small text-muted">$${product.Price}</p>
+                                                </div>
+                                            </div>
+                                        `;
 
                     $("#productContainer").append(productHtml);
                 }

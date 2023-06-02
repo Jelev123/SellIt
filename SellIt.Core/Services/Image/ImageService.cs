@@ -53,7 +53,7 @@
 
             string serverFolder = Path.Combine(environment.WebRootPath, folderPath);
 
-            await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+            file.CopyTo(new FileStream(serverFolder, FileMode.Create));
 
             return "/" + folderPath;
         }

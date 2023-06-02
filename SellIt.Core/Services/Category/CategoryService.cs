@@ -23,25 +23,19 @@
             this.environment = environment;
         }
 
-        public Task CreateCategory(CreateCategoryViewModel createCategory)
+        public async Task CreateCategory(CreateCategoryViewModel createCategory, string imagePath)
         {
             var category = new Category
             {
                 Name = createCategory.Name,
             };
 
-            var filePath = "images/categories/";
-            var fileName = Guid.NewGuid().ToString() + Path.GetExtension(createCategory.Image.FileName);
-            var imagePath = Path.Combine(filePath, fileName);
-
-            // Call the image service to upload the image file
-            imageService.UploadImage(imagePath, createCategory.Image);
-
-            category.Image = imagePath;
+            var folder = "images/categories/";
+           
+            category.Image = await imageService.UploadImage(folder, createCategory.Image);
 
             data.Categories.Add(category);
             data.SaveChanges();
-            return Task.CompletedTask;
         }
 
         public IEnumerable<AllCategoriesViewModel> GetAllCategories<T>()

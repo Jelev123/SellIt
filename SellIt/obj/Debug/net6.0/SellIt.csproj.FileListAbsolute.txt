@@ -2660,6 +2660,34 @@ D:\Projects\SellIt\SellIt\obj\Debug\net6.0\scopedcss\projectbundle\SellIt.bundle
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.csproj.CopyComplete
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.genruntimeconfig.cache
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\ref\SellIt.dll
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\9aedb7f0-d4cb-4606-8e91-c54aa48c60b3.jpge75eb1ac-bc96-4566-9a2e-38a728217010_300068.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\9f3a69f9-98aa-4a95-9bc3-8f922d995493.jpg4b0d1963-2234-41ff-afc6-e2fcfcf3c8c5_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ea1c8671-f10e-423b-b7f3-bcda809331bb_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\17065717-0eac-4c9f-aaa8-c588ca984f28_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\1ebff8e0-4eb1-4502-876e-39510a38091c_wp1866271.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\a719f183-2cda-4f56-9bc7-7ddeba5df66c_wallpaperflare.com_wallpaper-1-1.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\e49cda3c-16c0-40ee-8cc5-06fa19a6dc2b_795931.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\066e7a09-7d5b-433c-b08b-883e000920e6_gettyimages-459396877-612x612.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\21679e37-908c-49d3-b449-3e5d9bec768b_istockphoto-1041907784-612x612.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\3af0920b-1c99-4c6d-aa44-1ddeb026ecf2_maxresdefault.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\44efb39b-2bc6-4c2b-833e-6a3a20fdb28d_images (3).jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\4b9a01f9-208b-496e-8fc3-90dac50a373e_4a9e765b9db7da64e4663e80c17de9c2.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\51455db8-6a60-42d1-8efe-1480f52d7f4d_GBA-900-1ADR-2.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\562b6948-eed9-40ee-8f5b-fba2253132b0_60b268b219ef2efb6b5c75e84353434d.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\57fd7718-2f62-47a5-a70d-ed25f900e682_bf5bb65fe5b96e98219485bdae461331.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\7f76fd74-d786-4b9d-927e-84d916e24737_images (1).jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\84302c2a-855e-4599-a7e7-a537c125aef2_3a980a19dba3897b30125a22c73967a3.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\97453bee-2306-47ba-99cb-75526db697f3_51UYJF33uvL._AC_UY1100_.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\9dc6cb28-4f1e-476f-923d-08837062f7fe_18925304_500_B.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a23a3ea2-28a1-4dd4-91d8-55e19f24b340_images.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a7528625-eacc-48ba-91d2-ca3321bf5087_dd0271753be3e9753f70e62ff0f6048f.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\aac12c5a-8ec9-4deb-9675-ec4c0a60bccf_Thumbs_P23---adidas---IB5748.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\b70eb945-3a95-42cd-b86f-04fa035f12ef_download (1).jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\b8f8436e-b1cf-4fa4-b94b-1e90e287e3bc_png-transparent-tracksuit-nike-sportswear-t-shirt-clothing-nike.png
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\bd947e8a-0f9b-4820-a902-488afaa13d0f_adidas-essentials-big-logo-tee-blackwhite.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\bfabc0bb-57b5-4930-bc9b-788e4d7325c4_ea6da3323dfa8746a7a78282e65eb316.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\c19c87a5-26ec-42c2-998f-5c0be76d8709_df0f6b503c1020a49bee071aa3f7db15.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\d69241b2-3d8a-467d-b75d-723325abf9b3_download.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\dac965de-9ed0-4e4e-b36d-d18fb574c74f_f8b79273dff167baf4b318b732d58c71.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\e77f9bc2-b5cf-431b-ba1b-413a135bfd2d_post122.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\f900cb2d-dd53-4492-af25-80b96bc9fdd3_Ferrari+458+Italia.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\fa682e94-d9f9-44f5-8459-dc9e3c4b5278_images (2).jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\fae21d4a-8cb6-46f8-89b5-6fe99de36308_istockphoto-471525015-612x612.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\aae89b13-fae1-4521-b025-7670cb9be2b5_download.jpg
