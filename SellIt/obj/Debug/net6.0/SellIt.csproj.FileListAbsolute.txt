@@ -2691,3 +2691,13 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\f900cb2
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\fa682e94-d9f9-44f5-8459-dc9e3c4b5278_images (2).jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\fae21d4a-8cb6-46f8-89b5-6fe99de36308_istockphoto-471525015-612x612.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\aae89b13-fae1-4521-b025-7670cb9be2b5_download.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\2273a004-9736-451e-b96f-4953ec33f975_300068.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\704b6068-a17e-4361-aef6-6500b74425cb_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a473c961-00a7-4a2e-91a2-a1f626e1504d_811658.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\bf2ab78f-b953-407a-8144-a619ab1762ba_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\d60da2d5-64db-408a-9c22-75844cf2c4f0_House-of-the-Dragon-CGI-Culture.webp
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a264590c-e219-41c7-a0c6-299eada59e80_811658.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\c928740e-a04f-4b1f-81fa-018eb14e75db_811658.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\880a68b4-5358-431a-9b36-3b7a704e1c67_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ab3537f3-7b6e-4516-bc0e-acb703ddd092_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\4c4fc1dd-6db5-4237-8a22-65b9b4b02db5_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp

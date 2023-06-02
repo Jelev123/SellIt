@@ -7,7 +7,7 @@
         @foreach (var item in Model)
         {
             <div class="cold-md-4">
-                <div class="card-body">
+                <div class="row">
                     <section class="p-0">
                         <a asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
                             <img width="400px" src="@item.CoverPhoto" alt="@item.Name">
@@ -39,17 +39,27 @@ else
 }
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<div id="contentContainer">
-    <!-- The content will be dynamically updated here -->
-</div>
+<div id="contentContainer"></div>
+
+<style>
+    #contentContainer {
+        display: flex;
+        align-items: center;
+    }
+
+    #textInput {
+        margin-right: 10px;
+    }
+</style>
 
 <script>
     let randomButton = $("#random");
-    randomButton.on("click", function(event) {
+    randomButton.on("click", function (event) {
         event.preventDefault();
         let inputElement = $('<input type="text" id="textInput">');
         let sendButton = $('<button id="sendButton">Send</button>');
-        $('#contentContainer').empty().append(inputElement).append(sendButton);
+        let container = $('<div></div>').append(inputElement).append(sendButton);
+        $('#contentContainer').empty().append(container);
         sendButton.on("click", function () {
             let inputValue = $('#textInput').val();
             // Iterate over the view model collection
