@@ -26,9 +26,6 @@
             return count;
         }
 
-        public int GetUserProductsCount(string userId)
-        {
-            return this.data.Products.Where(p => p.CreatedUserId == userId).Count();
-        }
+        public int GetUserProductsCount(string userId) => this.data.Products.Where(p => p.CreatedUserId == userId).Count();
     }
 }
