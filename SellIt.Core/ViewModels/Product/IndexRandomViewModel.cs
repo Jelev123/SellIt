@@ -12,6 +12,8 @@
 
         public string CoverPhoto { get; set; }
 
+        public string Description { get; set; }
+
         public bool IsLiked { get; set; }
 
         public decimal Price { get; set; }

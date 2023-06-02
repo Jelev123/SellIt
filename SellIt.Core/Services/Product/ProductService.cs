@@ -266,6 +266,7 @@
                     IsAproved = s.IsAproved,
                     LikedCount = s.LikedCount,
                     CategoryImage = s.Category.Image,
+                    Description = s.Description,
                 })
                 .Take(count);
         }
