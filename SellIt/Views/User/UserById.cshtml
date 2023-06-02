@@ -2,11 +2,18 @@
 @model UserByIdViewModel
 
 <h4>Username: @Model.UserName</h4>
-<h4>Role: @Model.RoleName</h4>
+@if (@Model.RoleName == null)
+    {
+        <h4>Role: (Doesn`t have a role at the moment)</h4>
+    } 
+    else
+    {
+        <h4>Role: @Model.RoleName</h4>
+    }
 <h4>Email: @Model.Email</h4>
-<h4>Date: @Model.DateCreated</h4>
+<h4>Date Created: @Model.DateCreated</h4>
 <h4>
-    Products:
+    Products: @Model.ProductsCount
     <a class="btn btn-outline-info"  asp-action="UserProducts" asp-controller="User" asp-route-UserId="@Model.UserId">View</a>
 </h4>
 

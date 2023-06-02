@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Identity;
     using SellIt.Areas.ViewModel;
+    using SellIt.Core.Contracts.Count;
     using SellIt.Infrastructure.Data;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -10,12 +11,14 @@
     {
         private readonly ApplicationDbContext data;
         private readonly RoleManager<IdentityRole> roleManager;
+        private readonly ICountService countService;
 
 
-        public UserService(ApplicationDbContext data, RoleManager<IdentityRole> roleManager)
+        public UserService(ApplicationDbContext data, RoleManager<IdentityRole> roleManager, ICountService countService)
         {
             this.data = data;
             this.roleManager = roleManager;
+            this.countService = countService;
         }
 
         public IEnumerable<AllUsersViewModel> AllUsers()
@@ -77,6 +80,8 @@
 
         public UserByIdViewModel UserById(string userId)
         {
+            var count = this.countService.GetUserProductsCount(userId);
+
             var user = (from users in data.Users
                         from userRoles in data.UserRoles.Where(co => co.UserId == users.Id).DefaultIfEmpty()
                         from roles in data.Roles.Where(prod => prod.Id == userRoles.RoleId).DefaultIfEmpty()
@@ -89,6 +94,8 @@
                             DateCreated = users.DateCreated,
                             Email = users.Email,
                             ProductName = products.Name,
+                            ProductsCount = count,
+                            
                         })
                        .Where(s => s.UserId == userId)
                        .FirstOrDefault();

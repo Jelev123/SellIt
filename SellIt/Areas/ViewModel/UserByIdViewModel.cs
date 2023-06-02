@@ -12,5 +12,7 @@
         public DateTime DateCreated { get; set; }
 
         public string ProductName { get; set; }
+
+        public int ProductsCount { get; set; }
     }
 }

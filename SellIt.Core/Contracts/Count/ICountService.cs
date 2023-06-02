@@ -5,5 +5,7 @@
     public interface ICountService
     {
         CountViewModel GetCount(int productId);
+
+        int GetUserProductsCount(string userId);
     }
 }

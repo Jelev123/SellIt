@@ -1,7 +1,6 @@
 ﻿namespace SellIt.Core.Services.Count
 {
     using SellIt.Core.Contracts.Count;
-    using SellIt.Core.Contracts.ForAprooved;
     using SellIt.Core.ViewModels.Count;
     using SellIt.Infrastructure.Data;
 
@@ -25,6 +24,11 @@
             };
 
             return count;
+        }
+
+        public int GetUserProductsCount(string userId)
+        {
+            return this.data.Products.Where(p => p.CreatedUserId == userId).Count();
         }
     }
 }
