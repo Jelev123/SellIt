@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TAEY2mz+mvnn4h54GgAvW6p8nayOCG9NTbMWx35ub7o=",
+  "Hash": "NnObBYb/5iJ8PLvA+Qrw2f61m54R9ZB0giIvXy/hKU0=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1666,6 +1666,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\066e7a09-7d5b-433c-b08b-883e000920e6_gettyimages-459396877-612x612.jpg"
     },
     {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\12480fcd-4dfb-4002-b94a-38d386761ad4_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/12480fcd-4dfb-4002-b94a-38d386761ad4_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\12480fcd-4dfb-4002-b94a-38d386761ad4_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp"
+    },
+    {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\21679e37-908c-49d3-b449-3e5d9bec768b_istockphoto-1041907784-612x612.jpg",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -1870,6 +1887,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\84302c2a-855e-4599-a7e7-a537c125aef2_3a980a19dba3897b30125a22c73967a3.jpg"
     },
     {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\87080c61-fae2-4bbe-a44b-89309de05dd1_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/87080c61-fae2-4bbe-a44b-89309de05dd1_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\87080c61-fae2-4bbe-a44b-89309de05dd1_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp"
+    },
+    {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\880a68b4-5358-431a-9b36-3b7a704e1c67_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -1919,6 +1953,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\9dc6cb28-4f1e-476f-923d-08837062f7fe_18925304_500_B.jpg"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\9f9c74e8-2c55-4fc8-b15f-2dd2090eb538_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/9f9c74e8-2c55-4fc8-b15f-2dd2090eb538_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\9f9c74e8-2c55-4fc8-b15f-2dd2090eb538_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\a23a3ea2-28a1-4dd4-91d8-55e19f24b340_images.jpg",
@@ -2040,6 +2091,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\ab3537f3-7b6e-4516-bc0e-acb703ddd092_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp"
     },
     {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\b279ada5-69e3-4c5a-80e2-b0e86693466c_House-of-the-Dragon-CGI-Culture.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/b279ada5-69e3-4c5a-80e2-b0e86693466c_House-of-the-Dragon-CGI-Culture.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\b279ada5-69e3-4c5a-80e2-b0e86693466c_House-of-the-Dragon-CGI-Culture.webp"
+    },
+    {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\b70eb945-3a95-42cd-b86f-04fa035f12ef_download (1).jpg",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -2123,6 +2191,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\bfabc0bb-57b5-4930-bc9b-788e4d7325c4_ea6da3323dfa8746a7a78282e65eb316.jpg"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\c087d78b-0263-4158-ab50-05f67238127c_300068.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/c087d78b-0263-4158-ab50-05f67238127c_300068.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\c087d78b-0263-4158-ab50-05f67238127c_300068.jpg"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\c19c87a5-26ec-42c2-998f-5c0be76d8709_df0f6b503c1020a49bee071aa3f7db15.jpg",
@@ -2210,6 +2295,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\dac965de-9ed0-4e4e-b36d-d18fb574c74f_f8b79273dff167baf4b318b732d58c71.jpg"
     },
     {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\db325fa0-203d-4dcb-98f1-b63bd10f02dc_300068.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/db325fa0-203d-4dcb-98f1-b63bd10f02dc_300068.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\db325fa0-203d-4dcb-98f1-b63bd10f02dc_300068.jpg"
+    },
+    {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\e77f9bc2-b5cf-431b-ba1b-413a135bfd2d_post122.jpg",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -2225,6 +2327,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\e77f9bc2-b5cf-431b-ba1b-413a135bfd2d_post122.jpg"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\eea13a8e-fe42-4efa-97e7-53627b2b92c3_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/eea13a8e-fe42-4efa-97e7-53627b2b92c3_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\eea13a8e-fe42-4efa-97e7-53627b2b92c3_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\f900cb2d-dd53-4492-af25-80b96bc9fdd3_Ferrari+458+Italia.jpg",

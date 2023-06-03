@@ -62,10 +62,9 @@ else
         $('#contentContainer').empty().append(container);
         sendButton.on("click", function () {
             let inputValue = $('#textInput').val();
-            // Iterate over the view model collection
+            
             @foreach (var item in Model)
             {
-                // Access the ID property of each item
                 var itemId = item.Id;
                 @:$.ajax({
                 @:    url: `/Message/SendMessage`,

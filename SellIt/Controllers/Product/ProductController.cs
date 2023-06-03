@@ -56,16 +56,6 @@
         [HttpPost]
         public IActionResult AddProduct(AddEditProductViewModel addProduct)
         {
-            if (!ModelState.IsValid)
-            {
-                var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
-
-                this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
-                {
-                    CategoryName = s.Name,
-                }).ToList();
-                return this.View(addProduct);
-            }
             var user = this.userManager.GetUserId(User);
             this.productService.AddProduct(addProduct, user, $"{this.environment.WebRootPath}/images");
             return this.Redirect("/");
