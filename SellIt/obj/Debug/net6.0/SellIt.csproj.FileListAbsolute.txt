@@ -2708,3 +2708,4 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\db325fa
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\b279ada5-69e3-4c5a-80e2-b0e86693466c_House-of-the-Dragon-CGI-Culture.webp
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\9f9c74e8-2c55-4fc8-b15f-2dd2090eb538_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\87080c61-fae2-4bbe-a44b-89309de05dd1_mountain-lake-wallpaper-hd-4k-260nw-1726887748.webp
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\66cefda3-6d9b-4868-95c3-dbcac57a71fe_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg

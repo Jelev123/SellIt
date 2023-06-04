@@ -20,16 +20,16 @@
         private readonly ISearchService searchService;
         private readonly UserManager<User> userManager;
         private readonly IWebHostEnvironment environment;
-        private readonly IAdressService adressService;
+        private readonly IAddressService addressService;
         private readonly ApplicationDbContext data;
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService, IAdressService adressService, ApplicationDbContext data)
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService, IAddressService adressService, ApplicationDbContext data)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.userManager = userManager;
             this.environment = environment;
             this.searchService = searchService;
-            this.adressService = adressService;
+            this.addressService = adressService;
             this.data = data;
         }
 
@@ -39,7 +39,7 @@
         {
             var userId = this.userManager.GetUserId(User);
 
-            var address = this.adressService.AddressByUserId(userId);
+            var address = this.addressService.AddressByUserId(userId);
 
             this.ViewData["address"] = address.City;
 
@@ -96,7 +96,7 @@
         {
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
             var userId = product.CreatedUserId;
-            var address = this.adressService.AddressByUserId(userId);
+            var address = this.addressService.AddressByUserId(userId);
 
             this.ViewData["address"] = address.City;
 

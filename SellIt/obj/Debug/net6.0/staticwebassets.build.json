@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "NnObBYb/5iJ8PLvA+Qrw2f61m54R9ZB0giIvXy/hKU0=",
+  "Hash": "1jhy8Mu9bK+Q0h3OQN2NpTHyHkwkDfFDNfryBwCgF1w=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1834,6 +1834,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\57fd7718-2f62-47a5-a70d-ed25f900e682_bf5bb65fe5b96e98219485bdae461331.jpg"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\66cefda3-6d9b-4868-95c3-dbcac57a71fe_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/66cefda3-6d9b-4868-95c3-dbcac57a71fe_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\66cefda3-6d9b-4868-95c3-dbcac57a71fe_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\704b6068-a17e-4361-aef6-6500b74425cb_318066-island-desktop-wallpaper-top-free-island-desktop-background.jpg",

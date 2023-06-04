@@ -43,10 +43,14 @@
                     <div class="message-container"></div>
                 </div>
                 <div class="form-group">
-                    <label asp-for="AdressId"></label>
-                    <input asp-for="AdressId" id="inputField" class="form-control" />
-                    <button id="viewDataButton" onclick="copyToInputField(event)">@((string)ViewData["address"])</button>
-                </div>
+    <label asp-for="AddressId"></label>
+    <input asp-for="AddressId" id="inputField" class="form-control" />
+    <span id="message" style="color: red;"></span>
+    <div id="buttons" style="display: none;">
+        <button id="yesButton">Yes</button>
+        <button id="noButton">No</button>
+    </div>
+</div>
                 @* <input type="text" id="inputField" class="form-control" value="" />
                 <button id="viewDataButton">@((string)ViewData["address"])</button>*@
         </form>
@@ -76,22 +80,75 @@
 
 </script>
 
-<style>
-    .form-group {
-        position: relative;
-    }
+<script>
+    document.getElementById('inputField').addEventListener('focus', function() {
+        var viewDataValue = '@((string)ViewData["address"])';
+        var inputValue = this.value.trim();
 
-        .form-group input:focus + .message-container::after {
-            content: attr(data-message);
-            position: absolute;
-            top: 50%;
-            right: 0;
-            transform: translate(110%, -50%);
-            padding: 6px;
-            background-color: #f1f1f1;
-            color: #333;
-            border-radius: 4px;
-            font-size: 14px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        if (inputValue === '') {
+            this.value = viewDataValue;
         }
-</style>
+
+        var messageElement = document.getElementById('message');
+        var buttonsContainer = document.getElementById('buttons');
+
+        messageElement.innerText = 'Is this your Location: ' + viewDataValue;
+        buttonsContainer.style.display = 'block';
+    });
+
+    document.addEventListener('click', function(event) {
+        var inputField = document.getElementById('inputField');
+        var buttonsContainer = document.getElementById('buttons');
+        var target = event.target;
+
+        if (!inputField.contains(target) && !buttonsContainer.contains(target)) {
+            buttonsContainer.style.display = 'none';
+        }
+    });
+
+    var yesButton = document.getElementById('yesButton');
+    var noButton = document.getElementById('noButton');
+
+    yesButton.addEventListener('click', function() {
+        var viewDataValue = '@((string)ViewData["address"])';
+        document.getElementById('inputField').value = viewDataValue;
+        document.getElementById('message').innerText = '';
+        document.getElementById('buttons').style.display = 'none';
+    });
+
+    noButton.addEventListener('click', function() {
+        var messageElement = document.getElementById('message');
+        var buttonsContainer = document.getElementById('buttons');
+
+        messageElement.innerText = '';
+        buttonsContainer.style.display = 'none';
+
+        var inputElement = document.createElement('input');
+        inputElement.type = 'text';
+        inputElement.id = 'customInputField';
+        inputElement.placeholder = 'Enter your location';
+
+        var okButton = document.createElement('button');
+        okButton.innerText = 'OK';
+
+        okButton.addEventListener('click', function() {
+            var customInputValue = document.getElementById('customInputField').value.trim();
+            // Make AJAX request to Address/ChangeAddressId with customInputValue
+            // Handle the AJAX response as needed
+
+            document.getElementById('inputField').value = customInputValue;
+            document.getElementById('customInputField').remove();
+            okButton.remove();
+        });
+
+        this.parentNode.appendChild(inputElement);
+        this.parentNode.appendChild(okButton);
+    });
+</script>
+
+
+
+
+
+
+

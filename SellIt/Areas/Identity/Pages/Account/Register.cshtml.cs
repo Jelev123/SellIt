@@ -147,7 +147,6 @@ namespace SellIt.Areas.Identity.Pages.Account
                     var model = new GeoInfoViewModel();
                     model = JsonConvert.DeserializeObject<GeoInfoViewModel>(json);
 
-
                     var adress = new Adress
                     {
                         Id = Guid.NewGuid().ToString(),
@@ -159,9 +158,7 @@ namespace SellIt.Areas.Identity.Pages.Account
                     data.SaveChanges();
 
                     user.AdressId = adress.Id;
-
                 }
-
 
                 user.DateCreated = DateTime.UtcNow;
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
@@ -255,31 +252,6 @@ namespace SellIt.Areas.Identity.Pages.Account
                 return json.ToString();
             }
             return "";
-        }
-
-        public async Task<string> GetGeoInfo()
-        {
-            var ipAddress = await GetIPAddress();
-            var response = await _httpClient.GetAsync($"http://api.ipstack.com/" + ipAddress + "?access_key=942bef5ae748409e6c20a78166afae23");
-            if (response.IsSuccessStatusCode)
-            {
-                var json = await response.Content.ReadAsStringAsync();
-                var model = new GeoInfoViewModel();
-                model = JsonConvert.DeserializeObject<GeoInfoViewModel>(json);
-
-
-                var adress = new Adress
-                {
-                    Id = model.Id,
-                    City = model.City,
-                    Country = model.CountryName,
-                    CountryCode = model.CountryCode,
-                };
-                data.Add(adress);
-                data.SaveChanges();
-
-            }
-            return response.ToString();
         }
     }
 }

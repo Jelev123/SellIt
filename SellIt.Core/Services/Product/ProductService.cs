@@ -36,7 +36,7 @@
                 CreatedUserId = userId,
                 Price = addProduct.Price,
                 PhoneNumber = addProduct.PhoneNumber != null ? addProduct.PhoneNumber : user.PhoneNumber,
-                ProductAdressId = addProduct.AdressId != null ? addProduct.AdressId : user.AdressId,
+                ProductAdressId = addProduct.AddressId != null ? addProduct.AddressId : user.AdressId,
             };
 
             product.Images = new List<Image>();
