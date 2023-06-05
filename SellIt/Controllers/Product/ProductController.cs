@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using SellIt.Core.Contracts.Adress;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
@@ -20,16 +19,14 @@
         private readonly ISearchService searchService;
         private readonly UserManager<User> userManager;
         private readonly IWebHostEnvironment environment;
-        private readonly IAddressService addressService;
         private readonly ApplicationDbContext data;
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService, IAddressService adressService, ApplicationDbContext data)
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService,  ApplicationDbContext data)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.userManager = userManager;
             this.environment = environment;
             this.searchService = searchService;
-            this.addressService = adressService;
             this.data = data;
         }
 
@@ -38,10 +35,6 @@
         public IActionResult AddProduct()
         {
             var userId = this.userManager.GetUserId(User);
-
-            var address = this.addressService.AddressByUserId(userId);
-
-            this.ViewData["address"] = address.City;
 
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
 
@@ -96,9 +89,6 @@
         {
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
             var userId = product.CreatedUserId;
-            var address = this.addressService.AddressByUserId(userId);
-
-            this.ViewData["address"] = address.City;
 
             var productById = this.productService.GetById(id, userId);
             return this.View(productById);

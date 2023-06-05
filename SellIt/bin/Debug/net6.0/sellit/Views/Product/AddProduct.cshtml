@@ -2,153 +2,179 @@
 @using SellIt.Core.ViewModels.Product
 @model AddEditProductViewModel
 
-<div class="col-10">
-    <div>
-        <form method="post" enctype="multipart/form-data">
-            <div class="col-md-3">
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label asp-for="Name"></label>
-                    <input asp-for="Name" class="form-control" />
+                    <label for="Name">Name</label>
+                    <input type="text" id="Name" class="form-control" asp-for="Name" />
                     <span asp-validation-for="Name" class="text-danger"></span>
-
                 </div>
                 <div class="form-group">
-                    <label asp-for="Description"></label>
-                    <input asp-for="Description" class="form-control" />
+                    <label for="Description">Description</label>
+                    <input type="text" id="Description" class="form-control" asp-for="Description" />
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="GalleryFiles"></label>
-                    <input asp-for="GalleryFiles" class="form-control" />
+                    <label for="GalleryFiles">Gallery Files</label>
+                    <input type="file" id="GalleryFiles" class="form-control-file" asp-for="GalleryFiles" multiple />
                     <span asp-validation-for="GalleryFiles" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <label asp-for="CategoryName"></label>
-                <select class="form-control text-primary" id="categories" asp-for="CategoryName">
-                    <option selected disabled><------></></option>
-                    @foreach (var category in (IEnumerable<AddEditProductViewModel>)this.ViewData["categories"])
-                    {
-                        <option value="@category.CategoryName">@category.CategoryName</option>
-                    }
-                </select>
-                <span asp-validation-for="CategoryName" class="text-danger"></span>
                 <div class="form-group">
-                    <label asp-for="Price"></label>
-                    <input asp-for="Price" class="form-control" />
+                    <label for="CategoryName">Category</label>
+                    <select id="CategoryName" class="form-control" asp-for="CategoryName">
+                        <option selected disabled>Select a Category</option>
+                        @foreach (var category in (IEnumerable<AddEditProductViewModel>)this.ViewData["categories"])
+                        {
+                            <option value="@category.CategoryName">@category.CategoryName</option>
+                        }
+                    </select>
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="PhoneNumber"></label>
-                    <input asp-for="PhoneNumber" class="form-control" onfocus="showMessage()" />
+                    <label for="Price">Price</label>
+                    <input type="number" id="Price" class="form-control" asp-for="Price" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="PhoneNumber">Phone Number</label>
+                    <input type="text" id="PhoneNumber" class="form-control" asp-for="PhoneNumber" onfocus="showMessage()" />
                     <div class="message-container"></div>
                 </div>
                 <div class="form-group">
-    <label asp-for="AddressId"></label>
-    <input asp-for="AddressId" id="inputField" class="form-control" />
-    <span id="message" style="color: red;"></span>
-    <div id="buttons" style="display: none;">
-        <button id="yesButton">Yes</button>
-        <button id="noButton">No</button>
-    </div>
-</div>
-                @* <input type="text" id="inputField" class="form-control" value="" />
-                <button id="viewDataButton">@((string)ViewData["address"])</button>*@
-        </form>
-        <div />
-        <div class="d-flex justify-content-center mt-3">
-            <button class="btn btn-primary font-weight-bold">Create Product</button>
+                    <label for="CityInput">City</label>
+                    <div class="city-input-container">
+                        <input type="text" id="CityInput" class="city-input form-control" placeholder="Select a City" readonly />
+                        <label for="CityInput" class="city-input-label">City</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="AddressId">Address</label>
+                    <input type="text" id="AddressId" class="form-control" asp-for="AddressId" readonly />
+                </div>
+                <div class="d-flex justify-content-center mt-3">
+                    <button class="btn btn-primary font-weight-bold">Create Product</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<script>
-    function showMessage() {
-        var messageContainer = document.querySelector('.message-container');
-        messageContainer.dataset.message = "If you have phone number on your profile it will be wrote atomaticaly";
+<div id="map"></div>
+
+<style>
+    .container {
+        margin-top: 20px;
     }
 
-    // Function to handle copying the value to the input field
-  function copyToInputField(event) {
-    event.preventDefault(); // Prevent any default button behavior or form submission
-    var viewDataValue = '@((string)ViewData["address"])';
-    var inputField = document.getElementById('inputField');
+    .city-input-container {
+        position: relative;
+        margin-top: 8px;
+    }
 
-    // Set the value in the input field
-    inputField.value = viewDataValue;
-  }
+    .city-input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-bottom: 2px solid #888;
+        background-color: transparent;
+        color: #333;
+        font-size: 16px;
+    }
 
+    .city-input:focus {
+        outline: none;
+        border-bottom-color: #0066ff;
+    }
 
-</script>
+    .city-input-label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        padding: 10px;
+        transition: 0.2s;
+        color: #888;
+        font-size: 16px;
+    }
+
+    .city-input:focus + .city-input-label,
+    .city-input:not(:placeholder-shown) + .city-input-label {
+        transform: translateY(-30px);
+        font-size: 14px;
+        color: #0066ff;
+    }
+
+    #map {
+        width: 100%;
+        height: 400px;
+        margin-top: 20px;
+    }
+</style>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4-3XNyxLJHdEjsMdWowhTamb-tRTuurg&callback=initMap" async defer></script>
 
 <script>
-    document.getElementById('inputField').addEventListener('focus', function() {
-        var viewDataValue = '@((string)ViewData["address"])';
-        var inputValue = this.value.trim();
-
-        if (inputValue === '') {
-            this.value = viewDataValue;
-        }
-
-        var messageElement = document.getElementById('message');
-        var buttonsContainer = document.getElementById('buttons');
-
-        messageElement.innerText = 'Is this your Location: ' + viewDataValue;
-        buttonsContainer.style.display = 'block';
-    });
-
-    document.addEventListener('click', function(event) {
-        var inputField = document.getElementById('inputField');
-        var buttonsContainer = document.getElementById('buttons');
-        var target = event.target;
-
-        if (!inputField.contains(target) && !buttonsContainer.contains(target)) {
-            buttonsContainer.style.display = 'none';
-        }
-    });
-
-    var yesButton = document.getElementById('yesButton');
-    var noButton = document.getElementById('noButton');
-
-    yesButton.addEventListener('click', function() {
-        var viewDataValue = '@((string)ViewData["address"])';
-        document.getElementById('inputField').value = viewDataValue;
-        document.getElementById('message').innerText = '';
-        document.getElementById('buttons').style.display = 'none';
-    });
-
-    noButton.addEventListener('click', function() {
-        var messageElement = document.getElementById('message');
-        var buttonsContainer = document.getElementById('buttons');
-
-        messageElement.innerText = '';
-        buttonsContainer.style.display = 'none';
-
-        var inputElement = document.createElement('input');
-        inputElement.type = 'text';
-        inputElement.id = 'customInputField';
-        inputElement.placeholder = 'Enter your location';
-
-        var okButton = document.createElement('button');
-        okButton.innerText = 'OK';
-
-        okButton.addEventListener('click', function() {
-            var customInputValue = document.getElementById('customInputField').value.trim();
-            // Make AJAX request to Address/ChangeAddressId with customInputValue
-            // Handle the AJAX response as needed
-
-            document.getElementById('inputField').value = customInputValue;
-            document.getElementById('customInputField').remove();
-            okButton.remove();
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: { lat: 0, lng: 0 },
+            zoom: 2
         });
 
-        this.parentNode.appendChild(inputElement);
-        this.parentNode.appendChild(okButton);
-    });
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var userLocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                map.setCenter(userLocation);
+                map.setZoom(12);
+
+                var geocoder = new google.maps.Geocoder();
+                var cityInput = document.getElementById('CityInput');
+                var addressIdInput = document.getElementById('AddressId');
+
+                map.addListener('click', function (event) {
+                    geocoder.geocode({ location: event.latLng }, function (results, status) {
+                        if (status === 'OK') {
+                            if (results[0]) {
+                                var city = getCityFromGeocodeResults(results);
+                                cityInput.value = city;
+                                cityInput.dispatchEvent(new Event('change'));
+
+                                addressIdInput.value = city;
+                            } else {
+                                console.error('No results found.');
+                            }
+                        } else {
+                            console.error('Geocoder failed due to: ' + status);
+                        }
+                    });
+                });
+            }, function () {
+                console.error('Error: The Geolocation service failed.');
+            });
+        } else {
+            console.error('Error: Your browser doesn\'t support geolocation.');
+        }
+    }
+
+    function getCityFromGeocodeResults(results) {
+        for (var i = 0; i < results.length; i++) {
+            for (var j = 0; j < results[i].address_components.length; j++) {
+                var component = results[i].address_components[j];
+                if (component.types.includes('locality')) {
+                    return component.long_name;
+                }
+            }
+        }
+        return '';
+    }
+
+    function showMessage() {
+        var messageContainer = document.querySelector('.message-container');
+        messageContainer.textContent = "If you have a phone number on your profile, it will be automatically written.";
+    }
 </script>
-
-
-
-
-
-
-

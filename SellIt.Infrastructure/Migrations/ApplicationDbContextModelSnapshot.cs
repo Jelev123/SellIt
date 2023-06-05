@@ -336,10 +336,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("ProductAddressCity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ProductAdressId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -403,10 +399,6 @@ namespace SellIt.Infrastructure.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<string>("AddressCity")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AdressId")
                         .IsRequired()
