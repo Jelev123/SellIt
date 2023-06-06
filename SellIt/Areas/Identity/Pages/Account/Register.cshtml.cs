@@ -139,27 +139,6 @@ namespace SellIt.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
-                var ipAddress = await GetIPAddress();
-                var response = await _httpClient.GetAsync($"http://api.ipstack.com/" + ipAddress + "?access_key=942bef5ae748409e6c20a78166afae23");
-                if (response.IsSuccessStatusCode)
-                {
-                    var json = await response.Content.ReadAsStringAsync();
-                    var model = new GeoInfoViewModel();
-                    model = JsonConvert.DeserializeObject<GeoInfoViewModel>(json);
-
-                    var adress = new Adress
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        City = model.City,
-                        Country = model.CountryName,
-                        CountryCode = model.CountryCode,
-                    };
-                    data.Add(adress);
-                    data.SaveChanges();
-
-                    user.AdressId = adress.Id;
-                }
-
                 user.DateCreated = DateTime.UtcNow;
                 await _userStore.SetUserNameAsync(user, Input.UserName, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
@@ -241,17 +220,6 @@ namespace SellIt.Areas.Identity.Pages.Account
                 throw new NotSupportedException("The default UI requires a user store with email support.");
             }
             return (IUserEmailStore<User>)_userStore;
-        }
-
-        private async Task<string> GetIPAddress()
-        {
-            var ipAddress = await _httpClient.GetAsync($"http://ipinfo.io/ip");
-            if (ipAddress.IsSuccessStatusCode)
-            {
-                var json = await ipAddress.Content.ReadAsStringAsync();
-                return json.ToString();
-            }
-            return "";
         }
     }
 }

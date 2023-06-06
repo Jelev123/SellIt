@@ -159,40 +159,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Adress", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CountryCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PostCode")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Road")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StateDistrict")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Suburb")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Adresses");
-                });
-
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -336,9 +302,9 @@ namespace SellIt.Infrastructure.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("ProductAdressId")
+                    b.Property<string>("ProductAdress")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -349,8 +315,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.HasKey("ProductId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("ProductAdressId");
 
                     b.HasIndex("UserId");
 
@@ -400,10 +364,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("AdressId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -452,8 +412,6 @@ namespace SellIt.Infrastructure.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AdressId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -582,19 +540,11 @@ namespace SellIt.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SellIt.Infrastructure.Data.Models.Adress", "ProductAdress")
-                        .WithMany("Products")
-                        .HasForeignKey("ProductAdressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("SellIt.Infrastructure.Data.Models.User", "User")
                         .WithMany("Products")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Category");
-
-                    b.Navigation("ProductAdress");
 
                     b.Navigation("User");
                 });
@@ -616,24 +566,6 @@ namespace SellIt.Infrastructure.Migrations
                     b.Navigation("Message");
 
                     b.Navigation("ReplyerUser");
-                });
-
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.User", b =>
-                {
-                    b.HasOne("SellIt.Infrastructure.Data.Models.Adress", "Adress")
-                        .WithMany("Users")
-                        .HasForeignKey("AdressId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Adress");
-                });
-
-            modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Adress", b =>
-                {
-                    b.Navigation("Products");
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("SellIt.Infrastructure.Data.Models.Category", b =>

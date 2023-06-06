@@ -32,48 +32,27 @@
 </head>
 <body>
     <div class="page-holder">
-        <!-- navbar-->
-        <header class="header bg-white">
-            <div class="container px-lg-3">
-                <button class="navbar-toggler navbar-toggler-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <!-- Link--><a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Link--><a class="nav-link active" href="shop.html">Shop</a>
-                        </li>
-                        <li class="nav-item">
-                            <!-- Link--><a class="nav-link" href="detail.html">Product detail</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="pagesDropdown" href="#" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                            <div class="dropdown-menu mt-3 shadow-sm" aria-labelledby="pagesDropdown"><a class="dropdown-item border-0 transition-link" href="index.html">Homepage</a><a class="dropdown-item border-0 transition-link" href="shop.html">Category</a><a class="dropdown-item border-0 transition-link" href="detail.html">Product detail</a><a class="dropdown-item border-0 transition-link" href="cart.html">Shopping cart</a><a class="dropdown-item border-0 transition-link" href="checkout.html">Checkout</a></div>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="cart.html"> <i class="fas fa-dolly-flatbed me-1 text-gray"></i>Cart<small class="text-gray fw-normal">(2)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!"> <i class="far fa-heart me-1"></i><small class="text-gray fw-normal"> (0)</small></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!"> <i class="fas fa-user me-1 text-gray fw-normal"></i>Login</a></li>
-                    </ul>
-                </div>
-                </nav>
-            </div>
-        </header>
         <div class="container">
             <!-- HERO SECTION-->
-            <section class="hero pb-3 bg-cover bg-center d-flex align-items-center" style="background: url(img/hero-banner-alt.jpg)">
+            <section class="hero pb-3 bg-cover bg-center d-flex align-items-center" width=100px style="background: url(img/hero-banner-alt.jpg)">
                 <div class="container py-5">
                     <div class="row px-4 px-lg-5">
-                        <div class="col-lg-6">
+                        <div class="row">
                             <p class="text-muted small text-uppercase mb-2"></p>
+                             <ul class="navbar-nav me-auto">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <a class="nav-link" asp-action="MyProducts" asp-controller="Product"><i class="nav-icon fas fa-th"> My Products</i></a>
-                                <a class="nav-link" asp-action="Favorites" asp-controller="Product"><i class="nav-icon fas fa-th"> Favorites</i></a>
-                                <a class="nav-link" asp-action="AddProduct" asp-controller="Product">Add Product</a>
+                                <li class="nav-item">
+                                    <!-- Link--><a class="nav-link active" asp-action="Favorites" asp-controller="Product">Favorites</a>
+                                </li>
+                                <li class="nav-item">
+                                    <!-- Link--><a class="nav-link" asp-action="MyProducts" asp-controller="Product"> My products</a>
+                                </li>
+                                <li class="nav-item">
+                                    <!-- Link--><a class="nav-link" asp-action="AddProduct" asp-controller="Product">Add a product</a>
+                                </li>
                             }
+                        </ul>
                         </div>
                     </div>
                 </div>
@@ -280,19 +259,19 @@
                 if (i < products.length) {
                     var product = products[i];
                     var productHtml = `
-                                                    <div class="col-lg-4 col-sm-6">
-                                                        <div class="product text-center">
-                                                            <div class="mb-3 position-relative">
-                                                                <div class="badge text-white bg-"></div>
-                                                                <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="${product.Id}">
-                                                                    <img class="img-fluid w-100" src="${product.CoverPhoto}" alt="${product.Name}">
-                                                                </a>
+                                                        <div class="col-lg-4 col-sm-6">
+                                                            <div class="product text-center">
+                                                                <div class="mb-3 position-relative">
+                                                                    <div class="badge text-white bg-"></div>
+                                                                    <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="${product.Id}">
+                                                                        <img class="img-fluid w-100" src="${product.CoverPhoto}" alt="${product.Name}">
+                                                                    </a>
+                                                                </div>
+                                                                <h6><a class="reset-anchor" href="detail.html">${product.Name}</a></h6>
+                                                                <p class="small text-muted">$${product.Price}</p>
                                                             </div>
-                                                            <h6><a class="reset-anchor" href="detail.html">${product.Name}</a></h6>
-                                                            <p class="small text-muted">$${product.Price}</p>
                                                         </div>
-                                                    </div>
-                                                `;
+                                                    `;
 
                     $("#productContainer").append(productHtml);
                 }

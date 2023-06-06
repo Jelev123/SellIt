@@ -38,6 +38,6 @@
 
         public string PhoneNumber { get; set; }
 
-        public string AddressId { get; set; }
+        public string Address { get; set; }
     }
 }

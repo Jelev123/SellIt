@@ -11,10 +11,6 @@
 
         public DateTime DateCreated { get; set; }
 
-        public string AdressId { get; set; }
-
-        public Adress Adress { get; set; }
-
         public ICollection<Product> Products { get; set; } = new HashSet<Product>();
 
         public ICollection<Message> Messages { get; set; } = new HashSet<Message>();

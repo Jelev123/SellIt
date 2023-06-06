@@ -26,9 +26,7 @@
 
         public User? User { get; set; }
 
-        public string ProductAdressId { get; set; }
-
-        public Adress ProductAdress { get; set; }
+        public string ProductAdress { get; set; }
 
         public ICollection<LikedProduct> LikedProducts { get; set; } = new HashSet<LikedProduct>();
 

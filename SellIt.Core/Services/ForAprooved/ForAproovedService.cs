@@ -11,11 +11,9 @@
     public class ForAproovedService : IForAproovedService
     {
         private readonly ApplicationDbContext data;
-        private readonly ICountService countService;
-        public ForAproovedService(ApplicationDbContext data, ICountService countService)
+        public ForAproovedService(ApplicationDbContext data)
         {
             this.data = data;
-            this.countService = countService;
         }
 
         public IEnumerable<AllProductsForAprooved> GetAllProductsForAproove()

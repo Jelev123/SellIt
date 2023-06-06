@@ -36,7 +36,7 @@
                 CreatedUserId = userId,
                 Price = addProduct.Price,
                 PhoneNumber = addProduct.PhoneNumber != null ? addProduct.PhoneNumber : user.PhoneNumber,
-                ProductAdressId = addProduct.AddressId != null ? addProduct.AddressId : user.AdressId,
+                ProductAdress = addProduct.Address
             };
 
             product.Images = new List<Image>();
@@ -125,8 +125,7 @@
                     Price = s.Price,
                     Id = s.ProductId,
                     UserName = s.User.UserName,
-                    ProducAddresstId = s.ProductAdressId,
-                    AddressId = s.ProductAdressId,
+                    ProducAddress = s.ProductAdress,
                     Gallery = s.Images.Select(s => new GalleryModel()
                     {
                         Id = s.ImageId,
