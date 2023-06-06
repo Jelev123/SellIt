@@ -46,7 +46,6 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Areas\Id
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Areas\Identity\Pages\_ViewImports.cshtml
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Areas\Identity\Pages\_ViewStart.cshtml
-C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Adress\GetGeoInfo.cshtml
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Category\CreateCategory.cshtml
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\ForAprooved\GetAllProductsForAproove.cshtml
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Home\Index.cshtml
@@ -1681,3 +1680,4 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a97f2bf
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ae41264a-3fab-47cf-bf83-a0f741f75f8f_GBA-900-1ADR-2.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\c0d95455-d518-4728-951e-64e214ee291f_post122.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\e70b05b7-5dd8-46fb-8ed5-1d3be0fc3ea6_f8b79273dff167baf4b318b732d58c71.jpg
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\SellIt.MvcApplicationPartsAssemblyInfo.cs
