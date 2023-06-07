@@ -529,6 +529,15 @@ build_metadata.AdditionalFiles.XamlRuntime =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBbGxQcm9kdWN0czIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/zzhelev/Documents/GitHub/SellIt/SellIt/Views/Product/AllProductsByCategoryId.cshtml]
+build_metadata.AdditionalFiles.SourceItemGroup = 
+build_metadata.AdditionalFiles.Link = 
+build_metadata.AdditionalFiles.FullPath = C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\Views\Product\AllProductsByCategoryId.cshtml
+build_metadata.AdditionalFiles.Identity = Views\Product\AllProductsByCategoryId.cshtml
+build_metadata.AdditionalFiles.XamlRuntime = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBbGxQcm9kdWN0c0J5Q2F0ZWdvcnlJZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/zzhelev/Documents/GitHub/SellIt/SellIt/Views/Product/EditProduct.cshtml]
 build_metadata.AdditionalFiles.SourceItemGroup = 
 build_metadata.AdditionalFiles.Link = 

@@ -13,14 +13,12 @@
     {
         private readonly ApplicationDbContext data;
         private readonly IImageService imageService;
-        private readonly IWebHostEnvironment environment;
 
 
-        public CategoryService(ApplicationDbContext data, IImageService imageService, IWebHostEnvironment environment)
+        public CategoryService(ApplicationDbContext data, IImageService imageService)
         {
             this.data = data;
             this.imageService = imageService;
-            this.environment = environment;
         }
 
         public async Task CreateCategory(CreateCategoryViewModel createCategory, string imagePath)

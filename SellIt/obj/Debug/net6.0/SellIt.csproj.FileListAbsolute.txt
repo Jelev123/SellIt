@@ -1680,4 +1680,6 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a97f2bf
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ae41264a-3fab-47cf-bf83-a0f741f75f8f_GBA-900-1ADR-2.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\c0d95455-d518-4728-951e-64e214ee291f_post122.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\e70b05b7-5dd8-46fb-8ed5-1d3be0fc3ea6_f8b79273dff167baf4b318b732d58c71.jpg
-C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\SellIt.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Product\AllProductsByCategoryId.cshtml
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\c6c4f940-8fb9-4652-a9b8-959daa34b3f8_istockphoto-510786352-612x612.jpg
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\47c32ffb-1707-44cb-a5e1-a7ff625545ef_istockphoto-510786352-612x612.jpg

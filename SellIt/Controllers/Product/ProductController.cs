@@ -115,6 +115,16 @@
 
         public IActionResult AllProductsByCategoryId(int id)
         {
+            var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
+
+            this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
+            {
+                CategoryName = s.Name,
+                CategoryId = s.Id,
+
+            }).ToList();
+
+
             var allProductsByCategoryId = this.productService.GetAllProductsByCategoryId(id);
             return this.View(allProductsByCategoryId);
         }
