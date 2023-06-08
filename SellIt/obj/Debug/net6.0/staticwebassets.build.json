@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lJFN1qvjrr+cS4CjBZLp0N0b312jXwtcHRu/dAKvmyA=",
+  "Hash": "jPSKXo0tgMxL3uILDilKUZFKmsmbgHvRkVXzB7sZfns=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1615,6 +1615,23 @@
       "OriginalItemSpec": "wwwroot\\images\\categories\\c6c4f940-8fb9-4652-a9b8-959daa34b3f8_istockphoto-510786352-612x612.jpg"
     },
     {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\0ddab5cf-f129-44d2-b504-d7b948b989f5_istockphoto-510786352-612x612.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/0ddab5cf-f129-44d2-b504-d7b948b989f5_istockphoto-510786352-612x612.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\0ddab5cf-f129-44d2-b504-d7b948b989f5_istockphoto-510786352-612x612.jpg"
+    },
+    {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\24dd1d64-d6b1-4d59-a519-363ece6e2066_istockphoto-510786352-612x612.jpg",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -1630,6 +1647,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\24dd1d64-d6b1-4d59-a519-363ece6e2066_istockphoto-510786352-612x612.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\c202bb49-8898-4409-9c9b-08a24b2cbf63_istockphoto-510786352-612x612.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/c202bb49-8898-4409-9c9b-08a24b2cbf63_istockphoto-510786352-612x612.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\c202bb49-8898-4409-9c9b-08a24b2cbf63_istockphoto-510786352-612x612.jpg"
     },
     {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\img\\AdminLTELogo.png",

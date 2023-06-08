@@ -1684,3 +1684,5 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Pr
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\c6c4f940-8fb9-4652-a9b8-959daa34b3f8_istockphoto-510786352-612x612.jpg
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\47c32ffb-1707-44cb-a5e1-a7ff625545ef_istockphoto-510786352-612x612.jpg
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\24dd1d64-d6b1-4d59-a519-363ece6e2066_istockphoto-510786352-612x612.jpg
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\0ddab5cf-f129-44d2-b504-d7b948b989f5_istockphoto-510786352-612x612.jpg
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\c202bb49-8898-4409-9c9b-08a24b2cbf63_istockphoto-510786352-612x612.jpg

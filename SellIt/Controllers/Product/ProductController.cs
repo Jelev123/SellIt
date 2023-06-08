@@ -49,15 +49,27 @@
         [HttpPost]
         public IActionResult AddProduct(AddEditProductViewModel addProduct)
         {
-            var user = this.userManager.GetUserId(User);
+            var user =  this.userManager.GetUserId(User);
+            if (user == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
             this.productService.AddProduct(addProduct, user, $"{this.environment.WebRootPath}/images");
-            return this.Redirect("/");
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult DeleteProduct(int id)
         {
-            this.productService.DeleteProduct(id);
-            return this.Redirect("/");
+            try
+            {
+                this.productService.DeleteProduct(id);
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                return View("Error");
+            }
         }
 
         public IActionResult EditProduct(int id)
@@ -66,15 +78,20 @@
 
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
 
-            this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
+            ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {
                 CategoryName = s.Name,
-                CategoryId = s.Id,
-
+                CategoryId = s.Id
             }).ToList();
 
             var product = this.productService.GetById(id, userId);
-            return this.View(product);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
         }
 
         [HttpPost]
@@ -88,10 +105,18 @@
         public IActionResult GetProductById(int id)
         {
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
+            if (product == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
             var userId = product.CreatedUserId;
 
             var productById = this.productService.GetById(id, userId);
-            return this.View(productById);
+            if (productById == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            return View(productById);
         }
         public IActionResult MyProducts()
         {
