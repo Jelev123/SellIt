@@ -1,6 +1,5 @@
 ﻿namespace SellIt.Core.Services.Product
 {
-    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels;
@@ -10,7 +9,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public class ProductService : IProductService
+    public partial class ProductService : IProductService
     {
         private readonly ApplicationDbContext data;
         private readonly IImageService imageService;
@@ -177,24 +176,7 @@
 
             data.SaveChanges();
 
-            var product = this.data.Products.
-            Select(s => new GetByIdAndLikeViewModel
-            {
-                Name = s.Name,
-                CategoryName = s.Category.Name,
-                Description = s.Description,
-                IsAprooved = s.IsAproved,
-                Viewed = s.Viewed,
-                LikedCount = s.LikedCount,
-                UserId = s.CreatedUserId,
-                Id = s.ProductId,
-                Gallery = s.Images.Select(s => new GalleryModel()
-                {
-                    Name = s.Name,
-                    URL = s.URL,
-                }).ToList(),
-            })
-            .FirstOrDefault(s => s.Id == id);
+            var product = GetById(id, currentUserId);
 
             return product;
         }
