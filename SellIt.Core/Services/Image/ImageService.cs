@@ -42,6 +42,14 @@
         public void DeleteImage(string imageId)
         {
             var image = data.Images.FirstOrDefault(x => x.ImageId == imageId);
+
+            string filePath = Path.Combine(environment.WebRootPath, image.URL.TrimStart('/'));
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
             data.Remove(image);
             data.SaveChanges();
         }
