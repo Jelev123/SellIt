@@ -15,7 +15,7 @@
 <ul>
  <li> You can registrate with your username and Email (first registered is became the admin)</li>
  <li> The admin has a rights to see all users and their products also can set a role to any user. Can create a category and can approve the product when is created</li>
- <li> You can add your product for sale</li>
+ <li> You can add your product for sale but you have to wait to approve by admin</li>
  <li> You can edit or delete your product</li>
  <li> You can search for product by name and category</li>
  <li> You can send message to product you want and you can reply messaage from your product</li>
