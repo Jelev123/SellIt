@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using SellIt.Core.Constants;
-    using SellIt.Core.Constants.Product;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Product;

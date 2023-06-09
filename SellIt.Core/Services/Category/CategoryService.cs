@@ -1,7 +1,6 @@
 ﻿namespace SellIt.Core.Services.Category
 {
-    using Microsoft.AspNetCore.Hosting;
-    using SellIt.Core.Constants.Category;
+    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.ViewModels.Category;

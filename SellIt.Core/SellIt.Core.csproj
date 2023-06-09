@@ -35,4 +35,8 @@
     <ProjectReference Include="..\SellIt.Infrastructure\SellIt.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <SourceGeneratorInput Remove="Constants\CategoryConstants.cs" />
+  </ItemGroup>
+
 </Project>
