@@ -1,7 +1,6 @@
 ﻿namespace SellIt.Controllers.Product
 {
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Contracts.Category;
@@ -116,40 +115,7 @@
             }
             return View(productById);
         }
-        public IActionResult MyProducts()
-        {
-            var userId = this.userManager.GetUserId(User);
-            var products = this.productService.MyProducts(userId);
-            return this.View(products);
-        }
-
-        public IActionResult Favorites()
-        {
-            var userId = this.userManager.GetUserId(User);
-            var myLikedProducts = this.productService.Favorites(userId);
-            return this.View(myLikedProducts);
-        }
-
-        public IActionResult AllProducts()
-        {
-            var allProducts = this.productService.GetAllProducts();
-            return this.View(allProducts);
-        }
-
-        public IActionResult AllProductsByCategoryId(int id)
-        {
-            var allProductsByCategoryId = this.productService.GetAllProductsByCategoryId(id);
-            return this.View(allProductsByCategoryId);
-        }
-
-        [HttpPost]
-        public IActionResult Like(int id)
-        {
-            var currentUserId = this.userManager.GetUserId(User);
-            var productToLike = this.productService.Like(id, currentUserId);
-            return this.View(productToLike);
-        }
-
+       
         public IActionResult Search(string searchName)
         {
 
@@ -176,5 +142,20 @@
 
             return this.View(searchedCategory);
         }
+
+        public IActionResult MyProducts() => View(this.productService.MyProducts(userManager.GetUserId(User)));
+
+
+        public IActionResult Favorites() => View(this.productService.Favorites(userManager.GetUserId(User)));
+
+
+        public IActionResult AllProducts() => View(this.productService.GetAllProducts());
+
+
+        public IActionResult AllProductsByCategoryId(int id) => View(this.productService.GetAllProductsByCategoryId(id));
+
+
+        [HttpPost]
+        public IActionResult Like(int id) => View(this.productService.Like(id, userManager.GetUserId(User)));
     }
 }
