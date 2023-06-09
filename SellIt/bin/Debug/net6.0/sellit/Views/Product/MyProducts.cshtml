@@ -84,14 +84,17 @@
                                             <p class="small text-muted">$@item.Price</p>
                                         </div>
                                     </div>
+
+                                    <a class="btn-primary" asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@item.Id">Delete</a>
+                                    <a class="btn-primary" asp-action="EditProduct" asp-controller="Product" asp-route-id="@item.Id">Edit</a>
+                                    <a class="btn-primary" asp-action="AllProductMessages" asp-controller="Message" asp-route-id="@item.Id">All messages</a>
                                 }
-                            </div>
+                            </div>  
                         }
                         else
                         {
                             <h1 class="no-products-message">No products available</h1>
-                        }
-
+                        }              
                     </div>
                 </div>
         </div>
@@ -121,10 +124,10 @@
             behaviour: 'tap-drag',
             tooltips: true,
             format: {
-                to: function(value) {
+                to: function (value) {
                     return '$' + value;
                 },
-                from: function(value) {
+                from: function (value) {
                     return value.replace('', '');
                 }
             }
@@ -142,7 +145,7 @@
             var ajax = new XMLHttpRequest();
             ajax.open("GET", path, true);
             ajax.send();
-            ajax.onload = function(e) {
+            ajax.onload = function (e) {
                 var div = document.createElement("div");
                 div.className = 'd-none';
                 div.innerHTML = ajax.responseText;
@@ -154,6 +157,7 @@
         // while using file:// protocol
         // pls don't forget to change to your domain :)
         injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+    }
 
     </script>
     <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
@@ -161,4 +165,3 @@
     </div>
 </body>
 </html>
-

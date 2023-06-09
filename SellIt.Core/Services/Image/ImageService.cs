@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using SellIt.Core.Constants.Product;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Product;
@@ -24,8 +25,6 @@
         {
             if (model.GalleryFiles != null)
             {
-                string folder = "images/gallery/";
-
                 model.Gallery = new List<GalleryModel>();
 
                 foreach (var file in model.GalleryFiles)
@@ -33,7 +32,7 @@
                     var gallery = new GalleryModel()
                     {
                         Name = file.FileName,
-                        URL = await UploadImage(folder, file)
+                        URL = await UploadImage(ProductConstants.ProductsImagesFolder, file)
                     };
                     model.Gallery.Add(gallery);
                 }

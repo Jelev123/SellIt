@@ -520,15 +520,6 @@ build_metadata.AdditionalFiles.XamlRuntime =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBbGxQcm9kdWN0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/zzhelev/Documents/GitHub/SellIt/SellIt/Views/Product/AllProducts2.cshtml]
-build_metadata.AdditionalFiles.SourceItemGroup = 
-build_metadata.AdditionalFiles.Link = 
-build_metadata.AdditionalFiles.FullPath = C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\Views\Product\AllProducts2.cshtml
-build_metadata.AdditionalFiles.Identity = Views\Product\AllProducts2.cshtml
-build_metadata.AdditionalFiles.XamlRuntime = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxBbGxQcm9kdWN0czIuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/zzhelev/Documents/GitHub/SellIt/SellIt/Views/Product/AllProductsByCategoryId.cshtml]
 build_metadata.AdditionalFiles.SourceItemGroup = 
 build_metadata.AdditionalFiles.Link = 
@@ -563,15 +554,6 @@ build_metadata.AdditionalFiles.FullPath = C:\Users\zzhelev\Documents\GitHub\Sell
 build_metadata.AdditionalFiles.Identity = Views\Product\GetProductById.cshtml
 build_metadata.AdditionalFiles.XamlRuntime = 
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXRQcm9kdWN0QnlJZC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/zzhelev/Documents/GitHub/SellIt/SellIt/Views/Product/GetProductById2.cshtml]
-build_metadata.AdditionalFiles.SourceItemGroup = 
-build_metadata.AdditionalFiles.Link = 
-build_metadata.AdditionalFiles.FullPath = C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\Views\Product\GetProductById2.cshtml
-build_metadata.AdditionalFiles.Identity = Views\Product\GetProductById2.cshtml
-build_metadata.AdditionalFiles.XamlRuntime = 
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxHZXRQcm9kdWN0QnlJZDIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/zzhelev/Documents/GitHub/SellIt/SellIt/Views/Product/Like.cshtml]

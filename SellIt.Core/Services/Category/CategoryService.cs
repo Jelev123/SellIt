@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Core.Services.Category
 {
     using Microsoft.AspNetCore.Hosting;
+    using SellIt.Core.Constants.Category;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.ViewModels.Category;
@@ -21,16 +22,13 @@
             this.imageService = imageService;
         }
 
-        public async Task CreateCategory(CreateCategoryViewModel createCategory, string imagePath)
+        public async Task CreateCategory(CreateCategoryViewModel createCategory)
         {
             var category = new Category
             {
                 Name = createCategory.Name,
+                Image = await imageService.UploadImage(CategoryConstants.CategoryImagesFolder, createCategory.Image)
             };
-
-            var folder = "images/categories/";
-           
-            category.Image = await imageService.UploadImage(folder, createCategory.Image);
 
             data.Categories.Add(category);
             data.SaveChanges();

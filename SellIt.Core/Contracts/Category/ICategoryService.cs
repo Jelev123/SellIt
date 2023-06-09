@@ -5,7 +5,7 @@
 
     public interface ICategoryService
     {
-        Task CreateCategory(CreateCategoryViewModel createCategory, string imagePath);
+        Task CreateCategory(CreateCategoryViewModel createCategory);
         IEnumerable<AllCategoriesViewModel> GetAllCategories<T>();
     }
 }

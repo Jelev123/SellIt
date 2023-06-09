@@ -21,7 +21,7 @@
             this.imageService = imageService;
         }
 
-        public Task AddProduct(AddEditProductViewModel addProduct, string userId, string imagePath)
+        public void AddProduct(AddEditProductViewModel addProduct, string userId)
         {
             var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
             this.imageService.CheckGallery(addProduct);
@@ -45,8 +45,7 @@
             };
 
             data.Add(product);
-            data.SaveChanges();
-            return Task.CompletedTask;
+            data.SaveChanges();     
         }
 
         public void DeleteProduct(int id)
@@ -262,7 +261,7 @@
 
         public IEnumerable<AllProductViewModel> GetAllProductsByCategoryId(int id)
         {
-            var products = this.data.Products
+           return this.data.Products
                 .Select(p => new AllProductViewModel
                 {
                     Name = p.Name,
@@ -274,8 +273,6 @@
                     CoverPhoto = p.Images.FirstOrDefault().URL,
                 })
                 .Where(p => p.CategoryId == id);
-
-            return products;
         }
     }
 }

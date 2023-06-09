@@ -18,14 +18,12 @@
         private readonly ICategoryService categoryService;
         private readonly ISearchService searchService;
         private readonly UserManager<User> userManager;
-        private readonly IWebHostEnvironment environment;
         private readonly ApplicationDbContext data;
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService,  ApplicationDbContext data)
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, ISearchService searchService,  ApplicationDbContext data)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.userManager = userManager;
-            this.environment = environment;
             this.searchService = searchService;
             this.data = data;
         }
@@ -55,7 +53,7 @@
                 return RedirectToAction("Error", "Home");
             }
 
-            this.productService.AddProduct(addProduct, user, $"{this.environment.WebRootPath}/images");
+            this.productService.AddProduct(addProduct, user);
             return RedirectToAction("Index", "Home");
         }
 
@@ -140,16 +138,6 @@
 
         public IActionResult AllProductsByCategoryId(int id)
         {
-            var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
-
-            this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
-            {
-                CategoryName = s.Name,
-                CategoryId = s.Id,
-
-            }).ToList();
-
-
             var allProductsByCategoryId = this.productService.GetAllProductsByCategoryId(id);
             return this.View(allProductsByCategoryId);
         }
@@ -164,6 +152,7 @@
 
         public IActionResult Search(string searchName)
         {
+
             this.ViewData["searchProduct"] = searchName;
             var searchedProduct = this.searchService.SearchProduct(searchName);
 
@@ -171,6 +160,7 @@
             {
                 return this.View(searchName);
             }
+
             return this.View(searchedProduct);
         }
 
@@ -183,6 +173,7 @@
             {
                 return this.View(searchName);
             }
+
             return this.View(searchedCategory);
         }
     }
