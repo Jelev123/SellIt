@@ -2,63 +2,53 @@
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using SellIt.Areas.ViewModels;
     using SellIt.Core.Contracts.Messages;
-    using SellIt.Core.ViewModels.Messages;
-    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
+    using System.Security.Claims;
 
     public class MessageController : Controller
     {
         private readonly IMessagesService messagesService;
         private readonly UserManager<User> userManager;
-        private readonly ApplicationDbContext data;
 
-
-        public MessageController(IMessagesService messagesService, UserManager<User> userManager, ApplicationDbContext data)
+        public MessageController(IMessagesService messagesService, UserManager<User> userManager)
         {
             this.messagesService = messagesService;
             this.userManager = userManager;
-            this.data = data;
-        }
-
-        public IActionResult AllProductMessages(int id)
-        {
-            var all = this.messagesService.AllProductMessages(id);
-            return View(all);
-
         }
 
         [HttpPost]
         public IActionResult SendMessage(int id, string message)
         {
-            var userId = this.userManager.GetUserId(User);
-            var userName = this.userManager.GetUserName(User);
-            this.messagesService.SendMessage(userId, userName, id, message);
-            return Json(new { success = true });
+            if (!string.IsNullOrEmpty(message))
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var userName = this.User.Identity.Name;
+                this.messagesService.SendMessage(userId, userName, id, message);
+                return Json(new { success = true });
+            }
 
+            return Json(new { success = false, message = "Empty message" });
         }
 
         [HttpPost]
         public IActionResult ReplyMessage(string replyMessage, int id)
         {
-            var userId = this.userManager.GetUserId(User);
-            var userName = this.userManager.GetUserName(User);
-            this.messagesService.ReplyMessage(replyMessage, userId, userName, id);
-            return Json(new { success = true });
+            if (!string.IsNullOrEmpty(replyMessage))
+            {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var userName = this.User.Identity.Name;
+                this.messagesService.ReplyMessage(replyMessage, userId, userName, id);
+                return Json(new { success = true });
+            }
+
+            return Json(new { success = false, message = "Empty reply message" });
         }
 
-        public IActionResult AllMessages()
-        {
-            var userId = this.userManager.GetUserId(User);
-            var allMessages = this.messagesService.AllMessages(userId);
-            return this.View(allMessages);
-        }
+        public IActionResult AllProductMessages(int id) => View(this.messagesService.AllProductMessages(id));
 
-        public IActionResult GetProductMessageById(int id)
-        {
-            var message = this.messagesService.GetProductMessageById(id);
-            return this.View(message);
-        }
+        public IActionResult AllMessages() => this.View(this.messagesService.AllMessages(userManager.GetUserId(User)));
+
+        public IActionResult GetProductMessageById(int id) => View(messagesService.GetProductMessageById(id));
     }
 }

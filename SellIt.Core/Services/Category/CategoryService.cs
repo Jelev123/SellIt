@@ -1,6 +1,5 @@
 ﻿namespace SellIt.Core.Services.Category
 {
-    using Microsoft.AspNetCore.Hosting;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.ViewModels.Category;
@@ -13,26 +12,21 @@
     {
         private readonly ApplicationDbContext data;
         private readonly IImageService imageService;
-        private readonly IWebHostEnvironment environment;
 
 
-        public CategoryService(ApplicationDbContext data, IImageService imageService, IWebHostEnvironment environment)
+        public CategoryService(ApplicationDbContext data, IImageService imageService)
         {
             this.data = data;
             this.imageService = imageService;
-            this.environment = environment;
         }
 
-        public async Task CreateCategory(CreateCategoryViewModel createCategory, string imagePath)
+        public async Task CreateCategory(CreateCategoryViewModel createCategory)
         {
             var category = new Category
             {
                 Name = createCategory.Name,
+                Image = await imageService.UploadImage(CategoryConstants.CategoryImagesFolder, createCategory.Image)
             };
-
-            var folder = "images/categories/";
-           
-            category.Image = await imageService.UploadImage(folder, createCategory.Image);
 
             data.Categories.Add(category);
             data.SaveChanges();

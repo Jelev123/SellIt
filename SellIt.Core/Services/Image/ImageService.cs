@@ -24,8 +24,6 @@
         {
             if (model.GalleryFiles != null)
             {
-                string folder = "images/gallery/";
-
                 model.Gallery = new List<GalleryModel>();
 
                 foreach (var file in model.GalleryFiles)
@@ -33,7 +31,7 @@
                     var gallery = new GalleryModel()
                     {
                         Name = file.FileName,
-                        URL = await UploadImage(folder, file)
+                        URL = await UploadImage(ProductConstants.ProductsImagesFolder, file)
                     };
                     model.Gallery.Add(gallery);
                 }
@@ -43,6 +41,14 @@
         public void DeleteImage(string imageId)
         {
             var image = data.Images.FirstOrDefault(x => x.ImageId == imageId);
+
+            string filePath = Path.Combine(environment.WebRootPath, image.URL.TrimStart('/'));
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
             data.Remove(image);
             data.SaveChanges();
         }

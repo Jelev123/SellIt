@@ -1,7 +1,6 @@
 ﻿namespace SellIt.Controllers.Product
 {
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Contracts.Category;
@@ -18,16 +17,12 @@
         private readonly ICategoryService categoryService;
         private readonly ISearchService searchService;
         private readonly UserManager<User> userManager;
-        private readonly IWebHostEnvironment environment;
-        private readonly ApplicationDbContext data;
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, IWebHostEnvironment environment, ISearchService searchService,  ApplicationDbContext data)
+        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, ISearchService searchService)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.userManager = userManager;
-            this.environment = environment;
             this.searchService = searchService;
-            this.data = data;
         }
 
 
@@ -49,15 +44,27 @@
         [HttpPost]
         public IActionResult AddProduct(AddEditProductViewModel addProduct)
         {
-            var user = this.userManager.GetUserId(User);
-            this.productService.AddProduct(addProduct, user, $"{this.environment.WebRootPath}/images");
-            return this.Redirect("/");
+            var user =  this.userManager.GetUserId(User);
+            if (user == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+
+            this.productService.AddProduct(addProduct, user);
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult DeleteProduct(int id)
         {
-            this.productService.DeleteProduct(id);
-            return this.Redirect("/");
+            try
+            {
+                this.productService.DeleteProduct(id);
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+                return View("Error");
+            }
         }
 
         public IActionResult EditProduct(int id)
@@ -66,15 +73,20 @@
 
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
 
-            this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
+            ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {
                 CategoryName = s.Name,
-                CategoryId = s.Id,
-
+                CategoryId = s.Id
             }).ToList();
 
             var product = this.productService.GetById(id, userId);
-            return this.View(product);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
         }
 
         [HttpPost]
@@ -87,48 +99,17 @@
 
         public IActionResult GetProductById(int id)
         {
-            var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
-            var userId = product.CreatedUserId;
-
-            var productById = this.productService.GetById(id, userId);
-            return this.View(productById);
+            var productById = this.productService.GetById(id);
+            if (productById == null)
+            {
+                return RedirectToAction("Error", "Home");
+            }
+            return View(productById);
         }
-        public IActionResult MyProducts()
-        {
-            var userId = this.userManager.GetUserId(User);
-            var products = this.productService.MyProducts(userId);
-            return this.View(products);
-        }
-
-        public IActionResult Favorites()
-        {
-            var userId = this.userManager.GetUserId(User);
-            var myLikedProducts = this.productService.Favorites(userId);
-            return this.View(myLikedProducts);
-        }
-
-        public IActionResult AllProducts()
-        {
-            var allProducts = this.productService.GetAllProducts();
-            return this.View(allProducts);
-        }
-
-        public IActionResult AllProductsByCategoryId(int id)
-        {
-            var allProductsByCategoryId = this.productService.GetAllProductsByCategoryId(id);
-            return this.View(allProductsByCategoryId);
-        }
-
-        [HttpPost]
-        public IActionResult Like(int id)
-        {
-            var currentUserId = this.userManager.GetUserId(User);
-            var productToLike = this.productService.Like(id, currentUserId);
-            return this.View(productToLike);
-        }
-
+       
         public IActionResult Search(string searchName)
         {
+
             this.ViewData["searchProduct"] = searchName;
             var searchedProduct = this.searchService.SearchProduct(searchName);
 
@@ -136,6 +117,7 @@
             {
                 return this.View(searchName);
             }
+
             return this.View(searchedProduct);
         }
 
@@ -148,7 +130,17 @@
             {
                 return this.View(searchName);
             }
+
             return this.View(searchedCategory);
         }
+
+        public IActionResult Favorites() => View(this.productService.Favorites(userManager.GetUserId(User)));
+
+        public IActionResult AllProducts() => View(this.productService.GetAllProducts());
+
+        public IActionResult AllProductsByCategoryId(int id) => View(this.productService.GetAllProductsByCategoryId(id));
+
+        [HttpPost]
+        public IActionResult Like(int id) => View(this.productService.Like(id, userManager.GetUserId(User)));
     }
 }

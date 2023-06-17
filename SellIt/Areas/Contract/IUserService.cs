@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Areas.Service
 {
     using SellIt.Areas.ViewModel;
+    using SellIt.Core.ViewModels.Product;
 
     public interface IUserService
     {
@@ -15,5 +16,8 @@
         UserByIdViewModel UserById(string userId);
 
         IEnumerable<UserProductsViewModel> UserProducts(string userId);
+
+        IEnumerable<MyProductsViewModel> MyProducts(string id);
+
     }
 }

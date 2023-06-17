@@ -7,7 +7,6 @@ namespace SellIt.Areas.Identity.Pages.Account
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.Globalization;
     using System.Linq;
     using System.Net.Http;
     using System.Text;
@@ -24,7 +23,6 @@ namespace SellIt.Areas.Identity.Pages.Account
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
     using SellIt.Core.Constants;
-    using SellIt.Core.ViewModels.Adress;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
@@ -38,7 +36,6 @@ namespace SellIt.Areas.Identity.Pages.Account
         private readonly IEmailSender _emailSender;
         private readonly ApplicationDbContext data;
         private readonly RoleManager<IdentityRole> roleManager;
-        private readonly HttpClient _httpClient;
 
 
 
@@ -60,7 +57,6 @@ namespace SellIt.Areas.Identity.Pages.Account
             _emailSender = emailSender;
             this.data = data;
             this.roleManager = roleManager;
-            _httpClient = httpClient;
         }
 
         /// <summary>

@@ -1,6 +1,5 @@
 ﻿namespace SellIt.Core.Services.Product
 {
-    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels;
@@ -8,9 +7,8 @@
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
-    using System.Threading.Tasks;
 
-    public class ProductService : IProductService
+    public partial class ProductService : IProductService
     {
         private readonly ApplicationDbContext data;
         private readonly IImageService imageService;
@@ -22,7 +20,7 @@
             this.imageService = imageService;
         }
 
-        public Task AddProduct(AddEditProductViewModel addProduct, string userId, string imagePath)
+        public void AddProduct(AddEditProductViewModel addProduct, string userId)
         {
             var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
             this.imageService.CheckGallery(addProduct);
@@ -36,33 +34,33 @@
                 CreatedUserId = userId,
                 Price = addProduct.Price,
                 PhoneNumber = addProduct.PhoneNumber != null ? addProduct.PhoneNumber : user.PhoneNumber,
-                ProductAdress = addProduct.Address
-            };
-
-            product.Images = new List<Image>();
-
-            foreach (var file in addProduct.Gallery)
-            {
-                product.Images.Add(new Image()
+                ProductAdress = addProduct.Address,
+                Images = addProduct.Gallery.Select(file => new Image
                 {
                     Name = file.Name,
                     URL = file.URL,
                     AddedByUserId = userId
-                });
-            }
+                }).ToList()
+            };
 
             data.Add(product);
-            data.SaveChanges();
-            return Task.CompletedTask;
+            data.SaveChanges();     
         }
 
         public void DeleteProduct(int id)
         {
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
-            var productImage = this.data.Images.FirstOrDefault(s => s.ProductId == id);
-            data.Remove(productImage);
-            data.Remove(product);
-            data.SaveChanges();
+            if (product != null)
+            {
+                var productImage = this.data.Images.FirstOrDefault(s => s.ProductId == id);
+                if (productImage != null)
+                {
+                    data.Remove(productImage);
+                }
+
+                data.Remove(product);
+                data.SaveChanges();
+            }
         }
 
         public void EditProduct(AddEditProductViewModel editProduct, int id, string userId)
@@ -70,78 +68,80 @@
             imageService.CheckGallery(editProduct);
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
             var category = this.data.Categories.FirstOrDefault(s => s.Name == editProduct.CategoryName);
-            product.Name = editProduct.Name;
-            product.Description = editProduct.Description;
-            product.Price = editProduct.Price;
-            product.CategoryId = category.Id;
 
-            if (editProduct.GalleryFiles != null)
+            if (product != null && category != null)
             {
-                foreach (var file in editProduct.Gallery)
+                product.Name = editProduct.Name;
+                product.Description = editProduct.Description;
+                product.Price = editProduct.Price;
+                product.CategoryId = category.Id;
+
+                if (editProduct.GalleryFiles != null)
                 {
-                    product.Images.Add(new Image()
+                    product.Images.Clear(); // Clear existing images before adding new ones
+
+                    foreach (var file in editProduct.Gallery)
                     {
-                        Name = file.Name,
-                        URL = file.URL,
-                        AddedByUserId = userId
-                    });
+                        product.Images.Add(new Image()
+                        {
+                            Name = file.Name,
+                            URL = file.URL,
+                            AddedByUserId = userId
+                        });
+                    }
                 }
+
+                data.Update(product);
+                data.SaveChanges();
             }
-            data.Update(product);
-            data.SaveChanges();
         }
 
         public IEnumerable<AllProductViewModel> GetAllProducts()
         {
             var allProducts = this.data.Products
-                .Select(s => new AllProductViewModel
+                .Select(p => new AllProductViewModel
                 {
-                    Name = s.Name,
-                    CategoryName = s.Category.Name,
-                    Description = s.Description,
-                    UserId = s.CreatedUserId,
-                    Id = s.ProductId,
-                    Price = s.Price,
-                    CoverPhoto = s.Images.FirstOrDefault().URL
+                    Name = p.Name,
+                    CategoryName = p.Category.Name,
+                    Description = p.Description,
+                    UserId = p.CreatedUserId,
+                    Id = p.ProductId,
+                    Price = p.Price,
+                    CoverPhoto = p.Images.FirstOrDefault().URL
                 });
 
             return allProducts;
         }
 
-        public GetByIdAndLikeViewModel GetById(int id, string userId)
+        public GetByIdAndLikeViewModel GetById(int id)
         {
             var product = this.data.Products
-                .Where(s => s.ProductId == id)
-                .Select(s => new GetByIdAndLikeViewModel
-                {
-                    Name = s.Name,
-                    CategoryName = s.Category.Name,
-                    CategoryId = s.CategoryId,
-                    Description = s.Description,
-                    IsAprooved = s.IsAproved,
-                    Viewed = s.Viewed,
-                    LikedCount = s.LikedCount,
-                    UserId = s.CreatedUserId,
-                    Price = s.Price,
-                    Id = s.ProductId,
-                    UserName = s.User.UserName,
-                    ProducAddress = s.ProductAdress,
-                    Gallery = s.Images.Select(s => new GalleryModel()
-                    {
-                        Id = s.ImageId,
-                        ImageId = s.ImageId,
-                        Name = s.Name,
-                        URL = s.URL,
-                        ProductId = s.ProductId
-                    }).ToList(),
-                }).FirstOrDefault();
+                 .Where(s => s.ProductId == id)
+                 .Select(s => new GetByIdAndLikeViewModel
+                 {
+                     Name = s.Name,
+                     CategoryName = s.Category.Name,
+                     CategoryId = s.CategoryId,
+                     Description = s.Description,
+                     IsAprooved = s.IsAproved,
+                     Viewed = s.Viewed,
+                     LikedCount = s.LikedCount,
+                     UserId = s.CreatedUserId,
+                     Price = s.Price,
+                     Id = s.ProductId,
+                     UserName = s.User.UserName,
+                     ProducAddress = s.ProductAdress,
+                     Gallery = s.Images.Select(img => new GalleryModel
+                     {
+                         Id = img.ImageId,
+                         ImageId = img.ImageId,
+                         Name = img.Name,
+                         URL = img.URL,
+                         ProductId = img.ProductId
+                     }).ToList(),
+                 })
+                 .FirstOrDefault();
 
-            if (product.UserId != userId)
-            {
-                var viewdProduct = this.data.Products.FirstOrDefault(s => s.ProductId == id);
-                viewdProduct.Viewed++;
-                data.SaveChanges();
-            }
             return product;
         }
 
@@ -154,7 +154,6 @@
 
             if (existingLikedProduct == null)
             {
-                // User has not liked the current product, so add it
                 var likedProduct = new LikedProduct
                 {
                     ProductId = currentProduct.ProductId,
@@ -166,7 +165,6 @@
             }
             else
             {
-                // User has already liked the current product, so remove it
                 data.LikedProducts.Remove(existingLikedProduct);
 
                 if (currentProduct.LikedCount > 0)
@@ -177,24 +175,7 @@
 
             data.SaveChanges();
 
-            var product = this.data.Products.
-            Select(s => new GetByIdAndLikeViewModel
-            {
-                Name = s.Name,
-                CategoryName = s.Category.Name,
-                Description = s.Description,
-                IsAprooved = s.IsAproved,
-                Viewed = s.Viewed,
-                LikedCount = s.LikedCount,
-                UserId = s.CreatedUserId,
-                Id = s.ProductId,
-                Gallery = s.Images.Select(s => new GalleryModel()
-                {
-                    Name = s.Name,
-                    URL = s.URL,
-                }).ToList(),
-            })
-            .FirstOrDefault(s => s.Id == id);
+            var product = GetById(id);
 
             return product;
         }
@@ -208,19 +189,19 @@
 
             if (myLikedProductIds != null)
             {
-                          var myProducts = this.data.Products
-              .Where(x => myLikedProductIds.Contains(x.ProductId))
-              .Select(x => new MyProductsViewModel
-              {
-                  Id = x.ProductId,
-                  Name = x.Name,
-                  CategoryName = x.Category.Name,
-                  Description = x.Description,
-                  UserId = userId,
-                  Price = x.Price,
-                  IsAprooved = x.IsAproved,
-                  CoverPhoto = x.Images.FirstOrDefault().URL
-              }).ToList();
+                var myProducts = this.data.Products
+                     .Where(x => myLikedProductIds.Contains(x.ProductId))
+                     .Select(x => new MyProductsViewModel
+                     {
+                         Id = x.ProductId,
+                         Name = x.Name,
+                         CategoryName = x.Category.Name,
+                         Description = x.Description,
+                         UserId = userId,
+                         Price = x.Price,
+                         IsAprooved = x.IsAproved,
+                         CoverPhoto = x.Images.FirstOrDefault().URL
+                     }).ToList();
 
                 return myProducts;
             }
@@ -230,49 +211,29 @@
             }
         }
 
-        public IEnumerable<MyProductsViewModel> MyProducts(string userId)
-        {
-            var product = this.data.Products.FirstOrDefault(x => x.CreatedUserId == userId);
-            var myProducts = this.data.Products
-                .Where(s => s.CreatedUserId == userId)
-                .Select(x => new MyProductsViewModel
-                {
-                    Id = x.ProductId,
-                    Name = x.Name,
-                    CategoryName = x.Category.Name,
-                    MessagesCount = x.Messages.Count,
-                    Description = x.Description,
-                    UserId = userId,
-                    IsAprooved = x.IsAproved,
-                    Price = x.Price,
-                    CoverPhoto = x.Images.FirstOrDefault().URL
-                });
-
-            return myProducts;
-        }
-
         public IEnumerable<IndexRandomViewModel> RandomProducts(int count)
         {
-            return this.data.Products.OrderBy(s => Guid.NewGuid())
-                .Where(s => s.IsAproved == true)
-                .Select(s => new IndexRandomViewModel()
-                {
-                    Id = s.ProductId,
-                    Name = s.Name,
-                    CategoryName = s.Category.Name,
-                    CoverPhoto = s.Images.FirstOrDefault().URL,
-                    Price = s.Price,
-                    IsAproved = s.IsAproved,
-                    LikedCount = s.LikedCount,
-                    CategoryImage = s.Category.Image,
-                    Description = s.Description,
-                })
-                .Take(count);
+            return this.data.Products
+                  .Where(s => s.IsAproved == true)
+                  .OrderBy(s => Guid.NewGuid())
+                  .Select(s => new IndexRandomViewModel()
+                  {
+                      Id = s.ProductId,
+                      Name = s.Name,
+                      CategoryName = s.Category.Name,
+                      CoverPhoto = s.Images.FirstOrDefault().URL,
+                      Price = s.Price,
+                      IsAproved = s.IsAproved,
+                      LikedCount = s.LikedCount,
+                      CategoryImage = s.Category.Image,
+                      Description = s.Description,
+                  })
+                   .Take(count); 
         }
 
         public IEnumerable<AllProductViewModel> GetAllProductsByCategoryId(int id)
         {
-            var products =  this.data.Products
+           return this.data.Products
                 .Select(p => new AllProductViewModel
                 {
                     Name = p.Name,
@@ -284,8 +245,6 @@
                     CoverPhoto = p.Images.FirstOrDefault().URL,
                 })
                 .Where(p => p.CategoryId == id);
-
-            return products;
         }
     }
 }

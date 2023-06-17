@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Identity;
     using SellIt.Areas.ViewModel;
     using SellIt.Core.Contracts.Count;
+    using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -49,6 +50,27 @@
             var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
             data.Remove(user);
             data.SaveChanges();
+        }
+
+        public IEnumerable<MyProductsViewModel> MyProducts(string userId)
+        {
+            var product = this.data.Products.FirstOrDefault(x => x.CreatedUserId == userId);
+            var myProducts = this.data.Products
+                .Where(s => s.CreatedUserId == userId)
+                .Select(x => new MyProductsViewModel
+                {
+                    Id = x.ProductId,
+                    Name = x.Name,
+                    CategoryName = x.Category.Name,
+                    MessagesCount = x.Messages.Count,
+                    Description = x.Description,
+                    UserId = userId,
+                    IsAprooved = x.IsAproved,
+                    Price = x.Price,
+                    CoverPhoto = x.Images.FirstOrDefault().URL
+                });
+
+            return myProducts;
         }
 
         public async Task SetRole(string userId, AllUsersViewModel all)

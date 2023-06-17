@@ -7,13 +7,10 @@
     public class CategoryController : Controller
     {
         private readonly ICategoryService categoryService;
-        private readonly IWebHostEnvironment environment;
 
-
-        public CategoryController(ICategoryService categoryService, IWebHostEnvironment environment)
+        public CategoryController(ICategoryService categoryService)
         {
             this.categoryService = categoryService;
-            this.environment = environment;
         }
 
         public IActionResult CreateCategory()
@@ -24,7 +21,7 @@
         [HttpPost]
         public IActionResult CreateCategory(CreateCategoryViewModel create)
         {
-            this.categoryService.CreateCategory(create, $"{this.environment.WebRootPath}/images");
+            this.categoryService.CreateCategory(create);
             return this.Redirect("/");
         }
     }
