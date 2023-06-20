@@ -1,5 +1,7 @@
 ﻿namespace SellIt.Core.Services.Product
 {
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels;
@@ -7,17 +9,23 @@
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
+    using System.Security.Principal;
+    using Windows.System;
 
     public partial class ProductService : IProductService
     {
         private readonly ApplicationDbContext data;
         private readonly IImageService imageService;
+        private readonly UserManager<Infrastructure.Data.Models.User> userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
 
-        public ProductService(ApplicationDbContext data, IImageService imageService)
+        public ProductService(ApplicationDbContext data, IImageService imageService, UserManager<Infrastructure.Data.Models.User> userManager, IHttpContextAccessor httpContextAccessor)
         {
             this.data = data;
             this.imageService = imageService;
+            this.userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public void AddProduct(AddEditProductViewModel addProduct, string userId)
@@ -115,6 +123,8 @@
 
         public GetByIdAndLikeViewModel GetById(int id)
         {
+            string currentUserId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
+
             var product = this.data.Products
                  .Where(s => s.ProductId == id)
                  .Select(s => new GetByIdAndLikeViewModel
@@ -140,7 +150,14 @@
                          ProductId = img.ProductId
                      }).ToList(),
                  })
-                 .FirstOrDefault();
+            .FirstOrDefault();
+
+            if (product != null && currentUserId != product.UserId)
+            {
+                var viewdProduct = this.data.Products.FirstOrDefault(s => s.ProductId == id);
+                viewdProduct.Viewed++;
+                data.SaveChanges();
+            }
 
             return product;
         }

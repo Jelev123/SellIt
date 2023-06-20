@@ -8,7 +8,6 @@
     using SellIt.Core.Contracts.Search;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
-    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
     public class ProductController : Controller
@@ -69,8 +68,6 @@
 
         public IActionResult EditProduct(int id)
         {
-            var userId = this.userManager.GetUserId(User);
-
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
 
             ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
@@ -79,7 +76,7 @@
                 CategoryId = s.Id
             }).ToList();
 
-            var product = this.productService.GetById(id, userId);
+            var product = this.productService.GetById(id);
 
             if (product == null)
             {

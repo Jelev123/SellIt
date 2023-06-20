@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Areas.Service;
     using SellIt.Areas.ViewModel;
-    using SellIt.Core.Contracts.Product;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
@@ -14,15 +13,11 @@
         private readonly ApplicationDbContext data;
         private readonly UserManager<User> userManager;
         private readonly IUserService userService;
-        private readonly IProductService productService;
 
-
-
-        public UserController(ApplicationDbContext data, IUserService userService, IProductService productService, UserManager<User> userManager)
+        public UserController(ApplicationDbContext data, IUserService userService, UserManager<User> userManager)
         {
             this.data = data;
             this.userService = userService;
-            this.productService = productService;
             this.userManager = userManager;
         }
 
@@ -81,6 +76,6 @@
             return this.View(userProducts);
         }
 
-        public IActionResult MyProducts() => View(this.productService.MyProducts(userManager.GetUserId(User)));
+        public IActionResult MyProducts() => View(this.userService.MyProducts(userManager.GetUserId(User)));
     }
 }
