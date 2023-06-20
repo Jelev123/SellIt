@@ -52,13 +52,6 @@
                                 </li>
                             }
                         </ul>
-                        <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <button id="likeButton" class="like-button">
-                                    <span class="icon-heart">&hearts;</span>
-                                </button>
-                            </li>
-                        </ul>
                     </div>
                 </nav>
             </div>
@@ -89,8 +82,17 @@
                 </div>
             </div>
         </div>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <button id="likeButton" class="like-button">
+                        <span class="icon-heart">&hearts;</span>
+                    </button>
+                </li>
+            </ul>
+        }
         <small id="liked" class="text-black fw-big">Likes: @Model.LikedCount</small>
-        <small id="liked" class="text-black fw-big">Viewed: @Model.Viewed</small>
 
         <section class="py-5">
             <div class="container">
@@ -219,7 +221,7 @@
                 var ajax = new XMLHttpRequest();
                 ajax.open("GET", path, true);
                 ajax.send();
-                ajax.onload = function(e) {
+                ajax.onload = function (e) {
                     var div = document.createElement("div");
                     div.className = 'd-none';
                     div.innerHTML = ajax.responseText;
@@ -247,7 +249,7 @@
     let modelId = @Model.Id;
     let modelCount = @Model.LikedCount;
 
-    likeButton.on("click", function(event) {
+    likeButton.on("click", function (event) {
         event.preventDefault();
         console.log("click")
         let currentLikedCount = parseInt(likedElement.text());
@@ -258,10 +260,10 @@
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ likedCount: newLikedCount }),
-            success: function(response) {
+            success: function (response) {
                 location.reload();
             },
-            error: function(xhr, status, error) {
+            error: function (xhr, status, error) {
                 console.log("An error occurred:", error);
             }
         });
@@ -322,14 +324,14 @@
         }
 
 
-        .list-unstyled.small {
+    .list-unstyled.small {
         display: flex;
         align-items: center;
     }
 
-    .list-unstyled.small li {
-        margin-right: 10px;
-    }
+        .list-unstyled.small li {
+            margin-right: 10px;
+        }
 
 </style>
 
@@ -338,7 +340,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     let randomButton = $("#random");
-    randomButton.on("click", function(event) {
+    randomButton.on("click", function (event) {
         event.preventDefault();
         let inputElement = $('<input type="text" id="textInput">');
         inputElement.addClass('cool-input');
@@ -346,7 +348,7 @@
         sendButton.addClass('btn-3d');
         let container = $('<div></div>').append(inputElement).append(sendButton);
         $('#contentContainer').empty().append(container);
-        sendButton.on("click", function() {
+        sendButton.on("click", function () {
             let inputValue = $('#textInput').val();
 
 
@@ -355,10 +357,10 @@
                 url: `/Message/SendMessage`,
                 type: "POST",
                 data: { id: itemId, message: inputValue },
-                success: function(response) {
+                success: function (response) {
                     $('#contentContainer').html(response);
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.log("An error occurred:", error);
                 }
             });
