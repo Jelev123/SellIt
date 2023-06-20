@@ -14,7 +14,7 @@
     {
         private readonly ApplicationDbContext data;
         private readonly IImageService imageService;
-        private readonly UserManager<Infrastructure.Data.Models.User> userManager;
+        private readonly UserManager<User> userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
 
 

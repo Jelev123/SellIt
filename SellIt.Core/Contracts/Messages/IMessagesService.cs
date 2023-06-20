@@ -5,10 +5,10 @@
 
     public interface IMessagesService
     {
-        Task SendMessage(string userId, string userName, int id, string message);
-        Task ReplyMessage(string replyMessage, string userId, string userName, int id);
+        Task SendMessage(string userName, int id, string message);
+        Task ReplyMessage(string replyMessage, string userName, int id);
         IEnumerable<AllProductMessagesViewModel> AllProductMessages(int id);
-        IEnumerable<AllMessagesViewModel> AllMessages(string userId);
+        IEnumerable<AllMessagesViewModel> AllMessages();
         ProductMessagesById GetProductMessageById(int id);
     }
 }

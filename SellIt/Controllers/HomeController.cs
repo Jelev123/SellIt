@@ -19,13 +19,11 @@
         private readonly ICountService countService;
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
-        private readonly UserManager<User> userManager;
 
-        public HomeController(ICountService countService, IProductService productService, UserManager<User> userManager, ICategoryService categoryService)
+        public HomeController(ICountService countService, IProductService productService, ICategoryService categoryService)
         {
             this.countService = countService;
             this.productService = productService;
-            this.userManager = userManager;
             this.categoryService = categoryService;
         }
 

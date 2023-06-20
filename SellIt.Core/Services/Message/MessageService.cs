@@ -1,5 +1,7 @@
 ﻿namespace SellIt.Core.Services.Message
 {
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.Messages;
     using SellIt.Core.ViewModels.Messages;
@@ -11,16 +13,21 @@
     public class MessageService : IMessagesService
     {
         private readonly ApplicationDbContext data;
-        private readonly ICountService countService;
+        private readonly UserManager<User> userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public MessageService(ApplicationDbContext data, ICountService countService)
+
+
+        public MessageService(ApplicationDbContext data, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor)
         {
             this.data = data;
-            this.countService = countService;
+            this.userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
-        public Task SendMessage(string userId, string userName, int id, string message)
+        public Task SendMessage(string userName, int id, string message)
         {
+            string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
             var send = new Message
             {
                 Text = message,
@@ -35,8 +42,10 @@
             return Task.CompletedTask;
         }
 
-        public Task ReplyMessage(string replyMessage, string userId, string userName, int id)
+        public Task ReplyMessage(string replyMessage, string userName, int id)
         {
+            string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
+
             var reply = new ReplyMessage
             {
                 MessageId = id,
@@ -75,33 +84,33 @@
             return all;
         }
 
-        public IEnumerable<AllMessagesViewModel> AllMessages(string userId)
+        public IEnumerable<AllMessagesViewModel> AllMessages()
         {
-
+            string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
             var allMessages = this.data.Products
-     .Where(p => p.CreatedUserId == userId) // Filter products owned by the current user
-     .SelectMany(p => p.Messages) // Retrieve messages for the user's products
-     .Where(m => m.UserId == userId || m.Product.CreatedUserId == userId || m.Product.User.Id == userId) // Include messages sent by the current user, related to their product, or sent to other users' products
-     .Select(m => new AllMessagesViewModel
-     {
-         Id = m.Id,
-         Text = m.Text,
-         UserName = m.UserName,
-         Date = m.Date,
-         ProductId = m.ProductId,
-         ProductName = m.Product.Name,
-         Photo = m.Product.Images.FirstOrDefault().URL,
-         ReplyMessages = m.ReplyMessages
-             .Where(r => r.ReplyerUserId == userId || r.Message.UserId == userId)
-             .Select(r => new ReplyMessageViewModel
+             .Where(p => p.CreatedUserId == userId) // Filter products owned by the current user
+             .SelectMany(p => p.Messages) // Retrieve messages for the user's products
+             .Where(m => m.UserId == userId || m.Product.CreatedUserId == userId || m.Product.User.Id == userId) // Include messages sent by the current user, related to their product, or sent to other users' products
+             .Select(m => new AllMessagesViewModel
              {
-                 ReplyText = r.ReplyText,
-                 ReplyerUserName = r.ReplayerUserName,
-                 ReplyerDate = r.Date
+                 Id = m.Id,
+                 Text = m.Text,
+                 UserName = m.UserName,
+                 Date = m.Date,
+                 ProductId = m.ProductId,
+                 ProductName = m.Product.Name,
+                 Photo = m.Product.Images.FirstOrDefault().URL,
+                 ReplyMessages = m.ReplyMessages
+              .Where(r => r.ReplyerUserId == userId || r.Message.UserId == userId)
+              .Select(r => new ReplyMessageViewModel
+              {
+                  ReplyText = r.ReplyText,
+                  ReplyerUserName = r.ReplayerUserName,
+                  ReplyerDate = r.Date
+              })
+              .ToList()
              })
-             .ToList()
-     })
-     .ToList();
+      .ToList();
 
             var currentUserMessages = this.data.Messages
                 .Where(m => m.UserId == userId /*&& !this.data.Products.Any(p => p.Messages.Contains(m))*/) // Include messages sent by the current user to other users' products

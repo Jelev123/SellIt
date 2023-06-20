@@ -22,9 +22,8 @@
         {
             if (!string.IsNullOrEmpty(message))
             {
-                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var userName = this.User.Identity.Name;
-                this.messagesService.SendMessage(userId, userName, id, message);
+                this.messagesService.SendMessage(userName, id, message);
                 return Json(new { success = true });
             }
 
@@ -36,9 +35,8 @@
         {
             if (!string.IsNullOrEmpty(replyMessage))
             {
-                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var userName = this.User.Identity.Name;
-                this.messagesService.ReplyMessage(replyMessage, userId, userName, id);
+                this.messagesService.ReplyMessage(replyMessage, userName, id);
                 return Json(new { success = true });
             }
 
@@ -47,7 +45,7 @@
 
         public IActionResult AllProductMessages(int id) => View(this.messagesService.AllProductMessages(id));
 
-        public IActionResult AllMessages() => this.View(this.messagesService.AllMessages(userManager.GetUserId(User)));
+        public IActionResult AllMessages() => this.View(this.messagesService.AllMessages());
 
         public IActionResult GetProductMessageById(int id) => View(messagesService.GetProductMessageById(id));
     }
