@@ -9,12 +9,10 @@
     public class MessageController : Controller
     {
         private readonly IMessagesService messagesService;
-        private readonly UserManager<User> userManager;
 
-        public MessageController(IMessagesService messagesService, UserManager<User> userManager)
+        public MessageController(IMessagesService messagesService)
         {
             this.messagesService = messagesService;
-            this.userManager = userManager;
         }
 
         [HttpPost]
