@@ -9,8 +9,6 @@
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
-    using System.Security.Principal;
-    using Windows.System;
 
     public partial class ProductService : IProductService
     {
@@ -28,9 +26,12 @@
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public void AddProduct(AddEditProductViewModel addProduct, string userId)
+        public async void AddProduct(AddEditProductViewModel addProduct)
         {
-            var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
+            HttpContext httpContext = _httpContextAccessor.HttpContext;
+            string currentUserId = userManager.GetUserId(httpContext.User);
+            User currentUser = await userManager.FindByIdAsync(currentUserId);
+
             this.imageService.CheckGallery(addProduct);
             var category = this.data.Categories.FirstOrDefault(s => s.Name == addProduct.CategoryName);
             var product = new Product
@@ -39,15 +40,15 @@
                 Description = addProduct.Description,
                 Category = category,
                 CategoryId = category.Id,
-                CreatedUserId = userId,
+                CreatedUserId = currentUserId,
                 Price = addProduct.Price,
-                PhoneNumber = addProduct.PhoneNumber != null ? addProduct.PhoneNumber : user.PhoneNumber,
+                PhoneNumber = addProduct.PhoneNumber != null ? addProduct.PhoneNumber : currentUser.PhoneNumber,
                 ProductAdress = addProduct.Address,
                 Images = addProduct.Gallery.Select(file => new Image
                 {
                     Name = file.Name,
                     URL = file.URL,
-                    AddedByUserId = userId
+                    AddedByUserId = currentUserId
                 }).ToList()
             };
 
@@ -71,8 +72,10 @@
             }
         }
 
-        public void EditProduct(AddEditProductViewModel editProduct, int id, string userId)
+        public void EditProduct(AddEditProductViewModel editProduct, int id)
         {
+            string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
+
             imageService.CheckGallery(editProduct);
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
             var category = this.data.Categories.FirstOrDefault(s => s.Name == editProduct.CategoryName);
@@ -163,10 +166,10 @@
         }
 
 
-        public GetByIdAndLikeViewModel Like(int id, string currentUserId)
+        public GetByIdAndLikeViewModel Like(int id)
         {
+            string currentUserId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
             var currentProduct = data.Products.FirstOrDefault(s => s.ProductId == id);
-
             var existingLikedProduct = data.LikedProducts.FirstOrDefault(lp => lp.UserId == currentUserId && lp.ProductId == currentProduct.ProductId);
 
             if (existingLikedProduct == null)
@@ -191,14 +194,13 @@
             }
 
             data.SaveChanges();
-
             var product = GetById(id);
-
             return product;
         }
 
-        public IEnumerable<MyProductsViewModel> Favorites(string userId)
+        public IEnumerable<MyProductsViewModel> Favorites()
         {
+            string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
             var myLikedProductIds = this.data.LikedProducts
               .Where(x => x.UserId == userId)
               .Select(x => x.ProductId)

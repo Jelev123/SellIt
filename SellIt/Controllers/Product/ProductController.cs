@@ -15,12 +15,10 @@
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
         private readonly ISearchService searchService;
-        private readonly UserManager<User> userManager;
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, ISearchService searchService)
+        public ProductController(IProductService productService, ICategoryService categoryService, ISearchService searchService)
         {
             this.productService = productService;
             this.categoryService = categoryService;
-            this.userManager = userManager;
             this.searchService = searchService;
         }
 
@@ -28,10 +26,7 @@
         [Authorize]
         public IActionResult AddProduct()
         {
-            var userId = this.userManager.GetUserId(User);
-
             var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
-
             this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {
                 CategoryName = s.Name,
@@ -43,13 +38,7 @@
         [HttpPost]
         public IActionResult AddProduct(AddEditProductViewModel addProduct)
         {
-            var user =  this.userManager.GetUserId(User);
-            if (user == null)
-            {
-                return RedirectToAction("Error", "Home");
-            }
-
-            this.productService.AddProduct(addProduct, user);
+            this.productService.AddProduct(addProduct);
             return RedirectToAction("Index", "Home");
         }
 
@@ -89,8 +78,7 @@
         [HttpPost]
         public async Task<IActionResult> EditProduct(AddEditProductViewModel editProduct, int id)
         {
-            var userId = this.userManager.GetUserId(User);
-            this.productService.EditProduct(editProduct, id, userId);
+            this.productService.EditProduct(editProduct, id);
             return this.RedirectToAction("MyProducts");
         }
 
@@ -131,13 +119,13 @@
             return this.View(searchedCategory);
         }
 
-        public IActionResult Favorites() => View(this.productService.Favorites(userManager.GetUserId(User)));
+        public IActionResult Favorites() => View(this.productService.Favorites());
 
         public IActionResult AllProducts() => View(this.productService.GetAllProducts());
 
         public IActionResult AllProductsByCategoryId(int id) => View(this.productService.GetAllProductsByCategoryId(id));
 
         [HttpPost]
-        public IActionResult Like(int id) => View(this.productService.Like(id, userManager.GetUserId(User)));
+        public IActionResult Like(int id) => View(this.productService.Like(id));
     }
 }
