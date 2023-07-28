@@ -1,16 +1,12 @@
 ﻿namespace SellIt.Controllers
 {
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
-    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Home;
     using SellIt.Core.ViewModels.Product;
-    using SellIt.Infrastructure.Data;
-    using SellIt.Infrastructure.Data.Models;
     using SellIt.Models;
     using System.Diagnostics;
 
@@ -27,21 +23,21 @@
             this.categoryService = categoryService;
         }
 
-        public IActionResult Index(int id)
+        public async Task<IActionResult> Index(int id)
         {
-            var count = this.countService.GetCount(id);
+            var count = await this.countService.GetCount(id);
             var counts = new HomeViewModel
             {
                 ProductForAprooveCount = count.ProductsToAprooveCount,
                 AllProducts = count.AllProducts,
-                RandomProducts = this.productService.RandomProducts(6).ToList(),
+                RandomProducts = await this.productService.RandomProductsAsync(6),
                 ProductMessages = count.ProductMessages,
-                AllCategories = this.categoryService.GetAllCategories<AllCategoriesViewModel>(),
+                AllCategories = await this.categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>(),
             };
 
             ViewData["HomeViewModel"] = counts;
 
-            var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
+            var categories = await this.categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>();
 
             this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {

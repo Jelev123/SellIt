@@ -66,7 +66,7 @@
 
         public IActionResult UserById(string userId)
         {
-           var user =  this.userService.UserById(userId);
+           var user =  this.userService.UserByIdAsync(userId);
             return this.View(user);
         }
 

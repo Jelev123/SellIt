@@ -31,7 +31,7 @@
         {
             try
             {
-                return Ok(this.productService.GetAllProducts());
+                return Ok(this.productService.GetAllProductsAsync());
 
             }
             catch (ArgumentException ae)

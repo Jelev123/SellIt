@@ -4,7 +4,7 @@
 
     public interface ISearchService
     {
-        IEnumerable<SearchViewModel> SearchProduct(string searchName);
+        Task<IEnumerable<SearchViewModel>> SearchProductAsync(string searchName);
 
     }
 }

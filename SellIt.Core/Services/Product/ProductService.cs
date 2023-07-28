@@ -9,6 +9,7 @@
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
+    using System.Data.Entity;
 
     public partial class ProductService : IProductService
     {
@@ -26,13 +27,13 @@
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async void AddProduct(AddEditProductViewModel addProduct)
+        public async Task AddProductAsync(AddEditProductViewModel addProduct)
         {
             HttpContext httpContext = _httpContextAccessor.HttpContext;
             string currentUserId = userManager.GetUserId(httpContext.User);
             User currentUser = await userManager.FindByIdAsync(currentUserId);
 
-            this.imageService.CheckGallery(addProduct);
+            await this.imageService.CheckGallery(addProduct);
             var category = this.data.Categories.FirstOrDefault(s => s.Name == addProduct.CategoryName);
             var product = new Product
             {
@@ -52,11 +53,11 @@
                 }).ToList()
             };
 
-            data.Add(product);
-            data.SaveChanges();     
+            await data.AddAsync(product);
+            await data.SaveChangesAsync();
         }
 
-        public void DeleteProduct(int id)
+        public async Task DeleteProductAsync(int id)
         {
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
             if (product != null)
@@ -68,15 +69,15 @@
                 }
 
                 data.Remove(product);
-                data.SaveChanges();
+                await data.SaveChangesAsync();
             }
         }
 
-        public void EditProduct(AddEditProductViewModel editProduct, int id)
+        public async Task EditProductAsync(AddEditProductViewModel editProduct, int id)
         {
             string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
 
-            imageService.CheckGallery(editProduct);
+            await imageService.CheckGallery(editProduct);
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
             var category = this.data.Categories.FirstOrDefault(s => s.Name == editProduct.CategoryName);
 
@@ -89,7 +90,7 @@
 
                 if (editProduct.GalleryFiles != null)
                 {
-                    product.Images.Clear(); // Clear existing images before adding new ones
+                    product.Images.Clear();
 
                     foreach (var file in editProduct.Gallery)
                     {
@@ -103,13 +104,12 @@
                 }
 
                 data.Update(product);
-                data.SaveChanges();
+                await data.SaveChangesAsync();
             }
         }
 
-        public IEnumerable<AllProductViewModel> GetAllProducts()
-        {
-            var allProducts = this.data.Products
+        public async Task<IEnumerable<AllProductViewModel>> GetAllProductsAsync()
+           => await this.data.Products
                 .Select(p => new AllProductViewModel
                 {
                     Name = p.Name,
@@ -119,16 +119,13 @@
                     Id = p.ProductId,
                     Price = p.Price,
                     CoverPhoto = p.Images.FirstOrDefault().URL
-                });
+                }).ToListAsync();
 
-            return allProducts;
-        }
-
-        public GetByIdAndLikeViewModel GetById(int id)
+        public async Task<GetByIdAndLikeViewModel> GetByIdAsync(int id)
         {
             string currentUserId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
 
-            var product = this.data.Products
+            var product = await this.data.Products
                  .Where(s => s.ProductId == id)
                  .Select(s => new GetByIdAndLikeViewModel
                  {
@@ -153,24 +150,23 @@
                          ProductId = img.ProductId
                      }).ToList(),
                  })
-            .FirstOrDefault();
+            .FirstOrDefaultAsync();
 
             if (product != null && currentUserId != product.UserId)
             {
                 var viewdProduct = this.data.Products.FirstOrDefault(s => s.ProductId == id);
                 viewdProduct.Viewed++;
-                data.SaveChanges();
+                await data.SaveChangesAsync();
             }
-
             return product;
         }
 
 
-        public GetByIdAndLikeViewModel Like(int id)
+        public async Task<GetByIdAndLikeViewModel> LikeAsync(int id)
         {
             string currentUserId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
-            var currentProduct = data.Products.FirstOrDefault(s => s.ProductId == id);
-            var existingLikedProduct = data.LikedProducts.FirstOrDefault(lp => lp.UserId == currentUserId && lp.ProductId == currentProduct.ProductId);
+            var currentProduct = await data.Products.FirstOrDefaultAsync(s => s.ProductId == id);
+            var existingLikedProduct = await data.LikedProducts.FirstOrDefaultAsync(lp => lp.UserId == currentUserId && lp.ProductId == currentProduct.ProductId);
 
             if (existingLikedProduct == null)
             {
@@ -181,7 +177,7 @@
                 };
 
                 currentProduct.LikedCount++;
-                data.LikedProducts.Add(likedProduct);
+                await data.LikedProducts.AddAsync(likedProduct);
             }
             else
             {
@@ -193,22 +189,22 @@
                 }
             }
 
-            data.SaveChanges();
-            var product = GetById(id);
+            await data.SaveChangesAsync();
+            var product = await GetByIdAsync(id);
             return product;
         }
 
-        public IEnumerable<MyProductsViewModel> Favorites()
+        public async Task<IEnumerable<MyProductsViewModel>> FavoritesAsync()
         {
             string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
-            var myLikedProductIds = this.data.LikedProducts
+            var myLikedProductIds = await this.data.LikedProducts
               .Where(x => x.UserId == userId)
               .Select(x => x.ProductId)
-              .ToList();
+              .ToListAsync();
 
             if (myLikedProductIds != null)
             {
-                var myProducts = this.data.Products
+                var myProducts = await this.data.Products
                      .Where(x => myLikedProductIds.Contains(x.ProductId))
                      .Select(x => new MyProductsViewModel
                      {
@@ -220,7 +216,7 @@
                          Price = x.Price,
                          IsAprooved = x.IsAproved,
                          CoverPhoto = x.Images.FirstOrDefault().URL
-                     }).ToList();
+                     }).ToListAsync();
 
                 return myProducts;
             }
@@ -230,9 +226,9 @@
             }
         }
 
-        public IEnumerable<IndexRandomViewModel> RandomProducts(int count)
+        public async Task<IEnumerable<IndexRandomViewModel>> RandomProductsAsync(int count)
         {
-            return this.data.Products
+            return await this.data.Products
                   .Where(s => s.IsAproved == true)
                   .OrderBy(s => Guid.NewGuid())
                   .Select(s => new IndexRandomViewModel()
@@ -247,23 +243,25 @@
                       CategoryImage = s.Category.Image,
                       Description = s.Description,
                   })
-                   .Take(count); 
+                   .Take(count)
+                   .ToListAsync();
         }
 
-        public IEnumerable<AllProductViewModel> GetAllProductsByCategoryId(int id)
+        public async Task<IEnumerable<AllProductViewModel>> GetAllProductsByCategoryIdAsync(int id)
         {
-           return this.data.Products
-                .Select(p => new AllProductViewModel
-                {
-                    Name = p.Name,
-                    Id = p.ProductId,
-                    Description = p.Description,
-                    CategoryName = p.Category.Name,
-                    CategoryId = p.CategoryId,
-                    Price = p.Price,
-                    CoverPhoto = p.Images.FirstOrDefault().URL,
-                })
-                .Where(p => p.CategoryId == id);
+            return await this.data.Products
+                 .Select(p => new AllProductViewModel
+                 {
+                     Name = p.Name,
+                     Id = p.ProductId,
+                     Description = p.Description,
+                     CategoryName = p.Category.Name,
+                     CategoryId = p.CategoryId,
+                     Price = p.Price,
+                     CoverPhoto = p.Images.FirstOrDefault().URL,
+                 })
+                 .Where(p => p.CategoryId == id)
+                 .ToListAsync();
         }
     }
 }

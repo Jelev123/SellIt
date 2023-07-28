@@ -5,10 +5,10 @@
 
     public interface IMessagesService
     {
-        Task SendMessage(string userName, int id, string message);
-        Task ReplyMessage(string replyMessage, string userName, int id);
-        IEnumerable<AllProductMessagesViewModel> AllProductMessages(int id);
-        IEnumerable<AllMessagesViewModel> AllMessages();
-        ProductMessagesById GetProductMessageById(int id);
+        Task SendMessageAsync(string userName, int id, string message);
+        Task ReplyMessageAsync(string replyMessage, string userName, int id);
+        Task<IEnumerable<AllProductMessagesViewModel>> AllProductMessagesAsync(int id);
+        Task<IEnumerable<AllMessagesViewModel>> AllMessagesAsync();
+        Task<ProductMessagesById> GetProductMessageByIdAsync(int id);
     }
 }

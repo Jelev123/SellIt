@@ -23,6 +23,8 @@
 
         public async Task CheckGallery(AddEditProductViewModel model)
         {
+            var fileFolder = "images/gallery/";
+
             if (model.GalleryFiles != null)
             {
                 model.Gallery = new List<GalleryModel>();
@@ -32,7 +34,7 @@
                     var gallery = new GalleryModel()
                     {
                         Name = file.FileName,
-                        URL = await UploadImage(ProductConstants.ProductsImagesFolder, file)
+                        URL = await UploadImage(fileFolder, file)
                     };
                     model.Gallery.Add(gallery);
                 }

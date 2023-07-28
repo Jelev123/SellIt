@@ -13,7 +13,7 @@
             this.data = data;
         }
 
-        public CountViewModel GetCount(int productId)
+        public async Task<CountViewModel> GetCount(int productId)
         {
             return new CountViewModel
             {
@@ -24,6 +24,6 @@
             };
         }
 
-        public int GetUserProductsCount(string userId) => this.data.Products.Where(p => p.CreatedUserId == userId).Count();
+        public async Task<int> GetUserProductsCount(string userId) => this.data.Products.Where(p => p.CreatedUserId == userId).Count();
     }
 }

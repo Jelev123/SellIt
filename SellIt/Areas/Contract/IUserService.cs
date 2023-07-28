@@ -13,7 +13,7 @@
 
         Task DeleteUser(string userId);
 
-        UserByIdViewModel UserById(string userId);
+        Task<UserByIdViewModel> UserByIdAsync(string userId);
 
         IEnumerable<UserProductsViewModel> UserProducts(string userId);
 

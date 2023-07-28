@@ -6,7 +6,6 @@ D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.csproj.CoreCompileInputs.cache
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.MvcApplicationPartsAssemblyInfo.cache
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.RazorAssemblyInfo.cache
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.RazorAssemblyInfo.cs
-D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.MvcApplicationPartsAssemblyInfo.cs
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Areas\Identity\Pages\Account\AccessDenied.cshtml
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Areas\Identity\Pages\Account\ConfirmEmail.cshtml
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Areas\Identity\Pages\Account\ConfirmEmailChange.cshtml
@@ -75,7 +74,6 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Shared\_Message.cshtml
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Shared\_ValidationScriptsPartial.cshtml
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\User\AllUsers.cshtml
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\User\CreateRole.cshtml
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\User\MyProducts.cshtml
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\User\SetRole.cshtml
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\User\UserById.cshtml
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\User\UserProducts.cshtml
@@ -111,14 +109,8 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\favicon.ico
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\icons\demo.html
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\icons\orion-svg-sprite.svg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\icons\styles.css
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\0923e6be-3591-4957-a02d-246853ef2672_modern-cars-studio-room-3d-260nw-735402217.webp
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\47c32ffb-1707-44cb-a5e1-a7ff625545ef_istockphoto-510786352-612x612.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\c6c4f940-8fb9-4652-a9b8-959daa34b3f8_istockphoto-510786352-612x612.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\0d8092fc-6f31-4ca5-b00b-00b4c631735d_citycarrentals15may2019WEB-1015.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\206861a1-4f9d-4573-a3b5-889ae4e6719b_ea8add83ff049c68f5612eb80d7288db.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\405cacac-7963-482e-92d9-bf62d2060266_download.jpg
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\4bd438bc-97a5-49c9-b853-15d4249cb6aa_cls-63-amg-shooting-brake-_1_-gallery.webp
-D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\4dffff35-d111-4132-a635-5d4f81462695_desktop-wallpaper-mercedes-benz-cls-63-amg-cls-63-amg-black.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\img\AdminLTELogo.png
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\img\avatar.png
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\img\avatar2.png
@@ -840,3 +832,4 @@ D:\Projects\SellIt\SellIt\obj\Debug\net6.0\refint\SellIt.dll
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.pdb
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.genruntimeconfig.cache
 D:\Projects\SellIt\SellIt\obj\Debug\net6.0\ref\SellIt.dll
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ab9e26bd-0143-4d68-8c4d-20d1b285a86f_18015-MC20BluInfinito-scaled-e1666008987698.jpg

@@ -100,11 +100,11 @@
             data.SaveChanges();
         }
 
-        public UserByIdViewModel UserById(string userId)
+        public async Task<UserByIdViewModel> UserByIdAsync(string userId)
         {
             var count = this.countService.GetUserProductsCount(userId);
 
-            var user = (from users in data.Users
+            return (from users in data.Users
                         from userRoles in data.UserRoles.Where(co => co.UserId == users.Id).DefaultIfEmpty()
                         from roles in data.Roles.Where(prod => prod.Id == userRoles.RoleId).DefaultIfEmpty()
                         from products in data.Products.Where(s => s.CreatedUserId == users.Id).DefaultIfEmpty()
@@ -116,12 +116,11 @@
                             DateCreated = users.DateCreated,
                             Email = users.Email,
                             ProductName = products.Name,
-                            ProductsCount = count,
+                            ProductsCount = count.Result,
                             
                         })
                        .Where(s => s.UserId == userId)
                        .FirstOrDefault();
-            return user;
         }
 
         public IEnumerable<UserProductsViewModel> UserProducts(string userId)

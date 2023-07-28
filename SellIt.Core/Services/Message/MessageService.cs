@@ -2,12 +2,12 @@
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
-    using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.Messages;
     using SellIt.Core.ViewModels.Messages;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
 
     public class MessageService : IMessagesService
@@ -25,7 +25,7 @@
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public Task SendMessage(string userName, int id, string message)
+        public async Task SendMessageAsync(string userName, int id, string message)
         {
             string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
             var send = new Message
@@ -37,15 +37,13 @@
                 Date = DateTime.UtcNow,
             };
 
-            data.Messages.Add(send);
-            data.SaveChanges();
-            return Task.CompletedTask;
+            await data.Messages.AddAsync(send);
+            await data.SaveChangesAsync();
         }
 
-        public Task ReplyMessage(string replyMessage, string userName, int id)
+        public async Task ReplyMessageAsync(string replyMessage, string userName, int id)
         {
             string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
-
             var reply = new ReplyMessage
             {
                 MessageId = id,
@@ -54,14 +52,13 @@
                 ReplyerUserId = userId,
                 ReplayerUserName = userName,
             };
-            data.ReplyMessages.Add(reply);
-            data.SaveChanges();
-            return Task.CompletedTask;
+
+            await data.ReplyMessages.AddAsync(reply);
+            await data.SaveChangesAsync();
         }
 
-        public IEnumerable<AllProductMessagesViewModel> AllProductMessages(int id)
-        {
-            var all = this.data.Messages
+        public async Task<IEnumerable<AllProductMessagesViewModel>> AllProductMessagesAsync(int id)
+             => await this.data.Messages
                 .Where(s => s.ProductId == id)
                 .Select(s => new AllProductMessagesViewModel
                 {
@@ -80,17 +77,17 @@
                         Date = s.Date,
                     }).ToList()
                 })
-                .OrderByDescending(s => s.Text);
-            return all;
-        }
+                .OrderByDescending(s => s.Text)
+            .ToListAsync();
 
-        public IEnumerable<AllMessagesViewModel> AllMessages()
+
+        public async Task<IEnumerable<AllMessagesViewModel>> AllMessagesAsync()
         {
             string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
-            var allMessages = this.data.Products
-             .Where(p => p.CreatedUserId == userId) // Filter products owned by the current user
-             .SelectMany(p => p.Messages) // Retrieve messages for the user's products
-             .Where(m => m.UserId == userId || m.Product.CreatedUserId == userId || m.Product.User.Id == userId) // Include messages sent by the current user, related to their product, or sent to other users' products
+            var allMessages = await this.data.Products
+             .Where(p => p.CreatedUserId == userId) 
+             .SelectMany(p => p.Messages)
+             .Where(m => m.UserId == userId || m.Product.CreatedUserId == userId || m.Product.User.Id == userId)
              .Select(m => new AllMessagesViewModel
              {
                  Id = m.Id,
@@ -110,10 +107,10 @@
               })
               .ToList()
              })
-      .ToList();
+      .ToListAsync();
 
-            var currentUserMessages = this.data.Messages
-                .Where(m => m.UserId == userId /*&& !this.data.Products.Any(p => p.Messages.Contains(m))*/) // Include messages sent by the current user to other users' products
+            var currentUserMessages = await this.data.Messages
+                .Where(m => m.UserId == userId)
                 .Select(m => new AllMessagesViewModel
                 {
                     Id = m.Id,
@@ -133,19 +130,15 @@
                         })
                         .ToList()
                 })
-                .ToList();
+                .ToListAsync();
 
             allMessages.AddRange(currentUserMessages);
 
             return allMessages;
-
-
-
         }
 
-        public ProductMessagesById GetProductMessageById(int id)
-        {
-            var allMessages = this.data.Messages
+        public async Task<ProductMessagesById> GetProductMessageByIdAsync(int id)  
+            => this.data.Messages
                  .Where(s => s.Id == id)
                                .Select(s => new ProductMessagesById
                                {
@@ -163,7 +156,5 @@
                                        ProductName = s.Message.Product.Name,
                                    }).ToList(),
                                }).FirstOrDefault();
-            return allMessages;
-        }
     }
 }

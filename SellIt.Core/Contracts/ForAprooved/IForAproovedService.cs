@@ -4,8 +4,8 @@
 
     public interface IForAproovedService
     {
-        IEnumerable<AllProductsForAprooved> GetAllProductsForAproove();
+        Task<IEnumerable<AllProductsForAprooved>> GetAllProductsForAprooveAsync();
 
-        Task SetAproove(int id);
+        Task SetAprooveAsync(int id);
     }
 }

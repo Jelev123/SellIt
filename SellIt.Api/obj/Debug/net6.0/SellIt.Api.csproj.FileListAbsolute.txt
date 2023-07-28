@@ -4,7 +4,6 @@ D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.AssemblyInfoInputs.cac
 D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.AssemblyInfo.cs
 D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.csproj.CoreCompileInputs.cache
 D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.MvcApplicationPartsAssemblyInfo.cache
-D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.MvcApplicationPartsAssemblyInfo.cs
 D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.dll
 D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\refint\SellIt.Api.dll
 D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.xml

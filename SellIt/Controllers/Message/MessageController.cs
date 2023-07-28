@@ -1,10 +1,7 @@
 ﻿namespace SellIt.Controllers.Message
 {
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Contracts.Messages;
-    using SellIt.Infrastructure.Data.Models;
-    using System.Security.Claims;
 
     public class MessageController : Controller
     {
@@ -16,12 +13,12 @@
         }
 
         [HttpPost]
-        public IActionResult SendMessage(int id, string message)
+        public async Task<IActionResult> SendMessage(int id, string message)
         {
             if (!string.IsNullOrEmpty(message))
             {
                 var userName = this.User.Identity.Name;
-                this.messagesService.SendMessage(userName, id, message);
+                await this.messagesService.SendMessageAsync(userName, id, message);
                 return Json(new { success = true });
             }
 
@@ -29,22 +26,22 @@
         }
 
         [HttpPost]
-        public IActionResult ReplyMessage(string replyMessage, int id)
+        public async Task<IActionResult> ReplyMessage(string replyMessage, int id)
         {
             if (!string.IsNullOrEmpty(replyMessage))
             {
                 var userName = this.User.Identity.Name;
-                this.messagesService.ReplyMessage(replyMessage, userName, id);
+                await this.messagesService.ReplyMessageAsync(replyMessage, userName, id);
                 return Json(new { success = true });
             }
 
             return Json(new { success = false, message = "Empty reply message" });
         }
 
-        public IActionResult AllProductMessages(int id) => View(this.messagesService.AllProductMessages(id));
+        public async Task<IActionResult> AllProductMessages(int id) => View(await this.messagesService.AllProductMessagesAsync(id));
 
-        public IActionResult AllMessages() => this.View(this.messagesService.AllMessages());
+        public async Task<IActionResult> AllMessages() => this.View(await this.messagesService.AllMessagesAsync());
 
-        public IActionResult GetProductMessageById(int id) => View(messagesService.GetProductMessageById(id));
+        public async Task<IActionResult> GetProductMessageById(int id) => View(await this.messagesService.GetProductMessageByIdAsync(id));
     }
 }
