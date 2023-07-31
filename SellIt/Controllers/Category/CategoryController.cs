@@ -19,9 +19,9 @@
         }
 
         [HttpPost]
-        public IActionResult CreateCategory(CreateCategoryViewModel create)
+        public async Task<IActionResult> CreateCategory(CreateCategoryViewModel create)
         {
-            this.categoryService.CreateCategory(create);
+            await this.categoryService.CreateCategoryAsync(create);
             return this.Redirect("/");
         }
     }

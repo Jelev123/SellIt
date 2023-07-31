@@ -4,6 +4,7 @@
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
     using System.Collections.Generic;
+    using System.Data.Entity;
 
     public class SearchService : ISearchService
     {
@@ -14,9 +15,8 @@
             this.data = data;
         }
 
-        public IEnumerable<SearchViewModel> SearchProduct(string searchName)
-        {
-            var searchedProducts = this.data.Products
+        public async Task<IEnumerable<SearchViewModel>> SearchProductAsync(string searchName)       
+            => await this.data.Products
                  .Select(s => new SearchViewModel
                  {
                      Name = s.Name,
@@ -27,9 +27,7 @@
                      Price = s.Price,
                      CoverPhoto =  s.Images.FirstOrDefault().URL
                  })
-                 .Where(s => (s.Name.Contains(searchName)) || (s.CategoryName.Contains(searchName)));
-
-            return searchedProducts;
-        }
+                 .Where(s => (s.Name.Contains(searchName)) || (s.CategoryName.Contains(searchName)))
+            .ToListAsync();
     }
 }

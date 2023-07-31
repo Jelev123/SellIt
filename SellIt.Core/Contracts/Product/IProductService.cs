@@ -4,26 +4,23 @@
 
     public interface IProductService
     {
-        void AddProduct(AddEditProductViewModel addProduct, string userId);
+        Task AddProductAsync(AddEditProductViewModel addProduct);
 
-        void DeleteProduct(int id);
+        Task DeleteProductAsync(int id);
 
-        void EditProduct(AddEditProductViewModel editProduct, int id, string userId);
+        Task EditProductAsync(AddEditProductViewModel editProduct, int id);
 
-        GetByIdAndLikeViewModel GetById(int id, string userId);
+        Task<GetByIdAndLikeViewModel> GetByIdAsync(int id);
 
-        IEnumerable<AllProductViewModel> GetAllProducts();
+        Task<IEnumerable<AllProductViewModel>> GetAllProductsAsync();
 
-        IEnumerable<AllProductViewModel> GetAllProductsByCategoryId(int id);
+        Task<IEnumerable<AllProductViewModel>> GetAllProductsByCategoryIdAsync(int id);
 
-        GetByIdAndLikeViewModel Like(int id, string currentUserId);
+        Task<GetByIdAndLikeViewModel> LikeAsync(int id);
 
-        IEnumerable<MyProductsViewModel> MyProducts(string id);
+        Task<IEnumerable<MyProductsViewModel>> FavoritesAsync();
 
-        IEnumerable<MyProductsViewModel> Favorites(string id);
-
-
-        IEnumerable<IndexRandomViewModel> RandomProducts(int count);
+        Task<IEnumerable<IndexRandomViewModel>> RandomProductsAsync(int count);
 
     }
 }

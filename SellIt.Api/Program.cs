@@ -4,7 +4,9 @@ using Microsoft.Extensions.Configuration;
 using SellIt.Api;
 using SellIt.Api.Contracts.Auth;
 using SellIt.Api.Services.Auth;
+using SellIt.Core.Contracts.Image;
 using SellIt.Core.Contracts.Product;
+using SellIt.Core.Services.Image;
 using SellIt.Core.Services.Product;
 using SellIt.Infrastructure.Data;
 using SellIt.Infrastructure.Data.Models;
@@ -25,6 +27,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IImageService, ImageService>();
 builder.Services.AddTransient<IAuthenticationManager, AuthenticationManager>();
 
 builder.Services.AddSwaggerGen(options =>

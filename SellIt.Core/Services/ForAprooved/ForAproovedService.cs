@@ -6,6 +6,7 @@
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Threading.Tasks;
 
     public class ForAproovedService : IForAproovedService
@@ -16,25 +17,22 @@
             this.data = data;
         }
 
-        public IEnumerable<AllProductsForAprooved> GetAllProductsForAproove()
-        {
-            var allProducts = this.data.Products
+        public async Task<IEnumerable<AllProductsForAprooved>> GetAllProductsForAprooveAsync()
+           => await this.data.Products
                 .Where(s => s.IsAproved == false)
                 .Select(s => new AllProductsForAprooved
                 {
                     Name = s.Name,
                     CategoryName = s.Category.Name,
                     Id = s.ProductId,
-                    CoverPhoto =  s.Images.FirstOrDefault().URL
-                });
-            return allProducts;
-        }
+                    CoverPhoto = s.Images.FirstOrDefault().URL
+                }).ToListAsync();
 
-        public async Task SetAproove(int id)
-        {       
-            var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
+        public async Task SetAprooveAsync(int id)
+        {
+            var product = await this.data.Products.FirstOrDefaultAsync(s => s.ProductId == id);
             product.IsAproved = true;
-            data.SaveChangesAsync();
+            await data.SaveChangesAsync();
         }
     }
 }

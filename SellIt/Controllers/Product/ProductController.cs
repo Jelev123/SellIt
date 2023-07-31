@@ -8,7 +8,6 @@
     using SellIt.Core.Contracts.Search;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
-    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
     public class ProductController : Controller
@@ -16,25 +15,18 @@
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
         private readonly ISearchService searchService;
-        private readonly UserManager<User> userManager;
-        private readonly ApplicationDbContext data;
-        public ProductController(IProductService productService, ICategoryService categoryService, UserManager<User> userManager, ISearchService searchService,  ApplicationDbContext data)
+        public ProductController(IProductService productService, ICategoryService categoryService, ISearchService searchService)
         {
             this.productService = productService;
             this.categoryService = categoryService;
-            this.userManager = userManager;
             this.searchService = searchService;
-            this.data = data;
         }
 
 
         [Authorize]
-        public IActionResult AddProduct()
+        public async Task<IActionResult> AddProduct()
         {
-            var userId = this.userManager.GetUserId(User);
-
-            var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
-
+            var categories = await this.categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>();
             this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {
                 CategoryName = s.Name,
@@ -44,23 +36,17 @@
         }
 
         [HttpPost]
-        public IActionResult AddProduct(AddEditProductViewModel addProduct)
+        public async Task<IActionResult> AddProduct(AddEditProductViewModel addProduct)
         {
-            var user =  this.userManager.GetUserId(User);
-            if (user == null)
-            {
-                return RedirectToAction("Error", "Home");
-            }
-
-            this.productService.AddProduct(addProduct, user);
+            await this.productService.AddProductAsync(addProduct);
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult DeleteProduct(int id)
+        public async Task<IActionResult> DeleteProduct(int id)
         {
             try
             {
-                this.productService.DeleteProduct(id);
+                await this.productService.DeleteProductAsync(id);
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
@@ -69,11 +55,9 @@
             }
         }
 
-        public IActionResult EditProduct(int id)
+        public async Task<IActionResult> EditProduct(int id)
         {
-            var userId = this.userManager.GetUserId(User);
-
-            var categories = this.categoryService.GetAllCategories<AllCategoriesViewModel>();
+            var categories = await this.categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>();
 
             ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {
@@ -81,7 +65,7 @@
                 CategoryId = s.Id
             }).ToList();
 
-            var product = this.productService.GetById(id, userId);
+            var product = await this.productService.GetByIdAsync(id);
 
             if (product == null)
             {
@@ -94,33 +78,24 @@
         [HttpPost]
         public async Task<IActionResult> EditProduct(AddEditProductViewModel editProduct, int id)
         {
-            var userId = this.userManager.GetUserId(User);
-            this.productService.EditProduct(editProduct, id, userId);
+            await this.productService.EditProductAsync(editProduct, id);
             return this.RedirectToAction("MyProducts");
         }
 
-        public IActionResult GetProductById(int id)
+        public async Task<IActionResult> GetProductById(int id)
         {
-            var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
-            if (product == null)
-            {
-                return RedirectToAction("Error", "Home");
-            }
-            var userId = product.CreatedUserId;
-
-            var productById = this.productService.GetById(id, userId);
+            var productById = await this.productService.GetByIdAsync(id);
             if (productById == null)
             {
                 return RedirectToAction("Error", "Home");
             }
             return View(productById);
         }
-       
-        public IActionResult Search(string searchName)
-        {
 
+        public async Task<IActionResult> Search(string searchName)
+        {
             this.ViewData["searchProduct"] = searchName;
-            var searchedProduct = this.searchService.SearchProduct(searchName);
+            var searchedProduct = await this.searchService.SearchProductAsync(searchName);
 
             if (searchedProduct == null)
             {
@@ -130,10 +105,10 @@
             return this.View(searchedProduct);
         }
 
-        public IActionResult SearchCategory(string searchName)
+        public async Task<IActionResult> SearchCategory(string searchName)
         {
             this.ViewData["searchCategory"] = searchName;
-            var searchedCategory = this.searchService.SearchProduct(searchName);
+            var searchedCategory = await this.searchService.SearchProductAsync(searchName);
 
             if (searchedCategory == null)
             {
@@ -143,19 +118,13 @@
             return this.View(searchedCategory);
         }
 
-        public IActionResult MyProducts() => View(this.productService.MyProducts(userManager.GetUserId(User)));
+        public async Task<IActionResult> Favorites() => View(await this.productService.FavoritesAsync());
 
+        public async Task<IActionResult> AllProducts() => View(await this.productService.GetAllProductsAsync());
 
-        public IActionResult Favorites() => View(this.productService.Favorites(userManager.GetUserId(User)));
-
-
-        public IActionResult AllProducts() => View(this.productService.GetAllProducts());
-
-
-        public IActionResult AllProductsByCategoryId(int id) => View(this.productService.GetAllProductsByCategoryId(id));
-
+        public async Task<IActionResult> AllProductsByCategoryId(int id) => View(await this.productService.GetAllProductsByCategoryIdAsync(id));
 
         [HttpPost]
-        public IActionResult Like(int id) => View(this.productService.Like(id, userManager.GetUserId(User)));
+        public async Task<IActionResult> Like(int id) => View(await this.productService.LikeAsync(id));
     }
 }

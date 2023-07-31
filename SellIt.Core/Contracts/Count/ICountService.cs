@@ -4,8 +4,8 @@
 
     public interface ICountService
     {
-        CountViewModel GetCount(int productId);
+        Task<CountViewModel> GetCount(int productId);
 
-        int GetUserProductsCount(string userId);
+        Task<int> GetUserProductsCount(string userId);
     }
 }

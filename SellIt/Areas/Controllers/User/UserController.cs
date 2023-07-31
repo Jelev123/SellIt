@@ -1,22 +1,24 @@
 ﻿namespace SellIt.Areas.Controllers.User
 {
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Areas.Service;
     using SellIt.Areas.ViewModel;
     using SellIt.Infrastructure.Data;
+    using SellIt.Infrastructure.Data.Models;
 
 
     public class UserController : Controller
     {
         private readonly ApplicationDbContext data;
+        private readonly UserManager<User> userManager;
         private readonly IUserService userService;
 
-
-
-        public UserController(ApplicationDbContext data, IUserService userService)
+        public UserController(ApplicationDbContext data, IUserService userService, UserManager<User> userManager)
         {
             this.data = data;
             this.userService = userService;
+            this.userManager = userManager;
         }
 
 
@@ -64,7 +66,7 @@
 
         public IActionResult UserById(string userId)
         {
-           var user =  this.userService.UserById(userId);
+           var user =  this.userService.UserByIdAsync(userId);
             return this.View(user);
         }
 
@@ -73,5 +75,7 @@
             var userProducts = this.userService.UserProducts(userId);
             return this.View(userProducts);
         }
+
+        public IActionResult MyProducts() => View(this.userService.MyProducts(userManager.GetUserId(User)));
     }
 }

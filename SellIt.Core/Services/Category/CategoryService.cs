@@ -7,6 +7,7 @@
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Threading.Tasks;
 
     public class CategoryService : ICategoryService
@@ -21,29 +22,26 @@
             this.imageService = imageService;
         }
 
-        public async Task CreateCategory(CreateCategoryViewModel createCategory)
+        public async Task CreateCategoryAsync(CreateCategoryViewModel createCategory)
         {
+            var fileFolder = "images/categories/";
             var category = new Category
             {
                 Name = createCategory.Name,
-                Image = await imageService.UploadImage(CategoryConstants.CategoryImagesFolder, createCategory.Image)
+                Image = await imageService.UploadImage(fileFolder, createCategory.Image)
             };
 
-            data.Categories.Add(category);
-            data.SaveChanges();
+            await data.Categories.AddAsync(category);
+            await data.SaveChangesAsync();
         }
 
-        public IEnumerable<AllCategoriesViewModel> GetAllCategories<T>()
-        {
-            var all = this.data.Categories
+        public async Task<IEnumerable<AllCategoriesViewModel>> GetAllCategoriesAsync<T>()
+           => await this.data.Categories
                 .Select(s => new AllCategoriesViewModel
                 {
-                    Id=s.Id,
+                    Id = s.Id,
                     Name = s.Name,
                     Photo = s.Image
-                });
-
-            return all;
-        }
+                }).ToListAsync();
     }
 }

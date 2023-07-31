@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Areas.Service
 {
     using SellIt.Areas.ViewModel;
+    using SellIt.Core.ViewModels.Product;
 
     public interface IUserService
     {
@@ -12,8 +13,11 @@
 
         Task DeleteUser(string userId);
 
-        UserByIdViewModel UserById(string userId);
+        Task<UserByIdViewModel> UserByIdAsync(string userId);
 
         IEnumerable<UserProductsViewModel> UserProducts(string userId);
+
+        IEnumerable<MyProductsViewModel> MyProducts(string id);
+
     }
 }

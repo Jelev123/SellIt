@@ -31,7 +31,7 @@
         {
             try
             {
-                return Ok(this.productService.GetAllProducts());
+                return Ok(this.productService.GetAllProductsAsync());
 
             }
             catch (ArgumentException ae)
@@ -41,24 +41,24 @@
             }
         }
 
-        [Route("AddProducts")]
-        [HttpPost]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        public async Task<IActionResult> AddProducts(AddEditProductViewModel addProduct)
-        {
+        //[Route("AddProducts")]
+        //[HttpPost]
+        //[ProducesResponseType(200)]
+        //[ProducesResponseType(400)]
+        //public IActionResult AddProducts(AddEditProductViewModel addProduct)
+        //{
 
-            try
-            {
-                var user = HttpContext.User.FindFirstValue("userId");
-                return Ok(this.productService.AddProduct(addProduct, user,$"{this.environment.WebRootPath}/images"));
+        //    try
+        //    {
+        //        var user = HttpContext.User.FindFirstValue("userId");
+        //        return Ok(this.productService.AddProduct(addProduct, user);
 
-            }
-            catch (ArgumentException ae)
-            {
+        //    }
+        //    catch (ArgumentException ae)
+        //    {
 
-                return BadRequest(ae.Message);
-            }
-        }
+        //        return BadRequest(ae.Message);
+        //    }
+        //}
     }
 }
