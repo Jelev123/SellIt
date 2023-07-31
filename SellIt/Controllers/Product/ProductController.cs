@@ -1,14 +1,12 @@
 ﻿namespace SellIt.Controllers.Product
 {
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
-    using SellIt.Infrastructure.Data.Models;
 
     public class ProductController : Controller
     {
