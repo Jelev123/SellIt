@@ -25,7 +25,7 @@
 
         public async Task<IActionResult> Index(int id)
         {
-            var count = await this.countService.GetCount(id);
+            var count = await this.countService.GetCountAsync(id);
             var counts = new HomeViewModel
             {
                 ProductForAprooveCount = count.ProductsToAprooveCount,

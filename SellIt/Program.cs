@@ -1,24 +1,24 @@
-using CloudinaryDotNet;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SellIt.Core.Contracts.Category;
 using SellIt.Core.Contracts.Count;
 using SellIt.Core.Contracts.ForAprooved;
+using SellIt.Core.Contracts.Image;
+using SellIt.Core.Contracts.Messages;
 using SellIt.Core.Contracts.Product;
-using SellIt.Core.Services.Product;
+using SellIt.Core.Contracts.Search;
+using SellIt.Core.Contracts.User;
 using SellIt.Core.Services.Category;
 using SellIt.Core.Services.Count;
 using SellIt.Core.Services.ForAprooved;
+using SellIt.Core.Services.Image;
+using SellIt.Core.Services.Message;
+using SellIt.Core.Services.Product;
+using SellIt.Core.Services.Search;
+using SellIt.Core.Services.User;
 using SellIt.Infrastructure.Data;
 using SellIt.Infrastructure.Data.Models;
 using System.Globalization;
-using SellIt.Core.Contracts.Search;
-using SellIt.Core.Services.Search;
-using SellIt.Core.Contracts.Messages;
-using SellIt.Core.Services.Message;
-using SellIt.Core.Contracts.Image;
-using SellIt.Core.Services.Image;
-using SellIt.Areas.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

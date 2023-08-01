@@ -5,10 +5,10 @@
 
     public interface IImageService
     {
-        void DeleteImage(string imageId);
+        Task DeleteImageAsync(string imageId);
 
-        Task CheckGallery(AddEditProductViewModel model);
+        Task CheckGalleryAsync(AddEditProductViewModel model);
 
-        Task<string> UploadImage(string folderPath, IFormFile file);
+        Task<string> UploadImageAsync(string folderPath, IFormFile file);
     }
 }

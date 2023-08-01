@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
-    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Product;
@@ -21,7 +20,7 @@
             this.environment = environment;
         }
 
-        public async Task CheckGallery(AddEditProductViewModel model)
+        public async Task CheckGalleryAsync(AddEditProductViewModel model)
         {
             var fileFolder = "images/gallery/";
 
@@ -34,14 +33,14 @@
                     var gallery = new GalleryModel()
                     {
                         Name = file.FileName,
-                        URL = await UploadImage(fileFolder, file)
+                        URL = await UploadImageAsync(fileFolder, file)
                     };
                     model.Gallery.Add(gallery);
                 }
             }        
         }
 
-        public void DeleteImage(string imageId)
+        public async Task DeleteImageAsync(string imageId)
         {
             var image = data.Images.FirstOrDefault(x => x.ImageId == imageId);
 
@@ -56,7 +55,7 @@
             data.SaveChanges();
         }
 
-        public async Task<string> UploadImage(string folderPath, IFormFile file)
+        public async Task<string> UploadImageAsync(string folderPath, IFormFile file)
         {
             folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;
 

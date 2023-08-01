@@ -1,38 +1,36 @@
 ﻿namespace SellIt.Core.Services.Message
 {
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.Messages;
+    using SellIt.Core.Contracts.User;
     using SellIt.Core.ViewModels.Messages;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
     using System.Linq;
 
+
     public class MessageService : IMessagesService
     {
         private readonly ApplicationDbContext data;
-        private readonly UserManager<User> userManager;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IUserService userService;
+        private readonly string CurrentUserId;
 
-
-
-        public MessageService(ApplicationDbContext data, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor)
+        public MessageService(ApplicationDbContext data, IUserService userService)
         {
             this.data = data;
-            this.userManager = userManager;
-            _httpContextAccessor = httpContextAccessor;
+            this.userService = userService;
+            CurrentUserId = userService.CurrentUserAccessor();
         }
 
         public async Task SendMessageAsync(string userName, int id, string message)
         {
-            string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
             var send = new Message
             {
                 Text = message,
                 ProductId = id,
-                UserId = userId,
+                UserId = CurrentUserId,
                 UserName = userName,
                 Date = DateTime.UtcNow,
             };
@@ -43,13 +41,12 @@
 
         public async Task ReplyMessageAsync(string replyMessage, string userName, int id)
         {
-            string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
             var reply = new ReplyMessage
             {
                 MessageId = id,
                 ReplyText = replyMessage,
                 Date = DateTime.UtcNow,
-                ReplyerUserId = userId,
+                ReplyerUserId = CurrentUserId,
                 ReplayerUserName = userName,
             };
 
@@ -83,11 +80,10 @@
 
         public async Task<IEnumerable<AllMessagesViewModel>> AllMessagesAsync()
         {
-            string userId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
             var allMessages = await this.data.Products
-             .Where(p => p.CreatedUserId == userId) 
+             .Where(p => p.CreatedUserId == CurrentUserId) 
              .SelectMany(p => p.Messages)
-             .Where(m => m.UserId == userId || m.Product.CreatedUserId == userId || m.Product.User.Id == userId)
+             .Where(m => m.UserId == CurrentUserId || m.Product.CreatedUserId == CurrentUserId || m.Product.User.Id == CurrentUserId)
              .Select(m => new AllMessagesViewModel
              {
                  Id = m.Id,
@@ -98,7 +94,7 @@
                  ProductName = m.Product.Name,
                  Photo = m.Product.Images.FirstOrDefault().URL,
                  ReplyMessages = m.ReplyMessages
-              .Where(r => r.ReplyerUserId == userId || r.Message.UserId == userId)
+              .Where(r => r.ReplyerUserId == CurrentUserId || r.Message.UserId == CurrentUserId)
               .Select(r => new ReplyMessageViewModel
               {
                   ReplyText = r.ReplyText,
@@ -110,7 +106,7 @@
       .ToListAsync();
 
             var currentUserMessages = await this.data.Messages
-                .Where(m => m.UserId == userId)
+                .Where(m => m.UserId == CurrentUserId)
                 .Select(m => new AllMessagesViewModel
                 {
                     Id = m.Id,
@@ -121,7 +117,7 @@
                     ProductName = m.Product.Name,
                     Photo = m.Product.Images.FirstOrDefault().URL,
                     ReplyMessages = m.ReplyMessages
-                        .Where(r => r.ReplyerUserId == userId || r.Message.UserId == userId)
+                        .Where(r => r.ReplyerUserId == CurrentUserId || r.Message.UserId == CurrentUserId)
                         .Select(r => new ReplyMessageViewModel
                         {
                             ReplyText = r.ReplyText,

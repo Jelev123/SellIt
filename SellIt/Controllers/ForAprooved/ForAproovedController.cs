@@ -12,12 +12,11 @@
             this.aproovedService = aproovedService;
         }
 
-        public async Task<IActionResult> GetAllProductsForAproove() => View(await this.aproovedService.GetAllProductsForAprooveAsync());
+        public async Task<IActionResult> GetAllProductsForAproove()
+            => View(await this.aproovedService.GetAllProductsForAprooveAsync());
 
         public async Task<IActionResult> SetAproove(int id)
-        {
-            await this.aproovedService.SetAprooveAsync(id);
-            return this.Redirect("/");
-        }
+            => await this.aproovedService.SetAprooveAsync(id)
+            .ContinueWith(_ => Redirect("/"));
     }
 }

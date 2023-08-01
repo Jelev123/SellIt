@@ -1,7 +1,7 @@
-﻿namespace SellIt.Areas.Service
+﻿namespace SellIt.Core.Contracts.User
 {
-    using SellIt.Areas.ViewModel;
     using SellIt.Core.ViewModels.Product;
+    using SellIt.Core.ViewModels.User;
 
     public interface IUserService
     {
@@ -19,5 +19,8 @@
 
         Task<IEnumerable<MyProductsViewModel>> MyProductsAsync(string id);
 
+        string CurrentUserAccessor();
+
+        string CurrentUserName();
     }
 }

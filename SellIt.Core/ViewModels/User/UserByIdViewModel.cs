@@ -1,4 +1,4 @@
-﻿namespace SellIt.Areas.ViewModel
+﻿namespace SellIt.Core.ViewModels.User
 {
     public class UserByIdViewModel
     {

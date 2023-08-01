@@ -12,11 +12,8 @@
             this.imageService = imageService;
         }
 
-
-        public IActionResult DeleteImage(string id, int productId)
-        {
-            this.imageService.DeleteImage(id);
-            return this.RedirectToAction("EditProduct", "Product", new {id = productId });
-        }
+        public async Task<IActionResult> DeleteImage(string id, int productId) 
+              => await this.imageService.DeleteImageAsync(id)
+            .ContinueWith(_ => RedirectToAction("EditProduct", "Product", new { id = productId }));
     }
 }

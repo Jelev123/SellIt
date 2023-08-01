@@ -27,7 +27,7 @@
             var category = new Category
             {
                 Name = createCategory.Name,
-                Image = await imageService.UploadImage(fileFolder, createCategory.Image)
+                Image = await imageService.UploadImageAsync(fileFolder, createCategory.Image)
             };
 
             await data.Categories.AddAsync(category);

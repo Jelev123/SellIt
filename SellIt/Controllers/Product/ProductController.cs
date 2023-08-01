@@ -35,23 +35,12 @@
 
         [HttpPost]
         public async Task<IActionResult> AddProduct(AddEditProductViewModel addProduct)
-        {
-            await this.productService.AddProductAsync(addProduct);
-            return RedirectToAction("Index", "Home");
-        }
+            => await this.productService.AddProductAsync(addProduct)
+            .ContinueWith(_ => RedirectToAction("Index", "Home"));
 
         public async Task<IActionResult> DeleteProduct(int id)
-        {
-            try
-            {
-                await this.productService.DeleteProductAsync(id);
-                return RedirectToAction("Index", "Home");
-            }
-            catch (Exception ex)
-            {
-                return View("Error");
-            }
-        }
+            => await this.productService.DeleteProductAsync(id)
+            .ContinueWith(_ => RedirectToAction("Index", "Home"));
 
         public async Task<IActionResult> EditProduct(int id)
         {
@@ -75,54 +64,39 @@
 
         [HttpPost]
         public async Task<IActionResult> EditProduct(AddEditProductViewModel editProduct, int id)
-        {
-            await this.productService.EditProductAsync(editProduct, id);
-            return this.RedirectToAction("MyProducts");
-        }
+           => await this.productService.EditProductAsync(editProduct, id)
+           .ContinueWith(_ => RedirectToAction("MyProducts"));
+
 
         public async Task<IActionResult> GetProductById(int id)
-        {
-            var productById = await this.productService.GetByIdAsync(id);
-            if (productById == null)
-            {
-                return RedirectToAction("Error", "Home");
-            }
-            return View(productById);
-        }
+            => (await this.productService.GetByIdAsync(id)) == null
+            ? RedirectToAction("Error", "Home")
+            : View(await this.productService.GetByIdAsync(id));
 
         public async Task<IActionResult> Search(string searchName)
-        {
-            this.ViewData["searchProduct"] = searchName;
-            var searchedProduct = await this.searchService.SearchProductAsync(searchName);
-
-            if (searchedProduct == null)
-            {
-                return this.View(searchName);
-            }
-
-            return this.View(searchedProduct);
-        }
+            => (this.ViewData["searchProduct"] = searchName) is var _
+            && (await this.searchService.SearchProductAsync(searchName)) is var searchedProduct
+            && searchedProduct != null
+            ? View(searchedProduct)
+            : View(searchName);
 
         public async Task<IActionResult> SearchCategory(string searchName)
-        {
-            this.ViewData["searchCategory"] = searchName;
-            var searchedCategory = await this.searchService.SearchProductAsync(searchName);
+            => (this.ViewData["searchCategory"] = searchName) is var _ &&
+            (await this.searchService.SearchProductAsync(searchName)) is var searchedCategory && searchedCategory != null
+            ? View(searchedCategory)
+            : View(searchName);
 
-            if (searchedCategory == null)
-            {
-                return this.View(searchName);
-            }
+        public async Task<IActionResult> Favorites()
+            => View(await this.productService.FavoritesAsync());
 
-            return this.View(searchedCategory);
-        }
+        public async Task<IActionResult> AllProducts()
+            => View(await this.productService.GetAllProductsAsync());
 
-        public async Task<IActionResult> Favorites() => View(await this.productService.FavoritesAsync());
-
-        public async Task<IActionResult> AllProducts() => View(await this.productService.GetAllProductsAsync());
-
-        public async Task<IActionResult> AllProductsByCategoryId(int id) => View(await this.productService.GetAllProductsByCategoryIdAsync(id));
+        public async Task<IActionResult> AllProductsByCategoryId(int id)
+            => View(await this.productService.GetAllProductsByCategoryIdAsync(id));
 
         [HttpPost]
-        public async Task<IActionResult> Like(int id) => View(await this.productService.LikeAsync(id));
+        public async Task<IActionResult> Like(int id)
+            => View(await this.productService.LikeAsync(id));
     }
 }

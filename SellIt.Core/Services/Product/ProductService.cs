@@ -1,10 +1,10 @@
 ﻿namespace SellIt.Core.Services.Product
 {
-    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
+    using SellIt.Core.Contracts.User;
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
@@ -16,24 +16,23 @@
         private readonly ApplicationDbContext data;
         private readonly IImageService imageService;
         private readonly UserManager<User> userManager;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly string currentUserId;
+        private readonly IUserService userService;
+        private readonly string CurrentUserId;
 
 
-        public ProductService(ApplicationDbContext data, IImageService imageService, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor)
+        public ProductService(ApplicationDbContext data, IImageService imageService, UserManager<User> userManager, IUserService userService)
         {
             this.data = data;
             this.imageService = imageService;
             this.userManager = userManager;
-            _httpContextAccessor = httpContextAccessor;
-            currentUserId = userManager.GetUserId(_httpContextAccessor.HttpContext.User);
-
+            this.userService = userService;
+            CurrentUserId = userService.CurrentUserAccessor();
         }
 
         public async Task AddProductAsync(AddEditProductViewModel addProduct)
         {
-            User currentUser = await userManager.FindByIdAsync(currentUserId);
-            await this.imageService.CheckGallery(addProduct);
+            User currentUser = await userManager.FindByIdAsync(CurrentUserId);
+            await this.imageService.CheckGalleryAsync(addProduct);
             var category = this.data.Categories.FirstOrDefault(s => s.Name == addProduct.CategoryName);
             var product = new Product
             {
@@ -41,7 +40,7 @@
                 Description = addProduct.Description,
                 Category = category,
                 CategoryId = category.Id,
-                CreatedUserId = currentUserId,
+                CreatedUserId = CurrentUserId,
                 Price = addProduct.Price,
                 PhoneNumber = addProduct.PhoneNumber != null ? addProduct.PhoneNumber : currentUser.PhoneNumber,
                 ProductAdress = addProduct.Address,
@@ -49,7 +48,7 @@
                 {
                     Name = file.Name,
                     URL = file.URL,
-                    AddedByUserId = currentUserId
+                    AddedByUserId = CurrentUserId
                 }).ToList()
             };
 
@@ -75,7 +74,7 @@
 
         public async Task EditProductAsync(AddEditProductViewModel editProduct, int id)
         {
-            await imageService.CheckGallery(editProduct);
+            await imageService.CheckGalleryAsync(editProduct);
             var product = this.data.Products.FirstOrDefault(s => s.ProductId == id);
             var category = this.data.Categories.FirstOrDefault(s => s.Name == editProduct.CategoryName);
 
@@ -96,7 +95,7 @@
                         {
                             Name = file.Name,
                             URL = file.URL,
-                            AddedByUserId = currentUserId,
+                            AddedByUserId = CurrentUserId,
                         });
                     }
                 }
@@ -148,7 +147,7 @@
                  })
             .FirstOrDefaultAsync();
 
-            if (product != null && currentUserId != product.UserId)
+            if (product != null && CurrentUserId != product.UserId)
             {
                 var viewdProduct = this.data.Products.FirstOrDefault(s => s.ProductId == id);
                 viewdProduct.Viewed++;
@@ -161,14 +160,14 @@
         public async Task<GetByIdAndLikeViewModel> LikeAsync(int id)
         {
             var currentProduct = await data.Products.FirstOrDefaultAsync(s => s.ProductId == id);
-            var existingLikedProduct = await data.LikedProducts.FirstOrDefaultAsync(lp => lp.UserId == currentUserId && lp.ProductId == currentProduct.ProductId);
+            var existingLikedProduct = await data.LikedProducts.FirstOrDefaultAsync(lp => lp.UserId == CurrentUserId && lp.ProductId == currentProduct.ProductId);
 
             if (existingLikedProduct == null)
             {
                 var likedProduct = new LikedProduct
                 {
                     ProductId = currentProduct.ProductId,
-                    UserId = currentUserId,
+                    UserId = CurrentUserId,
                 };
 
                 currentProduct.LikedCount++;
@@ -192,7 +191,7 @@
         public async Task<IEnumerable<MyProductsViewModel>> FavoritesAsync()
         {
             var myLikedProductIds = await this.data.LikedProducts
-              .Where(x => x.UserId == currentUserId)
+              .Where(x => x.UserId == CurrentUserId)
               .Select(x => x.ProductId)
               .ToListAsync();
 
@@ -206,7 +205,7 @@
                          Name = x.Name,
                          CategoryName = x.Category.Name,
                          Description = x.Description,
-                         UserId = currentUserId,
+                         UserId = CurrentUserId,
                          Price = x.Price,
                          IsAprooved = x.IsAproved,
                          CoverPhoto = x.Images.FirstOrDefault().URL

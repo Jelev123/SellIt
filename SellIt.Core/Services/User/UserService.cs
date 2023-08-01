@@ -1,26 +1,31 @@
-﻿namespace SellIt.Areas.Service
+﻿namespace SellIt.Core.Services.User
 {
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using SellIt.Areas.ViewModel;
     using SellIt.Core.Contracts.Count;
+    using SellIt.Core.Contracts.User;
     using SellIt.Core.ViewModels.Product;
+    using SellIt.Core.ViewModels.User;
     using SellIt.Infrastructure.Data;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+    using SellIt.Infrastructure.Data.Models;
 
     public class UserService : IUserService
     {
         private readonly ApplicationDbContext data;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly ICountService countService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly UserManager<User> _userManager;
 
 
-        public UserService(ApplicationDbContext data, RoleManager<IdentityRole> roleManager, ICountService countService)
+        public UserService(ApplicationDbContext data, RoleManager<IdentityRole> roleManager, ICountService countService, IHttpContextAccessor httpContextAccessor, UserManager<User> userManager)
         {
             this.data = data;
             this.roleManager = roleManager;
             this.countService = countService;
+            _httpContextAccessor = httpContextAccessor;
+            _userManager = userManager;
         }
 
         public async Task<IEnumerable<AllUsersViewModel>> AllUsersAsync()
@@ -99,7 +104,7 @@
 
         public async Task<UserByIdViewModel> UserByIdAsync(string userId)
         {
-            var count = this.countService.GetUserProductsCount(userId);
+            var count = this.countService.GetUserProductsCountAsync(userId);
 
             return await (from users in data.Users
                           from userRoles in data.UserRoles.Where(co => co.UserId == users.Id).DefaultIfEmpty()
@@ -134,5 +139,11 @@
                     CoverPhoto = s.Images.FirstOrDefault().URL,
                     IsAprooved = s.IsAproved,
                 }).ToListAsync();
+
+        public string CurrentUserAccessor()
+            => _userManager.GetUserId(_httpContextAccessor.HttpContext.User);
+
+        public string CurrentUserName()
+           => _userManager.GetUserName(_httpContextAccessor.HttpContext.User);
     }
 }
