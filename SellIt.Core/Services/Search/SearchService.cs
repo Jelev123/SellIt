@@ -1,10 +1,10 @@
 ﻿namespace SellIt.Core.Services.Search
 {
+    using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.Search;
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
     using System.Collections.Generic;
-    using System.Data.Entity;
 
     public class SearchService : ISearchService
     {

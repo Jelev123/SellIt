@@ -655,6 +655,15 @@ build_metadata.AdditionalFiles.XamlRuntime =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxDcmVhdGVSb2xlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/zzhelev/Documents/GitHub/SellIt/SellIt/Views/User/MyProducts.cshtml]
+build_metadata.AdditionalFiles.SourceItemGroup = 
+build_metadata.AdditionalFiles.Link = 
+build_metadata.AdditionalFiles.FullPath = C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\Views\User\MyProducts.cshtml
+build_metadata.AdditionalFiles.Identity = Views\User\MyProducts.cshtml
+build_metadata.AdditionalFiles.XamlRuntime = 
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxNeVByb2R1Y3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/zzhelev/Documents/GitHub/SellIt/SellIt/Views/User/SetRole.cshtml]
 build_metadata.AdditionalFiles.SourceItemGroup = 
 build_metadata.AdditionalFiles.Link = 

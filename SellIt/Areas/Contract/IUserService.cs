@@ -5,19 +5,19 @@
 
     public interface IUserService
     {
-        Task CreateRole(RoleViewModel role);
+        Task CreateRoleAsync(RoleViewModel role);
 
-        IEnumerable<AllUsersViewModel> AllUsers();
+        Task<IEnumerable<AllUsersViewModel>> AllUsersAsync();
 
-        Task SetRole(string userId, AllUsersViewModel all);
+        Task SetRoleAsync(string userId, AllUsersViewModel all);
 
-        Task DeleteUser(string userId);
+        Task DeleteUserAsync(string userId);
 
         Task<UserByIdViewModel> UserByIdAsync(string userId);
 
-        IEnumerable<UserProductsViewModel> UserProducts(string userId);
+        Task<IEnumerable<UserProductsViewModel>> UserProductsAsync(string userId);
 
-        IEnumerable<MyProductsViewModel> MyProducts(string id);
+        Task<IEnumerable<MyProductsViewModel>> MyProductsAsync(string id);
 
     }
 }

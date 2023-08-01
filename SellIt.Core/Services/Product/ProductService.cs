@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels;
@@ -9,7 +10,6 @@
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
-    using System.Data.Entity;
 
     public partial class ProductService : IProductService
     {

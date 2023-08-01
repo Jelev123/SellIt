@@ -829,3 +829,5 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\refint\SellIt.d
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\SellIt.pdb
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\SellIt.genruntimeconfig.cache
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\obj\Debug\net6.0\ref\SellIt.dll
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\21034ab0-63b9-416b-b7d7-4cb3300b9f3b_photo-1616455579100-2ceaa4eb2d37.jpg
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\User\MyProducts.cshtml

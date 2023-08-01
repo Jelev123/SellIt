@@ -1,12 +1,10 @@
 ﻿namespace SellIt.Core.Services.ForAprooved
 {
-    using SellIt.Core.Contracts.Count;
+    using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.ForAprooved;
-    using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Threading.Tasks;
 
     public class ForAproovedService : IForAproovedService

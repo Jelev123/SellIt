@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "6sdx674PwKLLv7UGoBMTerERnI3UFxvyGLAMYdEcv8g=",
+  "Hash": "tC31RSb+qOsQOP+qzJR2k6uYxpscYQJT8v74Mw5RpWg=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1613,6 +1613,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\categories\\c6c4f940-8fb9-4652-a9b8-959daa34b3f8_istockphoto-510786352-612x612.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\21034ab0-63b9-416b-b7d7-4cb3300b9f3b_photo-1616455579100-2ceaa4eb2d37.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/21034ab0-63b9-416b-b7d7-4cb3300b9f3b_photo-1616455579100-2ceaa4eb2d37.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\21034ab0-63b9-416b-b7d7-4cb3300b9f3b_photo-1616455579100-2ceaa4eb2d37.jpg"
     },
     {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\ab9e26bd-0143-4d68-8c4d-20d1b285a86f_18015-MC20BluInfinito-scaled-e1666008987698.jpg",

@@ -1,13 +1,12 @@
 ﻿namespace SellIt.Core.Services.Category
 {
-    using SellIt.Core.Constants;
+    using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Threading.Tasks;
 
     public class CategoryService : ICategoryService
