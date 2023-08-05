@@ -244,30 +244,37 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    let likedElement = $("#liked");
-    let likeButton = $("#likeButton");
-    let modelId = @Model.Id;
-    let modelCount = @Model.LikedCount;
+  let likedElement = $("#liked");
+  let likeButton = $("#likeButton");
+  let modelId = @Model.Id;
+  let modelCount = @Model.LikedCount;
+  let isLiked = false;
 
-    likeButton.on("click", function (event) {
-        event.preventDefault();
-        console.log("click")
-        let currentLikedCount = parseInt(likedElement.text());
-        let newLikedCount = currentLikedCount + 1;
+   likeButton.on("click", function (event) {
+    event.preventDefault();
+    console.log("click");
 
-        $.ajax({
-            url: `/Product/Like?id=${modelId}`,
-            type: "POST",
-            contentType: "application/json",
-            data: JSON.stringify({ likedCount: newLikedCount }),
-            success: function (response) {
-                location.reload();
-            },
-            error: function (xhr, status, error) {
-                console.log("An error occurred:", error);
-            }
-        });
+    if (isLiked) {
+        modelCount--;
+    } else {
+        modelCount++;
+    }
+
+    isLiked = !isLiked;
+
+    $.ajax({
+        url: `/Product/Like?id=${modelId}`,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({ likedCount: modelCount }),
+        success: function (response) {
+            likedElement.text(modelCount); // Update the displayed count
+        },
+        error: function (xhr, status, error) {
+            console.log("An error occurred:", error);
+        }
     });
+});
 </script>
 
 <style>
