@@ -107,16 +107,16 @@
 
         public async Task<IEnumerable<AllProductViewModel>> GetAllProductsAsync()
            => await this.data.Products
-                .Select(p => new AllProductViewModel
-                {
-                    Name = p.Name,
-                    CategoryName = p.Category.Name,
-                    Description = p.Description,
-                    UserId = p.CreatedUserId,
-                    Id = p.ProductId,
-                    Price = p.Price,
-                    CoverPhoto = p.Images.FirstOrDefault().URL
-                }).ToListAsync();
+                             .Select(p => new AllProductViewModel
+                             {
+                                 Name = p.Name,
+                                 CategoryName = p.Category.Name,
+                                 Description = p.Description,
+                                 UserId = p.CreatedUserId,
+                                 Id = p.ProductId,
+                                 Price = p.Price,
+                                 CoverPhoto = p.Images.FirstOrDefault().URL
+                             }).ToListAsync();
 
         public async Task<GetByIdAndLikeViewModel> GetByIdAsync(int id)
         {
@@ -184,8 +184,7 @@
             }
 
             await data.SaveChangesAsync();
-            var product = await GetByIdAsync(id);
-            return product;
+            return await GetByIdAsync(id);
         }
 
         public async Task<IEnumerable<MyProductsViewModel>> FavoritesAsync()
@@ -220,41 +219,38 @@
         }
 
         public async Task<IEnumerable<IndexRandomViewModel>> RandomProductsAsync(int count)
-        {
-            return await this.data.Products
-                  .Where(s => s.IsAproved == true)
-                  .OrderBy(s => Guid.NewGuid())
-                  .Select(s => new IndexRandomViewModel()
-                  {
-                      Id = s.ProductId,
-                      Name = s.Name,
-                      CategoryName = s.Category.Name,
-                      CoverPhoto = s.Images.FirstOrDefault().URL,
-                      Price = s.Price,
-                      IsAproved = s.IsAproved,
-                      LikedCount = s.LikedCount,
-                      CategoryImage = s.Category.Image,
-                      Description = s.Description,
-                  })
-                   .Take(count)
-                   .ToListAsync();
-        }
+              => await this.data.Products
+                                .Where(s => s.IsAproved == true)
+                                .OrderBy(s => Guid.NewGuid())
+                                .Select(s => new IndexRandomViewModel()
+                                {
+                                    Id = s.ProductId,
+                                    Name = s.Name,
+                                    CategoryName = s.Category.Name,
+                                    CoverPhoto = s.Images.FirstOrDefault().URL,
+                                    Price = s.Price,
+                                    IsAproved = s.IsAproved,
+                                    LikedCount = s.LikedCount,
+                                    CategoryImage = s.Category.Image,
+                                    Description = s.Description,
+                                })
+                                 .Take(count)
+                                 .ToListAsync();
+        
 
         public async Task<IEnumerable<AllProductViewModel>> GetAllProductsByCategoryIdAsync(int id)
-        {
-            return await this.data.Products
-                 .Select(p => new AllProductViewModel
-                 {
-                     Name = p.Name,
-                     Id = p.ProductId,
-                     Description = p.Description,
-                     CategoryName = p.Category.Name,
-                     CategoryId = p.CategoryId,
-                     Price = p.Price,
-                     CoverPhoto = p.Images.FirstOrDefault().URL,
-                 })
-                 .Where(p => p.CategoryId == id)
-                 .ToListAsync();
-        }
+             => await this.data.Products
+                          .Select(p => new AllProductViewModel
+                          {
+                              Name = p.Name,
+                              Id = p.ProductId,
+                              Description = p.Description,
+                              CategoryName = p.Category.Name,
+                              CategoryId = p.CategoryId,
+                              Price = p.Price,
+                              CoverPhoto = p.Images.FirstOrDefault().URL,
+                          })
+                          .Where(p => p.CategoryId == id)
+                          .ToListAsync();
     }
 }

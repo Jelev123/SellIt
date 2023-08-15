@@ -4,6 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
 
     using SellIt.Core.Contracts.Category;
+    using SellIt.Core.Contracts.Error;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
     using SellIt.Core.ViewModels.Category;
@@ -14,12 +15,14 @@
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
         private readonly ISearchService searchService;
+        private readonly IErrorService errorService;
 
-        public ProductController(IProductService productService, ICategoryService categoryService, ISearchService searchService)
+        public ProductController(IProductService productService, ICategoryService categoryService, ISearchService searchService, IErrorService errorService)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.searchService = searchService;
+            this.errorService = errorService;
         }
 
 
@@ -54,14 +57,11 @@
                 CategoryId = s.Id
             }).ToList();
 
-            var product = await this.productService.GetByIdAsync(id);
+            return await this.productService.GetByIdAsync(id)
+                != null
+                ? this.View (await this.productService.GetByIdAsync(id))
+                : RedirectToAction("HandleError", "Product", new { errorMessage = "Product not found" });
 
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return View(product);
         }
 
         [HttpPost]
@@ -72,7 +72,7 @@
 
         public async Task<IActionResult> GetProductById(int id)
             => (await this.productService.GetByIdAsync(id)) == null
-            ? RedirectToAction("Error", "Home")
+            ? RedirectToAction("HandleError", "Product", new { errorMessage = "Product not found" })
             : View(await this.productService.GetByIdAsync(id));
 
         public async Task<IActionResult> Search(string searchName)
@@ -100,5 +100,11 @@
         [HttpPost]
         public async Task<IActionResult> Like(int id)
             => View(await this.productService.LikeAsync(id));
+
+        public IActionResult HandleError(string errorMessage)
+        {
+            var errorResult = this.errorService.ErrorMessage(errorMessage);
+            return View(errorResult);
+        }
     }
 }

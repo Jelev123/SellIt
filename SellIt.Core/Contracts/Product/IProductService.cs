@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Core.Contracts.Product
 {
     using SellIt.Core.ViewModels.Product;
+    using SellIt.Infrastructure.Data.Models;
 
     public interface IProductService
     {
@@ -21,6 +22,5 @@
         Task<IEnumerable<MyProductsViewModel>> FavoritesAsync();
 
         Task<IEnumerable<IndexRandomViewModel>> RandomProductsAsync(int count);
-
     }
 }

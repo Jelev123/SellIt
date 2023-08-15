@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SellIt.Core.Contracts.Category;
 using SellIt.Core.Contracts.Count;
+using SellIt.Core.Contracts.Error;
 using SellIt.Core.Contracts.ForAprooved;
 using SellIt.Core.Contracts.Image;
 using SellIt.Core.Contracts.Messages;
@@ -10,6 +11,7 @@ using SellIt.Core.Contracts.Search;
 using SellIt.Core.Contracts.User;
 using SellIt.Core.Services.Category;
 using SellIt.Core.Services.Count;
+using SellIt.Core.Services.Error;
 using SellIt.Core.Services.ForAprooved;
 using SellIt.Core.Services.Image;
 using SellIt.Core.Services.Message;
@@ -42,6 +44,7 @@ builder.Services.AddTransient<ISearchService, SearchService>();
 builder.Services.AddTransient<IMessagesService, MessageService>();
 builder.Services.AddTransient<IImageService, ImageService>();
 builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IErrorService, ErrorService>();
 builder.Services.AddHttpClient();
 
 

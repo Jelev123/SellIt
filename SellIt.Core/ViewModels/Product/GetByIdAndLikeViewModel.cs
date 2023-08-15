@@ -46,5 +46,7 @@
 
         public string ProducAddress { get; set; }
 
+        public bool IsAppooved { get; set; }
+
     }
 }
