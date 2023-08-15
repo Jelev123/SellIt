@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
@@ -13,6 +14,7 @@
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
         private readonly ISearchService searchService;
+
         public ProductController(IProductService productService, ICategoryService categoryService, ISearchService searchService)
         {
             this.productService = productService;

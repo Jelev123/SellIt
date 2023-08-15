@@ -2,6 +2,7 @@
 {
     using SellIt.Core.ViewModels.Product;
     using SellIt.Core.ViewModels.User;
+    using SellIt.Infrastructure.Data.Models;
 
     public interface IUserService
     {
@@ -22,5 +23,7 @@
         string CurrentUserAccessor();
 
         string CurrentUserName();
+
+        Task<User> GetCurrentUserAsync(string userId);
     }
 }

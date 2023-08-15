@@ -3005,6 +3005,7 @@
         "dependencies": {
           "CloudinaryDotNet": "1.20.0",
           "EntityFramework": "6.4.4",
+          "Microsoft.AspNet.Identity.Core": "2.2.3",
           "Microsoft.AspNet.Mvc": "5.2.9",
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
           "Microsoft.EntityFrameworkCore": "7.0.0-rc.1.22426.7",

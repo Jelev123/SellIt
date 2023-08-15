@@ -51,7 +51,7 @@
 
         public async Task DeleteUserAsync(string userId)
         {
-            var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
+            var user = await this.GetCurrentUserAsync(userId);
             data.Remove(user);
             await data.SaveChangesAsync();
         }
@@ -77,7 +77,7 @@
 
         public async Task SetRoleAsync(string userId, AllUsersViewModel all)
         {
-            var user = this.data.Users.FirstOrDefault(s => s.Id == userId);
+            var user = await this.GetCurrentUserAsync(userId);
             var role = this.data.Roles.FirstOrDefault(s => s.Name == all.RoleName);
             var userRoles = this.data.UserRoles.FirstOrDefault(s => s.UserId == user.Id);
 
@@ -145,5 +145,8 @@
 
         public string CurrentUserName()
            => _userManager.GetUserName(_httpContextAccessor.HttpContext.User);
+
+        public async Task<User> GetCurrentUserAsync(string userId)
+        => await this.data.Users.FirstOrDefaultAsync(s => s.Id == userId);
     }
 }

@@ -94,6 +94,19 @@
           "buildTransitive/netcoreapp3.0/EntityFramework.targets": {}
         }
       },
+      "Microsoft.AspNet.Identity.Core/2.2.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Microsoft.AspNet.Identity.Core.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNet.Mvc/5.2.9": {
         "type": "package",
         "dependencies": {
@@ -3425,6 +3438,7 @@
         "dependencies": {
           "CloudinaryDotNet": "1.20.0",
           "EntityFramework": "6.4.4",
+          "Microsoft.AspNet.Identity.Core": "2.2.3",
           "Microsoft.AspNet.Mvc": "5.2.9",
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
           "Microsoft.EntityFrameworkCore": "7.0.0-rc.1.22426.7",
@@ -3570,6 +3584,19 @@
         "tools/netcoreapp3.0/any/ef6.dll",
         "tools/netcoreapp3.0/any/ef6.pdb",
         "tools/netcoreapp3.0/any/ef6.runtimeconfig.json"
+      ]
+    },
+    "Microsoft.AspNet.Identity.Core/2.2.3": {
+      "sha512": "Mv5FpoaxspE8hlWLE4r1IdZtovg/OyFgVRhxQbx47J4sqdLImN1hnM1lnwCj+/wLmqtqFk/RYMoZ5GAcwm/00g==",
+      "type": "package",
+      "path": "microsoft.aspnet.identity.core/2.2.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/Microsoft.AspNet.Identity.Core.dll",
+        "lib/net45/Microsoft.AspNet.Identity.Core.xml",
+        "microsoft.aspnet.identity.core.2.2.3.nupkg.sha512",
+        "microsoft.aspnet.identity.core.nuspec"
       ]
     },
     "Microsoft.AspNet.Mvc/5.2.9": {
@@ -11001,24 +11028,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\zzhelev\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\SellIt\\SellIt.Api\\SellIt.Api.csproj",
+      "projectUniqueName": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Api\\SellIt.Api.csproj",
       "projectName": "SellIt.Api",
-      "projectPath": "D:\\Projects\\SellIt\\SellIt.Api\\SellIt.Api.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\SellIt\\SellIt.Api\\obj\\",
+      "projectPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Api\\SellIt.Api.csproj",
+      "packagesPath": "C:\\Users\\zzhelev\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Api\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\zzhelev\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11026,19 +11048,17 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Projects\\SellIt\\SellIt.Core\\SellIt.Core.csproj": {
-              "projectPath": "D:\\Projects\\SellIt\\SellIt.Core\\SellIt.Core.csproj"
+            "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\SellIt.Core.csproj": {
+              "projectPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Core\\SellIt.Core.csproj"
             },
-            "D:\\Projects\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj": {
-              "projectPath": "D:\\Projects\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj"
+            "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt.Infrastructure\\SellIt.Infrastructure.csproj"
             }
           }
         }
@@ -11089,11 +11109,21 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   },
   "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Microsoft.AspNet.Identity.Core 2.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Microsoft.AspNet.Identity.Core",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    },
     {
       "code": "NU1701",
       "level": "Warning",
