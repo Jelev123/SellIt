@@ -25,13 +25,13 @@
 
         public async Task<IActionResult> Index(int id)
         {
-            var count = await this.countService.GetCountAsync(id);
+            //var count = await this.countService.GetCountAsync(id);
             var counts = new HomeViewModel
             {
-                ProductForAprooveCount = count.ProductsToAprooveCount,
-                AllProducts = count.AllProducts,
+                //ProductForAprooveCount = count.ProductsToAprooveCount,
+                //AllProducts = count.AllProducts,
                 RandomProducts = await this.productService.RandomProductsAsync(6),
-                ProductMessages = count.ProductMessages,
+                //ProductMessages = count.ProductMessages,
                 AllCategories = await this.categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>(),
             };
 

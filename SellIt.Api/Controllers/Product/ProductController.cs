@@ -1,25 +1,22 @@
 ﻿namespace SellIt.Api.Controllers.Product
 {
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
+    using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
+    using SellIt.Core.Services.Image;
     using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data.Models;
-    using System.Security.Claims;
 
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
         private readonly IProductService productService;
-        private readonly UserManager<User> userManager;
-        private readonly IWebHostEnvironment environment;
-
-        public ProductController(IProductService productService, UserManager<User> userManager, IWebHostEnvironment environment)
+        private readonly IImageService imageService;
+        public ProductController(IProductService productService, IImageService imageService)
         {
             this.productService = productService;
-            this.userManager = userManager;
-            this.environment = environment;
+            this.imageService = imageService;
         }
 
 
@@ -31,34 +28,44 @@
         {
             try
             {
-                return Ok(this.productService.GetAllProductsAsync());
+                return Ok(await this.productService.GetAllProductsAsync());
 
             }
-            catch (ArgumentException ae)
+            catch (Exception ex)
             {
 
-                return BadRequest(ae.Message);
+                return BadRequest($"Serialization error: {ex.Message}");
             }
         }
 
-        //[Route("AddProducts")]
-        //[HttpPost]
-        //[ProducesResponseType(200)]
-        //[ProducesResponseType(400)]
-        //public IActionResult AddProducts(AddEditProductViewModel addProduct)
-        //{
 
-        //    try
-        //    {
-        //        var user = HttpContext.User.FindFirstValue("userId");
-        //        return Ok(this.productService.AddProduct(addProduct, user);
+        [Route("ById")]
+        [HttpGet]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> GetProductById(int id)
+        {
+            return await this.productService.GetByIdAsync(id) != null
+                ? Ok(await this.productService.GetByIdAsync(id))
+                : NotFound();
+        }
 
-        //    }
-        //    catch (ArgumentException ae)
-        //    {
 
-        //        return BadRequest(ae.Message);
-        //    }
-        //}
+        [Route("Delete")]
+        [HttpDelete]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var product = await this.productService.GetByIdAsync(id);
+            if (product != null)
+            {
+                return Ok("The product is deleted successfully");
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }
