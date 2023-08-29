@@ -1,11 +1,9 @@
 ﻿namespace SellIt.Api.Controllers.Product
 {
     using Microsoft.AspNetCore.Mvc;
+    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
-    using SellIt.Core.Services.Image;
-    using SellIt.Core.ViewModels.Product;
-    using SellIt.Infrastructure.Data.Models;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -47,7 +45,7 @@
         {
             return await this.productService.GetByIdAsync(id) != null
                 ? Ok(await this.productService.GetByIdAsync(id))
-                : NotFound();
+                : BadRequest(ProductConstants.ProductNotFound);
         }
 
 
@@ -60,11 +58,11 @@
             var product = await this.productService.GetByIdAsync(id);
             if (product != null)
             {
-                return Ok("The product is deleted successfully");
+                return Ok(ProductConstants.DeletedProduct);
             }
             else
             {
-                return NotFound();
+                return BadRequest(ProductConstants.ProductNotFound);
             }
         }
     }
