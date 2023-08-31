@@ -12,7 +12,6 @@
 
     public class AuthenticationManager : IAuthenticationManager
     {
-
         private readonly UserManager<User> usermanager;
         private readonly IConfiguration _configuration;
         private User _user;
@@ -30,12 +29,6 @@
 
         public async Task<string> CreateToken()
         {
-            //List<Claim> claims = new List<Claim>
-            //{
-            //    new Claim(ClaimTypes.Name, _user.UserName),
-            //    new Claim(ClaimTypes.Role, "Administrator")
-            //};
-
             var claims = new List<Claim>
             { new Claim(ClaimTypes.Name, _user.UserName) };
 

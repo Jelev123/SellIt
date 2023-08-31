@@ -53,14 +53,10 @@
         public async Task<IActionResult> Delete(int id)
         {
             var product = await this.productService.GetByIdAsync(id);
-            if (product != null)
-            {
-                return Ok(ProductConstants.DeletedProduct);
-            }
-            else
-            {
-                return BadRequest(ProductConstants.ProductNotFound);
-            }
+
+            return  product != null 
+                ? Ok(ProductConstants.DeletedProduct) 
+                : BadRequest(ProductConstants.ProductNotFound);
         }
     }
 }
