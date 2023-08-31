@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SellIt.Core", "..\SellIt.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SellIt.Infrastructure", "..\SellIt.Infrastructure\SellIt.Infrastructure.csproj", "{A0019A6A-EB7A-48BF-92CB-F2FC74CFE3F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SellIt.Api", "..\SellIt.Api\SellIt.Api.csproj", "{C16C83FC-2D0E-46C3-BB41-BD82435CC38A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SellIt.Api", "..\SellIt.Api\SellIt.Api.csproj", "{C16C83FC-2D0E-46C3-BB41-BD82435CC38A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SellIt.Test", "..\SellIt.Test\SellIt.Test.csproj", "{C0943BDC-F619-477E-ACEA-9D28DC953351}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C16C83FC-2D0E-46C3-BB41-BD82435CC38A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C16C83FC-2D0E-46C3-BB41-BD82435CC38A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C16C83FC-2D0E-46C3-BB41-BD82435CC38A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0943BDC-F619-477E-ACEA-9D28DC953351}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0943BDC-F619-477E-ACEA-9D28DC953351}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0943BDC-F619-477E-ACEA-9D28DC953351}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0943BDC-F619-477E-ACEA-9D28DC953351}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
