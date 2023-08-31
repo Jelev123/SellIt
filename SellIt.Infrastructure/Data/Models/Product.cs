@@ -18,6 +18,8 @@
 
         public bool IsAproved { get; set; }
 
+        public bool IsLiked { get; set; }
+
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }

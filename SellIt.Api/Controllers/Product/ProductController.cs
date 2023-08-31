@@ -2,7 +2,6 @@
 {
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Constants;
-    using SellIt.Core.Contracts.Image;
     using SellIt.Core.Contracts.Product;
 
     [Route("api/[controller]")]
@@ -10,11 +9,9 @@
     public class ProductController : ControllerBase
     {
         private readonly IProductService productService;
-        private readonly IImageService imageService;
-        public ProductController(IProductService productService, IImageService imageService)
+        public ProductController(IProductService productService)
         {
             this.productService = productService;
-            this.imageService = imageService;
         }
 
 

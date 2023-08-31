@@ -288,6 +288,9 @@ namespace SellIt.Infrastructure.Migrations
                     b.Property<bool>("IsAproved")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsLiked")
+                        .HasColumnType("bit");
+
                     b.Property<int>("LikedCount")
                         .HasColumnType("int");
 

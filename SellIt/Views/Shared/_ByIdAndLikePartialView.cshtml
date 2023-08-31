@@ -244,37 +244,36 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  let likedElement = $("#liked");
-  let likeButton = $("#likeButton");
-  let modelId = @Model.Id;
-  let modelCount = @Model.LikedCount;
-  let isLiked = false;
+    let likedElement = $("#liked");
+    let likeButton = $("#likeButton");
+    let modelId = @Model.Id;
+    let modelCount = @Model.LikedCount;
+    let isLiked = @Model.IsLiked.ToString().ToLower();
 
-   likeButton.on("click", function (event) {
-    event.preventDefault();
-    console.log("click");
+    likeButton.on("click", function (event) {
+        event.preventDefault();
 
-    if (isLiked) {
-        modelCount--;
-    } else {
-        modelCount++;
-    }
-
-    isLiked = !isLiked;
-
-    $.ajax({
-        url: `/Product/Like?id=${modelId}`,
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({ likedCount: modelCount }),
-        success: function (response) {
-            likedElement.text(modelCount); // Update the displayed count
-        },
-        error: function (xhr, status, error) {
-            console.log("An error occurred:", error);
+        if (isLiked === false) {
+            modelCount++;
+        } else if(isLiked === true) {
+            modelCount--;
         }
+
+        isLiked = !isLiked;
+
+        $.ajax({
+            url: `/Product/Like?id=${modelId}`,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ likedCount: modelCount }),
+            success: function (response) {
+                likedElement.text(`Likes: ${modelCount}`); // Update the displayed count
+            },
+            error: function (xhr, status, error) {
+                console.log("An error occurred:", error);
+            }
+        });
     });
-});
 </script>
 
 <style>
@@ -283,7 +282,7 @@
         align-items: center;
         background-color: transparent;
         border: none;
-        color: #000;
+        color: gold;
         cursor: pointer;
         font-size: 16px;
     }

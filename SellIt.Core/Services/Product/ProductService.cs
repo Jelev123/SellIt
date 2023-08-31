@@ -131,6 +131,7 @@
                      IsAprooved = s.IsAproved,
                      Viewed = s.Viewed,
                      LikedCount = s.LikedCount,
+                     IsLiked = s.IsLiked,
                      UserId = s.CreatedUserId,
                      Price = s.Price,
                      Id = s.ProductId,
@@ -171,6 +172,7 @@
                 };
 
                 currentProduct.LikedCount++;
+                currentProduct.IsLiked = true;
                 await data.LikedProducts.AddAsync(likedProduct);
             }
             else
@@ -180,6 +182,8 @@
                 if (currentProduct.LikedCount > 0)
                 {
                     currentProduct.LikedCount--;
+                    currentProduct.IsLiked = false;
+
                 }
             }
 
