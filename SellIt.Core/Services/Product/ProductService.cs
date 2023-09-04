@@ -120,7 +120,7 @@
 
         public async Task<GetByIdAndLikeViewModel> GetByIdAsync(int id)
         {
-            var product = await this.data.Products
+            return await this.data.Products
                  .Where(s => s.ProductId == id)
                  .Select(s => new GetByIdAndLikeViewModel
                  {
@@ -148,13 +148,13 @@
                  })
             .FirstOrDefaultAsync();
 
-            if (product != null && CurrentUserId != product.UserId)
-            {
-                var viewdProduct = this.data.Products.FirstOrDefault(s => s.ProductId == id);
-                viewdProduct.Viewed++;
-                await data.SaveChangesAsync();
-            }
-            return product;
+            //if (product != null && CurrentUserId != product.UserId)
+            //{
+            //    var viewdProduct = this.data.Products.FirstOrDefault(s => s.ProductId == id);
+            //    viewdProduct.Viewed++;
+            //    await data.SaveChangesAsync();
+            //}
+            //return product;
         }
 
 

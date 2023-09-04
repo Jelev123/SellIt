@@ -18,54 +18,53 @@
             Assert.NotNull(result);
         }
 
+        [Fact]
+        public async Task ShouldReturnAllProducts()
+        {
+            var productService = await this.GetProductService();
+            var result = await productService.GetAllProductsAsync();
+            Assert.NotNull(result);
+        }
+
         private async Task<ProductService> GetProductService()
         {
-            var data = DbMock.Instance;
-            var userService = UserServiceMock.Instance;
-            var products = new List<Product>();
-
-            var product = new Product()
+            try
             {
-                ProductId = 1,
-                Name = "Test Product",
-                CreatedUserId = "Test User",
-                CategoryId = 1,
-                Images = new List<Image>()
-    {
-        new Image() { URL = "https://example.com/image1.jpg" },
-        new Image() { URL = "https://example.com/image2.jpg" },
-        new Image() { URL = "https://example.com/image3.jpg" }
-    },
-                Category = new Category() { Id = 1, Name = "Test Category" },
-                Description = "Test Description",
-                PhoneNumber = "1234567890",
-                ProductAdress = "Test Address",
-                User = new User() { Id = "Test User", UserName = "Test User" }
-            };
+                var data = DbMock.Instance;
+                var userService = UserServiceMock.Instance;
+                var products = new List<Product>();
 
-            var product2 = new Product()
+                var product = new Product()
+                {
+                    ProductId = ProductId,
+                    Name = "Test Product1",
+                    CreatedUserId = "Test User1",
+                    CategoryId = 1,
+                    Description = "Description1",
+                    PhoneNumber = "0894",
+                    ProductAdress = "STZ"
+                };
+
+                var product2 = new Product()
+                {
+                    ProductId = 2,
+                    Name = "Test Product2",
+                    CreatedUserId = "Test User2",
+                    CategoryId = 2,
+                    Description = "Description2",
+                    PhoneNumber = "0895",
+                    ProductAdress = "RDV"
+                };
+
+                products.AddRange(new[] { product, product2 });
+                await data.Products.AddRangeAsync(products);
+                await data.SaveChangesAsync();
+                return new ProductService(data, null, null, userService);
+            }
+            catch (Exception)
             {
-                ProductId =2,
-                Name = "Test Product2",
-                CreatedUserId = "Test User",
-                CategoryId = 2,
-                Images = new List<Image>()
-    {
-        new Image() { URL = "https://example.com/image1.jpg" },
-        new Image() { URL = "https://example.com/image2.jpg" },
-        new Image() { URL = "https://example.com/image3.jpg" }
-    },
-                Category = new Category() { Id = 2, Name = "Test Category2" },
-                Description = "Test Description",
-                PhoneNumber = "1234567890",
-                ProductAdress = "Test Address",
-                User = new User() { Id = "Test User2", UserName = "Test User2" }
-            };
-
-            products.AddRange(new[] { product, product2 });
-            await data.Products.AddRangeAsync(products);
-            await data.SaveChangesAsync();
-            return new ProductService(data, null, null, userService);
+                throw;
+            }          
         }
     }
 }

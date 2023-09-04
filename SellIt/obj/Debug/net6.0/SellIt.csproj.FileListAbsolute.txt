@@ -1683,3 +1683,5 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\Views\Product\HandleError.csht
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a17c6a83-fb7d-40a1-a8f7-32f697d4fc2f_photo-1616455579100-2ceaa4eb2d37.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\c31dfe7f-8fdd-448d-9fef-8e86e05c307f_344239979_1636567566848648_5746475648704815344_n.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\8f27e360-4ffb-4072-9132-e176f499cf20_344239979_1636567566848648_5746475648704815344_n.jpg
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\c31dfe7f-8fdd-448d-9fef-8e86e05c307f_344239979_1636567566848648_5746475648704815344_n.jpg
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\8f27e360-4ffb-4072-9132-e176f499cf20_344239979_1636567566848648_5746475648704815344_n.jpg
