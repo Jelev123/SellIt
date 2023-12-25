@@ -37,6 +37,8 @@
 
         public string PhoneNumber { get; set; }
 
+        [DisplayName("Address")]
+        [Required(ErrorMessage = "Please enter an address")]
         public string Address { get; set; }
     }
 }

@@ -90,6 +90,8 @@
                         <label for="CityInput"></label>
                         <div class="city-input-container">
                             <input type="text" id="CityInput" class="city-input form-control" asp-for="Address" placeholder="Select a City" readonly />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+
                         </div>
                         <div id="map" class="map-container"></div>
                     </div>
