@@ -6,7 +6,9 @@
     <div class="form-group">
         <label asp-for="Name"></label>
         <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
         <input asp-for="Image" class="form-control" />
+            <span asp-validation-for="Image" class="text-danger"></span>
     </div>
     <input class="btn text-black btn-info text-center " type="submit" value="Add" />
 </form>

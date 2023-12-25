@@ -27,8 +27,15 @@
 
         [HttpPost]
         public async Task<IActionResult> CreateRole(RoleViewModel role)
-            => await userService.CreateRoleAsync(role)
-            .ContinueWith(_ => Redirect("/"));
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View(role);
+            }
+            await userService.CreateRoleAsync(role);
+
+            return Redirect("/");
+        }
             
         public async Task<IActionResult> AllUsers()
             => this.View(await this.userService.AllUsersAsync());
@@ -40,7 +47,6 @@
 
             this.ViewData["roles"] = roles.Select(s => new RoleViewModel
             {
-                Id = s.Id,
                 Name = s.Name,
             }).ToList();
             return this.View();

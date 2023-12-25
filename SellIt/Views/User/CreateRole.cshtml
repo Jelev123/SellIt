@@ -7,6 +7,7 @@
         <div class="form-group">
             <label asp-for="@Model.Name"></label>
             <input asp-for="@Model.Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
         </div>
 </form>
 <div class="d-flex justify-content-center mt-3">

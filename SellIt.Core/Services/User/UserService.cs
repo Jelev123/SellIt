@@ -44,7 +44,6 @@
             await roleManager.CreateAsync(new IdentityRole
             {
                 Name = role.Name,
-
             });
             await data.SaveChangesAsync();
         }

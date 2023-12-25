@@ -19,8 +19,23 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(CreateCategoryViewModel create) 
-            => await categoryService.CreateCategoryAsync(create)
-            .ContinueWith(_ => Redirect("/"));
+        public async Task<IActionResult> CreateCategory(CreateCategoryViewModel create)
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View(create);
+            }
+
+            try
+            {
+                await categoryService.CreateCategoryAsync(create);
+                return Redirect("/");
+            }
+            catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError("Image", ex.Message);
+                return View(create);
+            }
+        }
     }
 }

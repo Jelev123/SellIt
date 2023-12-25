@@ -62,9 +62,16 @@
                         <label for="CategoryName">Category</label>
                         <select id="CategoryName" class="form-control" asp-for="CategoryName">
                             <option selected disabled>Select a Category</option>
-                            @foreach (var category in (IEnumerable<AddEditProductViewModel>)this.ViewData["categories"])
+                            @if (ViewData["categories"] is IEnumerable<AddEditProductViewModel> categories && categories.Any())
                             {
-                                <option value="@category.CategoryName">@category.CategoryName</option>
+                                foreach (var category in categories)
+                                {
+                                    <option value="@category.CategoryName">@category.CategoryName</option>
+                                }
+                            }
+                            else
+                            {
+                                <option disabled>No categories available</option>
                             }
                         </select>
                         <span asp-validation-for="CategoryName" class="text-danger"></span>

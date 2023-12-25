@@ -29,10 +29,10 @@
         [Authorize]
         public async Task<IActionResult> AddProduct()
         {
-            var categories = await this.categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>();
-            this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
+            var categories = await GetCategoriesAsViewModelsAsync();
+            this.ViewData["categories"] = categories.Select(c => new AddEditProductViewModel
             {
-                CategoryName = s.Name,
+                CategoryName = c.CategoryName,
             }).ToList();
 
             return View();
@@ -40,8 +40,24 @@
 
         [HttpPost]
         public async Task<IActionResult> AddProduct(AddEditProductViewModel addProduct)
-            => await this.productService.AddProductAsync(addProduct)
-            .ContinueWith(_ => RedirectToAction("Index", "Home"));
+        {
+            if (!ModelState.IsValid)
+            {
+                return this.View(addProduct);
+            }
+
+            try
+            {
+                await this.productService.AddProductAsync(addProduct);
+                return RedirectToAction("Index", "Home");
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError("Image", ex.Message);
+                return View(addProduct);
+            }
+        }
 
         public async Task<IActionResult> DeleteProduct(int id)
             => await this.productService.DeleteProductAsync(id)
@@ -49,7 +65,7 @@
 
         public async Task<IActionResult> EditProduct(int id)
         {
-            var categories = await this.categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>();
+            var categories = await GetCategoriesAsViewModelsAsync();
 
             ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
             {
@@ -59,7 +75,7 @@
 
             return await this.productService.GetByIdAsync(id)
                 != null
-                ? this.View (await this.productService.GetByIdAsync(id))
+                ? this.View(await this.productService.GetByIdAsync(id))
                 : RedirectToAction("HandleError", "Product", new { errorMessage = "Product not found" });
 
         }
@@ -105,6 +121,17 @@
         {
             var errorResult = this.errorService.ErrorMessage(errorMessage);
             return View(errorResult);
+        }
+
+        private async Task<IEnumerable<AddEditProductViewModel>> GetCategoriesAsViewModelsAsync()
+        {
+            var categories = await categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>();
+
+            return categories.Select(s => new AddEditProductViewModel
+            {
+                CategoryName = s.Name,
+                CategoryId = s.Id
+            }).ToList();
         }
     }
 }
