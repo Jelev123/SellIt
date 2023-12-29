@@ -2,28 +2,33 @@
 {
     using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.Count;
+    using SellIt.Core.Repository;
     using SellIt.Core.ViewModels.Count;
-    using SellIt.Infrastructure.Data;
+    using SellIt.Infrastructure.Data.Models;
 
     public class CountService : ICountService
     {
-        private readonly ApplicationDbContext data;
+        private readonly IRepository<Product> productRepository;
+        private readonly IRepository<Message> messageRepository;
+        private readonly IRepository<ReplyMessage> replyMessagesRepository;
 
-        public CountService(ApplicationDbContext data)
+        public CountService(IRepository<Product> productRepository, IRepository<Message> messageRepository, IRepository<ReplyMessage> replyMessagesRepository)
         {
-            this.data = data;
+            this.productRepository = productRepository;
+            this.messageRepository = messageRepository;
+            this.replyMessagesRepository = replyMessagesRepository;
         }
 
         public async Task<CountViewModel> GetCountAsync(int productId)
             => new CountViewModel
             {
-                ProductsToAprooveCount = await this.data.Products.Where(s => s.IsAproved == false).CountAsync(),
-                AllProducts = await this.data.Products.CountAsync(),
-                ProductMessages = await this.data.Messages.Where(s => s.ProductId == productId).CountAsync()
-                + await this.data.ReplyMessages.Where(s => s.Message.ProductId == productId).CountAsync(),
+                ProductsToAprooveCount = await this.productRepository.AllAsNoTracking().Where(s => s.IsAproved == false).CountAsync(),
+                AllProducts = await this.productRepository.AllAsNoTracking().CountAsync(),
+                ProductMessages = await this.messageRepository.AllAsNoTracking().Where(s => s.ProductId == productId).CountAsync()
+                + await this.replyMessagesRepository.AllAsNoTracking().Where(s => s.Message.ProductId == productId).CountAsync(),
             };
 
         public async Task<int> GetUserProductsCountAsync(string userId)
-            => await this.data.Products.Where(p => p.CreatedUserId == userId).CountAsync();
+            => await this.productRepository.All().Where(p => p.CreatedUserId == userId).CountAsync();
     }
 }

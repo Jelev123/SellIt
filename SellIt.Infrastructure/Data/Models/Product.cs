@@ -1,5 +1,7 @@
 ﻿namespace SellIt.Infrastructure.Data.Models
 {
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public class Product
     {
         public int ProductId { get; set; }

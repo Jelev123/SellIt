@@ -6,7 +6,6 @@
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Home;
-    using SellIt.Core.ViewModels.Product;
     using SellIt.Models;
     using System.Diagnostics;
 
@@ -39,11 +38,11 @@
 
             var categories = await this.categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>();
 
-            this.ViewData["categories"] = categories.Select(s => new AddEditProductViewModel
+            this.ViewData["categories"] = categories.Select(s => new AllCategoriesViewModel
             {
-                CategoryName = s.Name,
-                CategoryId = s.Id,
-                CategoryImage = s.Photo
+                Name = s.Name,
+                Id = s.Id,
+                Photo = s.Photo
                 
             }).ToList();
 

@@ -260,4 +260,3 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\obj\Debug\net6.0\ref\SellIt.Api.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\Microsoft.AspNet.Identity.Core.dll
-D:\Projects\SellIt\SellIt.Api\obj\Debug\net6.0\SellIt.Api.MvcApplicationPartsAssemblyInfo.cs

@@ -5,31 +5,34 @@
     using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.Count;
     using SellIt.Core.Contracts.User;
+    using SellIt.Core.Repository;
     using SellIt.Core.ViewModels.Product;
     using SellIt.Core.ViewModels.User;
-    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
     public class UserService : IUserService
     {
-        private readonly ApplicationDbContext data;
-        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly IRepository<User> userRepository;
+        private readonly IRepository<Product> productRepository;
         private readonly ICountService countService;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
 
-        public UserService(ApplicationDbContext data, RoleManager<IdentityRole> roleManager, ICountService countService, IHttpContextAccessor httpContextAccessor, UserManager<User> userManager)
+        public UserService(RoleManager<IdentityRole> roleManager, ICountService countService, IHttpContextAccessor httpContextAccessor, UserManager<User> userManager, IRepository<User> userRepository, IRepository<Product> productRepository, RoleManager<IdentityRole> roleManagerr)
         {
-            this.data = data;
-            this.roleManager = roleManager;
+            this._roleManager = roleManager;
             this.countService = countService;
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
+            this.userRepository = userRepository;
+            this.productRepository = productRepository;
+
         }
 
         public async Task<IEnumerable<AllUsersViewModel>> AllUsersAsync()
-             => await data.Users
+             => await userRepository.AllAsNoTracking()
                 .Select(s => new AllUsersViewModel
                 {
                     UserId = s.Id,
@@ -41,22 +44,22 @@
 
         public async Task CreateRoleAsync(RoleViewModel role)
         {
-            await roleManager.CreateAsync(new IdentityRole
+            await _roleManager.CreateAsync(new IdentityRole
             {
                 Name = role.Name,
             });
-            await data.SaveChangesAsync();
+            await userRepository.SaveChangesAsync();
         }
 
         public async Task DeleteUserAsync(string userId)
         {
             var user = await this.GetCurrentUserAsync(userId);
-            data.Remove(user);
-            await data.SaveChangesAsync();
+            userRepository.Delete(user);
+            await userRepository.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<MyProductsViewModel>> MyProductsAsync(string userId)
-           => await this.data.Products
+           => await this.productRepository.AllAsNoTracking()
                 .Where(s => s.CreatedUserId == userId)
                 .Select(x => new MyProductsViewModel
                 {
@@ -76,56 +79,52 @@
 
         public async Task SetRoleAsync(string userId, AllUsersViewModel all)
         {
-            var user = await this.GetCurrentUserAsync(userId);
-            var role = this.data.Roles.FirstOrDefault(s => s.Name == all.RoleName);
-            var userRoles = this.data.UserRoles.FirstOrDefault(s => s.UserId == user.Id);
+            var user = await _userManager.FindByIdAsync(userId);
+            var role = await _roleManager.FindByNameAsync(all.RoleName);
 
-            if (userRoles != null && userRoles.UserId.Contains(userId))
+            if (user != null && role != null)
             {
-                data.UserRoles.Remove(userRoles);
-                await data.SaveChangesAsync();
-                await data.UserRoles.AddAsync(new IdentityUserRole<string>
+                var userRoles = await _userManager.GetRolesAsync(user);
+
+                if (userRoles != null && userRoles.Any())
                 {
-                    RoleId = role.Id,
-                    UserId = user.Id,
-                });
+                    foreach (var userRole in userRoles)
+                    {
+                        await _userManager.RemoveFromRoleAsync(user, userRole);
+                    }
+                }
+
+                await _userManager.AddToRoleAsync(user, role.Name);
+                await userRepository.SaveChangesAsync();
             }
             else
             {
-                data.UserRoles.Add(new IdentityUserRole<string>
-                {
-                    RoleId = role.Id,
-                    UserId = user.Id,
-                });
+                throw new InvalidOperationException("User not found");
             }
-            await data.SaveChangesAsync();
         }
 
         public async Task<UserByIdViewModel> UserByIdAsync(string userId)
         {
-            var count = this.countService.GetUserProductsCountAsync(userId);
+            var user = await _userManager.FindByIdAsync(userId);
+            var roles = await _userManager.GetRolesAsync(user);
+            var roleName = string.Join(", ", roles);
 
-            return await (from users in data.Users
-                          from userRoles in data.UserRoles.Where(co => co.UserId == users.Id).DefaultIfEmpty()
-                          from roles in data.Roles.Where(prod => prod.Id == userRoles.RoleId).DefaultIfEmpty()
-                          from products in data.Products.Where(s => s.CreatedUserId == users.Id).DefaultIfEmpty()
-                          select new UserByIdViewModel
-                          {
-                              UserId = users.Id,
-                              UserName = users.UserName,
-                              RoleName = roles.Name,
-                              DateCreated = users.DateCreated,
-                              Email = users.Email,
-                              ProductName = products.Name,
-                              ProductsCount = count.Result,
+            var productsCount = await countService.GetUserProductsCountAsync(userId);
 
-                          })
-                       .Where(s => s.UserId == userId)
-                       .FirstOrDefaultAsync();
+            return new UserByIdViewModel
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                RoleName = roleName,
+                DateCreated = user.DateCreated,
+                Email = user.Email,
+                ProductName = user.Products.FirstOrDefault()?.Name,
+                ProductsCount = productsCount
+            };
         }
 
         public async Task<IEnumerable<UserProductsViewModel>> UserProductsAsync(string userId)
-        => await data.Products
+        => await productRepository.AllAsNoTracking()
                 .Where(s => s.CreatedUserId == userId)
                 .Select(s => new UserProductsViewModel
                 {
@@ -146,6 +145,16 @@
            => _userManager.GetUserName(_httpContextAccessor.HttpContext.User);
 
         public async Task<User> GetCurrentUserAsync(string userId)
-        => await this.data.Users.FirstOrDefaultAsync(s => s.Id == userId);
+        => await this.userRepository.AllAsNoTracking().FirstOrDefaultAsync(s => s.Id == userId);
+
+        public async Task<IEnumerable<RoleViewModel>> GetAllRolesAsync()
+        => await _roleManager.Roles
+        .Select(r => new RoleViewModel
+        {
+            Name = r.Name
+        })
+        .ToListAsync();
+
+
     }
 }

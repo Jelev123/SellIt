@@ -3,22 +3,22 @@
     using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Image;
+    using SellIt.Core.Repository;
     using SellIt.Core.ViewModels.Category;
-    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class CategoryService : ICategoryService
     {
-        private readonly ApplicationDbContext data;
         private readonly IImageService imageService;
+        private readonly IRepository<Category> categoryRepository;
 
 
-        public CategoryService(ApplicationDbContext data, IImageService imageService)
+        public CategoryService(IImageService imageService, IRepository<Category> categoryRepository)
         {
-            this.data = data;
             this.imageService = imageService;
+            this.categoryRepository = categoryRepository;
         }
 
         public async Task CreateCategoryAsync(CreateCategoryViewModel createCategory)
@@ -30,12 +30,12 @@
                 Image = await imageService.UploadImageAsync(fileFolder, createCategory.Image)
             };
 
-            await data.Categories.AddAsync(category);
-            await data.SaveChangesAsync();
+            await categoryRepository.AddAsync(category);
+            await categoryRepository.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<AllCategoriesViewModel>> GetAllCategoriesAsync<T>()
-           => await this.data.Categories
+           => await this.categoryRepository.AllAsNoTracking()
                 .Select(s => new AllCategoriesViewModel
                 {
                     Id = s.Id,

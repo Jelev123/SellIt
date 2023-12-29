@@ -2,21 +2,22 @@
 {
     using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.Search;
+    using SellIt.Core.Repository;
     using SellIt.Core.ViewModels.Product;
-    using SellIt.Infrastructure.Data;
+    using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
 
     public class SearchService : ISearchService
     {
-        private readonly ApplicationDbContext data;
+        private readonly IRepository<Product> productRepository;
 
-        public SearchService(ApplicationDbContext data)
+        public SearchService(IRepository<Product> productRepository)
         {
-            this.data = data;
+            this.productRepository = productRepository;
         }
 
         public async Task<IEnumerable<SearchViewModel>> SearchProductAsync(string searchName)       
-            => await this.data.Products
+            => await this.productRepository.AllAsNoTracking()
                  .Select(s => new SearchViewModel
                  {
                      Name = s.Name,

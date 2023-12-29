@@ -1,11 +1,10 @@
 ﻿namespace SellIt.Core.Services.Message
 {
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.Messages;
     using SellIt.Core.Contracts.User;
+    using SellIt.Core.Repository;
     using SellIt.Core.ViewModels.Messages;
-    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
     using System.Linq;
@@ -13,15 +12,19 @@
 
     public class MessageService : IMessagesService
     {
-        private readonly ApplicationDbContext data;
+        private readonly IRepository<Product> productRepository;
+        private readonly IRepository<Message> messageRepository;
+        private readonly IRepository<ReplyMessage> replyMessageRepository;
         private readonly IUserService userService;
         private readonly string CurrentUserId;
 
-        public MessageService(ApplicationDbContext data, IUserService userService)
+        public MessageService(IUserService userService, IRepository<Product> productRepository, IRepository<Message> messageRepository, IRepository<ReplyMessage> replyMessageRepository)
         {
-            this.data = data;
             this.userService = userService;
             CurrentUserId = userService.CurrentUserAccessor();
+            this.productRepository = productRepository;
+            this.messageRepository = messageRepository;
+            this.replyMessageRepository = replyMessageRepository;
         }
 
         public async Task SendMessageAsync(string userName, int id, string message)
@@ -35,8 +38,8 @@
                 Date = DateTime.UtcNow,
             };
 
-            await data.Messages.AddAsync(send);
-            await data.SaveChangesAsync();
+            await messageRepository.AddAsync(send);
+            await messageRepository.SaveChangesAsync();
         }
 
         public async Task ReplyMessageAsync(string replyMessage, string userName, int id)
@@ -50,12 +53,12 @@
                 ReplayerUserName = userName,
             };
 
-            await data.ReplyMessages.AddAsync(reply);
-            await data.SaveChangesAsync();
+            await replyMessageRepository.AddAsync(reply);
+            await replyMessageRepository.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<AllProductMessagesViewModel>> AllProductMessagesAsync(int id)
-             => await this.data.Messages
+             => await this.messageRepository.AllAsNoTracking()
                 .Where(s => s.ProductId == id)
                 .Select(s => new AllProductMessagesViewModel
                 {
@@ -80,7 +83,7 @@
 
         public async Task<IEnumerable<AllMessagesViewModel>> AllMessagesAsync()
         {
-            var allMessages = await this.data.Products
+            var allMessages = await this.productRepository.All()
              .Where(p => p.CreatedUserId == CurrentUserId) 
              .SelectMany(p => p.Messages)
              .Where(m => m.UserId == CurrentUserId || m.Product.CreatedUserId == CurrentUserId || m.Product.User.Id == CurrentUserId)
@@ -105,7 +108,7 @@
              })
       .ToListAsync();
 
-            var currentUserMessages = await this.data.Messages
+            var currentUserMessages = await this.messageRepository.All()
                 .Where(m => m.UserId == CurrentUserId)
                 .Select(m => new AllMessagesViewModel
                 {
@@ -134,7 +137,7 @@
         }
 
         public async Task<ProductMessagesById> GetProductMessageByIdAsync(int id)  
-            => this.data.Messages
+            => await this.messageRepository.AllAsNoTracking()
                  .Where(s => s.Id == id)
                                .Select(s => new ProductMessagesById
                                {
@@ -151,6 +154,6 @@
                                        Date = s.Date,
                                        ProductName = s.Message.Product.Name,
                                    }).ToList(),
-                               }).FirstOrDefault();
+                               }).FirstOrDefaultAsync();
     }
 }

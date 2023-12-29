@@ -2,21 +2,22 @@
 {
     using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Contracts.ForAprooved;
+    using SellIt.Core.Repository;
     using SellIt.Core.ViewModels.Product;
-    using SellIt.Infrastructure.Data;
+    using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class ForAproovedService : IForAproovedService
     {
-        private readonly ApplicationDbContext data;
-        public ForAproovedService(ApplicationDbContext data)
+        private readonly IRepository<Product> productRepository;
+        public ForAproovedService(IRepository<Product> productRepository)
         {
-            this.data = data;
+            this.productRepository = productRepository;
         }
 
         public async Task<IEnumerable<AllProductsForAprooved>> GetAllProductsForAprooveAsync()
-           => await this.data.Products
+           => await this.productRepository.AllAsNoTracking()
                 .Where(s => s.IsAproved == false)
                 .Select(s => new AllProductsForAprooved
                 {
@@ -28,9 +29,9 @@
 
         public async Task SetAprooveAsync(int id)
         {
-            var product = await this.data.Products.FirstOrDefaultAsync(s => s.ProductId == id);
+            var product = await this.productRepository.All().FirstOrDefaultAsync(s => s.ProductId == id);
             product.IsAproved = true;
-            await data.SaveChangesAsync();
+            await productRepository.SaveChangesAsync();
         }
     }
 }

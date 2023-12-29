@@ -10,6 +10,8 @@
 
         Task<IEnumerable<AllUsersViewModel>> AllUsersAsync();
 
+        Task<IEnumerable<RoleViewModel>> GetAllRolesAsync();
+
         Task SetRoleAsync(string userId, AllUsersViewModel all);
 
         Task DeleteUserAsync(string userId);

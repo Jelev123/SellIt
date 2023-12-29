@@ -86,7 +86,7 @@
         {
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <button id="likeButton" class="like-button">
+                    <button id="likeButton" class="like-button" asp-action="Like" asp-controller="Product" asp-route-id="@Model.Id">
                         <span class="icon-heart">&hearts;</span>
                     </button>
                 </li>

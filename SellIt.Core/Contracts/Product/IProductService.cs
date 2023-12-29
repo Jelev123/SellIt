@@ -1,15 +1,15 @@
 ﻿namespace SellIt.Core.Contracts.Product
 {
+    using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Product;
-    using SellIt.Infrastructure.Data.Models;
 
     public interface IProductService
     {
-        Task AddProductAsync(AddEditProductViewModel addProduct);
+        Task AddProductAsync(AddEditProductViewModel addProduct, GalleryFileDTO fileDTO);
 
         Task DeleteProductAsync(int id);
 
-        Task EditProductAsync(AddEditProductViewModel editProduct, int id);
+        Task EditProductAsync(AddEditProductViewModel editProduct, int id, GalleryFileDTO fileDTO);
 
         Task<GetByIdAndLikeViewModel> GetByIdAsync(int id);
 

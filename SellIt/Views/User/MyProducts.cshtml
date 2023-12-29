@@ -110,6 +110,7 @@
                                                 <a class="d-block" asp-action="GetProductById" asp-controller="Product" class="btn" asp-route-id="@item.Id">
                                                     <img class="img-fluid w-100" src="@item.CoverPhoto" alt="@item.Name">
                                                 </a>
+                                                <a asp-action="DeleteProduct" asp-controller="Product" asp-route-id="@item.Id">Delete</a>
                                                 @* <div class="product-overlay">
                                             <ul class="mb-0 list-inline">
                                             <li class="list-inline-item m-0 p-0"><a class="btn btn-sm btn-outline-dark" href="#!"><i class="far fa-heart"></i></a></li>

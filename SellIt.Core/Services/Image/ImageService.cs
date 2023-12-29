@@ -3,46 +3,47 @@
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
     using SellIt.Core.Contracts.Image;
+    using SellIt.Core.Repository;
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Product;
-    using SellIt.Infrastructure.Data;
+    using SellIt.Infrastructure.Data.Models;
     using System;
     using System.Threading.Tasks;
 
     public class ImageService : IImageService
     {
-        private readonly ApplicationDbContext data;
+        private readonly IRepository<Image> imageRepository;
         private readonly IWebHostEnvironment environment;
 
-        public ImageService(ApplicationDbContext data, IWebHostEnvironment environment)
+        public ImageService(IWebHostEnvironment environment, IRepository<Image> imageRepository)
         {
-            this.data = data;
             this.environment = environment;
+            this.imageRepository = imageRepository;
         }
 
-        public async Task CheckGalleryAsync(AddEditProductViewModel model)
+        public async Task CheckGalleryAsync(GalleryFileDTO fileDTO)
         {
             var fileFolder = "images/gallery/";
 
-            if (model.GalleryFiles != null)
+            if (fileDTO.GalleryFiles != null)
             {
-                model.Gallery = new List<GalleryModel>();
+                fileDTO.Gallery = new List<GalleryModel>();
 
-                foreach (var file in model.GalleryFiles)
+                foreach (var file in fileDTO.GalleryFiles)
                 {
                     var gallery = new GalleryModel()
                     {
                         Name = file.FileName,
                         URL = await UploadImageAsync(fileFolder, file)
                     };
-                    model.Gallery.Add(gallery);
+                    fileDTO.Gallery.Add(gallery);
                 }
-            }        
+            }
         }
 
         public async Task DeleteImageAsync(string imageId)
         {
-            var image = data.Images.FirstOrDefault(x => x.ImageId == imageId);
+            var image = this.imageRepository.All().FirstOrDefault(x => x.ImageId == imageId);
 
             string filePath = Path.Combine(environment.WebRootPath, image.URL.TrimStart('/'));
 
@@ -51,8 +52,8 @@
                 File.Delete(filePath);
             }
 
-            data.Remove(image);
-            data.SaveChanges();
+            imageRepository.Delete(image);
+            await imageRepository.SaveChangesAsync();
         }
 
         public async Task<string> UploadImageAsync(string folderPath, IFormFile file)

@@ -4,18 +4,15 @@
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Contracts.User;
     using SellIt.Core.ViewModels.User;
-    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
 
     public class UserController : Controller
     {
-        private readonly ApplicationDbContext data;
         private readonly UserManager<User> userManager;
         private readonly IUserService userService;
 
-        public UserController(ApplicationDbContext data, IUserService userService, UserManager<User> userManager)
+        public UserController(IUserService userService, UserManager<User> userManager)
         {
-            this.data = data;
             this.userService = userService;
             this.userManager = userManager;
         }
@@ -41,10 +38,9 @@
             => this.View(await this.userService.AllUsersAsync());
         
 
-        public IActionResult SetRole()
+        public async Task<IActionResult> SetRole()
         {
-            var roles = this.data.Roles.ToList();
-
+            var roles = await this.userService.GetAllRolesAsync();
             this.ViewData["roles"] = roles.Select(s => new RoleViewModel
             {
                 Name = s.Name,

@@ -9,6 +9,7 @@ using SellIt.Core.Contracts.Messages;
 using SellIt.Core.Contracts.Product;
 using SellIt.Core.Contracts.Search;
 using SellIt.Core.Contracts.User;
+using SellIt.Core.Repository;
 using SellIt.Core.Services.Category;
 using SellIt.Core.Services.Count;
 using SellIt.Core.Services.Error;
@@ -34,7 +35,7 @@ builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfi
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
-
+//Application services
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
@@ -47,7 +48,8 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IErrorService, ErrorService>();
 builder.Services.AddHttpClient();
 
-
+//Data repositories
+builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 var app = builder.Build();
 
 

@@ -25,14 +25,13 @@
 
         public int CategoryId { get; set; }
 
-        public string CategoryImage { get; set; }
-
         [DisplayName("Image")]
         [Required]
         public IFormFileCollection GalleryFiles { get; set; }
 
-        public List<GalleryModel> Gallery { get; set; }
 
+        [DisplayName("Price")]
+        [Required(ErrorMessage = "Please enter a price")]
         public decimal Price { get; set; }
 
         public string PhoneNumber { get; set; }

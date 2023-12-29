@@ -7,6 +7,7 @@
     using SellIt.Core.Contracts.Error;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
+    using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
 
@@ -29,33 +30,27 @@
         [Authorize]
         public async Task<IActionResult> AddProduct()
         {
-            var categories = await GetCategoriesAsViewModelsAsync();
-            this.ViewData["categories"] = categories.Select(c => new AddEditProductViewModel
-            {
-                CategoryName = c.CategoryName,
-            }).ToList();
-
+            await this.PopulateCategoriesInViewData();
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProduct(AddEditProductViewModel addProduct)
+        public async Task<IActionResult> AddProduct(AddEditProductViewModel addProduct, GalleryFileDTO fileDTO)
         {
             if (!ModelState.IsValid)
             {
+                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
+                await this.PopulateCategoriesInViewData();
                 return this.View(addProduct);
             }
-
             try
             {
-                await this.productService.AddProductAsync(addProduct);
+                await this.productService.AddProductAsync(addProduct, fileDTO);
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
             {
-
-                ModelState.AddModelError("Image", ex.Message);
-                return View(addProduct);
+                throw new Exception("Error add product", ex);
             }
         }
 
@@ -81,8 +76,8 @@
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditProduct(AddEditProductViewModel editProduct, int id)
-           => await this.productService.EditProductAsync(editProduct, id)
+        public async Task<IActionResult> EditProduct(AddEditProductViewModel editProduct, int id, GalleryFileDTO fileDTO)
+           => await this.productService.EditProductAsync(editProduct, id, fileDTO)
            .ContinueWith(_ => RedirectToAction("MyProducts"));
 
 
@@ -131,6 +126,15 @@
             {
                 CategoryName = s.Name,
                 CategoryId = s.Id
+            }).ToList();
+        }
+
+        private async Task PopulateCategoriesInViewData()
+        {
+            var categories = await GetCategoriesAsViewModelsAsync();
+            ViewData["categories"] = categories.Select(c => new AddEditProductViewModel
+            {
+                CategoryName = c.CategoryName,
             }).ToList();
         }
     }
