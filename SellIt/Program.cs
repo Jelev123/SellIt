@@ -37,7 +37,7 @@ builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfi
 
 //Application services
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddScoped<IProductService, ProductDecoratorService>();
 builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IForAproovedService, ForAproovedService>();
 builder.Services.AddTransient<ICountService, CountService>();
@@ -47,6 +47,8 @@ builder.Services.AddTransient<IImageService, ImageService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IErrorService, ErrorService>();
 builder.Services.AddHttpClient();
+
+builder.Services.AddScoped<ProductService>();
 
 //Data repositories
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));

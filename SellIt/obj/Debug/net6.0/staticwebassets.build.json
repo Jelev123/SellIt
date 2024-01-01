@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Bmdn4RGXgpfUkQv2Aqxwl0D58Rd3Pbjd9f91XZLi/pE=",
+  "Hash": "2Tu0j6D1LaOpRdbjzeoC3A2SAC+0L2GQ6+j5sDZhqCU=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1683,6 +1683,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\01c48081-aa77-46ea-ab99-71723e0138d9_lahcv49iban71.webp"
     },
     {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\09ddc44e-1497-4625-bb93-0557d5b1fe0b_1-Mercedes-McLaren-SLR.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/09ddc44e-1497-4625-bb93-0557d5b1fe0b_1-Mercedes-McLaren-SLR.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\09ddc44e-1497-4625-bb93-0557d5b1fe0b_1-Mercedes-McLaren-SLR.jpg"
+    },
+    {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\0fa84e37-047e-4da0-aca7-259c56b2d41e_download.jpeg",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -2174,6 +2191,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\a3ba1893-7448-46c3-bb6c-5b29d90e6af9_lahcv49iban71.webp"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\a9534614-742a-4e0a-bccd-30b0059e823c_lahcv49iban71.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/a9534614-742a-4e0a-bccd-30b0059e823c_lahcv49iban71.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\a9534614-742a-4e0a-bccd-30b0059e823c_lahcv49iban71.webp"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\gallery\\b76cf38d-6fcc-4c4b-b878-651089493618_lahcv49iban71.webp",

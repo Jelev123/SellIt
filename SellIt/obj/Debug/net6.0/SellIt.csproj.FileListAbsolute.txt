@@ -1724,3 +1724,5 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\d81de8e
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\37456471-a28c-4ee7-9f59-a125571340aa_download.jpeg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\4315a0f5-6d10-4510-9da0-6b9ed3d3b9f4_360_F_138946263_EtW7xPuHRJSfyl4rU2WeWmApJFYM0B84.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\7e8de019-c6e2-4620-ae02-c05bad2e9235_download.jpeg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\09ddc44e-1497-4625-bb93-0557d5b1fe0b_1-Mercedes-McLaren-SLR.jpg
+D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a9534614-742a-4e0a-bccd-30b0059e823c_lahcv49iban71.webp

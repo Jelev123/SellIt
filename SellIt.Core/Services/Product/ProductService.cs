@@ -13,7 +13,6 @@
 
     public partial class ProductService : IProductService
     {
-        private readonly IImageService imageService;
         private readonly UserManager<User> userManager;
         private readonly IUserService userService;
         private readonly string CurrentUserId;
@@ -23,9 +22,8 @@
         private readonly IRepository<LikedProduct> likedProdudctsRepository;
 
 
-        public ProductService(IImageService imageService, UserManager<User> userManager, IUserService userService, IRepository<Product> productRepository, IRepository<Image> imageRepository, IRepository<Category> categoryRepository, IRepository<LikedProduct> likedProdudctsRepository)
+        public ProductService(UserManager<User> userManager, IUserService userService, IRepository<Product> productRepository, IRepository<Image> imageRepository, IRepository<Category> categoryRepository, IRepository<LikedProduct> likedProdudctsRepository)
         {
-            this.imageService = imageService;
             this.userManager = userManager;
             this.userService = userService;
             CurrentUserId = userService.CurrentUserAccessor();
@@ -38,7 +36,6 @@
         public async Task AddProductAsync(AddEditProductViewModel addProduct, GalleryFileDTO fileDTO)
         {
             User currentUser = await userManager.FindByIdAsync(CurrentUserId);
-            await this.imageService.CheckGalleryAsync(fileDTO);
             var category = this.categoryRepository.AllAsNoTracking().FirstOrDefault(s => s.Name == addProduct.CategoryName);
             var product = new Product
             {
@@ -79,7 +76,6 @@
 
         public async Task EditProductAsync(AddEditProductViewModel editProduct, int id, GalleryFileDTO fileDTO)
         {
-            await imageService.CheckGalleryAsync(fileDTO);
             var product = this.productRepository.All().FirstOrDefault(s => s.ProductId == id);
             var category = this.categoryRepository.All().FirstOrDefault(s => s.Name == editProduct.CategoryName);
 

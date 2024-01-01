@@ -576,6 +576,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\gallery\01c48081-aa77-46ea-ab99-71723e0138d9_lahcv49iban71.webp))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\gallery\09ddc44e-1497-4625-bb93-0557d5b1fe0b_1-Mercedes-McLaren-SLR.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>SellIt</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SellIt</BasePath>
+      <RelativePath>images/gallery/09ddc44e-1497-4625-bb93-0557d5b1fe0b_1-Mercedes-McLaren-SLR.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\gallery\09ddc44e-1497-4625-bb93-0557d5b1fe0b_1-Mercedes-McLaren-SLR.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\gallery\0fa84e37-047e-4da0-aca7-259c56b2d41e_download.jpeg))">
       <SourceType>Package</SourceType>
       <SourceId>SellIt</SourceId>
@@ -1039,6 +1055,22 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\gallery\a3ba1893-7448-46c3-bb6c-5b29d90e6af9_lahcv49iban71.webp))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\gallery\a9534614-742a-4e0a-bccd-30b0059e823c_lahcv49iban71.webp))">
+      <SourceType>Package</SourceType>
+      <SourceId>SellIt</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SellIt</BasePath>
+      <RelativePath>images/gallery/a9534614-742a-4e0a-bccd-30b0059e823c_lahcv49iban71.webp</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\gallery\a9534614-742a-4e0a-bccd-30b0059e823c_lahcv49iban71.webp))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\images\gallery\b76cf38d-6fcc-4c4b-b878-651089493618_lahcv49iban71.webp))">
       <SourceType>Package</SourceType>
