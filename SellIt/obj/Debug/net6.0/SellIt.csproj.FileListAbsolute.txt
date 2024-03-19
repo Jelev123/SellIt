@@ -1726,3 +1726,4 @@ D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\categories\4315
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\7e8de019-c6e2-4620-ae02-c05bad2e9235_download.jpeg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\09ddc44e-1497-4625-bb93-0557d5b1fe0b_1-Mercedes-McLaren-SLR.jpg
 D:\Projects\SellIt\SellIt\bin\Debug\net6.0\sellit\wwwroot\images\gallery\a9534614-742a-4e0a-bccd-30b0059e823c_lahcv49iban71.webp
+D:\Projects\SellIt\SellIt\obj\Debug\net6.0\SellIt.MvcApplicationPartsAssemblyInfo.cs

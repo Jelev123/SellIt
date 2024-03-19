@@ -1,8 +1,9 @@
 ﻿namespace SellIt.Api.Controllers.Product
 {
     using Microsoft.AspNetCore.Mvc;
-    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Product;
+    using SellIt.Core.ViewModels;
+    using SellIt.Core.ViewModels.Product;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -15,48 +16,47 @@
         }
 
 
-        [Route("AllProducts")]
-        [HttpGet]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        public async Task<IActionResult> GetAllProducts()
+        [Route("addProduct")]
+        [HttpPost]
+        public async Task<ActionResult> AddProduct([FromBody] AddEditProductViewModel model, [FromForm] GalleryFileDTO fileDto)
         {
-            try
-            {
-                return Ok(await this.productService.GetAllProductsAsync());
+            await this.productService.AddProductAsync(model, fileDto);
 
-            }
-            catch (Exception ex)
-            {
+            return Ok(model);
+        }
 
-                return BadRequest($"Serialization error: {ex.Message}");
-            }
+        [Route("allProducts")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<AllProductViewModel>>> GetAllProducts()
+        {
+            return Ok(await this.productService.GetAllProductsAsync());
         }
 
 
-        [Route("ById")]
+        [Route("byId")]
         [HttpGet]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        public async Task<IActionResult> GetProductById(int id)
+        public async Task<ActionResult<GetByIdAndLikeViewModel>> GetProductById(int id)
         {
-            return await this.productService.GetByIdAsync(id) != null
-                ? Ok(await this.productService.GetByIdAsync(id))
-                : BadRequest(ProductConstants.ProductNotFound);
+            return Ok(await this.productService.GetByIdAsync(id));
         }
 
 
-        [Route("Delete")]
+        [Route("delete")]
         [HttpDelete]
-        [ProducesResponseType(200)]
-        [ProducesResponseType(400)]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            var product = await this.productService.GetByIdAsync(id);
+            await this.productService.DeleteProductAsync(id);
 
-            return  product != null 
-                ? Ok(ProductConstants.DeletedProduct) 
-                : BadRequest(ProductConstants.ProductNotFound);
+            return Ok();
+        }
+
+        [Route("edit")]
+        [HttpPut]
+        public async Task<ActionResult> Edit([FromBody] AddEditProductViewModel editProduct, int id, [FromForm] GalleryFileDTO fileDTO)
+        {
+            await this.productService.EditProductAsync(editProduct, id, fileDTO);
+
+            return Ok();
         }
     }
 }

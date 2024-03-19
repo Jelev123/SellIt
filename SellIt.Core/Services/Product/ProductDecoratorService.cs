@@ -37,17 +37,35 @@
             await _productService.EditProductAsync(editProduct, id, fileDTO);
         }
 
-        public async Task<IEnumerable<MyProductsViewModel>> FavoritesAsync() => await _productService.FavoritesAsync();
+        public async Task<IEnumerable<MyProductsViewModel>> FavoritesAsync()
+        {
+            return await _productService.FavoritesAsync();
+        }
 
-        public async Task<IEnumerable<AllProductViewModel>> GetAllProductsAsync() => await _productService.GetAllProductsAsync();
+        public async Task<IEnumerable<AllProductViewModel>> GetAllProductsAsync()
+        {
+            return await _productService.GetAllProductsAsync();
+        }
 
-        public async Task<IEnumerable<AllProductViewModel>> GetAllProductsByCategoryIdAsync(int id) => await _productService.GetAllProductsByCategoryIdAsync(id);
-        
-        public async Task<GetByIdAndLikeViewModel> GetByIdAsync(int id) => await _productService.GetByIdAsync(id);
-        
-        public async Task<GetByIdAndLikeViewModel> LikeAsync(int id) => await _productService.LikeAsync(id);
-          
-        public async Task<IEnumerable<IndexRandomViewModel>> RandomProductsAsync(int count) => await this._productService.RandomProductsAsync(count);
-       
+        public async Task<IEnumerable<AllProductViewModel>> GetAllProductsByCategoryIdAsync(int id)
+        {
+            return await _productService.GetAllProductsByCategoryIdAsync(id);
+        }
+
+        public async Task<GetByIdAndLikeViewModel> GetByIdAsync(int id)
+        {
+            return await _productService.GetByIdAsync(id);
+        }
+
+        public async Task<GetByIdAndLikeViewModel> LikeAsync(int id)
+        {
+            return await _productService.LikeAsync(id);
+        }
+
+        public async Task<IEnumerable<IndexRandomViewModel>> RandomProductsAsync(int count)
+        {
+            return await this._productService.RandomProductsAsync(count);
+        }
+
     }
 }

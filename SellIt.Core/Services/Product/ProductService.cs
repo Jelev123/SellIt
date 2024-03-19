@@ -2,9 +2,10 @@
 {
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-    using SellIt.Core.Contracts.Image;
+    using SellIt.Core.Constants.Error;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.User;
+    using SellIt.Core.Handlers.ErrorHandlers;
     using SellIt.Core.Repository;
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Product;
@@ -37,30 +38,39 @@
         {
             User currentUser = await userManager.FindByIdAsync(CurrentUserId);
             var category = this.categoryRepository.AllAsNoTracking().FirstOrDefault(s => s.Name == addProduct.CategoryName);
-            var product = new Product
-            {
-                Name = addProduct.Name,
-                Description = addProduct.Description,
-                CategoryId = category.Id,
-                CreatedUserId = CurrentUserId,
-                Price = addProduct.Price,
-                PhoneNumber = addProduct.PhoneNumber != null ? addProduct.PhoneNumber : currentUser.PhoneNumber,
-                ProductAdress = addProduct.Address,
-                Images = fileDTO.Gallery.Select(file => new Image
-                {
-                    Name = file.Name,
-                    URL = file.URL,
-                    AddedByUserId = CurrentUserId
-                }).ToList()
-            };
 
-            await productRepository.AddAsync(product);
-            await productRepository.SaveChangesAsync();
+            if (category != null)
+            {
+                var product = new Product
+                {
+                    Name = addProduct.Name,
+                    Description = addProduct.Description,
+                    CategoryId = category.Id,
+                    CreatedUserId = CurrentUserId,
+                    Price = addProduct.Price,
+                    PhoneNumber = addProduct.PhoneNumber != null ? addProduct.PhoneNumber : currentUser.PhoneNumber,
+                    ProductAdress = addProduct.Address,
+                    Images = fileDTO.Gallery.Select(file => new Image
+                    {
+                        Name = file.Name,
+                        URL = file.URL,
+                        AddedByUserId = CurrentUserId
+                    }).ToList()
+                };
+
+                await productRepository.AddAsync(product);
+                await productRepository.SaveChangesAsync();
+            }
+
+            throw new NullReferenceException(string.Format(
+                    ErrorMessages.DataDoesNotExist,
+                typeof(Product).Name, "categoryId", category.Id));
         }
 
         public async Task DeleteProductAsync(int id)
         {
             var product = this.productRepository.AllAsNoTracking().FirstOrDefault(s => s.ProductId == id);
+
             if (product != null)
             {
                 var productImage = this.imageRepository.All().FirstOrDefault(s => s.ProductId == id);
@@ -72,6 +82,10 @@
                 productRepository.Delete(product);
                 await productRepository.SaveChangesAsync();
             }
+
+            throw new EntityNotFoundException(string.Format(
+                    ErrorMessages.DataDoesNotExist,
+                typeof(Product).Name, "id", id));
         }
 
         public async Task EditProductAsync(AddEditProductViewModel editProduct, int id, GalleryFileDTO fileDTO)
@@ -104,6 +118,10 @@
                 productRepository.Update(product);
                 await productRepository.SaveChangesAsync();
             }
+
+            throw new EntityNotFoundException(string.Format(
+                    ErrorMessages.DataDoesNotExist,
+                typeof(Product).Name, "id", id));
         }
 
         public async Task<IEnumerable<AllProductViewModel>> GetAllProductsAsync()
@@ -116,6 +134,7 @@
                                  UserId = p.CreatedUserId,
                                  Id = p.ProductId,
                                  Price = p.Price,
+                                 Viewed = p.Viewed,
                                  CoverPhoto = p.Images.FirstOrDefault().URL
                              }).ToListAsync();
 
@@ -154,8 +173,12 @@
                 var viewdProduct = this.productRepository.All().FirstOrDefault(s => s.ProductId == id);
                 viewdProduct.Viewed++;
                 await productRepository.SaveChangesAsync();
+                return product;
             }
-            return product;
+
+            throw new EntityNotFoundException(string.Format(
+                    ErrorMessages.DataDoesNotExist,
+                typeof(Product).Name, "id", id));
         }
 
 

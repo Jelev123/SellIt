@@ -2,14 +2,16 @@
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-
+    using SellIt.Core.Constants.Error;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Error;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
+    using SellIt.Core.Handlers.ErrorHandlers;
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
+    using SellIt.Infrastructure.Data.Models;
 
     public class ProductController : Controller
     {
@@ -77,8 +79,19 @@
 
         [HttpPost]
         public async Task<IActionResult> EditProduct(AddEditProductViewModel editProduct, int id, GalleryFileDTO fileDTO)
-           => await this.productService.EditProductAsync(editProduct, id, fileDTO)
-           .ContinueWith(_ => RedirectToAction("MyProducts"));
+        {
+            var product = productService.GetAllProductsByCategoryIdAsync(id);
+
+            if (product == null)
+            {
+                throw new EntityNotFoundException(string.Format(
+                    ErrorMessages.DataDoesNotExist,
+                    typeof(Product).Name, "id", id));
+            }
+
+           return await this.productService.EditProductAsync(editProduct, id, fileDTO)
+              .ContinueWith(_ => RedirectToAction("MyProducts"));
+        }
 
 
         public async Task<IActionResult> GetProductById(int id)

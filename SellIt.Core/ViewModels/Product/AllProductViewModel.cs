@@ -20,5 +20,7 @@
         public string UserId { get; set; }
 
         public decimal Price { get; set; }
+
+        public int Viewed { get; set; }
     }
 }
