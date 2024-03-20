@@ -125,6 +125,10 @@
       "PackagePath": "staticwebassets\\icons\\styles.css"
     },
     {
+      "Id": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\categories\\1ecdce21-50c0-4cab-aae8-c7c45a570ddf_IMG_7777.jpg",
+      "PackagePath": "staticwebassets\\images\\categories\\1ecdce21-50c0-4cab-aae8-c7c45a570ddf_IMG_7777.jpg"
+    },
+    {
       "Id": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\categories\\30b25e8d-3f8c-4661-954d-575e83e60e8a_1-Mercedes-McLaren-SLR.jpg",
       "PackagePath": "staticwebassets\\images\\categories\\30b25e8d-3f8c-4661-954d-575e83e60e8a_1-Mercedes-McLaren-SLR.jpg"
     },

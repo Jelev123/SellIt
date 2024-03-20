@@ -314,7 +314,6 @@ D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Product\AllProductsB
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Product\EditProduct.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Product\Favorites.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Product\GetProductById.cshtml
-D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Product\HandleError.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Product\Like.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Product\Search.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Shared\ByIdSharedOld.cshtml
@@ -1025,3 +1024,6 @@ D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Se
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\SellIt.dll
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\SellIt.pdb
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\categories\1ecdce21-50c0-4cab-aae8-c7c45a570ddf_IMG_7777.jpg
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\categories\325de4f1-f472-48ef-a48b-b1c3a644da40_IMG_7777.jpg
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\categories\9e89e018-7941-4f97-a44c-738891821213_IMG_7777.jpg

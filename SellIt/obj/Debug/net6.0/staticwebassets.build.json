@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Bev/nLPiLTbllnlE1RFCJPaA6yOvTns2o5n+RTCpZ4c=",
+  "Hash": "b0v4z03g/pNxDuRpSIGlhA+uQTtrtSZ04hQZ/GQLNQ8=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1579,6 +1579,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\icons\\styles.css"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\categories\\1ecdce21-50c0-4cab-aae8-c7c45a570ddf_IMG_7777.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/categories/1ecdce21-50c0-4cab-aae8-c7c45a570ddf_IMG_7777.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\categories\\1ecdce21-50c0-4cab-aae8-c7c45a570ddf_IMG_7777.jpg"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\categories\\30b25e8d-3f8c-4661-954d-575e83e60e8a_1-Mercedes-McLaren-SLR.jpg",

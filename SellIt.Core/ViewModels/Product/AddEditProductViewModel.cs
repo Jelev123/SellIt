@@ -3,41 +3,47 @@
     using Microsoft.AspNetCore.Http;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel;
+    using SellIt.Core.Constants.Attributes;
 
     public class AddEditProductViewModel
     {
         public int Id { get; set; }
 
         [DisplayName("Title")]
-        [Required(ErrorMessage = "Please enter a title")]
-        [MaxLength(50)]
-        [MinLength(3, ErrorMessage = "The title must be min {1} characters long.")]
+        [Required(ErrorMessage = ValidateMessages.Required)]
+        [StringLength(Attributes.ProductNameMaxLength,
+            ErrorMessage = ValidateMessages.MinMaxLength,
+            MinimumLength = Attributes.ProductNameMinLength)]
         public string Name { get; set; }
 
         [DisplayName("Description")]
-        [MaxLength(300)]
-        [MinLength(5, ErrorMessage = "The description must be min {1} characters long.")]
+        [Required(ErrorMessage = ValidateMessages.Required)]
+        [StringLength(Attributes.DescriptionMaxLenght,
+            ErrorMessage = ValidateMessages.MinMaxLength,
+            MinimumLength = Attributes.DescriptionMinLenght)]
         public string Description { get; set; }
 
-        [Required]
         [DisplayName("Category")]
+        [Required(ErrorMessage = ValidateMessages.Required)]
+        [StringLength(Attributes.CategoryNameMaxLenght,
+            ErrorMessage = ValidateMessages.MinMaxLength,
+            MinimumLength = Attributes.CategoryNameMinLenght)]
         public string CategoryName { get; set; }
 
         public int CategoryId { get; set; }
 
         [DisplayName("Image")]
-        [Required]
+        [Required(ErrorMessage = ValidateMessages.Required)]
         public IFormFileCollection GalleryFiles { get; set; }
 
-
         [DisplayName("Price")]
-        [Required(ErrorMessage = "Please enter a price")]
+        [Required(ErrorMessage = ValidateMessages.Required)]
         public decimal Price { get; set; }
 
         public string PhoneNumber { get; set; }
 
         [DisplayName("Address")]
-        [Required(ErrorMessage = "Please enter an address")]
+        [Required(ErrorMessage = ValidateMessages.Required)]
         public string Address { get; set; }
     }
 }
