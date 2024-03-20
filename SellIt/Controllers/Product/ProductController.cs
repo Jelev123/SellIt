@@ -4,7 +4,6 @@
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Constants.Error;
     using SellIt.Core.Contracts.Category;
-    using SellIt.Core.Contracts.Error;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
     using SellIt.Core.Handlers.Error;
@@ -18,14 +17,12 @@
         private readonly IProductService productService;
         private readonly ICategoryService categoryService;
         private readonly ISearchService searchService;
-        private readonly IErrorService errorService;
 
-        public ProductController(IProductService productService, ICategoryService categoryService, ISearchService searchService, IErrorService errorService)
+        public ProductController(IProductService productService, ICategoryService categoryService, ISearchService searchService)
         {
             this.productService = productService;
             this.categoryService = categoryService;
             this.searchService = searchService;
-            this.errorService = errorService;
         }
 
 
@@ -57,8 +54,10 @@
         }
 
         public async Task<IActionResult> DeleteProduct(int id)
-            => await this.productService.DeleteProductAsync(id)
-            .ContinueWith(_ => RedirectToAction("Index", "Home"));
+        {
+            return await this.productService.DeleteProductAsync(id)
+                             .ContinueWith(_ => RedirectToAction("Index", "Home"));
+        }
 
         public async Task<IActionResult> EditProduct(int id)
         {
@@ -89,47 +88,56 @@
                     typeof(Product).Name, "id", id));
             }
 
-           return await this.productService.EditProductAsync(editProduct, id, fileDTO)
-              .ContinueWith(_ => RedirectToAction("MyProducts"));
+            return await this.productService.EditProductAsync(editProduct, id, fileDTO)
+               .ContinueWith(_ => RedirectToAction("MyProducts"));
         }
 
 
         public async Task<IActionResult> GetProductById(int id)
-            => (await this.productService.GetByIdAsync(id)) == null
-            ? RedirectToAction("HandleError", "Product", new { errorMessage = "Product not found" })
-            : View(await this.productService.GetByIdAsync(id));
+        {
+            return (await this.productService.GetByIdAsync(id)) == null
+                 ? RedirectToAction("HandleError", "Product", new { errorMessage = "Product not found" })
+                 : View(await this.productService.GetByIdAsync(id));
+        }
 
         public async Task<IActionResult> Search(string searchName)
-            => (this.ViewData["searchProduct"] = searchName) is var _
-            && (await this.searchService.SearchProductAsync(searchName)) is var searchedProduct
-            && searchedProduct != null
-            ? View(searchedProduct)
-            : View(searchName);
+        {
+            return (this.ViewData["searchProduct"] = searchName) is var _
+              && (await this.searchService.SearchProductAsync(searchName)) is var searchedProduct
+              && searchedProduct != null
+              ? View(searchedProduct)
+              : View(searchName);
+        }
 
         public async Task<IActionResult> SearchCategory(string searchName)
-            => (this.ViewData["searchCategory"] = searchName) is var _ &&
-            (await this.searchService.SearchProductAsync(searchName)) is var searchedCategory && searchedCategory != null
-            ? View(searchedCategory)
-            : View(searchName);
+        {
+            return (this.ViewData["searchCategory"] = searchName) is var _ &&
+             (await this.searchService.SearchProductAsync(searchName)) is var searchedCategory && searchedCategory != null
+             ? View(searchedCategory)
+             : View(searchName);
+        }
 
         public async Task<IActionResult> Favorites()
-            => View(await this.productService.FavoritesAsync());
+        {
+            return View(await this.productService.FavoritesAsync());
+        }
 
         public async Task<IActionResult> AllProducts()
-            => View(await this.productService.GetAllProductsAsync());
+        {
+            return View(await this.productService.GetAllProductsAsync());
+        }
 
         public async Task<IActionResult> AllProductsByCategoryId(int id)
-            => View(await this.productService.GetAllProductsByCategoryIdAsync(id));
+        {
+            return View(await this.productService.GetAllProductsByCategoryIdAsync(id));
+        }
 
         [HttpPost]
         public async Task<IActionResult> Like(int id)
-            => View(await this.productService.LikeAsync(id));
-
-        public IActionResult HandleError(string errorMessage)
         {
-            var errorResult = this.errorService.ErrorMessage(errorMessage);
-            return View(errorResult);
+            return View(await this.productService.LikeAsync(id));
         }
+
 
         private async Task<IEnumerable<AddEditProductViewModel>> GetCategoriesAsViewModelsAsync()
         {

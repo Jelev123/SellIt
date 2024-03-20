@@ -2,6 +2,6 @@
 {
     public class CategoryConstants
     {
-        public const string CategoryImagesFolder = "images/cagories/";
+        public const string CategoryImagesFolder = "images/categories/";
     }
 }

@@ -33,10 +33,12 @@
 
             return Redirect("/");
         }
-            
+
         public async Task<IActionResult> AllUsers()
-            => this.View(await this.userService.AllUsersAsync());
-        
+        {
+            return this.View(await this.userService.AllUsersAsync());
+        }
+
 
         public async Task<IActionResult> SetRole()
         {
@@ -50,24 +52,34 @@
 
         [HttpPost]
         public async Task<IActionResult> SetRole(string userId, AllUsersViewModel all)
-            => await userService.SetRoleAsync(userId, all)
-            .ContinueWith(_ => RedirectToAction("UserById", new { userId = all.UserId }));
-           
+        {
+            return await this.userService.SetRoleAsync(userId, all)
+                             .ContinueWith(_ => RedirectToAction("UserById", new { userId = all.UserId }));
+        }
+
 
         public async Task<IActionResult> DeleteUser(string userId)
-            => await this.userService.DeleteUserAsync(userId)
-            .ContinueWith(_ => RedirectToAction("AllUsers"));
-           
+        {
+            return await this.userService.DeleteUserAsync(userId)
+                             .ContinueWith(_ => RedirectToAction("AllUsers"));
+        }
+
 
         public async Task<IActionResult> UserById(string userId)
-            => this.View(await this.userService.UserByIdAsync(userId));
-            
+        {
+            return this.View(await this.userService.UserByIdAsync(userId));
+        }
+
 
         public async Task<IActionResult> UserProducts(string userId)
-            => this.View(await this.userService.UserProductsAsync(userId));
+        {
+            return this.View(await this.userService.UserProductsAsync(userId));
+        }
 
 
         public async Task<IActionResult> MyProducts()
-            => this.View(await this.userService.MyProductsAsync(userManager.GetUserId(User)));
+        {
+            return this.View(await this.userService.MyProductsAsync(userManager.GetUserId(User)));
+        }
     }
 }

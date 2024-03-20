@@ -125,18 +125,20 @@
         }
 
         public async Task<IEnumerable<AllProductViewModel>> GetAllProductsAsync()
-           => await this.productRepository.AllAsNoTracking()
-                             .Select(p => new AllProductViewModel
-                             {
-                                 Name = p.Name,
-                                 CategoryName = p.Category.Name,
-                                 Description = p.Description,
-                                 UserId = p.CreatedUserId,
-                                 Id = p.ProductId,
-                                 Price = p.Price,
-                                 Viewed = p.Viewed,
-                                 CoverPhoto = p.Images.FirstOrDefault().URL
-                             }).ToListAsync();
+        {
+            return await this.productRepository.AllAsNoTracking()
+                                   .Select(p => new AllProductViewModel
+                                   {
+                                       Name = p.Name,
+                                       CategoryName = p.Category.Name,
+                                       Description = p.Description,
+                                       UserId = p.CreatedUserId,
+                                       Id = p.ProductId,
+                                       Price = p.Price,
+                                       Viewed = p.Viewed,
+                                       CoverPhoto = p.Images.FirstOrDefault().URL
+                                   }).ToListAsync();
+        }
 
         public async Task<GetByIdAndLikeViewModel> GetByIdAsync(int id)
         {
@@ -249,7 +251,8 @@
         }
 
         public async Task<IEnumerable<IndexRandomViewModel>> RandomProductsAsync(int count)
-              => await this.productRepository.AllAsNoTracking()
+        {
+            return await this.productRepository.AllAsNoTracking()
                                 .Where(s => s.IsAproved == true)
                                 .OrderBy(s => Guid.NewGuid())
                                 .Select(s => new IndexRandomViewModel()
@@ -266,10 +269,11 @@
                                 })
                                  .Take(count)
                                  .ToListAsync();
-
+        }
 
         public async Task<IEnumerable<AllProductViewModel>> GetAllProductsByCategoryIdAsync(int id)
-             => await this.productRepository.AllAsNoTracking()
+        {
+            return await this.productRepository.AllAsNoTracking()
                           .Select(p => new AllProductViewModel
                           {
                               Name = p.Name,
@@ -282,5 +286,6 @@
                           })
                           .Where(p => p.CategoryId == id)
                           .ToListAsync();
+        }
     }
 }

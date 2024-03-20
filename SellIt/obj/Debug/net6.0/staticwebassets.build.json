@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2Tu0j6D1LaOpRdbjzeoC3A2SAC+0L2GQ6+j5sDZhqCU=",
+  "Hash": "Bev/nLPiLTbllnlE1RFCJPaA6yOvTns2o5n+RTCpZ4c=",
   "Source": "SellIt",
   "BasePath": "_content/SellIt",
   "Mode": "Default",
@@ -1598,6 +1598,23 @@
       "OriginalItemSpec": "wwwroot\\images\\categories\\30b25e8d-3f8c-4661-954d-575e83e60e8a_1-Mercedes-McLaren-SLR.jpg"
     },
     {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\categories\\325de4f1-f472-48ef-a48b-b1c3a644da40_IMG_7777.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/categories/325de4f1-f472-48ef-a48b-b1c3a644da40_IMG_7777.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\categories\\325de4f1-f472-48ef-a48b-b1c3a644da40_IMG_7777.jpg"
+    },
+    {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\categories\\4315a0f5-6d10-4510-9da0-6b9ed3d3b9f4_360_F_138946263_EtW7xPuHRJSfyl4rU2WeWmApJFYM0B84.jpg",
       "SourceId": "SellIt",
       "SourceType": "Discovered",
@@ -1613,6 +1630,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\categories\\4315a0f5-6d10-4510-9da0-6b9ed3d3b9f4_360_F_138946263_EtW7xPuHRJSfyl4rU2WeWmApJFYM0B84.jpg"
+    },
+    {
+      "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\categories\\9e89e018-7941-4f97-a44c-738891821213_IMG_7777.jpg",
+      "SourceId": "SellIt",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/categories/9e89e018-7941-4f97-a44c-738891821213_IMG_7777.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\categories\\9e89e018-7941-4f97-a44c-738891821213_IMG_7777.jpg"
     },
     {
       "Identity": "D:\\Projects\\SellIt\\SellIt\\wwwroot\\images\\categories\\c5f8a069-5c96-44a3-b8da-9c850a6b3fa0_1-Mercedes-McLaren-SLR.jpg",

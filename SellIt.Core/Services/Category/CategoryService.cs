@@ -1,6 +1,7 @@
 ﻿namespace SellIt.Core.Services.Category
 {
     using Microsoft.EntityFrameworkCore;
+    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Repository;
@@ -23,7 +24,7 @@
 
         public async Task CreateCategoryAsync(CreateCategoryViewModel createCategory)
         {
-            var fileFolder = "images/categories/";
+            var fileFolder = CategoryConstants.CategoryImagesFolder;
             var category = new Category
             {
                 Name = createCategory.Name,
@@ -35,12 +36,14 @@
         }
 
         public async Task<IEnumerable<AllCategoriesViewModel>> GetAllCategoriesAsync<T>()
-           => await this.categoryRepository.AllAsNoTracking()
-                .Select(s => new AllCategoriesViewModel
-                {
-                    Id = s.Id,
-                    Name = s.Name,
-                    Photo = s.Image
-                }).ToListAsync();
+        {
+            return await this.categoryRepository.AllAsNoTracking()
+                  .Select(s => new AllCategoriesViewModel
+                  {
+                      Id = s.Id,
+                      Name = s.Name,
+                      Photo = s.Image
+                  }).ToListAsync();
+        }
     }
 }

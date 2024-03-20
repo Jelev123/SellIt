@@ -3,7 +3,6 @@
 using Microsoft.AspNetCore.Identity;
 using SellIt.Core.Contracts.Category;
 using SellIt.Core.Contracts.Count;
-using SellIt.Core.Contracts.Error;
 using SellIt.Core.Contracts.ForAprooved;
 using SellIt.Core.Contracts.Image;
 using SellIt.Core.Contracts.Messages;
@@ -13,7 +12,6 @@ using SellIt.Core.Contracts.User;
 using SellIt.Core.Repository;
 using SellIt.Core.Services.Category;
 using SellIt.Core.Services.Count;
-using SellIt.Core.Services.Error;
 using SellIt.Core.Services.ForAprooved;
 using SellIt.Core.Services.Image;
 using SellIt.Core.Services.Message;
@@ -40,7 +38,6 @@ public static class ServiceRegistrator
         services.AddTransient<IMessagesService, MessageService>();
         services.AddTransient<IImageService, ImageService>();
         services.AddTransient<IUserService, UserService>();
-        services.AddTransient<IErrorService, ErrorService>();
         services.AddHttpClient();
 
         services.AddScoped<ProductService>();

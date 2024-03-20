@@ -5,5 +5,6 @@
         public const string ErrorMessage = "Error";
         public const string SuccessMessage = "Successful";
         public const string WarningMessage = "Warning";
+        public const string EmptyMessage = "Empty message";
     }
 }

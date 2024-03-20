@@ -58,7 +58,8 @@
         }
 
         public async Task<IEnumerable<AllProductMessagesViewModel>> AllProductMessagesAsync(int id)
-             => await this.messageRepository.AllAsNoTracking()
+        {
+            return await this.messageRepository.AllAsNoTracking()
                 .Where(s => s.ProductId == id)
                 .Select(s => new AllProductMessagesViewModel
                 {
@@ -79,7 +80,7 @@
                 })
                 .OrderByDescending(s => s.Text)
             .ToListAsync();
-
+        }
 
         public async Task<IEnumerable<AllMessagesViewModel>> AllMessagesAsync()
         {
@@ -106,7 +107,7 @@
               })
               .ToList()
              })
-      .ToListAsync();
+              .ToListAsync();
 
             var currentUserMessages = await this.messageRepository.All()
                 .Where(m => m.UserId == CurrentUserId)
@@ -136,8 +137,9 @@
             return allMessages;
         }
 
-        public async Task<ProductMessagesById> GetProductMessageByIdAsync(int id)  
-            => await this.messageRepository.AllAsNoTracking()
+        public async Task<ProductMessagesById> GetProductMessageByIdAsync(int id)
+        {
+            return await this.messageRepository.AllAsNoTracking()
                  .Where(s => s.Id == id)
                                .Select(s => new ProductMessagesById
                                {
@@ -155,5 +157,6 @@
                                        ProductName = s.Message.Product.Name,
                                    }).ToList(),
                                }).FirstOrDefaultAsync();
+        }
     }
 }
