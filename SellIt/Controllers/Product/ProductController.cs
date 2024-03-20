@@ -7,7 +7,7 @@
     using SellIt.Core.Contracts.Error;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.Search;
-    using SellIt.Core.Handlers.ErrorHandlers;
+    using SellIt.Core.Handlers.Error;
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Category;
     using SellIt.Core.ViewModels.Product;
@@ -84,7 +84,7 @@
 
             if (product == null)
             {
-                throw new EntityNotFoundException(string.Format(
+                throw new DataNotFoundException(string.Format(
                     ErrorMessages.DataDoesNotExist,
                     typeof(Product).Name, "id", id));
             }

@@ -5,7 +5,7 @@
     using SellIt.Core.Constants.Error;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.User;
-    using SellIt.Core.Handlers.ErrorHandlers;
+    using SellIt.Core.Handlers.Error;
     using SellIt.Core.Repository;
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Product;
@@ -83,7 +83,7 @@
                 await productRepository.SaveChangesAsync();
             }
 
-            throw new EntityNotFoundException(string.Format(
+            throw new DataNotFoundException(string.Format(
                     ErrorMessages.DataDoesNotExist,
                 typeof(Product).Name, "id", id));
         }
@@ -119,7 +119,7 @@
                 await productRepository.SaveChangesAsync();
             }
 
-            throw new EntityNotFoundException(string.Format(
+            throw new DataNotFoundException(string.Format(
                     ErrorMessages.DataDoesNotExist,
                 typeof(Product).Name, "id", id));
         }
@@ -176,7 +176,7 @@
                 return product;
             }
 
-            throw new EntityNotFoundException(string.Format(
+            throw new DataNotFoundException(string.Format(
                     ErrorMessages.DataDoesNotExist,
                 typeof(Product).Name, "id", id));
         }
