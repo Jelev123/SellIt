@@ -5,7 +5,6 @@
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Repository;
     using SellIt.Core.ViewModels;
-    using SellIt.Core.ViewModels.Product;
     using SellIt.Infrastructure.Data.Models;
     using System;
     using System.Threading.Tasks;
@@ -23,7 +22,7 @@
 
         public async Task CheckGalleryAsync(GalleryFileDTO fileDTO)
         {
-            var fileFolder = "images/gallery/";
+            var fileFolder = Constants.ProductConstants.ProductsImagesFolder;
 
             if (fileDTO.GalleryFiles != null)
             {
