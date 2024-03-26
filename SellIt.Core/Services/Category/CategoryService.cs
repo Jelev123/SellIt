@@ -6,9 +6,11 @@
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Repository;
     using SellIt.Core.ViewModels.Category;
+    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Windows.Storage;
 
     public class CategoryService : ICategoryService
     {
