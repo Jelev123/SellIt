@@ -65,10 +65,6 @@
             throw new NullReferenceException(string.Format(
                     ErrorMessages.DataDoesNotExist,
                 typeof(Product).Name, "categoryId", category.Id));
-
-            throw new NullReferenceException(string.Format(
-                    ErrorMessages.DataDoesNotExist,
-                typeof(Product).Name, "categoryId", category.Id));
         }
 
         public async Task DeleteProductAsync(int id)
