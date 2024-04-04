@@ -126,7 +126,7 @@
 
         public async Task<IEnumerable<AllProductViewModel>> GetAllProductsAsync()
         {
-            return await this.productRepository.AllAsNoTracking()
+            var allProducts = await this.productRepository.AllAsNoTracking()
                                    .Select(p => new AllProductViewModel
                                    {
                                        Name = p.Name,
@@ -138,6 +138,8 @@
                                        Viewed = p.Viewed,
                                        CoverPhoto = p.Images.FirstOrDefault().URL
                                    }).ToListAsync();
+
+            return allProducts;
         }
 
         public async Task<GetByIdAndLikeViewModel> GetByIdAsync(int id)
