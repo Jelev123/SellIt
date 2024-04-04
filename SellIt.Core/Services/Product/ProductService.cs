@@ -50,7 +50,6 @@
                        ErrorMessages.DataDoesNotExist,
                    typeof(Product).Name, "id", addProduct.CategoryId));
 
-
             var product = new Product
             {
                 Name = addProduct.Name,
@@ -81,14 +80,12 @@
                        ErrorMessages.DataDoesNotExist,
                    typeof(Product).Name, "id", id));
 
-
             var productImage = this.imageRepository
             .All()
             .FirstOrDefault(s => s.ProductId == id)
             ?? throw new DataNotFoundException(string.Format(
                    ErrorMessages.DataDoesNotExist,
                typeof(Product).Name, "id", id));
-
 
             imageRepository.Delete(productImage);
             productRepository.Delete(product);
@@ -110,13 +107,11 @@
                 ?? throw new DataNotFoundException(string.Format(
                     ErrorMessages.DataDoesNotExist,
                     typeof(Product).Name, "id", id));
-
-            
+        
                 product.Name = editProduct.Name;
                 product.Description = editProduct.Description;
                 product.Price = editProduct.Price;
                 product.CategoryId = category.Id;
-
 
                 if (editProduct.GalleryFiles != null)
                 {
@@ -160,7 +155,6 @@
                     ErrorMessages.DataDoesNotExist,
                     typeof(Product).Name, "id", id));
 
-
             if (CurrentUserId != product.UserId)
             {
                 await IncrementProductViewCountAsync(id);
@@ -177,7 +171,6 @@
                 ?? throw new DataNotFoundException(string.Format(
                         ErrorMessages.DataDoesNotExist,
                     typeof(Product).Name, "id", id));
-
 
             var existingLikedProduct = await likedProdudctsRepository.All()
                 .FirstOrDefaultAsync(lp => lp.UserId == CurrentUserId
