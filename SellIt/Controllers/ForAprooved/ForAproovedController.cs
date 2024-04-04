@@ -14,12 +14,12 @@
 
         public async Task<IActionResult> GetAllProductsForAproove()
         {
-            return View(await this.aproovedService.GetAllProductsForAprooveAsync());
+            return View(await aproovedService.GetAllProductsForAprooveAsync());
         }
 
         public async Task<IActionResult> SetAproove(int id)
         {
-            return await this.aproovedService.SetAprooveAsync(id)
+            return await aproovedService.SetAprooveAsync(id)
              .ContinueWith(_ => Redirect("/"));
         }
     }

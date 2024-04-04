@@ -1,8 +1,10 @@
 ﻿namespace SellIt.Core.Services.Message
 {
     using Microsoft.EntityFrameworkCore;
+    using SellIt.Core.Constants.Error;
     using SellIt.Core.Contracts.Messages;
     using SellIt.Core.Contracts.User;
+    using SellIt.Core.Handlers.Error;
     using SellIt.Core.Repository;
     using SellIt.Core.ViewModels.Messages;
     using SellIt.Infrastructure.Data.Models;
@@ -18,7 +20,10 @@
         private readonly IUserService userService;
         private readonly string CurrentUserId;
 
-        public MessageService(IUserService userService, IRepository<Product> productRepository, IRepository<Message> messageRepository, IRepository<ReplyMessage> replyMessageRepository)
+        public MessageService(IUserService userService,
+            IRepository<Product> productRepository,
+            IRepository<Message> messageRepository,
+            IRepository<ReplyMessage> replyMessageRepository)
         {
             this.userService = userService;
             CurrentUserId = userService.CurrentUserAccessor();
@@ -59,7 +64,7 @@
 
         public async Task<IEnumerable<AllProductMessagesViewModel>> AllProductMessagesAsync(int id)
         {
-            return await this.messageRepository.AllAsNoTracking()
+            return await messageRepository.AllAsNoTracking()
                 .Where(s => s.ProductId == id)
                 .Select(s => new AllProductMessagesViewModel
                 {
@@ -84,62 +89,19 @@
 
         public async Task<IEnumerable<AllMessagesViewModel>> AllMessagesAsync()
         {
-            var allMessages = await this.productRepository.All()
-             .Where(p => p.CreatedUserId == CurrentUserId) 
-             .SelectMany(p => p.Messages)
-             .Where(m => m.UserId == CurrentUserId || m.Product.CreatedUserId == CurrentUserId || m.Product.User.Id == CurrentUserId)
-             .Select(m => new AllMessagesViewModel
-             {
-                 Id = m.Id,
-                 Text = m.Text,
-                 UserName = m.UserName,
-                 Date = m.Date,
-                 ProductId = m.ProductId,
-                 ProductName = m.Product.Name,
-                 Photo = m.Product.Images.FirstOrDefault().URL,
-                 ReplyMessages = m.ReplyMessages
-              .Where(r => r.ReplyerUserId == CurrentUserId || r.Message.UserId == CurrentUserId)
-              .Select(r => new ReplyMessageViewModel
-              {
-                  ReplyText = r.ReplyText,
-                  ReplyerUserName = r.ReplayerUserName,
-                  ReplyerDate = r.Date
-              })
-              .ToList()
-             })
-              .ToListAsync();
 
-            var currentUserMessages = await this.messageRepository.All()
-                .Where(m => m.UserId == CurrentUserId)
-                .Select(m => new AllMessagesViewModel
-                {
-                    Id = m.Id,
-                    Text = m.Text,
-                    UserName = m.UserName,
-                    Date = m.Date,
-                    ProductId = m.ProductId,
-                    ProductName = m.Product.Name,
-                    Photo = m.Product.Images.FirstOrDefault().URL,
-                    ReplyMessages = m.ReplyMessages
-                        .Where(r => r.ReplyerUserId == CurrentUserId || r.Message.UserId == CurrentUserId)
-                        .Select(r => new ReplyMessageViewModel
-                        {
-                            ReplyText = r.ReplyText,
-                            ReplyerUserName = r.ReplayerUserName,
-                            ReplyerDate = r.Date
-                        })
-                        .ToList()
-                })
-                .ToListAsync();
+            var allMessages = await GetAllProductMessagesAsync();
 
-            allMessages.AddRange(currentUserMessages);
+            var currentUserMessages = await GetAllCurrentUserMessagesAsync();
+
+            allMessages.Concat(currentUserMessages);
 
             return allMessages;
         }
 
         public async Task<ProductMessagesById> GetProductMessageByIdAsync(int id)
         {
-            return await this.messageRepository.AllAsNoTracking()
+            var message = await messageRepository.AllAsNoTracking()
                  .Where(s => s.Id == id)
                                .Select(s => new ProductMessagesById
                                {
@@ -156,7 +118,70 @@
                                        Date = s.Date,
                                        ProductName = s.Message.Product.Name,
                                    }).ToList(),
-                               }).FirstOrDefaultAsync();
+                               }).FirstOrDefaultAsync()
+                               ?? throw new DataNotFoundException(string.Format(
+                                            ErrorMessages.DataDoesNotExist,
+                                            typeof(Product).Name, "id", id));
+
+            return message;
+        }
+
+        private async Task<IEnumerable<AllMessagesViewModel>> GetAllProductMessagesAsync()
+        {
+            var allMessages = await productRepository.All()
+            .Where(p => p.CreatedUserId == CurrentUserId)
+            .SelectMany(p => p.Messages)
+            .Where(m => m.UserId == CurrentUserId || m.Product.CreatedUserId == CurrentUserId || m.Product.User.Id == CurrentUserId)
+            .Select(m => new AllMessagesViewModel
+            {
+                Id = m.Id,
+                Text = m.Text,
+                UserName = m.UserName,
+                Date = m.Date,
+                ProductId = m.ProductId,
+                ProductName = m.Product.Name,
+                Photo = m.Product.Images.FirstOrDefault().URL,
+                ReplyMessages = m.ReplyMessages
+             .Where(r => r.ReplyerUserId == CurrentUserId || r.Message.UserId == CurrentUserId)
+             .Select(r => new ReplyMessageViewModel
+             {
+                 ReplyText = r.ReplyText,
+                 ReplyerUserName = r.ReplayerUserName,
+                 ReplyerDate = r.Date
+             })
+             .ToList()
+            })
+             .ToListAsync();
+
+            return allMessages;
+        }
+
+        private async Task<IEnumerable<AllMessagesViewModel>> GetAllCurrentUserMessagesAsync()
+        {
+            var currentUserMessages = await messageRepository.All()
+               .Where(m => m.UserId == CurrentUserId)
+               .Select(m => new AllMessagesViewModel
+               {
+                   Id = m.Id,
+                   Text = m.Text,
+                   UserName = m.UserName,
+                   Date = m.Date,
+                   ProductId = m.ProductId,
+                   ProductName = m.Product.Name,
+                   Photo = m.Product.Images.FirstOrDefault().URL,
+                   ReplyMessages = m.ReplyMessages
+                       .Where(r => r.ReplyerUserId == CurrentUserId || r.Message.UserId == CurrentUserId)
+                       .Select(r => new ReplyMessageViewModel
+                       {
+                           ReplyText = r.ReplyText,
+                           ReplyerUserName = r.ReplayerUserName,
+                           ReplyerDate = r.Date
+                       })
+                       .ToList()
+               })
+               .ToListAsync();
+
+            return currentUserMessages;
         }
     }
 }

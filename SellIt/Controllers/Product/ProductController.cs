@@ -29,7 +29,7 @@
         [Authorize]
         public async Task<IActionResult> AddProduct()
         {
-            await this.PopulateCategoriesInViewData();
+            await PopulateCategoriesInViewData();
             return View();
         }
 
@@ -39,12 +39,12 @@
             if (!ModelState.IsValid)
             {
                 var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
-                await this.PopulateCategoriesInViewData();
-                return this.View(addProduct);
+                await PopulateCategoriesInViewData();
+                return View(addProduct);
             }
             try
             {
-                await this.productService.AddProductAsync(addProduct, fileDTO);
+                await productService.AddProductAsync(addProduct, fileDTO);
                 return RedirectToAction("Index", "Home");
             }
             catch (Exception ex)
@@ -55,7 +55,7 @@
 
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            return await this.productService.DeleteProductAsync(id)
+            return await productService.DeleteProductAsync(id)
                              .ContinueWith(_ => RedirectToAction("Index", "Home"));
         }
 
@@ -69,9 +69,9 @@
                 CategoryId = s.Id
             }).ToList();
 
-            return await this.productService.GetByIdAsync(id)
+            return await productService.GetByIdAsync(id)
                 != null
-                ? this.View(await this.productService.GetByIdAsync(id))
+                ? View(await productService.GetByIdAsync(id))
                 : RedirectToAction("HandleError", "Product", new { errorMessage = "Product not found" });
 
         }
@@ -88,22 +88,22 @@
                     typeof(Product).Name, "id", id));
             }
 
-            return await this.productService.EditProductAsync(editProduct, id, fileDTO)
+            return await productService.EditProductAsync(editProduct, id, fileDTO)
                .ContinueWith(_ => RedirectToAction("MyProducts"));
         }
 
 
         public async Task<IActionResult> GetProductById(int id)
         {
-            return (await this.productService.GetByIdAsync(id)) == null
+            return (await productService.GetByIdAsync(id)) == null
                  ? RedirectToAction("HandleError", "Product", new { errorMessage = "Product not found" })
-                 : View(await this.productService.GetByIdAsync(id));
+                 : View(await productService.GetByIdAsync(id));
         }
 
         public async Task<IActionResult> Search(string searchName)
         {
-            return (this.ViewData["searchProduct"] = searchName) is var _
-              && (await this.searchService.SearchProductAsync(searchName)) is var searchedProduct
+            return (ViewData["searchProduct"] = searchName) is var _
+              && (await searchService.SearchProductAsync(searchName)) is var searchedProduct
               && searchedProduct != null
               ? View(searchedProduct)
               : View(searchName);
@@ -111,31 +111,31 @@
 
         public async Task<IActionResult> SearchCategory(string searchName)
         {
-            return (this.ViewData["searchCategory"] = searchName) is var _ &&
-             (await this.searchService.SearchProductAsync(searchName)) is var searchedCategory && searchedCategory != null
+            return (ViewData["searchCategory"] = searchName) is var _ &&
+             (await searchService.SearchProductAsync(searchName)) is var searchedCategory && searchedCategory != null
              ? View(searchedCategory)
              : View(searchName);
         }
 
         public async Task<IActionResult> Favorites()
         {
-            return View(await this.productService.FavoritesAsync());
+            return View(await productService.FavoritesAsync());
         }
 
         public async Task<IActionResult> AllProducts()
         {
-            return View(await this.productService.GetAllProductsAsync());
+            return View(await productService.GetAllProductsAsync());
         }
 
         public async Task<IActionResult> AllProductsByCategoryId(int id)
         {
-            return View(await this.productService.GetAllProductsByCategoryIdAsync(id));
+            return View(await productService.GetAllProductsByCategoryIdAsync(id));
         }
 
         [HttpPost]
         public async Task<IActionResult> Like(int id)
         {
-            return View(await this.productService.LikeAsync(id));
+            return View(await productService.LikeAsync(id));
         }
 
 

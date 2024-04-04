@@ -6,11 +6,9 @@
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Repository;
     using SellIt.Core.ViewModels.Category;
-    using SellIt.Infrastructure.Data;
     using SellIt.Infrastructure.Data.Models;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Windows.Storage;
 
     public class CategoryService : ICategoryService
     {
@@ -18,7 +16,8 @@
         private readonly IRepository<Category> categoryRepository;
 
 
-        public CategoryService(IImageService imageService, IRepository<Category> categoryRepository)
+        public CategoryService(IImageService imageService,
+            IRepository<Category> categoryRepository)
         {
             this.imageService = imageService;
             this.categoryRepository = categoryRepository;
@@ -39,7 +38,7 @@
 
         public async Task<IEnumerable<AllCategoriesViewModel>> GetAllCategoriesAsync<T>()
         {
-            return await this.categoryRepository.AllAsNoTracking()
+            return await categoryRepository.AllAsNoTracking()
                   .Select(s => new AllCategoriesViewModel
                   {
                       Id = s.Id,

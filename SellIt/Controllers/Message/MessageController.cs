@@ -35,17 +35,17 @@
 
         public async Task<IActionResult> AllProductMessages(int id)
         {
-            return View(await this.messagesService.AllProductMessagesAsync(id));
+            return View(await messagesService.AllProductMessagesAsync(id));
         }
 
         public async Task<IActionResult> AllMessages()
         {
-            return this.View(await this.messagesService.AllMessagesAsync());
+            return View(await messagesService.AllMessagesAsync());
         }
 
         public async Task<IActionResult> GetProductMessageById(int id)
         {
-            return View(await this.messagesService.GetProductMessageByIdAsync(id));
+            return View(await messagesService.GetProductMessageByIdAsync(id));
         }
     }
 }

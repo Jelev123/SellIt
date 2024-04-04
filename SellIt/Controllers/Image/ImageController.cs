@@ -14,7 +14,7 @@
 
         public async Task<IActionResult> DeleteImage(string id, int productId)
         {
-            return await this.imageService.DeleteImageAsync(id)
+            return await imageService.DeleteImageAsync(id)
                              .ContinueWith(_ => RedirectToAction("EditProduct", "Product", 
                              new { id = productId }));
         }

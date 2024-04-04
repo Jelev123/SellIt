@@ -1793,3 +1793,7 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\runtimes\wi
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\SellIt.dll
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\SellIt.pdb
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\categories\12dccd78-78f9-466e-887c-39282c164908_1-mercedes-benz-s500-2020-fd-hero-front.webp
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\gallery\355ae55c-72de-481e-b513-54e2402aa5d5_bmw-back-759.webp
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ccd9abf6-2752-4a0a-b926-f76bcac6e957_bmw-back-759.webp
+C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\gallery\efe91542-0bd3-4a37-bdda-3f07d321ce87_bmw-back-759.webp

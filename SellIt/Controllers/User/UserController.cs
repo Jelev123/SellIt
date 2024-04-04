@@ -19,7 +19,7 @@
 
         public IActionResult CreateRole()
         {
-            return this.View();
+            return View();
         }
 
         [HttpPost]
@@ -27,7 +27,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return this.View(role);
+                return View(role);
             }
             await userService.CreateRoleAsync(role);
 
@@ -36,50 +36,50 @@
 
         public async Task<IActionResult> AllUsers()
         {
-            return this.View(await this.userService.AllUsersAsync());
+            return View(await userService.AllUsersAsync());
         }
 
 
         public async Task<IActionResult> SetRole()
         {
-            var roles = await this.userService.GetAllRolesAsync();
-            this.ViewData["roles"] = roles.Select(s => new RoleViewModel
+            var roles = await userService.GetAllRolesAsync();
+            ViewData["roles"] = roles.Select(s => new RoleViewModel
             {
                 Name = s.Name,
             }).ToList();
-            return this.View();
+
+            return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> SetRole(string userId, AllUsersViewModel all)
         {
-            return await this.userService.SetRoleAsync(userId, all)
+            return await userService.SetRoleAsync(userId, all)
                              .ContinueWith(_ => RedirectToAction("UserById", new { userId = all.UserId }));
         }
 
-
         public async Task<IActionResult> DeleteUser(string userId)
         {
-            return await this.userService.DeleteUserAsync(userId)
+            return await userService.DeleteUserAsync(userId)
                              .ContinueWith(_ => RedirectToAction("AllUsers"));
         }
 
 
         public async Task<IActionResult> UserById(string userId)
         {
-            return this.View(await this.userService.UserByIdAsync(userId));
+            return View(await userService.UserByIdAsync(userId));
         }
 
 
         public async Task<IActionResult> UserProducts(string userId)
         {
-            return this.View(await this.userService.UserProductsAsync(userId));
+            return View(await userService.UserProductsAsync(userId));
         }
 
 
         public async Task<IActionResult> MyProducts()
         {
-            return this.View(await this.userService.MyProductsAsync(userManager.GetUserId(User)));
+            return View(await userService.MyProductsAsync(userManager.GetUserId(User)));
         }
     }
 }

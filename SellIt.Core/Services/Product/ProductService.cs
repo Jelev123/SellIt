@@ -43,7 +43,7 @@
         {
             User currentUser = await userManager.FindByIdAsync(CurrentUserId);
 
-            var category = this.categoryRepository
+            var category = categoryRepository
                 .AllAsNoTracking()
                 .FirstOrDefault(s => s.Name == addProduct.CategoryName)
                 ?? throw new DataNotFoundException(string.Format(
@@ -73,14 +73,14 @@
 
         public async Task DeleteProductAsync(int id)
         {
-            var product = this.productRepository
+            var product = productRepository
                 .AllAsNoTracking()
                 .FirstOrDefault(s => s.ProductId == id)
                 ?? throw new DataNotFoundException(string.Format(
                        ErrorMessages.DataDoesNotExist,
                    typeof(Product).Name, "id", id));
 
-            var productImage = this.imageRepository
+            var productImage = imageRepository
             .All()
             .FirstOrDefault(s => s.ProductId == id)
             ?? throw new DataNotFoundException(string.Format(
@@ -94,14 +94,14 @@
 
         public async Task EditProductAsync(AddEditProductViewModel editProduct, int id, GalleryFileDTO fileDTO)
         {
-            var product = this.productRepository
+            var product = productRepository
                 .All()
                 .FirstOrDefault(s => s.ProductId == id)
                 ?? throw new DataNotFoundException(string.Format(
                     ErrorMessages.DataDoesNotExist,
                     typeof(Product).Name, "id", id));
 
-            var category = this.categoryRepository
+            var category = categoryRepository
                 .All()
                 .FirstOrDefault(s => s.Name == editProduct.CategoryName)
                 ?? throw new DataNotFoundException(string.Format(
@@ -134,7 +134,7 @@
 
         public async Task<IEnumerable<AllProductViewModel>> GetAllProductsAsync()
         {
-            return await this.productRepository.AllAsNoTracking()
+            return await productRepository.AllAsNoTracking()
                                     .Select(p => new AllProductViewModel
                                     {
                                         Name = p.Name,
@@ -206,7 +206,7 @@
 
         public async Task<IEnumerable<MyProductsViewModel>> FavoritesAsync()
         {
-            var myLikedProductIds = await this.likedProdudctsRepository
+            var myLikedProductIds = await likedProdudctsRepository
               .AllAsNoTracking()
               .Where(x => x.UserId == CurrentUserId)
               .Select(x => x.ProductId)
@@ -214,7 +214,7 @@
 
             if (myLikedProductIds != null && myLikedProductIds.Count > 0)
             {
-                var myProducts = await this.productRepository.All()
+                var myProducts = await productRepository.All()
                      .Where(x => myLikedProductIds.Contains(x.ProductId))
                      .Select(x => new MyProductsViewModel
                      {
@@ -238,7 +238,7 @@
 
         public async Task<IEnumerable<IndexRandomViewModel>> RandomProductsAsync(int count)
         {
-            return await this.productRepository.AllAsNoTracking()
+            return await productRepository.AllAsNoTracking()
                                 .Where(s => s.IsAproved == true)
                                 .OrderBy(s => Guid.NewGuid())
                                 .Select(s => new IndexRandomViewModel()
@@ -259,7 +259,7 @@
 
         public async Task<IEnumerable<AllProductViewModel>> GetAllProductsByCategoryIdAsync(int id)
         {
-            return await this.productRepository.AllAsNoTracking()
+            return await productRepository.AllAsNoTracking()
                           .Select(p => new AllProductViewModel
                           {
                               Name = p.Name,
@@ -276,7 +276,7 @@
 
         private async Task<GetByIdAndLikeViewModel> GetProductByIdAsync(int id)
         {
-            return await this.productRepository.AllAsNoTracking()
+            return await productRepository.AllAsNoTracking()
                 .Where(s => s.ProductId == id)
                 .Select(s => new GetByIdAndLikeViewModel
                 {
@@ -310,7 +310,7 @@
 
         private async Task IncrementProductViewCountAsync(int id)
         {
-            var product = await this.productRepository.All()
+            var product = await productRepository.All()
                .FirstOrDefaultAsync(s => s.ProductId == id);
 
             if (product != null)

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "B0eVV8IPXPfH4saUbmRrrnZymreXv3SRlrsJgabT5z8=",
+  "Hash": "GaXrgl+oEhD6dbzhyMObF6MAKaZdgXjRA/75Ao4FlIw=",
   "Source": "SellIt.Api",
   "BasePath": "_content/SellIt.Api",
   "Mode": "Default",
@@ -1593,6 +1593,23 @@
       "OriginalItemSpec": "wwwroot\\icons\\styles.css"
     },
     {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\categories\\12dccd78-78f9-466e-887c-39282c164908_1-mercedes-benz-s500-2020-fd-hero-front.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/categories/12dccd78-78f9-466e-887c-39282c164908_1-mercedes-benz-s500-2020-fd-hero-front.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\categories\\12dccd78-78f9-466e-887c-39282c164908_1-mercedes-benz-s500-2020-fd-hero-front.webp"
+    },
+    {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\categories\\1ecdce21-50c0-4cab-aae8-c7c45a570ddf_IMG_7777.jpg",
       "SourceId": "SellIt",
       "SourceType": "Project",
@@ -1897,6 +1914,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\2e552eff-69d8-45cc-a50b-f15488afc4a1_lahcv49iban71.webp"
+    },
+    {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\355ae55c-72de-481e-b513-54e2402aa5d5_bmw-back-759.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/355ae55c-72de-481e-b513-54e2402aa5d5_bmw-back-759.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\355ae55c-72de-481e-b513-54e2402aa5d5_bmw-back-759.webp"
     },
     {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\36f9ccd2-4861-4ea4-a2b9-b3b68a230166_download.jpeg",
@@ -2307,6 +2341,23 @@
       "OriginalItemSpec": "wwwroot\\images\\gallery\\b93ecb0b-67d7-4532-97ee-865ed7cb1560_lahcv49iban71.webp"
     },
     {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\ccd9abf6-2752-4a0a-b926-f76bcac6e957_bmw-back-759.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/ccd9abf6-2752-4a0a-b926-f76bcac6e957_bmw-back-759.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\ccd9abf6-2752-4a0a-b926-f76bcac6e957_bmw-back-759.webp"
+    },
+    {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\d81de8e5-95b7-4d9e-919b-a8f0cd560873_download.jpeg",
       "SourceId": "SellIt",
       "SourceType": "Project",
@@ -2441,6 +2492,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\gallery\\ec328dea-5c01-4f64-b93a-991b69383343_download.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\efe91542-0bd3-4a37-bdda-3f07d321ce87_bmw-back-759.webp",
+      "SourceId": "SellIt",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\",
+      "BasePath": "_content/SellIt",
+      "RelativePath": "images/gallery/efe91542-0bd3-4a37-bdda-3f07d321ce87_bmw-back-759.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\gallery\\efe91542-0bd3-4a37-bdda-3f07d321ce87_bmw-back-759.webp"
     },
     {
       "Identity": "C:\\Users\\zzhelev\\Documents\\GitHub\\SellIt\\SellIt\\wwwroot\\images\\gallery\\f0ecdc10-fd6a-417c-b343-f78fedcb4e14_download.jpeg",

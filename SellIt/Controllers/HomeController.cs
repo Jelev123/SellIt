@@ -24,19 +24,19 @@
 
         public async Task<IActionResult> Index(int id)
         {
-            //var count = await this.countService.GetCountAsync(id);
+            var count = await this.countService.GetCountAsync(id);
             var counts = new HomeViewModel
             {
-                //ProductForAprooveCount = count.ProductsToAprooveCount,
-                //AllProducts = count.AllProducts,
-                RandomProducts = await this.productService.RandomProductsAsync(6),
-                //ProductMessages = count.ProductMessages,
-                AllCategories = await this.categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>(),
+                ProductForAprooveCount = count.ProductsToAprooveCount,
+                AllProducts = count.AllProducts,
+                RandomProducts = await productService.RandomProductsAsync(6),
+                ProductMessages = count.ProductMessages,
+                AllCategories = await categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>(),
             };
 
             ViewData["HomeViewModel"] = counts;
 
-            var categories = await this.categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>();
+            var categories = await categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>();
 
             this.ViewData["categories"] = categories.Select(s => new AllCategoriesViewModel
             {
@@ -46,10 +46,8 @@
                 
             }).ToList();
 
-            return this.View(counts);
+            return View(counts);
         }
-
-
 
         public IActionResult Privacy()
         {

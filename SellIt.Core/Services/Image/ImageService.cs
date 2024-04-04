@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using SellIt.Core.Constants.Error;
     using SellIt.Core.Contracts.Image;
     using SellIt.Core.Repository;
     using SellIt.Core.ViewModels;
@@ -14,7 +15,8 @@
         private readonly IRepository<Image> imageRepository;
         private readonly IWebHostEnvironment environment;
 
-        public ImageService(IWebHostEnvironment environment, IRepository<Image> imageRepository)
+        public ImageService(IWebHostEnvironment environment,
+            IRepository<Image> imageRepository)
         {
             this.environment = environment;
             this.imageRepository = imageRepository;
@@ -24,31 +26,45 @@
         {
             var fileFolder = Constants.ProductConstants.ProductsImagesFolder;
 
+
             if (fileDTO.GalleryFiles != null)
             {
                 fileDTO.Gallery = new List<GalleryModel>();
 
                 foreach (var file in fileDTO.GalleryFiles)
                 {
-                    var gallery = new GalleryModel()
-                    {
-                        Name = file.FileName,
-                        URL = await UploadImageAsync(fileFolder, file)
-                    };
+                    var gallery = await CreateGalleryModelAsync(file, fileFolder);
                     fileDTO.Gallery.Add(gallery);
                 }
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                          ErrorMessages.DataDoesNotExist,
+                          typeof(Image).Name));
             }
         }
 
         public async Task DeleteImageAsync(string imageId)
         {
-            var image = this.imageRepository.All().FirstOrDefault(x => x.ImageId == imageId);
+            var image = imageRepository
+                .All()
+                .FirstOrDefault(x => x.ImageId == imageId)
+                ?? throw new NullReferenceException(string.Format(
+                             ErrorMessages.DataDoesNotExist,
+                             typeof(Image).Name, "id", imageId));
 
             string filePath = Path.Combine(environment.WebRootPath, image.URL.TrimStart('/'));
 
-            if (File.Exists(filePath))
+            if (!string.IsNullOrEmpty(filePath) && File.Exists(filePath))
             {
-                File.Delete(filePath);
+                await Task.Run(() => File.Delete(filePath));
+            }
+            else
+            {
+                throw new InvalidOperationException(string.Format(
+                          ErrorMessages.DataDoesNotExist,
+                          typeof(Image).Name));
             }
 
             imageRepository.Delete(image);
@@ -61,9 +77,23 @@
 
             string serverFolder = Path.Combine(environment.WebRootPath, folderPath);
 
-            file.CopyTo(new FileStream(serverFolder, FileMode.Create));
+            using (var fileStream = new FileStream(serverFolder, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
 
             return "/" + folderPath;
+        }
+
+        private async Task<GalleryModel> CreateGalleryModelAsync(IFormFile file, string folderPath)
+        {
+            var imageUrl = await UploadImageAsync(folderPath, file);
+
+            return new GalleryModel
+            {
+                Name = file.FileName,
+                URL = imageUrl
+            };
         }
     }
 }

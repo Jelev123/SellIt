@@ -16,8 +16,9 @@
             this.productRepository = productRepository;
         }
 
-        public async Task<IEnumerable<SearchViewModel>> SearchProductAsync(string searchName)       
-            => await this.productRepository.AllAsNoTracking()
+        public async Task<IEnumerable<SearchViewModel>> SearchProductAsync(string searchName)
+        {
+           return await productRepository.AllAsNoTracking()
                  .Select(s => new SearchViewModel
                  {
                      Name = s.Name,
@@ -26,9 +27,10 @@
                      UserId = s.CreatedUserId,
                      Id = s.ProductId,
                      Price = s.Price,
-                     CoverPhoto =  s.Images.FirstOrDefault().URL
+                     CoverPhoto = s.Images.FirstOrDefault().URL
                  })
                  .Where(s => (s.Name.Contains(searchName)) || (s.CategoryName.Contains(searchName)))
             .ToListAsync();
+        }
     }
 }

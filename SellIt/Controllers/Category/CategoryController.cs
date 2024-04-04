@@ -15,7 +15,7 @@
 
         public IActionResult CreateCategory()
         {
-            return this.View();
+            return View();
         }
 
         [HttpPost]
@@ -23,7 +23,7 @@
         {
             if (!ModelState.IsValid)
             {
-                return this.View(create);
+                return View(create);
             }
 
             try
