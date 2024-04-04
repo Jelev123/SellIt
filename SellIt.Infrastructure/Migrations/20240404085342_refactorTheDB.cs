@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SellIt.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class qweqwe : Migration
+    public partial class refactorTheDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

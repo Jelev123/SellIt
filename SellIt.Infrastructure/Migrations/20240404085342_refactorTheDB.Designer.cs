@@ -12,8 +12,8 @@ using SellIt.Infrastructure.Data;
 namespace SellIt.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231227124622_adqwdq")]
-    partial class adqwdq
+    [Migration("20240404085342_refactorTheDB")]
+    partial class refactorTheDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

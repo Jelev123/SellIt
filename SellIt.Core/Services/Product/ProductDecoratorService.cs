@@ -12,6 +12,7 @@
     {
         private readonly ProductService _productService;
         private readonly IImageService imageService;
+        private readonly Dictionary<int, GetByIdAndLikeViewModel> getByIdCache = new Dictionary<int, GetByIdAndLikeViewModel>();
 
 
         public ProductDecoratorService(ProductService productService, IImageService imageService)
@@ -54,7 +55,16 @@
 
         public async Task<GetByIdAndLikeViewModel> GetByIdAsync(int id)
         {
-            return await _productService.GetByIdAsync(id);
+            if (getByIdCache.ContainsKey(id))
+            {
+                return getByIdCache[id];
+            }
+
+            var product = await _productService.GetByIdAsync(id);
+
+            getByIdCache[id] = product;
+
+            return product;
         }
 
         public async Task<GetByIdAndLikeViewModel> LikeAsync(int id)
