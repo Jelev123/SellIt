@@ -1,8 +1,6 @@
-using SellIt.ConfigExtensions;
-using SellIt.Core.Handlers.Error;
+using SellIt.Api.ConfigExtension;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddDatabase(builder.Configuration);
 builder.Services.RegisterServices();

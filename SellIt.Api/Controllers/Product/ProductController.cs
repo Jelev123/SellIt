@@ -5,6 +5,7 @@
     using SellIt.Core.ViewModels;
     using SellIt.Core.ViewModels.Product;
 
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -20,7 +21,7 @@
         [HttpPost]
         public async Task<ActionResult> AddProduct([FromBody] AddEditProductViewModel model, [FromForm] GalleryFileDTO fileDto)
         {
-            await this.productService.AddProductAsync(model, fileDto);
+            await productService.AddProductAsync(model, fileDto);
 
             return Ok(model);
         }
@@ -29,7 +30,7 @@
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AllProductViewModel>>> GetAllProducts()
         {
-            return Ok(await this.productService.GetAllProductsAsync());
+            return Ok(await productService.GetAllProductsAsync());
         }
 
 
@@ -37,7 +38,7 @@
         [HttpGet]
         public async Task<ActionResult<GetByIdAndLikeViewModel>> GetProductById(int id)
         {
-            return Ok(await this.productService.GetByIdAsync(id));
+            return Ok(await productService.GetByIdAsync(id));
         }
 
 
@@ -45,7 +46,7 @@
         [HttpDelete]
         public async Task<ActionResult> Delete(int id)
         {
-            await this.productService.DeleteProductAsync(id);
+            await productService.DeleteProductAsync(id);
 
             return Ok();
         }
@@ -54,7 +55,7 @@
         [HttpPut]
         public async Task<ActionResult> Edit([FromBody] AddEditProductViewModel editProduct, int id, [FromForm] GalleryFileDTO fileDTO)
         {
-            await this.productService.EditProductAsync(editProduct, id, fileDTO);
+            await productService.EditProductAsync(editProduct, id, fileDTO);
 
             return Ok();
         }

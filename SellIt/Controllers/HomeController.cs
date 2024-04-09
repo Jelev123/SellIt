@@ -38,7 +38,7 @@
 
             var categories = await categoryService.GetAllCategoriesAsync<AllCategoriesViewModel>();
 
-            this.ViewData["categories"] = categories.Select(s => new AllCategoriesViewModel
+            ViewData["categories"] = categories.Select(s => new AllCategoriesViewModel
             {
                 Name = s.Name,
                 Id = s.Id,

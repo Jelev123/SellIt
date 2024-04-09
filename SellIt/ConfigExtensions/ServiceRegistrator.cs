@@ -30,7 +30,7 @@ public static class ServiceRegistrator
         .AddEntityFrameworkStores<ApplicationDbContext>();
 
         services.AddControllersWithViews();
-        services.AddScoped<IProductService, ProductDecoratorService>();
+
         services.AddTransient<ICategoryService, CategoryService>();
         services.AddTransient<IForAproovedService, ForAproovedService>();
         services.AddTransient<ICountService, CountService>();
@@ -38,10 +38,11 @@ public static class ServiceRegistrator
         services.AddTransient<IMessagesService, MessageService>();
         services.AddTransient<IImageService, ImageService>();
         services.AddTransient<IUserService, UserService>();
-        services.AddHttpClient();
 
+        services.AddScoped<IProductService, ProductDecoratorService>();
         services.AddScoped<ProductService>();
-
         services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+
+        services.AddHttpClient();
     }
 }
