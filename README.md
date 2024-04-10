@@ -4,6 +4,7 @@
  <h2>:hammer: Build with</h2>
 
 <h4>ASP.NET [CORE 6.0]</h2>
+<h4>ASP.NET CORE WEB API</h2>
 <h4>ASP.NET CORE MVC</h2>
 <h4>ASP.NET Core areas</h2>
 <h4>MSSQL Server</h2>
