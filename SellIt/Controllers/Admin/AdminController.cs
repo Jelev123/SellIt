@@ -16,6 +16,7 @@
             this.adminService = adminService;
         }
 
+        [Authorize(Roles = UserConstants.Role.Administrator)]
         public IActionResult CreateRole()
         {
             return View();
