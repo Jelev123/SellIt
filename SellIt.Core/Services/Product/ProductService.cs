@@ -5,7 +5,6 @@
     using SellIt.Core.Constants.Error;
     using SellIt.Core.Contracts.Admin;
     using SellIt.Core.Contracts.Product;
-    using SellIt.Core.Contracts.User;
     using SellIt.Core.Handlers.Error;
     using SellIt.Core.Repository;
     using SellIt.Core.ViewModels;
