@@ -34,6 +34,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddProduct(AddEditProductViewModel addProduct, GalleryFileDTO fileDTO)
         {
             if (!ModelState.IsValid)
@@ -53,12 +54,14 @@
             }
         }
 
+        [Authorize]
         public async Task<IActionResult> DeleteProduct(int id)
         {
             return await productService.DeleteProductAsync(id)
                              .ContinueWith(_ => RedirectToAction("Index", "Home"));
         }
 
+        [Authorize]
         public async Task<IActionResult> EditProduct(int id)
         {
             var categories = await GetCategoriesAsViewModelsAsync();
@@ -76,7 +79,8 @@
 
         }
 
-        [HttpPost]
+        [HttpPut]
+        [Authorize]
         public async Task<IActionResult> EditProduct(AddEditProductViewModel editProduct, int id, GalleryFileDTO fileDTO)
         {
             var product = productService.GetAllProductsByCategoryIdAsync(id);
@@ -117,6 +121,7 @@
              : View(searchName);
         }
 
+        [Authorize]
         public async Task<IActionResult> Favorites()
         {
             return View(await productService.FavoritesAsync());
@@ -133,6 +138,7 @@
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Like(int id)
         {
             return View(await productService.LikeAsync(id));

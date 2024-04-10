@@ -2,6 +2,7 @@
 {
     using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Constants.Error;
+    using SellIt.Core.Contracts.Admin;
     using SellIt.Core.Contracts.Messages;
     using SellIt.Core.Contracts.User;
     using SellIt.Core.Handlers.Error;
@@ -17,16 +18,16 @@
         private readonly IRepository<Product> productRepository;
         private readonly IRepository<Message> messageRepository;
         private readonly IRepository<ReplyMessage> replyMessageRepository;
-        private readonly IUserService userService;
+        private readonly IAdminService adminService;
         private readonly string CurrentUserId;
 
-        public MessageService(IUserService userService,
+        public MessageService(IAdminService adminService,
             IRepository<Product> productRepository,
             IRepository<Message> messageRepository,
             IRepository<ReplyMessage> replyMessageRepository)
         {
-            this.userService = userService;
-            CurrentUserId = userService.CurrentUserAccessor();
+            this.adminService = adminService;
+            CurrentUserId = adminService.CurrentUserAccessor();
             this.productRepository = productRepository;
             this.messageRepository = messageRepository;
             this.replyMessageRepository = replyMessageRepository;

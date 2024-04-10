@@ -319,12 +319,7 @@ D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Shared\_LoginPartial
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Shared\_MainMenu.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Shared\_Message.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Shared\_ValidationScriptsPartial.cshtml
-D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\User\AllUsers.cshtml
-D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\User\CreateRole.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\User\MyProducts.cshtml
-D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\User\SetRole.cshtml
-D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\User\UserById.cshtml
-D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\User\UserProducts.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\_ViewImports.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\_ViewStart.cshtml
 D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\baseline_favorite_black_24dp.png
@@ -1797,3 +1792,12 @@ C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwr
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\gallery\355ae55c-72de-481e-b513-54e2402aa5d5_bmw-back-759.webp
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ccd9abf6-2752-4a0a-b926-f76bcac6e957_bmw-back-759.webp
 C:\Users\zzhelev\Documents\GitHub\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\gallery\efe91542-0bd3-4a37-bdda-3f07d321ce87_bmw-back-759.webp
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\categories\12dccd78-78f9-466e-887c-39282c164908_1-mercedes-benz-s500-2020-fd-hero-front.webp
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\gallery\355ae55c-72de-481e-b513-54e2402aa5d5_bmw-back-759.webp
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\gallery\ccd9abf6-2752-4a0a-b926-f76bcac6e957_bmw-back-759.webp
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\wwwroot\images\gallery\efe91542-0bd3-4a37-bdda-3f07d321ce87_bmw-back-759.webp
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Admin\AllUsers.cshtml
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Admin\CreateRole.cshtml
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Admin\SetRole.cshtml
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Admin\UserById.cshtml
+D:\Projects\SellIt\SellIt.Api\bin\Debug\net6.0\sellit\Views\Admin\UserProducts.cshtml

@@ -23,8 +23,8 @@
                            @if (User.IsInRole(UserConstants.Role.Administrator))
                                 {
                                 <a class="nav-link" asp-action="CreateCategory" asp-controller="Category">Create Category</a>
-                                <a class="nav-link" asp-action="CreateRole" asp-controller="User">Create Role</a>
-                                <a class="nav-link" asp-action="AllUsers" asp-controller="User">All Users</a>
+                                <a class="nav-link" asp-action="CreateRole" asp-controller="Admin">Create Role</a>
+                                <a class="nav-link" asp-action="AllUsers" asp-controller="Admin">All Users</a>
                                 <a class="nav-link" asp-action="AllProducts" asp-controller="Product">All Products</a>
                                 <a class="nav-link" asp-action="GetAllProductsForAproove" asp-controller="ForAprooved">All Products For Aprooved</a>
                                 }

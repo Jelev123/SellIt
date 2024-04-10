@@ -1,5 +1,6 @@
 ﻿namespace SellIt.Controllers.Image
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Contracts.Image;
 
@@ -12,6 +13,7 @@
             this.imageService = imageService;
         }
 
+        [Authorize]
         public async Task<IActionResult> DeleteImage(string id, int productId)
         {
             return await imageService.DeleteImageAsync(id)

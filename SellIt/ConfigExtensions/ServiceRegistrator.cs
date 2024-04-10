@@ -1,6 +1,7 @@
 ﻿namespace SellIt.ConfigExtensions;
 
 using Microsoft.AspNetCore.Identity;
+using SellIt.Core.Contracts.Admin;
 using SellIt.Core.Contracts.Category;
 using SellIt.Core.Contracts.Count;
 using SellIt.Core.Contracts.ForAprooved;
@@ -10,6 +11,7 @@ using SellIt.Core.Contracts.Product;
 using SellIt.Core.Contracts.Search;
 using SellIt.Core.Contracts.User;
 using SellIt.Core.Repository;
+using SellIt.Core.Services.Admin;
 using SellIt.Core.Services.Category;
 using SellIt.Core.Services.Count;
 using SellIt.Core.Services.ForAprooved;
@@ -38,6 +40,7 @@ public static class ServiceRegistrator
         services.AddTransient<IMessagesService, MessageService>();
         services.AddTransient<IImageService, ImageService>();
         services.AddTransient<IUserService, UserService>();
+        services.AddTransient<IAdminService, AdminService>();
 
         services.AddScoped<IProductService, ProductDecoratorService>();
         services.AddScoped<ProductService>();

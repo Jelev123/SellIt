@@ -1,6 +1,8 @@
 ﻿namespace SellIt.Controllers.Category
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using SellIt.Core.Constants;
     using SellIt.Core.Contracts.Category;
     using SellIt.Core.ViewModels.Category;
 
@@ -13,12 +15,14 @@
             this.categoryService = categoryService;
         }
 
+        [Authorize(Roles = UserConstants.Role.Administrator)]
         public IActionResult CreateCategory()
         {
             return View();
         }
 
         [HttpPost]
+        [Authorize(Roles = UserConstants.Role.Administrator)]
         public async Task<IActionResult> CreateCategory(CreateCategoryViewModel create)
         {
             if (!ModelState.IsValid)

@@ -3,6 +3,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using SellIt.Core.Constants.Error;
+    using SellIt.Core.Contracts.Admin;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.Contracts.User;
     using SellIt.Core.Handlers.Error;
@@ -15,7 +16,7 @@
     public partial class ProductService : IProductService
     {
         private readonly UserManager<User> userManager;
-        private readonly IUserService userService;
+        private readonly IAdminService adminService;
         private readonly string CurrentUserId;
         private readonly IRepository<Product> productRepository;
         private readonly IRepository<Category> categoryRepository;
@@ -24,15 +25,15 @@
 
 
         public ProductService(UserManager<User> userManager,
-            IUserService userService,
+            IAdminService adminService,
             IRepository<Product> productRepository,
             IRepository<Image> imageRepository,
             IRepository<Category> categoryRepository,
             IRepository<LikedProduct> likedProdudctsRepository)
         {
             this.userManager = userManager;
-            this.userService = userService;
-            CurrentUserId = userService.CurrentUserAccessor();
+            this.adminService = adminService;
+            CurrentUserId = adminService.CurrentUserAccessor();
             this.productRepository = productRepository;
             this.imageRepository = imageRepository;
             this.categoryRepository = categoryRepository;

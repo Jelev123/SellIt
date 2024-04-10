@@ -1,4 +1,4 @@
-﻿@using SellIt.Core.ViewModels.User
+﻿@using SellIt.Core.ViewModels.Admin
 @model IEnumerable<AllUsersViewModel>
 
 <div class="row">
@@ -33,8 +33,8 @@
                                 <td>@user.UserName</td>
                                 <td>@user.Email</td>
                                 <td>
-                                    <a asp-action="UserById" asp-controller="User" class="btn btn-block btn-outline-info btn-xs" asp-route-UserId="@user.UserId">View</a>
-                                    <a asp-action="DeleteUser" asp-controller="User" class="btn btn-block btn-outline-danger btn-xs" asp-route-UserId="@user.UserId">Delete</a>
+                                    <a asp-action="UserById" asp-controller="Admin" class="btn btn-block btn-outline-info btn-xs" asp-route-UserId="@user.UserId">View</a>
+                                    <a asp-action="DeleteUser" asp-controller="Admin" class="btn btn-block btn-outline-danger btn-xs" asp-route-UserId="@user.UserId">Delete</a>
                                 </td>
                             </tr>
                         }

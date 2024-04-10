@@ -1,4 +1,4 @@
-﻿namespace SellIt.Core.ViewModels.User
+﻿namespace SellIt.Core.ViewModels.Admin
 {
     public class RoleViewModel
     {

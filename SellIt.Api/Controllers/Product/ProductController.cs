@@ -1,5 +1,6 @@
 ﻿namespace SellIt.Api.Controllers.Product
 {
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using SellIt.Core.Contracts.Product;
     using SellIt.Core.ViewModels;
@@ -19,6 +20,7 @@
 
         [Route("addProduct")]
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> AddProduct([FromBody] AddEditProductViewModel model, [FromForm] GalleryFileDTO fileDto)
         {
             await productService.AddProductAsync(model, fileDto);
@@ -44,6 +46,7 @@
 
         [Route("delete")]
         [HttpDelete]
+        [Authorize]
         public async Task<ActionResult> Delete(int id)
         {
             await productService.DeleteProductAsync(id);
@@ -53,6 +56,7 @@
 
         [Route("edit")]
         [HttpPut]
+        [Authorize]
         public async Task<ActionResult> Edit([FromBody] AddEditProductViewModel editProduct, int id, [FromForm] GalleryFileDTO fileDTO)
         {
             await productService.EditProductAsync(editProduct, id, fileDTO);
